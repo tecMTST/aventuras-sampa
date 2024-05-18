@@ -1,0 +1,81 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "BaseControle2D",
+"language": "GDScript",
+"path": "res://addons/controles2d/Controles2DBase.gd"
+}, {
+"base": "BaseControle2D",
+"class": "ControlePulo2D",
+"language": "GDScript",
+"path": "res://addons/controles2d/ControlePulo2D.gd"
+}, {
+"base": "BaseControle2D",
+"class": "ControleSideScroling2D",
+"language": "GDScript",
+"path": "res://addons/controles2d/ControleSideScrolling2D.gd"
+}, {
+"base": "BaseControle2D",
+"class": "ControleTopDown2D",
+"language": "GDScript",
+"path": "res://addons/controles2d/ControleTopDown2D.gd"
+}, {
+"base": "EditorPlugin",
+"class": "GeradorObjeto",
+"language": "GDScript",
+"path": "res://addons/gerador_de_objeto/gerador_de_objeto.gd"
+} ]
+_global_script_class_icons={
+"BaseControle2D": "",
+"ControlePulo2D": "",
+"ControleSideScroling2D": "",
+"ControleTopDown2D": "",
+"GeradorObjeto": ""
+}
+
+[application]
+
+config/name="mtst-game-template"
+run/main_scene="res://recursos/cenas/CenaPrincipal/CenaPrincipal.tscn"
+config/icon="res://assets/icon.png"
+
+[display]
+
+window/size/width=360
+window/size/height=640
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[importer_defaults]
+
+texture={
+"flags/filter": false
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
