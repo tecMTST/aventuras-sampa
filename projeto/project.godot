@@ -33,20 +33,44 @@ _global_script_classes=[ {
 "class": "GeradorObjeto",
 "language": "GDScript",
 "path": "res://addons/gerador_de_objeto/gerador_de_objeto.gd"
+}, {
+"base": "Resource",
+"class": "Vida",
+"language": "GDScript",
+"path": "res://recursos/componentes/vida/vida.gd"
+}, {
+"base": "Control",
+"class": "VidaIcones",
+"language": "GDScript",
+"path": "res://recursos/componentes/vida/interface/vida_icones.gd"
+}, {
+"base": "Node",
+"class": "VidaNode",
+"language": "GDScript",
+"path": "res://recursos/componentes/vida/vida_node.gd"
+}, {
+"base": "Control",
+"class": "VidaNodeIcones",
+"language": "GDScript",
+"path": "res://recursos/componentes/vida/interface/vida_node_icones.gd"
 } ]
 _global_script_class_icons={
 "BaseControle2D": "",
 "ControlePulo2D": "",
 "ControleSideScroling2D": "",
 "ControleTopDown2D": "",
-"GeradorObjeto": ""
+"GeradorObjeto": "",
+"Vida": "res://recursos/componentes/vida/vida.svg",
+"VidaIcones": "",
+"VidaNode": "res://recursos/componentes/vida/vida.svg",
+"VidaNodeIcones": ""
 }
 
 [application]
 
 config/name="mtst-game-template"
 run/main_scene="res://recursos/cenas/CenaPrincipal/CenaPrincipal.tscn"
-config/icon="res://assets/icon.png"
+config/icon="res://elementos/imagem/icon.png"
 
 [display]
 

@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://recursos/componentes/vida/interface/vida_icones.gd" type="Script" id=1]
+[ext_resource path="res://recursos/componentes/vida/vida.gd" type="Script" id=2]
+[ext_resource path="res://recursos/componentes/vida/vida.svg" type="Texture" id=3]
+[ext_resource path="res://recursos/componentes/vida/exemplos/jogador/jogador.tscn" type="PackedScene" id=4]
+[ext_resource path="res://recursos/componentes/vida/interface/vida_icones.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+vida_maxima = 3.0
+
+[node name="CenaVidaResource" type="Node2D"]
+
+[node name="Jogador" parent="." instance=ExtResource( 4 )]
+position = Vector2( 159, 297 )
+vida = SubResource( 1 )
+
+[node name="VidaIcones" parent="." instance=ExtResource( 5 )]
+margin_right = 271.0
+margin_bottom = 80.0
+script = ExtResource( 1 )
+componente_com_vida = NodePath("../Jogador")
+textura_icone = ExtResource( 3 )
