@@ -87,8 +87,8 @@ func processar() -> Vector2:
 		velocidade.y = move_toward(velocidade.y, (parent.position.direction_to(alvo).y * velocidade_movimento), aceleracao) 
 		velocidade.x = move_toward(velocidade.x, (parent.position.direction_to(alvo).x * velocidade_movimento), aceleracao) 
 	elif faixas.size() > 0 and distancia <= DISTANCIA_MINIMA and distancia > DISTANCIA_PARADA and distancia < ultima_distancia:
-		velocidade.y = move_toward(velocidade.y, 0, aceleracao) 
-		velocidade.x = move_toward(velocidade.x, 0, aceleracao) 
+		velocidade.y = move_toward(velocidade.y, 0, desaceleracao) 
+		velocidade.x = move_toward(velocidade.x, 0, desaceleracao) 
 	else:
 		velocidade = Vector2.ZERO
 	ultima_distancia = distancia
