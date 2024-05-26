@@ -1,5 +1,5 @@
 extends Node2D
-class_name ControleLFaixa2D
+class_name ControleFaixa2D
 
 #enums
 enum modo_controle { autonomo, gatilho	}
