@@ -1,9 +1,14 @@
 extends Node2D
-class_name ControleFaixa2D
+class_name ControleLFaixa2D
 
 #enums
 enum modo_controle { autonomo, gatilho	}
 enum modos_orientacao { horizontal, vertical, ambas }
+
+#constantes
+const DISTANCIA_MAXIMA = 9999.0
+const DISTANCIA_MINIMA = 5.0
+const DISTANCIA_PARADA = 2.0
 
 #Variavel de ativação do componente
 export var ativo = true
@@ -18,8 +23,8 @@ export var controle_right = "right"
 
 #velocidade
 export var velocidade_movimento = 300.0
-export var aceleracao = 50.0
-export var desaceleracao = 50.0
+export var aceleracao = 20.0
+export var desaceleracao = 20.0
 
 #Faixas
 export(Array, Vector2) var faixas = []
@@ -34,6 +39,7 @@ var alvo = Vector2()
 var posicao_atual = 0
 var alvo_definido = false
 var velocidade : Vector2 = Vector2.ZERO
+var ultima_distancia = DISTANCIA_MAXIMA
 
 func _ready():
 	posicao_atual = posicao_inicial
@@ -42,8 +48,10 @@ func _ready():
 func _input(_event):	
 	if ativo and modo == modo_controle.autonomo:		
 		if Input.is_action_just_pressed(controle_left):
+			ultima_distancia = DISTANCIA_MAXIMA
 			mover_direita()
 		if Input.is_action_just_pressed(controle_right):
+			ultima_distancia = DISTANCIA_MAXIMA
 			mover_esquerda()	
 			
 func _process(delta):	
@@ -74,8 +82,14 @@ func definir_alvo():
 func processar() -> Vector2:	
 	if not alvo_definido:
 		definir_alvo()
-	if faixas.size() > 0 and parent.position.distance_to(alvo) > 5.0:		
-		velocidade = parent.position.direction_to(alvo) * velocidade_movimento				
+	var distancia = parent.position.distance_to(alvo)
+	if faixas.size() > 0 and distancia > DISTANCIA_MINIMA and distancia < ultima_distancia:
+		velocidade.y = move_toward(velocidade.y, (parent.position.direction_to(alvo).y * velocidade_movimento), aceleracao) 
+		velocidade.x = move_toward(velocidade.x, (parent.position.direction_to(alvo).x * velocidade_movimento), aceleracao) 
+	elif faixas.size() > 0 and distancia <= DISTANCIA_MINIMA and distancia > DISTANCIA_PARADA and distancia < ultima_distancia:
+		velocidade.y = move_toward(velocidade.y, 0, aceleracao) 
+		velocidade.x = move_toward(velocidade.x, 0, aceleracao) 
 	else:
 		velocidade = Vector2.ZERO
+	ultima_distancia = distancia
 	return velocidade
