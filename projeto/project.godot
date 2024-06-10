@@ -87,6 +87,10 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "res://addons/controleFaixa2d/plugin.cfg", "res://addons/controle_de_toque/plugin.cfg", "res://addons/controles2d/plugin.cfg", "res://addons/controles3D/plugin.cfg", "res://addons/salvamento/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
 
+[global]
+
+mouse=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
@@ -123,6 +127,10 @@ down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 
