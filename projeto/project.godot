@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/controles2d/Controles2DBase.gd"
 }, {
+"base": "Node2D",
+"class": "ControleFaixa2D",
+"language": "GDScript",
+"path": "res://addons/controleFaixa2d/ControleFaixa2D.gd"
+}, {
 "base": "Spatial",
 "class": "ControleFaixa3D",
 "language": "GDScript",
@@ -34,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/controles2d/ControleTopDown2D.gd"
 }, {
-"base": "Reference",
+"base": "EditorPlugin",
 "class": "GeradorObjeto",
 "language": "GDScript",
 "path": "res://addons/gerador_de_objeto/GeradorDeObjeto.gd"
@@ -48,16 +53,29 @@ _global_script_classes=[ {
 "class": "SaveFile",
 "language": "GDScript",
 "path": "res://addons/salvamento/Save.gd"
+}, {
+"base": "Node",
+"class": "Vida",
+"language": "GDScript",
+"path": "res://recursos/componentes/vida/vida.gd"
+}, {
+"base": "Control",
+"class": "VidaIcones",
+"language": "GDScript",
+"path": "res://recursos/componentes/vida/interface/vida_icones.gd"
 } ]
 _global_script_class_icons={
 "BaseControle2D": "",
+"ControleFaixa2D": "",
 "ControleFaixa3D": "",
 "ControlePulo2D": "",
 "ControleSideScroling2D": "",
 "ControleTopDown2D": "",
 "GeradorObjeto": "",
 "PlayerLane3D": "",
-"SaveFile": ""
+"SaveFile": "",
+"Vida": "res://recursos/componentes/vida/vida.svg",
+"VidaIcones": ""
 }
 
 [application]

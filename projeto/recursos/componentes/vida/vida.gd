@@ -1,5 +1,5 @@
 class_name Vida, "vida.svg"
-extends Resource
+extends Node
 
 signal vida_alterada(alteracao)
 signal vida_maxima_alterada(alteracao)
