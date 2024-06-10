@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://elementos/imagem/icon.png" type="Texture" id=1]
+[ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.gd" type="Script" id=2]
+[ext_resource path="res://elementos/imagem/barra_de_progresso/progresso.png" type="Texture" id=3]
+[ext_resource path="res://elementos/imagem/barra_de_progresso/moldura.png" type="Texture" id=4]
+[ext_resource path="res://elementos/imagem/barra_de_progresso/fundo.png" type="Texture" id=5]
+
+[node name="BarraDeProgresso" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ProgressoDeTextura" type="TextureProgress" parent="."]
+margin_left = 300.0
+margin_top = 70.0
+margin_right = 340.0
+margin_bottom = 170.0
+rect_scale = Vector2( 1, 5 )
+texture_under = ExtResource( 5 )
+texture_over = ExtResource( 4 )
+texture_progress = ExtResource( 3 )
+fill_mode = 3
+
+[node name="Icone" type="Sprite" parent="."]
+position = Vector2( 310, 513 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )

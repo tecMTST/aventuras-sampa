@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TopDown2D.svg-1e78c7625db74b02dac19f1a6b5a6656.stex"
+path="res://.import/Faixa2D.svg-2d56edd92e7f1d2b1cab1faa3b78508c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/controles2d/icons/TopDown2D.svg"
-dest_files=[ "res://.import/TopDown2D.svg-1e78c7625db74b02dac19f1a6b5a6656.stex" ]
+source_file="res://addons/controleFaixa2d/icons/Faixa2D.svg"
+dest_files=[ "res://.import/Faixa2D.svg-2d56edd92e7f1d2b1cab1faa3b78508c.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

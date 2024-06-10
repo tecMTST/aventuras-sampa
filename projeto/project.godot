@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/controles2d/Controles2DBase.gd"
 }, {
+"base": "Spatial",
+"class": "ControleFaixa3D",
+"language": "GDScript",
+"path": "res://addons/controles3D/ControleFaixa3D.gd"
+}, {
 "base": "BaseControle2D",
 "class": "ControlePulo2D",
 "language": "GDScript",
@@ -29,41 +34,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/controles2d/ControleTopDown2D.gd"
 }, {
-"base": "EditorPlugin",
+"base": "Reference",
 "class": "GeradorObjeto",
 "language": "GDScript",
-"path": "res://addons/gerador_de_objeto/gerador_de_objeto.gd"
+"path": "res://addons/gerador_de_objeto/GeradorDeObjeto.gd"
 }, {
-"base": "Resource",
-"class": "Vida",
+"base": "KinematicBody",
+"class": "PlayerLane3D",
 "language": "GDScript",
-"path": "res://recursos/componentes/vida/vida.gd"
+"path": "res://recursos/jogos/enchente/jogador/playerLane3D.gd"
 }, {
-"base": "Control",
-"class": "VidaIcones",
+"base": "Reference",
+"class": "SaveFile",
 "language": "GDScript",
-"path": "res://recursos/componentes/vida/interface/vida_icones.gd"
-}, {
-"base": "Node",
-"class": "VidaNode",
-"language": "GDScript",
-"path": "res://recursos/componentes/vida/vida_node.gd"
-}, {
-"base": "Control",
-"class": "VidaNodeIcones",
-"language": "GDScript",
-"path": "res://recursos/componentes/vida/interface/vida_node_icones.gd"
+"path": "res://addons/salvamento/Save.gd"
 } ]
 _global_script_class_icons={
 "BaseControle2D": "",
+"ControleFaixa3D": "",
 "ControlePulo2D": "",
 "ControleSideScroling2D": "",
 "ControleTopDown2D": "",
 "GeradorObjeto": "",
-"Vida": "res://recursos/componentes/vida/vida.svg",
-"VidaIcones": "",
-"VidaNode": "res://recursos/componentes/vida/vida.svg",
-"VidaNodeIcones": ""
+"PlayerLane3D": "",
+"SaveFile": ""
 }
 
 [application]
@@ -81,7 +75,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg" )
 
 [gui]
 
@@ -91,6 +85,33 @@ common/drop_mouse_on_gui_input_disabled=true
 
 texture={
 "flags/filter": false
+}
+
+[input]
+
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [physics]
