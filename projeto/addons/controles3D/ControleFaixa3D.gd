@@ -47,12 +47,10 @@ func _ready():
 
 func _input(_event):	
 	if ativo and modo == modo_controle.autonomo:		
-		if Input.is_action_just_pressed(controle_left):
-			ultima_distancia = DISTANCIA_MAXIMA
-			mover_direita()
-		if Input.is_action_just_pressed(controle_right):
-			ultima_distancia = DISTANCIA_MAXIMA
+		if Input.is_action_just_pressed(controle_left):			
 			mover_esquerda()	
+		if Input.is_action_just_pressed(controle_right):			
+			mover_direita()
 			
 func _process(delta):	
 	if ativo and modo == modo_controle.autonomo and faixas.size() > 0:
@@ -60,13 +58,15 @@ func _process(delta):
 		parent.move_and_slide(velocidade, Vector3.UP)
 			
 func mover_direita():
-	if posicao_atual > 0:
-		posicao_atual = posicao_atual - 1;
+	ultima_distancia = DISTANCIA_MAXIMA
+	if posicao_atual < faixas.size() - 1:
+		posicao_atual = posicao_atual + 1;
 		definir_alvo()
 		
 func mover_esquerda():
-	if posicao_atual < faixas.size() - 1:
-		posicao_atual = posicao_atual + 1;
+	ultima_distancia = DISTANCIA_MAXIMA
+	if posicao_atual > 0:
+		posicao_atual = posicao_atual - 1;
 		definir_alvo()
 	
 func definir_alvo():
