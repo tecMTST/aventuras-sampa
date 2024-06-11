@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/controles2d/ControleTopDown2D.gd"
 }, {
-"base": "EditorPlugin",
+"base": "Reference",
 "class": "GeradorObjeto",
 "language": "GDScript",
 "path": "res://addons/gerador_de_objeto/GeradorDeObjeto.gd"
@@ -69,12 +69,8 @@ _global_script_class_icons={
 [application]
 
 config/name="mtst-game-template"
-run/main_scene="res://recursos/cenas/CenaPrincipal/CenaPrincipal.tscn"
+run/main_scene="res://recursos/jogos/enchente/cenas/Enchente.tscn"
 config/icon="res://elementos/imagem/icon.png"
-
-[autoload]
-
-TrocadorDeCenas="*res://addons/trocador_de_cenas/trocador_de_cenas.tscn"
 
 [display]
 
@@ -85,11 +81,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/controle_de_toque/plugin.cfg" )
-
-[global]
-
-mouse=false
+enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg" )
 
 [gui]
 
@@ -127,10 +119,6 @@ down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
 
 [physics]
 

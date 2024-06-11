@@ -2,7 +2,6 @@ extends Spatial
 class_name ControleFaixa3D
 
 #enums
-enum modo_controle { autonomo, gatilho	}
 enum modos_orientacao { x, y, z, plano_xy, plano_xz, plano_yz, todos }
 
 #constantes
@@ -14,7 +13,6 @@ const DISTANCIA_PARADA = 0.1
 export var ativo = true
 
 #modo
-export(modo_controle) var modo = modo_controle.autonomo
 export(modos_orientacao) var orientacao = modos_orientacao.x
 
 #inputs
@@ -43,33 +41,33 @@ var ultima_distancia = DISTANCIA_MAXIMA
 
 func _ready():
 	posicao_atual = posicao_inicial
-	definir_alvo();
+	_definir_alvo();
 
 func _input(_event):	
-	if ativo and modo == modo_controle.autonomo:		
+	if ativo and controle_left != "" and controle_right != "":		
 		if Input.is_action_just_pressed(controle_left):
-			ultima_distancia = DISTANCIA_MAXIMA
-			mover_direita()
-		if Input.is_action_just_pressed(controle_right):
-			ultima_distancia = DISTANCIA_MAXIMA
 			mover_esquerda()	
+		if Input.is_action_just_pressed(controle_right):
+			mover_direita()
 			
 func _process(delta):	
-	if ativo and modo == modo_controle.autonomo and faixas.size() > 0:
-		processar()
+	if ativo and faixas.size() > 0:
+		_processar()
 		parent.move_and_slide(velocidade, Vector3.UP)
 			
 func mover_direita():
-	if posicao_atual > 0:
-		posicao_atual = posicao_atual - 1;
-		definir_alvo()
-		
-func mover_esquerda():
+	ultima_distancia = DISTANCIA_MAXIMA
 	if posicao_atual < faixas.size() - 1:
 		posicao_atual = posicao_atual + 1;
-		definir_alvo()
+		_definir_alvo()
+		
+func mover_esquerda():
+	ultima_distancia = DISTANCIA_MAXIMA
+	if posicao_atual > 0:
+		posicao_atual = posicao_atual - 1;
+		_definir_alvo()
 	
-func definir_alvo():
+func _definir_alvo():
 	if faixas.size() > 0:		
 		if orientacao == modos_orientacao.x:
 			alvo = Vector3(faixas[posicao_atual].x, parent.global_position.y, parent.global_position.z) 
@@ -87,9 +85,9 @@ func definir_alvo():
 			alvo = faixas[posicao_atual]
 		alvo_definido = true
 
-func processar() -> Vector3:	
+func _processar() -> Vector3:	
 	if not alvo_definido:
-		definir_alvo()
+		_definir_alvo()
 	var distancia = parent.position.distance_to(alvo)
 	if faixas.size() > 0 and distancia > DISTANCIA_MINIMA and distancia < ultima_distancia:
 		velocidade.y = move_toward(velocidade.y, (parent.position.direction_to(alvo).y * velocidade_movimento), aceleracao) 
