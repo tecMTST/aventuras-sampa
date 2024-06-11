@@ -33,7 +33,7 @@ func _on_TimerObstaculos_timeout():
 			
 	for faixa in range(3):
 		if posicao - 1 != faixa:
-			if faixa == 0:				
+			if faixa == 0:
 				var instancia0 = obstaculo.instance() as KinematicBody
 				add_child(instancia0)
 				instancia0.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)

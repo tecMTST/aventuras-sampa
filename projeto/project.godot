@@ -85,7 +85,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/controleFaixa2d/plugin.cfg", "res://addons/controle_de_toque/plugin.cfg", "res://addons/controles2d/plugin.cfg", "res://addons/controles3D/plugin.cfg", "res://addons/salvamento/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/controle_de_toque/plugin.cfg" )
 
 [global]
 

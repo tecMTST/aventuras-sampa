@@ -24,6 +24,7 @@ func _input(event):
 
 		else:
 			emit_signal("toque_desfeito", historico)
+			historico = []
 
 func _atualizar_historico():
 	historico.append(posicao_atual)
