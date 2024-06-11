@@ -44,5 +44,6 @@ material/0 = SubResource( 5 )
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.88727 )
 
+[connection signal="arrastar_realizado" from="MeshInstance/ControleDeSwipe" to="MeshInstance" method="_on_ControleDeSwipe_arrastar_realizado"]
 [connection signal="toque_desfeito" from="MeshInstance/ControleDeSwipe" to="MeshInstance" method="_on_ControleDeSwipe_toque_desfeito"]
 [connection signal="toque_realizado" from="MeshInstance/ControleDeSwipe" to="MeshInstance" method="_on_ControleDeSwipe_toque_realizado"]
