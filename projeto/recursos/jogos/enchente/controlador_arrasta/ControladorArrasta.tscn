@@ -11,3 +11,4 @@ script = ExtResource( 2 )
 tamanho_array = 5
 
 [connection signal="arrastar_realizado" from="ControleDeToque" to="." method="_on_ControleDeToque_arrastar_realizado"]
+[connection signal="toque_desfeito" from="ControleDeToque" to="." method="_on_ControleDeToque_toque_desfeito"]

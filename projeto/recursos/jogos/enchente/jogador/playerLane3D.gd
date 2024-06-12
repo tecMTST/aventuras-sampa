@@ -5,7 +5,6 @@ onready var controle_faixa_3d = $ControleFaixa3D
 
 
 func _on_ControladorArrasta_arrastado(chave):
-	print(chave)
 	if chave=='direita':
 		controle_faixa_3d.mover_direita()
 	elif chave=='esquerda':

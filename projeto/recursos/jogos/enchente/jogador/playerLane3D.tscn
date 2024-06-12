@@ -24,9 +24,9 @@ texture = ExtResource( 1 )
 
 [node name="ControleFaixa3D" type="Spatial" parent="."]
 script = ExtResource( 2 )
-modo = 1
 posicao_inicial = 1
 
 [node name="ControladorArrasta" parent="." instance=ExtResource( 4 )]
+distancia_do_centro = 12
 
 [connection signal="arrastado" from="ControladorArrasta" to="." method="_on_ControladorArrasta_arrastado"]

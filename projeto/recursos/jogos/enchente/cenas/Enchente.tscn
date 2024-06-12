@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://elementos/imagem/enchente/placeholder_predios.png" type="Texture" id=1]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://elementos/shaders/enchente/agua_shader.tres" type="Shader" id=3]
 [ext_resource path="res://elementos/shaders/enchente/predios_shader.tres" type="Shader" id=4]
+[ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=5]
 
 [sub_resource type="GDScript" id=7]
 script/source = "extends Spatial
@@ -20,7 +21,8 @@ func _ready():
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_1.global_position)
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_2.global_position)
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_3.global_position)
-	player_lane_3d.controle_faixa_3d.posicao_inicial = 1	
+	player_lane_3d.controle_faixa_3d.posicao_inicial = 1
+	$BarraDeProgresso.iniciar()
 	
 func _process(_delta):
 	fps_label.text = str(Engine.get_frames_per_second())
@@ -141,6 +143,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.9533 )
 
 [node name="CollisionShape" type="CollisionShape" parent="AreaColetoraObstaculos"]
 shape = SubResource( 6 )
+
+[node name="BarraDeProgresso" parent="." instance=ExtResource( 5 )]
+position = Vector2( 62, 30 )
 
 [connection signal="timeout" from="TimerObstaculos" to="." method="_on_TimerObstaculos_timeout"]
 [connection signal="body_entered" from="AreaColetoraObstaculos" to="." method="_on_AreaColetoraObstaculos_body_entered"]
