@@ -57,12 +57,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Vida",
 "language": "GDScript",
-"path": "res://recursos/componentes/vida/vida.gd"
-}, {
-"base": "Control",
-"class": "VidaIcones",
-"language": "GDScript",
-"path": "res://recursos/componentes/vida/interface/vida_icones.gd"
+"path": "res://addons/sistema_vida/vida.gd"
 } ]
 _global_script_class_icons={
 "BaseControle2D": "",
@@ -74,8 +69,7 @@ _global_script_class_icons={
 "GeradorObjeto": "",
 "PlayerLane3D": "",
 "SaveFile": "",
-"Vida": "res://recursos/componentes/vida/vida.svg",
-"VidaIcones": ""
+"Vida": "res://addons/sistema_vida/vida.svg"
 }
 
 [application]
@@ -93,7 +87,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg", "res://addons/sistema_vida/plugin.cfg" )
 
 [gui]
 

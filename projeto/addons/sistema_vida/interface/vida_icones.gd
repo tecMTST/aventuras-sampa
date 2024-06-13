@@ -1,4 +1,3 @@
-class_name VidaIcones
 extends Control
 
 export(NodePath) var componente_com_vida
