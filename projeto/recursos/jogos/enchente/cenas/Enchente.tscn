@@ -14,7 +14,6 @@ onready var faixa_3 = $Faixas/Faixa3
 onready var origem_obstaculos = $Faixas/OrigemObstaculos
 onready var fps_label = $CanvasLayer/Control/HBoxContainer/FpsLabel
 onready var agua = $Agua
-onready var velocidade = $CanvasLayer/Control/HBoxContainer/Velocidade
 
 func _ready():
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_1.global_position)
