@@ -27,6 +27,5 @@ script = ExtResource( 2 )
 posicao_inicial = 1
 
 [node name="ControladorArrasta" parent="." instance=ExtResource( 4 )]
-distancia_do_centro = 12
 
 [connection signal="arrastado" from="ControladorArrasta" to="." method="_on_ControladorArrasta_arrastado"]

@@ -5,40 +5,35 @@ extends Node2D
 #  definida em `vetores_de_mudanca`
 signal arrastado(chave)
 
-export var distancia_do_centro = 20
-export var angulo = PI / 4
-
-
-var toque_desfeito = true
-var vetores_de_arraste = {
-	'cima': 1,
-	'baixo': 3,
-	'esquerda': 2,
-	'direita': 0,
+export var distancia_do_centro: int = 10
+export var angulos_arraste = {
+	'esquerda': {'minimo': 170, 'maximo': 190},
+	'direita': {'minimo': -10, 'maximo': 10}
 }
 
 
+var toque_desfeito = true
+
+
+func adicionar_angulo(chave: String, minimo: float, maximo: float):
+	angulos_arraste[chave] = {'minimo': minimo, 'maximo': maximo}
+
+
 func _on_ControleDeToque_arrastar_realizado(historico):
-	if len(historico) < 2:
+	if len(historico) < 3:
 		return
 
-	var delta_v: Vector2 = historico[-1] - historico[-2]
-	for chave in vetores_de_arraste:
-		var novo_angulo = vetores_de_arraste[chave]
-		var rotacionado = delta_v.rotated(novo_angulo * PI / 2)
-		if toque_desfeito and _ponto_no_angulo(rotacionado):
+	var delta_v: Vector2 = historico[-1] - historico[-3]
+
+	if delta_v.length_squared() < distancia_do_centro ^ 2:
+		return
+
+	for chave in angulos_arraste:
+		var angulo_vetor = delta_v.angle()
+		var limite = angulos_arraste[chave]
+		if toque_desfeito and (angulo_vetor > deg2rad(limite['minimo'])) and (angulo_vetor < deg2rad(limite['maximo'])):
 			emit_signal("arrastado", chave)
 			toque_desfeito = false
-
-
-func _ponto_no_angulo(ponto: Vector2):
-	if ponto.x < 0:
-		return false
-	var novo_ponto = Vector2(abs(ponto.x), abs(ponto.y) - distancia_do_centro)
-	var mudanca = atan(angulo / 2)
-	if (novo_ponto.y < novo_ponto.x * mudanca) and (novo_ponto.y > -novo_ponto.x * mudanca):
-		return true
-	return false
 
 
 func _on_ControleDeToque_toque_desfeito(historico):
