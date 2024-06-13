@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/controle_de_toque/controle_toque.gd" type="Script" id=1]
+[ext_resource path="res://addons/controle_de_toque/MeshInstance2.gd" type="Script" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="PrismMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.4, 0.717647, 1, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 1, 0.231373, 0.231373, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.729412, 1, 0.368627, 1 )
+
+[node name="Controle_Toque" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 0, 0, 0 )
+mesh = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="ControleDeSwipe" type="Node" parent="MeshInstance"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 0.49, 0, 0, 0, -1.5299e-08, -0.35, 0, 0.42, -1.83588e-08, 0, 0, 2.17004 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( -2.14186e-08, 0.42, -1.83588e-08, 0, -1.5299e-08, -0.35, -0.49, -1.83588e-08, 8.02489e-16, 2.1396, 0, -0.0375597 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance"]
+transform = Transform( 0.49, 0, 0, 0, 0.42, -3.05981e-09, 0, -3.0598e-09, 0.35, 0, 2.30025, 0.0116239 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 5 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.88727 )
+
+[connection signal="arrastar_realizado" from="MeshInstance/ControleDeSwipe" to="MeshInstance" method="_on_ControleDeSwipe_arrastar_realizado"]
+[connection signal="toque_desfeito" from="MeshInstance/ControleDeSwipe" to="MeshInstance" method="_on_ControleDeSwipe_toque_desfeito"]
+[connection signal="toque_realizado" from="MeshInstance/ControleDeSwipe" to="MeshInstance" method="_on_ControleDeSwipe_toque_realizado"]
