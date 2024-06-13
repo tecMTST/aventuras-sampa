@@ -7,8 +7,9 @@ signal arrastado(chave)
 
 export var distancia_do_centro: int = 10
 export var angulos_arraste = {
-	'esquerda': {'minimo': 170, 'maximo': 190},
-	'direita': {'minimo': -10, 'maximo': 10}
+	'esquerda-0': {'minimo': 150, 'maximo': 190},
+	'esquerda-1': {'minimo': -190, 'maximo': -150},
+	'direita': {'minimo': -30, 'maximo': 30}
 }
 
 
