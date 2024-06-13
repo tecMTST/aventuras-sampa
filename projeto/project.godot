@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://recursos/jogos/enchente/componentes/CriadorDePredios.gd"
 }, {
-"base": "Reference",
+"base": "EditorPlugin",
 "class": "GeradorObjeto",
 "language": "GDScript",
 "path": "res://addons/gerador_de_objeto/GeradorDeObjeto.gd"
@@ -77,6 +77,10 @@ _global_script_class_icons={
 config/name="mtst-game-template"
 run/main_scene="res://recursos/cenas/CenaPrincipal/CenaPrincipal.tscn"
 config/icon="res://elementos/imagem/icon.png"
+
+[autoload]
+
+EnchenteEstadoDeJogo="*res://recursos/jogos/enchente/scripts/EnchenteEstadoDeJogo.gd"
 
 [display]
 

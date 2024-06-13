@@ -2,13 +2,14 @@ extends Spatial
 class_name CriadorDePredios
 
 export(Array, String) var modelos = []
-export var velocidade = 0.1
+export var velocidade = 10.0
 export var quantidade_inicial = 10
 export var espacamento = 10.0
 export var deslocamento_vertical : float = 0.0
 export var inverter_x : bool = false
 export var z_aleatorio : bool = true
 onready var spawn = $Spawn as Position3D
+
 var proximo : Spatial 
 
 var instancias = []
@@ -34,7 +35,7 @@ func _ready():
 			instancias.push_back(instancia)
 			
 func _process(delta):
-	movimento()
+	movimento(delta)
 	verificar_criacao()
 		
 func verificar_criacao():		
@@ -49,9 +50,9 @@ func verificar_criacao():
 				ultimo.scale.z = ultimo.scale.z * -1			
 		instancias.push_front(ultimo)
 	
-func movimento():
+func movimento(delta):
 	for instancia in instancias:
-		instancia.global_position.z += velocidade
+		instancia.global_position.z += velocidade * delta * EnchenteEstadoDeJogo.VelocidadeGlobal
 		
 func remover_ultimo():
 	var ultimo = instancias.pop_back()

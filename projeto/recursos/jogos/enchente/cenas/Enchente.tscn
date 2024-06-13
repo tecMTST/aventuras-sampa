@@ -13,7 +13,8 @@ onready var faixa_2 = $Faixas/Faixa2
 onready var faixa_3 = $Faixas/Faixa3
 onready var origem_obstaculos = $Faixas/OrigemObstaculos
 onready var fps_label = $CanvasLayer/Control/HBoxContainer/FpsLabel
-
+onready var agua = $Agua
+onready var velocidade = $CanvasLayer/Control/HBoxContainer/Velocidade
 
 func _ready():
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_1.global_position)
@@ -23,6 +24,7 @@ func _ready():
 	
 func _process(_delta):
 	fps_label.text = str(Engine.get_frames_per_second())
+	agua.get_active_material(0).set_shader_param(\"Velocidade\",EnchenteEstadoDeJogo.VelocidadeGlobal);
 
 
 func _on_TimerObstaculos_timeout():
@@ -48,18 +50,22 @@ func _on_TimerObstaculos_timeout():
 func _on_AreaColetoraObstaculos_body_entered(body):
 	if((body as Node).is_in_group(\"obstaculo\")):
 		(body as Node).queue_free()
+
+
+func _on_Velocidade_value_changed(value):
+	EnchenteEstadoDeJogo.VelocidadeGlobal = value
 "
 
 [sub_resource type="PlaneMesh" id=1]
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 3 )
-shader_param/Velocidade = 0.1
+shader_param/Velocidade = 1.0
 
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 5.65031, 3.0316, 1 )
 
-[node name="LaneTest3D" type="Spatial"]
+[node name="Enchente" type="Spatial"]
 script = SubResource( 7 )
 
 [node name="Agua" type="MeshInstance" parent="."]
@@ -115,7 +121,7 @@ margin_right = 361.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
-margin_right = 40.0
+margin_right = 360.0
 margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
@@ -131,6 +137,18 @@ margin_right = 64.0
 margin_bottom = 27.0
 text = "FPS: "
 
+[node name="Velocidade" type="HSlider" parent="CanvasLayer/Control"]
+anchor_top = 0.294
+anchor_bottom = 0.294
+margin_left = 149.0
+margin_top = -0.76
+margin_right = 349.0
+margin_bottom = 15.24
+min_value = 0.1
+max_value = 3.0
+step = 0.1
+value = 1.0
+
 [node name="TimerObstaculos" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
@@ -141,5 +159,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.9533 )
 [node name="CollisionShape" type="CollisionShape" parent="AreaColetoraObstaculos"]
 shape = SubResource( 6 )
 
+[connection signal="value_changed" from="CanvasLayer/Control/Velocidade" to="." method="_on_Velocidade_value_changed"]
 [connection signal="timeout" from="TimerObstaculos" to="." method="_on_TimerObstaculos_timeout"]
 [connection signal="body_entered" from="AreaColetoraObstaculos" to="." method="_on_AreaColetoraObstaculos_body_entered"]
