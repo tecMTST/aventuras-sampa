@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://elementos/imagem/enchente/placeholder_predios.png" type="Texture" id=1]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=2]
 [ext_resource path="res://elementos/shaders/enchente/agua_shader.tres" type="Shader" id=3]
 [ext_resource path="res://elementos/shaders/enchente/predios_shader.tres" type="Shader" id=4]
+[ext_resource path="res://addons/sistema_vida/interface/vida_icones.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/sistema_vida/vida.svg" type="Texture" id=6]
 
 [sub_resource type="GDScript" id=7]
 script/source = "extends Spatial
@@ -131,6 +133,10 @@ margin_top = 13.0
 margin_right = 64.0
 margin_bottom = 27.0
 text = "FPS: "
+
+[node name="VidaIcones" parent="CanvasLayer/Control" instance=ExtResource( 5 )]
+componente_com_vida = NodePath("../../../playerLane3D")
+textura_icone = ExtResource( 6 )
 
 [node name="TimerObstaculos" type="Timer" parent="."]
 wait_time = 2.0
