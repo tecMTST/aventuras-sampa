@@ -1,10 +1,10 @@
 extends Control
 
-export(NodePath) var componente_de_vida
+export(NodePath) var componente_com_vida
 export(Texture) var textura_icone
 export var tamanho_icone := 32.0
 
-onready var vida := get_node(componente_de_vida) as Vida
+onready var vida := get_node(componente_com_vida).vida as Vida
 onready var icone := TextureRect.new()
 onready var icones := $Vidas as HBoxContainer
 
