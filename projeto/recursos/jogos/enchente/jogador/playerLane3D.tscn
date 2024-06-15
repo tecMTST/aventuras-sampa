@@ -15,7 +15,6 @@ move_lock_z = true
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -29,11 +28,3 @@ script = ExtResource( 2 )
 [node name="Vida" type="Node" parent="."]
 script = ExtResource( 4 )
 vida_maxima = 3.0
-
-[node name="AreaDano" type="Area" parent="."]
-transform = Transform( 0.56, 0, 0, 0, 0.56, 0, 0, 0, 0.56, 0, 0, 0 )
-
-[node name="CollisionShape2" type="CollisionShape" parent="AreaDano"]
-shape = SubResource( 1 )
-
-[connection signal="body_entered" from="AreaDano" to="." method="_on_AreaDano_body_entered"]
