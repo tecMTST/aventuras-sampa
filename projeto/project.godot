@@ -53,6 +53,11 @@ _global_script_classes=[ {
 "class": "SaveFile",
 "language": "GDScript",
 "path": "res://addons/salvamento/Save.gd"
+}, {
+"base": "Node",
+"class": "Vida",
+"language": "GDScript",
+"path": "res://addons/sistema_vida/vida.gd"
 } ]
 _global_script_class_icons={
 "BaseControle2D": "",
@@ -63,7 +68,8 @@ _global_script_class_icons={
 "ControleTopDown2D": "",
 "GeradorObjeto": "",
 "PlayerLane3D": "",
-"SaveFile": ""
+"SaveFile": "",
+"Vida": "res://addons/sistema_vida/vida.svg"
 }
 
 [application]
@@ -85,7 +91,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg", "res://addons/sistema_vida/plugin.cfg" )
 
 [global]
 
