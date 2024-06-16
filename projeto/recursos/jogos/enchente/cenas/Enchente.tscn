@@ -99,13 +99,13 @@ inverter_x = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.248524 )
 
 [node name="Faixa1" type="Position3D" parent="Faixas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 22.727 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 22.727 )
 
 [node name="Faixa2" type="Position3D" parent="Faixas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.7269 )
 
 [node name="Faixa3" type="Position3D" parent="Faixas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 22.727 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22.727 )
 
 [node name="OrigemObstaculos" type="Position3D" parent="Faixas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25053, -56.9395 )
