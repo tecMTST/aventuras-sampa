@@ -1,6 +1,9 @@
 extends Spatial
 class_name ControleFaixa3D
 
+signal iniciou_movimento(direcao, alvo)
+signal terminou_movimento()
+
 #enums
 enum modos_orientacao { x, y, z, plano_xy, plano_xz, plano_yz, todos }
 
@@ -43,61 +46,64 @@ func _ready():
 	posicao_atual = posicao_inicial
 	_definir_alvo();
 
-func _input(_event):	
-	if ativo and controle_left != "" and controle_right != "":		
+func _input(_event):
+	if ativo and controle_left != "" and controle_right != "":
 		if Input.is_action_just_pressed(controle_left):
-			mover_esquerda()	
+			mover_esquerda()
 		if Input.is_action_just_pressed(controle_right):
 			mover_direita()
-			
-func _process(delta):	
+
+func _process(delta):
 	if ativo and faixas.size() > 0:
 		_processar()
 		parent.move_and_slide(velocidade, Vector3.UP)
-			
+
 func mover_direita():
 	ultima_distancia = DISTANCIA_MAXIMA
 	if posicao_atual < faixas.size() - 1:
 		posicao_atual = posicao_atual + 1;
 		_definir_alvo()
-		
+	emit_signal('iniciou_movimento', 'direita', alvo)
+
 func mover_esquerda():
 	ultima_distancia = DISTANCIA_MAXIMA
 	if posicao_atual > 0:
 		posicao_atual = posicao_atual - 1;
 		_definir_alvo()
-	
+	emit_signal('iniciou_movimento', 'esquerda', alvo)
+
 func _definir_alvo():
-	if faixas.size() > 0:		
+	if faixas.size() > 0:
 		if orientacao == modos_orientacao.x:
-			alvo = Vector3(faixas[posicao_atual].x, parent.global_position.y, parent.global_position.z) 
+			alvo = Vector3(faixas[posicao_atual].x, parent.global_position.y, parent.global_position.z)
 		elif orientacao == modos_orientacao.y:
-			alvo = Vector3(parent.global_position.x, faixas[posicao_atual].y, parent.global_position.z) 
+			alvo = Vector3(parent.global_position.x, faixas[posicao_atual].y, parent.global_position.z)
 		elif orientacao == modos_orientacao.z:
-			alvo = Vector3(parent.global_position.x, parent.global_position.y, faixas[posicao_atual].z) 		
+			alvo = Vector3(parent.global_position.x, parent.global_position.y, faixas[posicao_atual].z)
 		elif orientacao == modos_orientacao.plano_xy:
-			alvo = Vector3(faixas[posicao_atual].x, faixas[posicao_atual].y, parent.global_position.z) 			
+			alvo = Vector3(faixas[posicao_atual].x, faixas[posicao_atual].y, parent.global_position.z)
 		elif orientacao == modos_orientacao.plano_xz:
-			alvo = Vector3(faixas[posicao_atual].x, parent.global_position.y, faixas[posicao_atual].z) 			
+			alvo = Vector3(faixas[posicao_atual].x, parent.global_position.y, faixas[posicao_atual].z)
 		elif orientacao == modos_orientacao.plano_yz:
-			alvo = Vector3(parent.global_position.x, faixas[posicao_atual].y, faixas[posicao_atual].z) 		
+			alvo = Vector3(parent.global_position.x, faixas[posicao_atual].y, faixas[posicao_atual].z)
 		else:
 			alvo = faixas[posicao_atual]
 		alvo_definido = true
 
-func _processar() -> Vector3:	
+func _processar() -> Vector3:
 	if not alvo_definido:
 		_definir_alvo()
 	var distancia = parent.position.distance_to(alvo)
 	if faixas.size() > 0 and distancia > DISTANCIA_MINIMA and distancia < ultima_distancia:
-		velocidade.y = move_toward(velocidade.y, (parent.position.direction_to(alvo).y * velocidade_movimento), aceleracao) 
-		velocidade.x = move_toward(velocidade.x, (parent.position.direction_to(alvo).x * velocidade_movimento), aceleracao) 
-		velocidade.z = move_toward(velocidade.z, (parent.position.direction_to(alvo).z * velocidade_movimento), aceleracao) 
+		velocidade.y = move_toward(velocidade.y, (parent.position.direction_to(alvo).y * velocidade_movimento), aceleracao)
+		velocidade.x = move_toward(velocidade.x, (parent.position.direction_to(alvo).x * velocidade_movimento), aceleracao)
+		velocidade.z = move_toward(velocidade.z, (parent.position.direction_to(alvo).z * velocidade_movimento), aceleracao)
 	elif faixas.size() > 0 and distancia <= DISTANCIA_MINIMA and distancia > DISTANCIA_PARADA and distancia < ultima_distancia:
-		velocidade.y = move_toward(velocidade.y, 0, desaceleracao) 
-		velocidade.x = move_toward(velocidade.x, 0, desaceleracao) 
-		velocidade.z = move_toward(velocidade.z, 0, desaceleracao) 
+		velocidade.y = move_toward(velocidade.y, 0, desaceleracao)
+		velocidade.x = move_toward(velocidade.x, 0, desaceleracao)
+		velocidade.z = move_toward(velocidade.z, 0, desaceleracao)
 	else:
 		velocidade = Vector3.ZERO
+		emit_signal('terminou_movimento')
 	ultima_distancia = distancia
 	return velocidade
