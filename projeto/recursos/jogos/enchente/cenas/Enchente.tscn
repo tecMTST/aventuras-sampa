@@ -5,7 +5,7 @@
 [ext_resource path="res://elementos/shaders/enchente/agua_shader.tres" type="Shader" id=3]
 [ext_resource path="res://addons/sistema_vida/interface/vida_icones.tscn" type="PackedScene" id=4]
 [ext_resource path="res://recursos/jogos/enchente/componentes/CriadorDePredios.tscn" type="PackedScene" id=5]
-[ext_resource path="res://elementos/imagem/icon.png" type="Texture" id=6]
+[ext_resource path="res://elementos/imagem/enchente/rosto-senhora.png" type="Texture" id=6]
 [ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=7]
 
 [sub_resource type="GDScript" id=7]
@@ -164,6 +164,7 @@ margin_bottom = 180.0
 rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")
 textura_icone = ExtResource( 6 )
+tamanho_icone = 64.0
 
 [connection signal="timeout" from="TimerObstaculos" to="." method="_on_TimerObstaculos_timeout"]
 [connection signal="body_entered" from="AreaColetoraObstaculos" to="." method="_on_AreaColetoraObstaculos_body_entered"]
