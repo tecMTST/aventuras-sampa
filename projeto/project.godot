@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="mtst-game-template"
-run/main_scene="res://recursos/jogos/enchente/cenas/Enchente.tscn"
+run/main_scene="res://recursos/feed_de_noticias/feed_de_noticia.tscn"
 config/icon="res://elementos/imagem/icon.png"
 
 [autoload]
@@ -91,7 +91,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg", "res://addons/sistema_vida/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/controle_de_toque/plugin.cfg", "res://addons/sistema_vida/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
 
 [global]
 
