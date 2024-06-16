@@ -58,6 +58,11 @@ _global_script_classes=[ {
 "class": "SaveFile",
 "language": "GDScript",
 "path": "res://addons/salvamento/Save.gd"
+}, {
+"base": "Node",
+"class": "Vida",
+"language": "GDScript",
+"path": "res://addons/sistema_vida/vida.gd"
 } ]
 _global_script_class_icons={
 "BaseControle2D": "",
@@ -69,13 +74,14 @@ _global_script_class_icons={
 "CriadorDePredios": "",
 "GeradorObjeto": "",
 "PlayerLane3D": "",
-"SaveFile": ""
+"SaveFile": "",
+"Vida": "res://addons/sistema_vida/vida.svg"
 }
 
 [application]
 
 config/name="mtst-game-template"
-run/main_scene="res://recursos/cenas/CenaPrincipal/CenaPrincipal.tscn"
+run/main_scene="res://recursos/jogos/enchente/cenas/Enchente.tscn"
 config/icon="res://elementos/imagem/icon.png"
 
 [autoload]
@@ -84,14 +90,14 @@ EnchenteEstadoDeJogo="*res://recursos/jogos/enchente/scripts/EnchenteEstadoDeJog
 
 [display]
 
-window/size/width=360
-window/size/height=640
+window/size/width=720
+window/size/height=1280
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg", "res://addons/sistema_vida/plugin.cfg" )
 
 [gui]
 
