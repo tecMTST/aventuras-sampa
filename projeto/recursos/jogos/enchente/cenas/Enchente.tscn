@@ -147,13 +147,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.9533 )
 shape = SubResource( 6 )
 
 [node name="BarraDeProgresso" parent="." instance=ExtResource( 5 )]
-position = Vector2( 62, 30 )
 
-[node name="VidaIcones" parent="." instance=ExtResource( 6 )]
-margin_top = 80.0
-margin_bottom = 160.0
+[node name="SeguraIU" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VidaIcones" parent="SeguraIU" instance=ExtResource( 6 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_top = 79.0
+margin_bottom = 159.0
+grow_horizontal = 2
 grow_vertical = 2
-componente_com_vida = NodePath("../playerLane3D")
+rect_scale = Vector2( 2, 2 )
+componente_com_vida = NodePath("../../playerLane3D")
 textura_icone = ExtResource( 7 )
 
 [connection signal="timeout" from="TimerObstaculos" to="." method="_on_TimerObstaculos_timeout"]
