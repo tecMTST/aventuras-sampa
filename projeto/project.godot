@@ -85,8 +85,8 @@ run/main_scene="res://recursos/jogos/enchente/cenas/Enchente.tscn"
 config/icon="res://elementos/imagem/icon.png"
 
 [autoload]
-
 EnchenteEstadoDeJogo="*res://recursos/jogos/enchente/scripts/EnchenteEstadoDeJogo.gd"
+TrocadorDeCenas="*res://addons/trocador_de_cenas/trocador_de_cenas.tscn"
 
 [display]
 
@@ -98,6 +98,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/controles3D/plugin.cfg", "res://addons/sistema_vida/plugin.cfg" )
+
+[global]
+
+mouse=false
 
 [gui]
 
@@ -135,6 +139,10 @@ down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 

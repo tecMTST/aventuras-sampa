@@ -19,7 +19,8 @@ func _ready():
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_1.global_position)
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_2.global_position)
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_3.global_position)
-	player_lane_3d.controle_faixa_3d.posicao_inicial = 1	
+	player_lane_3d.controle_faixa_3d.posicao_inicial = 1
+	$BarraDeProgresso.iniciar()
 	
 func _process(_delta):
 	fps_label.text = str(Engine.get_frames_per_second())
@@ -33,7 +34,7 @@ func _on_TimerObstaculos_timeout():
 			
 	for faixa in range(3):
 		if posicao - 1 != faixa:
-			if faixa == 0:				
+			if faixa == 0:
 				var instancia0 = obstaculo.instance() as KinematicBody
 				add_child(instancia0)
 				instancia0.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
@@ -159,5 +160,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.9533 )
 shape = SubResource( 6 )
 
 [connection signal="value_changed" from="CanvasLayer/Control/Velocidade" to="." method="_on_Velocidade_value_changed"]
+
 [connection signal="timeout" from="TimerObstaculos" to="." method="_on_TimerObstaculos_timeout"]
 [connection signal="body_entered" from="AreaColetoraObstaculos" to="." method="_on_AreaColetoraObstaculos_body_entered"]
