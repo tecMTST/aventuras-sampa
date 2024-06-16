@@ -8,10 +8,14 @@ var saiba_mais_apertado: bool = false
 var saiba_menos_apertado: bool = false
 
 func _tocar_animacao_coracao():
-	if coracao_apertado:
+	if coracao_apertado == false:
 		animacao_coracao.play("Animação")
+		yield(animacao_coracao, "animation_finished")
+		coracao_apertado = true
 	else:
 		animacao_coracao.play_backwards("Animação")
+		yield(animacao_coracao, "animation_finished")
+		coracao_apertado = false
 
 func _tocar_animacao_saiba_mais():
 	if saiba_mais_apertado:
@@ -21,10 +25,7 @@ func _tocar_animacao_saiba_mais():
 
 
 func _on_coracaobotao_pressed():
-	coracao_apertado = true
 	_tocar_animacao_coracao()
-	yield(animacao_coracao, "animation_finished")
-	coracao_apertado = false
 
 func _on_SaibaMais_pressed():
 	saiba_mais_apertado = true
