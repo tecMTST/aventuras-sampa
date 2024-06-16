@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://elementos/imagem/icon.png" type="Texture" id=1]
 [ext_resource path="res://addons/controles3D/ControleFaixa3D.gd" type="Script" id=2]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.gd" type="Script" id=3]
+[ext_resource path="res://recursos/jogos/enchente/controlador_arrasta/ControladorArrasta.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/sistema_vida/vida.gd" type="Script" id=5]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -23,3 +25,12 @@ texture = ExtResource( 1 )
 
 [node name="ControleFaixa3D" type="Spatial" parent="."]
 script = ExtResource( 2 )
+posicao_inicial = 1
+
+[node name="ControladorArrasta" parent="." instance=ExtResource( 4 )]
+
+[node name="Vida" type="Node" parent="."]
+script = ExtResource( 5 )
+vida_maxima = 3.0
+
+[connection signal="arrastado" from="ControladorArrasta" to="." method="_on_ControladorArrasta_arrastado"]

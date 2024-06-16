@@ -16,7 +16,7 @@ func _on_ControleDeSwipe_toque_desfeito(historico):
 	toque_de_entrada = false
 
 
-func _on_ControleDeSwipe_arrastar_realizado(historico: PoolVector2Array):
+func _on_ControleDeSwipe_arrastar_realizado(historico):
 	var v1 = historico[0]
 	var v2 = historico[-1]
 	var v_novo = v2 - v1 / 2
