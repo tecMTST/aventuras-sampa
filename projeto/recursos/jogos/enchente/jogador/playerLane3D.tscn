@@ -38,7 +38,7 @@ vida_maxima = 3.0
 
 [node name="Musica" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -6.992
+volume_db = -15.0
 autoplay = true
 
 [node name="Sons" type="AudioStreamPlayer" parent="."]
