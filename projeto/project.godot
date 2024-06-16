@@ -85,6 +85,7 @@ run/main_scene="res://recursos/jogos/enchente/cenas/Enchente.tscn"
 config/icon="res://elementos/imagem/icon.png"
 
 [autoload]
+
 EnchenteEstadoDeJogo="*res://recursos/jogos/enchente/scripts/EnchenteEstadoDeJogo.gd"
 TrocadorDeCenas="*res://addons/trocador_de_cenas/trocador_de_cenas.tscn"
 

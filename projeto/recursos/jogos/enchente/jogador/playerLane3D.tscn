@@ -26,3 +26,11 @@ texture = ExtResource( 1 )
 [node name="ControleFaixa3D" type="Spatial" parent="."]
 script = ExtResource( 2 )
 posicao_inicial = 1
+
+[node name="ControladorArrasta" parent="." instance=ExtResource( 4 )]
+
+[node name="Vida" type="Node" parent="."]
+script = ExtResource( 5 )
+vida_maxima = 3.0
+
+[connection signal="arrastado" from="ControladorArrasta" to="." method="_on_ControladorArrasta_arrastado"]
