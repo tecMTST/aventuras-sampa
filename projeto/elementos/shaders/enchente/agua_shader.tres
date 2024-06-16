@@ -19,7 +19,7 @@ texture = SubResource( 13 )
 [sub_resource type="Gradient" id=15]
 interpolation_mode = 1
 offsets = PoolRealArray( 0, 0.371859 )
-colors = PoolColorArray( 0, 0, 0, 1, 0, 0.0546875, 0.0149536, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.0546875, 0.0179443, 0, 1 )
 
 [sub_resource type="GradientTexture" id=16]
 gradient = SubResource( 15 )
@@ -72,8 +72,8 @@ operator = 2
 
 [sub_resource type="Gradient" id=4]
 interpolation_mode = 1
-offsets = PoolRealArray( 0, 0.427136, 0.532663 )
-colors = PoolColorArray( 0, 0.0429688, 0.0167847, 1, 0, 0.171875, 0.0349121, 1, 0.0175781, 0.28125, 0.052597, 1 )
+offsets = PoolRealArray( 0.0351759, 0.452261, 0.582915 )
+colors = PoolColorArray( 0.464844, 0.141632, 0, 1, 0.5625, 0.237305, 0, 1, 0.667969, 0.32422, 0.0965424, 1 )
 
 [sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 4 )
@@ -190,7 +190,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -2352.87, 235.794 )
+graph_offset = Vector2( -1651.56, 205.876 )
 modes/diffuse = 4
 modes/specular = 4
 nodes/fragment/2/node = SubResource( 3 )
