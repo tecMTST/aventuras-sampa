@@ -81,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="mtst-game-template"
-run/main_scene="res://recursos/feed_de_noticias/feed_de_noticia.tscn"
+run/main_scene="res://recursos/abertura/abertura.tscn"
 config/icon="res://elementos/imagem/icon.png"
 
 [autoload]
@@ -93,6 +93,7 @@ TrocadorDeCenas="*res://addons/trocador_de_cenas/trocador_de_cenas.tscn"
 
 window/size/width=720
 window/size/height=1280
+window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
