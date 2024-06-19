@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://elementos/imagem/enchente/botoes/direcao.png" type="Texture" id=1]
+[ext_resource path="res://elementos/imagem/enchente/botoes/direcao-pressionada.png" type="Texture" id=2]
+[ext_resource path="res://recursos/jogos/enchente/controlador-botoes/ControladorDeBotoes.gd" type="Script" id=3]
+
+[node name="ControladorDeBotoes" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="direita" type="TouchScreenButton" parent="."]
+position = Vector2( 510, 1074 )
+scale = Vector2( 0.6, 0.6 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+
+[node name="esquerda" type="TouchScreenButton" parent="."]
+position = Vector2( 102, 1073 )
+scale = Vector2( 0.6, 0.6 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+
+[node name="acao" type="TouchScreenButton" parent="."]
+position = Vector2( 310, 1079 )
+scale = Vector2( 0.6, 0.6 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+
+[connection signal="pressed" from="direita" to="." method="_on_direita_pressed"]
+[connection signal="pressed" from="esquerda" to="." method="_on_esquerda_pressed"]
+[connection signal="pressed" from="acao" to="." method="_on_acao_pressed"]
