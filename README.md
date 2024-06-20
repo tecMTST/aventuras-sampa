@@ -118,3 +118,4 @@ func calcular_vida(entidade: Node, danificador: Node):
   entidade.vida += entidade.defesa - danificador.dano * modificador
 ```
 
+ 
