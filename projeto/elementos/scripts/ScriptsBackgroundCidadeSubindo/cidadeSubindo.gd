@@ -30,7 +30,7 @@ func _ready():
 		yield(animationPlayer, "animation_finished")
 		faseAtual += 1
 		
-	if faseAtual > 2:
+	if faseAtual >= 2:
 		timerDoTempoDeEspera.stop()
 
 func _rodar_animacao():
