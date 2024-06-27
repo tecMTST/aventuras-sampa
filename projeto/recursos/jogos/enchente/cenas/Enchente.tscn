@@ -203,12 +203,12 @@ fov = 84.375
 [node name="CriadorPredios" parent="Paredes" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -72.887 )
 modelos = [ "res://recursos/jogos/enchente/componentes/predio1.tscn", "res://recursos/jogos/enchente/componentes/predio2.tscn" ]
-deslocamento_vertical = -1.0
+deslocamento_vertical = -2.0
 
 [node name="CriadorPredios2" parent="Paredes" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -72.887 )
 modelos = [ "res://recursos/jogos/enchente/componentes/predio1.tscn", "res://recursos/jogos/enchente/componentes/predio2.tscn" ]
-deslocamento_vertical = -1.0
+deslocamento_vertical = -2.0
 inverter_x = true
 
 [node name="Faixas" type="Spatial" parent="."]
@@ -287,8 +287,6 @@ transform = Transform( 5.64013, 0, 0, 0, 7.65124, -1.10398, 0, 1.89858, 7.25025,
 [node name="cidadesubindo" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.8976 )
 script = ExtResource( 8 )
-tempoDeEsperaPrimeiraFase = 25
-tempoDeEsperaSegundaFase = 25
 
 [node name="SpriteCidade" type="Sprite3D" parent="cidadesubindo"]
 transform = Transform( 1.89286, 0, 0.0185888, 0, 1.51988, 0, -0.16577, 0, 0.212257, -11, -15, 0 )
