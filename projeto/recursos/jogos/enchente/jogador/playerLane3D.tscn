@@ -5,7 +5,7 @@
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.gd" type="Script" id=3]
 [ext_resource path="res://recursos/jogos/enchente/controlador_arrasta/ControladorArrasta.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/sistema_vida/vida.gd" type="Script" id=5]
-[ext_resource path="res://recursos/jogos/enchente/jogador/FonteAudioPlayer.gd" type="Script" id=8]
+[ext_resource path="res://recursos/jogos/enchente/jogador/AudioStreamPlayer.gd" type="Script" id=8]
 
 [sub_resource type="SphereShape" id=1]
 

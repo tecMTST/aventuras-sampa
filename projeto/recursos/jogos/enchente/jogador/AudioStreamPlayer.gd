@@ -5,6 +5,8 @@ onready var clipesSFX = {
 	"trocaFaixa": [
 		preload ("res://elementos/audio/sfx/minigame-1/player-mov-1.wav"),
 		preload ("res://elementos/audio/sfx/minigame-1/player-mov-2.wav"),
+		preload ("res://elementos/audio/sfx/minigame-1/player-mov-3.wav"),
+		preload ("res://elementos/audio/sfx/minigame-1/player-mov-4.wav"),
 	],
 	"dano": [
 		preload ("res://elementos/audio/sfx/minigame-1/player-bolha-1.wav"),
