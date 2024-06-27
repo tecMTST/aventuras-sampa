@@ -3,12 +3,12 @@
 [ext_resource path="res://elementos/imagem/abertura/logo.png" type="Texture" id=1]
 [ext_resource path="res://recursos/abertura/abertura.gd" type="Script" id=2]
 [ext_resource path="res://recursos/feed_de_noticias/feed_de_noticia.tscn" type="PackedScene" id=3]
-[ext_resource path="res://elementos/musica/bgm_vinheta.mp3" type="AudioStream" id=4]
+[ext_resource path="res://elementos/audio/bgm/splash/splash-vinheta.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/path = NodePath("AudioStreamBGM:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -36,13 +36,13 @@ tracks/1/keys = {
 resource_name = "abertura"
 length = 4.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/path = NodePath("AudioStreamBGM:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( -0.1, 0, 3 ),
+"times": PoolRealArray( -0.1, 0.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
@@ -69,7 +69,7 @@ proxima_cena = ExtResource( 3 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.878431, 0, 0, 1 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
@@ -91,5 +91,9 @@ texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+bus = "BGM Track"
+__meta__ = {
+"_editor_description_": ""
+}
