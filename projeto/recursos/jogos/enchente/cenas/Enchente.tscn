@@ -200,6 +200,9 @@ transform = Transform( 1, 0, 0, 0, 0.949972, 0.312335, 0, -0.312335, 0.949972, 0
 current = true
 fov = 84.375
 
+[node name="Listener" type="Listener" parent="Camera"]
+current = true
+
 [node name="Paredes" type="Spatial" parent="."]
 
 [node name="CriadorPredios" parent="Paredes" instance=ExtResource( 5 )]

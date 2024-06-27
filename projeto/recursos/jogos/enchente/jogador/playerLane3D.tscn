@@ -36,7 +36,7 @@ script = ExtResource( 5 )
 vida_maxima = 3.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-bus = "SFX Game"
+bus = "SFX Player"
 script = ExtResource( 8 )
 
 [node name="AreaDano" type="Area" parent="."]
