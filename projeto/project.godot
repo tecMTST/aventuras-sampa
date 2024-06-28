@@ -84,6 +84,10 @@ config/name="mtst-game-template"
 run/main_scene="res://recursos/abertura/abertura.tscn"
 config/icon="res://elementos/imagem/icon.png"
 
+[audio]
+
+default_bus_layout="res://elementos/audio/mixer/mixer.tres"
+
 [autoload]
 
 EnchenteEstadoDeJogo="*res://recursos/jogos/enchente/scripts/EnchenteEstadoDeJogo.gd"

@@ -1,13 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://elementos/imagem/enchente/senhora.png" type="Texture" id=1]
 [ext_resource path="res://addons/controles3D/ControleFaixa3D.gd" type="Script" id=2]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.gd" type="Script" id=3]
 [ext_resource path="res://recursos/jogos/enchente/controlador_arrasta/ControladorArrasta.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/sistema_vida/vida.gd" type="Script" id=5]
-[ext_resource path="res://elementos/musica/bgm_surf.wav" type="AudioStream" id=6]
-[ext_resource path="res://elementos/som/movimento_agua.wav" type="AudioStream" id=7]
-[ext_resource path="res://recursos/jogos/enchente/jogador/Sons.gd" type="Script" id=8]
+[ext_resource path="res://recursos/jogos/enchente/jogador/AudioStreamPlayer.gd" type="Script" id=8]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -37,13 +35,8 @@ posicao_inicial = 1
 script = ExtResource( 5 )
 vida_maxima = 3.0
 
-[node name="Musica" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -15.0
-autoplay = true
-
-[node name="Sons" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "SFX Player"
 script = ExtResource( 8 )
 
 [node name="AreaDano" type="Area" parent="."]
@@ -51,9 +44,8 @@ script = ExtResource( 8 )
 [node name="CollisionShape" type="CollisionShape" parent="AreaDano"]
 shape = SubResource( 1 )
 
-[connection signal="iniciou_movimento" from="ControleFaixa3D" to="Sons" method="_on_ControleFaixa3D_iniciou_movimento"]
-[connection signal="terminou_movimento" from="ControleFaixa3D" to="Sons" method="_on_ControleFaixa3D_terminou_movimento"]
+[connection signal="iniciou_movimento" from="ControleFaixa3D" to="AudioStreamPlayer" method="_on_ControleFaixa3D_iniciou_movimento"]
 [connection signal="arrastado" from="ControladorArrasta" to="." method="_on_ControladorArrasta_arrastado"]
 [connection signal="vida_acabou" from="Vida" to="." method="_on_Vida_vida_acabou"]
-[connection signal="vida_alterada" from="Vida" to="Sons" method="_on_Vida_vida_alterada"]
+[connection signal="vida_alterada" from="Vida" to="AudioStreamPlayer" method="_on_Vida_vida_alterada"]
 [connection signal="body_entered" from="AreaDano" to="." method="_on_AreaDano_body_entered"]
