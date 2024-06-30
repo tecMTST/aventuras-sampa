@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://recursos/jogos/enchente/componentes/CriadorDePredios.tscn" type="PackedScene" id=5]
 [ext_resource path="res://elementos/imagem/enchente/rosto-senhora.png" type="Texture" id=6]
 [ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=7]
+[ext_resource path="res://elementos/scripts/ScriptsBackgroundCidadeSubindo/cidadeSubindo.gd" type="Script" id=8]
+[ext_resource path="res://elementos/modelos/skybox/skyboxNuvens.tscn" type="PackedScene" id=9]
+[ext_resource path="res://elementos/imagem/enchente/background.png" type="Texture" id=10]
+[ext_resource path="res://elementos/audio/bgm/minigame-1/amb-agua-corrente.wav" type="AudioStream" id=11]
+[ext_resource path="res://elementos/audio/bgm/minigame-1/minigame-surf.wav" type="AudioStream" id=12]
 
 [sub_resource type="GDScript" id=7]
 script/source = "extends Spatial
@@ -65,6 +70,118 @@ shader_param/Velocidade = 1.0
 [sub_resource type="BoxShape" id=6]
 extents = Vector3( 5.65031, 3.0316, 1 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "cidadesubindofase1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteCidade2:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1.6245, 1 ),
+"update": 0,
+"values": [ Vector3( 19, -15, -5 ), Vector3( 19, -5, -5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteCidade:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1.6245, 1 ),
+"update": 0,
+"values": [ Vector3( -11, -15, 0 ), Vector3( -11, -3, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "cidadesubindofase2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteCidade:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -11, -3, 0 ), Vector3( -11, 8, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteCidade2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 19, -5, -5 ), Vector3( 19, 9, -5 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "cidadesubindofim"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteCidade:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -11, 8, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteCidade2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 19, 9, -5 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "reset"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteCidade:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -11, -15, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpriteCidade2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 19, -15, -5 ) ]
+}
+
 [node name="Enchente" type="Spatial"]
 script = SubResource( 7 )
 
@@ -82,6 +199,9 @@ material/0 = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 0.949972, 0.312335, 0, -0.312335, 0.949972, 0, 4.71784, 27.7357 )
 current = true
 fov = 84.375
+
+[node name="Listener" type="Listener" parent="Camera"]
+current = true
 
 [node name="Paredes" type="Spatial" parent="."]
 
@@ -165,6 +285,47 @@ rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")
 textura_icone = ExtResource( 6 )
 tamanho_icone = 64.0
+
+[node name="skybox_nuvens" parent="." instance=ExtResource( 9 )]
+transform = Transform( 5.64013, 0, 0, 0, 7.65124, -1.10398, 0, 1.89858, 7.25025, -0.231674, 1.46607, -17.8614 )
+
+[node name="cidadesubindo" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.8976 )
+script = ExtResource( 8 )
+
+[node name="SpriteCidade" type="Sprite3D" parent="cidadesubindo"]
+transform = Transform( 1.89286, 0, 0.0185888, 0, 1.51988, 0, -0.16577, 0, 0.212257, -11, -15, 0 )
+billboard = 1
+double_sided = false
+alpha_cut = 2
+texture = ExtResource( 10 )
+
+[node name="SpriteCidade2" type="Sprite3D" parent="cidadesubindo"]
+transform = Transform( 1.84741, -0.000842585, -0.0498316, 0.00116023, 1.70675, -2.6292e-05, 0.444386, -3.0896e-05, 0.207161, 19, -15, -5 )
+billboard = 1
+double_sided = false
+alpha_cut = 2
+texture = ExtResource( 10 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="cidadesubindo"]
+autoplay = "reset"
+playback_speed = 0.1
+anims/cidadesubindofase1 = SubResource( 8 )
+anims/cidadesubindofase2 = SubResource( 9 )
+anims/cidadesubindofim = SubResource( 10 )
+anims/reset = SubResource( 11 )
+
+[node name="TimerDoTempoDeEspera" type="Timer" parent="cidadesubindo"]
+
+[node name="AudioStreamAMB" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+bus = "BGM Aux"
+
+[node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
+bus = "BGM Track"
 
 [connection signal="timeout" from="TimerObstaculos" to="." method="_on_TimerObstaculos_timeout"]
 [connection signal="body_entered" from="AreaColetoraObstaculos" to="." method="_on_AreaColetoraObstaculos_body_entered"]
