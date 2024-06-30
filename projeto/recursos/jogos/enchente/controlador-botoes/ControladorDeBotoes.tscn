@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://elementos/imagem/enchente/botoes/direcao.png" type="Texture" id=1]
+[ext_resource path="res://recursos/jogos/enchente/controlador-botoes/ControladorDeBotoes.gd" type="Script" id=3]
+
+[node name="ControladorDeBotoes" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="direita" type="Button" parent="CanvasLayer/Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -212.0
+margin_top = -295.0
+margin_bottom = -89.0
+focus_mode = 0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="esquerda" type="Button" parent="CanvasLayer/Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -295.0
+margin_right = 212.0
+margin_bottom = -89.0
+focus_mode = 0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="acao" type="Button" parent="CanvasLayer/Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -106.0
+margin_top = -295.0
+margin_right = 106.0
+margin_bottom = -89.0
+focus_mode = 0
+icon = ExtResource( 1 )
+flat = true
+
+[connection signal="pressed" from="CanvasLayer/Control/direita" to="." method="_on_direita_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/esquerda" to="." method="_on_esquerda_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/acao" to="." method="_on_acao_pressed"]
