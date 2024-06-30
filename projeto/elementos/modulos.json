@@ -1,7 +1,7 @@
 {
   "modulos": [
     {
-      "tempo": 60,
+      "tempo": 30,
       "chance": 0.2,
       "grupo": 0,
       "obstaculos": [
@@ -15,7 +15,7 @@
     {
       "tempo": 0,
       "chance": 0.2,
-      "grupo": 1,
+      "grupo": 0,
       "obstaculos": [
         [0, 0, 1],
         [1, 0, 0],
