@@ -3,24 +3,27 @@ extends Position3D
 
 const OBSTACULO = preload('res://recursos/jogos/enchente/componentes/Obstaculo.tscn')
 
-export var intervalo_obstaculos = 3.0
 export var velocidade = 1000.0
+export var quantidade_modulos = 3
+export var intervalo_modulos = 3.0
 export(NodePath) var faixas
+export(NodePath) var tempo
 
-onready var _timer = $TimerObstaculos
+onready var _tempo := get_node(tempo) as Timer
 onready var _sorteador = $SorteadorDeEpisodios
-onready var pontos_de_origem = get_node(faixas).get_children()
+onready var _pontos_de_origem := get_node(faixas).get_children()
+onready var _numero_modulos = 0
+onready var _intervalo_adicionar_modulos := $Timer
 
-func _ready():
-	_timer.connect('timeout', self, '_on_TimerObstaculos_timeout')
-	_timer.wait_time = intervalo_obstaculos
-	_timer.start()
+func _ready() -> void:
+	_intervalo_adicionar_modulos.connect('timeout', self, 'adicionar_modulo')
 
-func _on_TimerObstaculos_timeout() -> void:
-	var modulo = _sorteador.sortear_modulo()
+
+func adicionar_modulo() -> void:
+	var modulo = _sorteador.sortear_modulo(_tempo.wait_time - _tempo.time_left)
 
 	assert(modulo.size() > 0, 'O modulo deve ter pelo menos uma linha')
-	assert(modulo[0].size() == pontos_de_origem.size(), 'O tamanho dos pontos de origem deve ser o mesmo de obstaculos por linha')
+	assert(modulo[0].size() == _pontos_de_origem.size(), 'O tamanho dos pontos de origem deve ser o mesmo de obstaculos por linha')
 
 	var contador_linha = 0
 	for linha in modulo:
@@ -30,7 +33,7 @@ func _on_TimerObstaculos_timeout() -> void:
 			if obstaculo == 0:
 				pass
 			else:
-				var ponto_de_origem: Position3D = pontos_de_origem[obstaculo_indice]
+				var ponto_de_origem: Position3D = _pontos_de_origem[obstaculo_indice]
 				var obstaculo_criado = OBSTACULO.instance()
 				obstaculo_criado.velocidade = velocidade
 				obstaculo_criado.transform.origin = Vector3(
@@ -39,3 +42,4 @@ func _on_TimerObstaculos_timeout() -> void:
 					contador_linha * 10
 				)
 				add_child(obstaculo_criado)
+	_numero_modulos += 1
