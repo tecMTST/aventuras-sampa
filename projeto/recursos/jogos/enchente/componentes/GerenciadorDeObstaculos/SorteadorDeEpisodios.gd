@@ -55,6 +55,8 @@ func _modulo_aleatorio():
 
 
 func _remover_grupo(grupo: int):
+	if grupo == 0:
+		return
 	var novos_modulos = []
 	for i in _modulos_selecionaveis.size():
 		var modulo = _modulos_selecionaveis[i]
