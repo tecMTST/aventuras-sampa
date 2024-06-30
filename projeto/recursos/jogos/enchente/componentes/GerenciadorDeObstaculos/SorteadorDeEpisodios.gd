@@ -10,8 +10,13 @@ func resetar():
 	_modulos_selecionaveis = _lista_de_modulos.duplicate()
 
 
-func sortear_modulo() -> Array:
-	var modulo_sorteado = _modulo_aleatorio()
+# recebe quantos segundos se passaram desde o inicio
+func sortear_modulo(segundos: int) -> Array:
+	var lista_modulos = []
+	for modulo in _modulos_selecionaveis:
+		if modulo['tempo'] <= segundos:
+			lista_modulos.append(modulo)
+	var modulo_sorteado = _modulo_aleatorio(lista_modulos)
 	_remover_grupo(modulo_sorteado['grupo'])
 	historico_de_modulos.append(modulo_sorteado)
 	return modulo_sorteado['obstaculos']
@@ -37,24 +42,26 @@ func _ler_arquivo_json(nome: String) -> Dictionary:
 	return conteudo.result
 
 
-func _calcular_probabilidade_total() -> float:
+func _calcular_probabilidade_total(lista_modulos) -> float:
 	var prob_total: float = 0
-	for modulo in _modulos_selecionaveis:
+	for modulo in lista_modulos:
 		prob_total += modulo['chance']
 	return prob_total
 
 
-func _modulo_aleatorio():
-	var prob_total = _calcular_probabilidade_total()
+func _modulo_aleatorio(lista_modulos):
+	var prob_total = _calcular_probabilidade_total(lista_modulos)
 	var prob = _gna.randf_range(0, prob_total)
-	for modulo in _modulos_selecionaveis:
+	for modulo in lista_modulos:
 		if prob < modulo['chance']:
 			return modulo
 		prob -= modulo['chance']
-	return _modulos_selecionaveis.pick_random()
+	return lista_modulos.pick_random()
 
 
 func _remover_grupo(grupo: int):
+	if grupo == 0:
+		return
 	var novos_modulos = []
 	for i in _modulos_selecionaveis.size():
 		var modulo = _modulos_selecionaveis[i]
