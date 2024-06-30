@@ -294,14 +294,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.8976 )
 script = ExtResource( 8 )
 
 [node name="SpriteCidade" type="Sprite3D" parent="cidadesubindo"]
-transform = Transform( 1.89286, 0, 0.0185888, 0, 1.51988, 0, -0.16577, 0, 0.212257, -11, -15, 0 )
+transform = Transform( 8.46765, 0, 0.0831564, 0, 6.79913, 0, -0.741566, 0, 0.949525, -11, -15, 0 )
 billboard = 1
 double_sided = false
 alpha_cut = 2
 texture = ExtResource( 10 )
 
 [node name="SpriteCidade2" type="Sprite3D" parent="cidadesubindo"]
-transform = Transform( 1.84741, -0.000842585, -0.0498316, 0.00116023, 1.70675, -2.6292e-05, 0.444386, -3.0896e-05, 0.207161, 19, -15, -5 )
+transform = Transform( 10.7519, -0.00490382, -0.290019, 0.00675251, 9.93325, -0.000153019, 2.58632, -0.000179814, 1.20567, 19, -15, -5 )
 billboard = 1
 double_sided = false
 alpha_cut = 2
