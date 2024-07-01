@@ -11,6 +11,7 @@ noise = SubResource( 1 )
 params_diffuse_mode = 4
 params_specular_mode = 4
 params_cull_mode = 1
+params_line_width = 2.0
 params_grow = true
 params_grow_amount = 0.02
 albedo_color = Color( 0.109804, 0.109804, 0.109804, 1 )
