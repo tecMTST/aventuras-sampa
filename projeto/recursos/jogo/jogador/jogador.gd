@@ -1,20 +1,26 @@
-extends Node2D
+extends KinematicBody2D
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 export (int) var multiplicador_velocidade = 500
+export var textos = [
+	'sigam-me os bons',
+	'bora minha gente!',
+	'simbora!',
+	'vamo pra rua'
+]
 
-onready var corpo = $Corpo as KinematicBody2D
-onready var animador = $Corpo/Animador as AnimationPlayer
-onready var sprite = $Corpo/SpritesJogador as AnimatedSprite
+onready var animador = $Animador as AnimationPlayer
+onready var sprite = $SpritesJogador as AnimatedSprite
 
 var velocidade = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animador.play("idle")
+	rotation_degrees = 0
 
 func get_input():
 	velocidade = Vector2()
@@ -33,14 +39,26 @@ func get_input():
 	if Input.is_action_pressed("up"):
 		velocidade.y -= 1
 		movendo = true
+	if Input.is_action_pressed("acao"):
+		if not $Sprite.visible:
+			$Sprite.visible = true
+			$Sprite/RichTextLabel.text = textos.pick_random()
 	velocidade = velocidade.normalized() * multiplicador_velocidade
 	return movendo
+
+func ta_gritando():
+	return $Sprite.visible
+
+func _input(event):
+	if event.is_action_released('acao'):
+		
+			$Sprite.visible = false
 
 func _physics_process(delta):
 	var movendo = get_input()
 	if movendo and animador.current_animation == 'idle':
 		animador.play("andar")
 	elif (not movendo) and animador.current_animation == 'andar':
-		corpo.rotation_degrees = 0
+		rotation_degrees = 0
 		animador.play("idle")
-	velocidade = corpo.move_and_slide(velocidade)
+	velocidade = move_and_slide(velocidade)

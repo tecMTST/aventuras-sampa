@@ -1,20 +1,60 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://recursos/jogo/jogador/jogador.tscn" type="PackedScene" id=1]
-[ext_resource path="res://elementos/imagem/icon.png" type="Texture" id=2]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[ext_resource path="res://recursos/jogo/predio/predio.tscn" type="PackedScene" id=2]
+[ext_resource path="res://recursos/jogo/pessoa/pessoa.tscn" type="PackedScene" id=3]
 
 [node name="mobiliza" type="Node2D"]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 457, 362 )
-frames = SubResource( 1 )
+[node name="YSort" type="YSort" parent="."]
 
-[node name="jogador" parent="." instance=ExtResource( 1 )]
+[node name="jogador" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 185, 674 )
+
+[node name="pessoa" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 251, 363 )
+
+[node name="predio" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 545, 775 )
+
+[node name="pessoa2" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 161, 1023 )
+
+[node name="pessoa3" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1025, 1001 )
+
+[node name="pessoa4" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -155, 571 )
+
+[node name="pessoa5" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -437, 851 )
+
+[node name="pessoa6" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -111, 201 )
+
+[node name="pessoa7" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 29, 959 )
+
+[node name="pessoa8" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -199, 1101 )
+
+[node name="pessoa9" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 521, 1137 )
+
+[node name="pessoa10" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 917, 499 )
+
+[node name="pessoa11" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 393, 665 )
+
+[node name="pessoa12" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 697, 253 )
+
+[node name="pessoa13" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -467, 379 )
+
+[node name="pessoa14" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 851, 1281 )
+
+[node name="pessoa15" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 741, 829 )
