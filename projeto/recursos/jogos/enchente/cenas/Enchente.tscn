@@ -184,7 +184,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.7269 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22.727 )
 
 [node name="ControladorDeObstaculos" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07272, -69.6263 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -70 )
 faixas = NodePath("../Faixas")
 tempo = NodePath("../TempoDeJogo")
 

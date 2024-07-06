@@ -1,11 +1,10 @@
 class_name ControladorDeObstaculos
 extends Position3D
 
-const OBSTACULO = preload('res://recursos/jogos/enchente/componentes/Obstaculo.tscn')
+const OBSTACULO = preload ('res://recursos/jogos/enchente/componentes/Obstaculo.tscn')
 
-export var velocidade = 1000.0
-export var quantidade_modulos = 3
-export var intervalo_modulos = 3.0
+export var intervalo_modulos := 3.0
+export var distancia_obstaculos := 10.0
 export(NodePath) var faixas
 export(NodePath) var tempo
 
@@ -29,17 +28,23 @@ func adicionar_modulo() -> void:
 	for linha in modulo:
 		contador_linha += 1
 		for obstaculo_indice in range(linha.size()):
-			var obstaculo = linha[obstaculo_indice]
-			if obstaculo == 0:
-				pass
-			else:
-				var ponto_de_origem: Position3D = _pontos_de_origem[obstaculo_indice]
-				var obstaculo_criado = OBSTACULO.instance()
-				obstaculo_criado.velocidade = velocidade
-				obstaculo_criado.transform.origin = Vector3(
-					ponto_de_origem.transform.origin.x,
-					ponto_de_origem.transform.origin.y,
-					contador_linha * 10
-				)
+			var tipo_obstaculo = linha[obstaculo_indice]
+			if tipo_obstaculo != 0:
+				var obstaculo_criado = OBSTACULO.instance() # A instanciação pode ser substituida pela Fábrica de Obstaculos
+				obstaculo_criado.velocidade = self._calcular_fator_velocidade(obstaculo_criado)
+				obstaculo_criado.transform.origin = self._posicao_do_obstaculo(obstaculo_indice, contador_linha)
 				add_child(obstaculo_criado)
 	_numero_modulos += 1
+
+
+func _posicao_do_obstaculo(obstaculo_indice: int, contador_linha: int) -> Vector3:
+	var ponto_de_origem: Position3D = _pontos_de_origem[obstaculo_indice]
+	return Vector3(
+		ponto_de_origem.transform.origin.x,
+		ponto_de_origem.transform.origin.y,
+		position.z + (contador_linha * distancia_obstaculos)
+	)
+
+
+func _calcular_fator_velocidade(obstaculo) -> float:
+	return obstaculo.velocidade * EnchenteEstadoDeJogo.VelocidadeGlobal
