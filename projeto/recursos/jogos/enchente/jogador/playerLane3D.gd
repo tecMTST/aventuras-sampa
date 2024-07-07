@@ -7,10 +7,15 @@ onready var vida = $Vida as Vida
 onready var sprite = $Sprite3D
 onready var timer_imunidade = $TimerImunidade
 onready var imunidade_modulate = false
+onready var menuOpcoes = preload("res://recursos/jogos/enchente/menu_de_opcoes/MenuDeOpcoes.tscn")
 
 var imune = false
 var imune_dano = false
 var imunidade_time : float = 0
+
+func _input(event):
+	if Input.is_action_just_pressed("pause"):
+		pause()
 
 func _on_ControladorArrasta_arrastado(chave):
 	if chave=='direita':
@@ -18,7 +23,6 @@ func _on_ControladorArrasta_arrastado(chave):
 		print('a')
 	elif chave=='esquerda-0' or chave=='esquerda-1':
 		controle_faixa_3d.mover_esquerda()
-
 
 func _on_AreaDano_body_entered(body: Node) -> void:
 	if body.is_in_group("obstaculo") and not imune:
@@ -51,3 +55,7 @@ func _on_TimerImunidade_timeout():
 		imunidade_modulate = false
 		sprite.modulate = Color (1, 1, 1)	
 		timer_imunidade.stop()
+
+func pause():
+	var instance = menuOpcoes.instance()
+	add_child(instance)

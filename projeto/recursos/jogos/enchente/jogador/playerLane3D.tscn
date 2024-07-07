@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://elementos/imagem/enchente/senhora.png" type="Texture" id=1]
 [ext_resource path="res://addons/controles3D/ControleFaixa3D.gd" type="Script" id=2]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.gd" type="Script" id=3]
 [ext_resource path="res://recursos/jogos/enchente/controlador_arrasta/ControladorArrasta.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/sistema_vida/vida.gd" type="Script" id=5]
+[ext_resource path="res://recursos/jogos/enchente/menu_de_opcoes/BotaoMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://recursos/jogos/enchente/jogador/AudioStreamPlayer.gd" type="Script" id=8]
 
 [sub_resource type="SphereShape" id=1]
@@ -38,6 +39,8 @@ vida_maxima = 3.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = "SFX Player"
 script = ExtResource( 8 )
+
+[node name="BotaoMenu" parent="." instance=ExtResource( 6 )]
 
 [node name="AreaDano" type="Area" parent="."]
 
