@@ -31,7 +31,6 @@ func adicionar_modulo() -> void:
 			var tipo_obstaculo = linha[obstaculo_indice]
 			if tipo_obstaculo != 0:
 				var obstaculo_criado = OBSTACULO.instance() # A instanciação pode ser substituida pela Fábrica de Obstaculos
-				obstaculo_criado.velocidade = self._calcular_fator_velocidade(obstaculo_criado)
 				obstaculo_criado.transform.origin = self._posicao_do_obstaculo(obstaculo_indice, contador_linha)
 				add_child(obstaculo_criado)
 	_numero_modulos += 1
@@ -44,7 +43,3 @@ func _posicao_do_obstaculo(obstaculo_indice: int, contador_linha: int) -> Vector
 		ponto_de_origem.transform.origin.y,
 		position.z + (contador_linha * distancia_obstaculos)
 	)
-
-
-func _calcular_fator_velocidade(obstaculo) -> float:
-	return obstaculo.velocidade * EnchenteEstadoDeJogo.VelocidadeGlobal
