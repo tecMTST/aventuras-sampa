@@ -92,6 +92,7 @@ default_bus_layout="res://elementos/audio/mixer/mixer.tres"
 
 EnchenteEstadoDeJogo="*res://recursos/jogos/enchente/scripts/EnchenteEstadoDeJogo.gd"
 TrocadorDeCenas="*res://addons/trocador_de_cenas/trocador_de_cenas.tscn"
+SingletonOpcoesGlobais="*res://recursos/jogos/enchente/menu_de_opcoes/SingletonOpcoesGlobais.gd"
 
 [display]
 
@@ -159,4 +160,3 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://recursos/enviroment/enviroment_padrao.tres"
