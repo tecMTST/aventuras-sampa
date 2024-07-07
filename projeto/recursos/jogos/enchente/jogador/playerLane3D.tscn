@@ -44,8 +44,12 @@ script = ExtResource( 8 )
 [node name="CollisionShape" type="CollisionShape" parent="AreaDano"]
 shape = SubResource( 1 )
 
+[node name="TimerImunidade" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="iniciou_movimento" from="ControleFaixa3D" to="AudioStreamPlayer" method="_on_ControleFaixa3D_iniciou_movimento"]
 [connection signal="arrastado" from="ControladorArrasta" to="." method="_on_ControladorArrasta_arrastado"]
 [connection signal="vida_acabou" from="Vida" to="." method="_on_Vida_vida_acabou"]
 [connection signal="vida_alterada" from="Vida" to="AudioStreamPlayer" method="_on_Vida_vida_alterada"]
 [connection signal="body_entered" from="AreaDano" to="." method="_on_AreaDano_body_entered"]
+[connection signal="timeout" from="TimerImunidade" to="." method="_on_TimerImunidade_timeout"]
