@@ -6,6 +6,7 @@
 [sub_resource type="SphereShape" id=1]
 
 [node name="Obstaculo" type="KinematicBody" groups=["obstaculo"]]
+collision/safe_margin = 0.01
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -15,3 +16,7 @@ shape = SubResource( 1 )
 transform = Transform( 0.507592, 0, 0, 0, 0.507592, 0, 0, 0, 0.507592, 0.00934196, -0.182768, 0.00662708 )
 billboard = 1
 texture = ExtResource( 1 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

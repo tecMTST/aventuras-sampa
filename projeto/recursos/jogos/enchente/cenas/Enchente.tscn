@@ -12,63 +12,14 @@
 [ext_resource path="res://elementos/imagem/enchente/background.png" type="Texture" id=10]
 [ext_resource path="res://elementos/audio/bgm/minigame-1/amb-agua-corrente.wav" type="AudioStream" id=11]
 [ext_resource path="res://elementos/audio/bgm/minigame-1/minigame-surf.wav" type="AudioStream" id=12]
-
-[sub_resource type="GDScript" id=7]
-script/source = "extends Spatial
-
-onready var player_lane_3d = $playerLane3D as PlayerLane3D
-onready var faixa_1 = $Faixas/Faixa1
-onready var faixa_2 = $Faixas/Faixa2
-onready var faixa_3 = $Faixas/Faixa3
-onready var origem_obstaculos = $Faixas/OrigemObstaculos
-onready var fps_label = $CanvasLayer/Control/HBoxContainer/FpsLabel
-onready var agua = $Agua
-
-func _ready():
-	player_lane_3d.controle_faixa_3d.faixas.append(faixa_1.global_position)
-	player_lane_3d.controle_faixa_3d.faixas.append(faixa_2.global_position)
-	player_lane_3d.controle_faixa_3d.faixas.append(faixa_3.global_position)
-	player_lane_3d.controle_faixa_3d.posicao_inicial = 1
-	$BarraDeProgresso.iniciar()
-	
-func _process(_delta):
-	fps_label.text = str(Engine.get_frames_per_second())
-	agua.get_active_material(0).set_shader_param(\"Velocidade\",EnchenteEstadoDeJogo.VelocidadeGlobal);
-
-
-func _on_TimerObstaculos_timeout():
-	randomize()
-	var posicao = randi() % 3 + 1
-	var obstaculo = load(\"res://recursos/jogos/enchente/componentes/Obstaculo.tscn\")
-			
-	for faixa in range(3):
-		if posicao - 1 != faixa:
-			if faixa == 0:
-				var instancia0 = obstaculo.instance() as KinematicBody
-				add_child(instancia0)
-				instancia0.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
-			elif faixa == 1:				
-				var instancia1 = obstaculo.instance() as KinematicBody
-				add_child(instancia1)
-				instancia1.global_position = Vector3(faixa_2.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
-			else:
-				var instancia2 = obstaculo.instance() as KinematicBody
-				add_child(instancia2)
-				instancia2.global_position = Vector3(faixa_3.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
-		
-func _on_AreaColetoraObstaculos_body_entered(body):
-	if((body as Node).is_in_group(\"obstaculo\")):
-		(body as Node).queue_free()
-"
+[ext_resource path="res://recursos/jogos/enchente/componentes/GerenciadorDeObstaculos/ControladorDeObstaculos.tscn" type="PackedScene" id=13]
+[ext_resource path="res://recursos/jogos/enchente/cenas/Enchente.gd" type="Script" id=14]
 
 [sub_resource type="PlaneMesh" id=1]
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 3 )
 shader_param/Velocidade = 1.0
-
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 5.65031, 3.0316, 1 )
 
 [sub_resource type="Animation" id=8]
 resource_name = "cidadesubindofase1"
@@ -183,7 +134,11 @@ tracks/1/keys = {
 }
 
 [node name="Enchente" type="Spatial"]
-script = SubResource( 7 )
+script = ExtResource( 14 )
+
+[node name="TempoDeJogo" type="Timer" parent="."]
+wait_time = 300.0
+one_shot = true
 
 [node name="Agua" type="MeshInstance" parent="."]
 transform = Transform( 5.00273, 0, 0, 0, 5.00273, 0, 0, 0, 25.0136, -0.00038147, -0.0634565, 0.0119209 )
@@ -228,8 +183,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.7269 )
 [node name="Faixa3" type="Position3D" parent="Faixas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22.727 )
 
-[node name="OrigemObstaculos" type="Position3D" parent="Faixas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25053, -56.9395 )
+[node name="ControladorDeObstaculos" parent="." instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -70 )
+faixas = NodePath("../Faixas")
+tempo = NodePath("../TempoDeJogo")
 
 [node name="playerLane3D" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458483, 22.8555 )
@@ -259,17 +216,8 @@ margin_bottom = 35.0
 theme = ExtResource( 7 )
 text = "FPS: "
 
-[node name="TimerObstaculos" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
-[node name="AreaColetoraObstaculos" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.9533 )
-
-[node name="CollisionShape" type="CollisionShape" parent="AreaColetoraObstaculos"]
-shape = SubResource( 6 )
-
 [node name="BarraDeProgresso" parent="." instance=ExtResource( 1 )]
+tempo = NodePath("../TempoDeJogo")
 
 [node name="SeguraVida" type="Control" parent="."]
 anchor_right = 1.0
@@ -326,6 +274,3 @@ bus = "BGM Aux"
 stream = ExtResource( 12 )
 autoplay = true
 bus = "BGM Track"
-
-[connection signal="timeout" from="TimerObstaculos" to="." method="_on_TimerObstaculos_timeout"]
-[connection signal="body_entered" from="AreaColetoraObstaculos" to="." method="_on_AreaColetoraObstaculos_body_entered"]
