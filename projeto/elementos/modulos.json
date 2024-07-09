@@ -1,6 +1,12 @@
 {
-  
-  "velocidade": {"1": 100, "2": 200, "3": 250},
+  "tipo_de_obstaculo":{
+    "0": "rampa",
+    "1": "vida",
+    "2": "normal",
+    "3": "abaixar",
+    "4": "invencibilidade"
+  },
+  "velocidade": {"30": 100, "120": 200, "300": 250},
   "modulos": [
     {
       "tempo": 10,
