@@ -39,10 +39,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/controles2d/ControleTopDown2D.gd"
 }, {
+"base": "Node2D",
+"class": "FabricaSeguidores",
+"language": "GDScript",
+"path": "res://recursos/jogo/pessoa/fabrica_seguidores/fabrica_seguidores.gd"
+}, {
 "base": "EditorPlugin",
 "class": "GeradorObjeto",
 "language": "GDScript",
 "path": "res://addons/gerador_de_objeto/GeradorDeObjeto.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Pessoa",
+"language": "GDScript",
+"path": "res://recursos/jogo/pessoa/pessoa.gd"
 }, {
 "base": "Reference",
 "class": "SaveFile",
@@ -61,7 +71,9 @@ _global_script_class_icons={
 "ControlePulo2D": "",
 "ControleSideScroling2D": "",
 "ControleTopDown2D": "",
+"FabricaSeguidores": "",
 "GeradorObjeto": "",
+"Pessoa": "",
 "SaveFile": "",
 "Vida": "res://addons/sistema_vida/vida.svg"
 }
@@ -92,11 +104,12 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/controles2d/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/controle_de_toque/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
 
 [global]
 
 mouse=false
+point=false
 
 [gui]
 

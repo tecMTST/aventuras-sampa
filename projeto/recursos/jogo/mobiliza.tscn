@@ -1,60 +1,76 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://recursos/jogo/jogador/jogador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/jogo/predio/predio.tscn" type="PackedScene" id=2]
-[ext_resource path="res://recursos/jogo/pessoa/pessoa.tscn" type="PackedScene" id=3]
+[ext_resource path="res://recursos/jogo/toque_rapido/zona_toque_rapido.tscn" type="PackedScene" id=3]
+[ext_resource path="res://recursos/jogo/pessoa/fabrica_seguidores/fabrica_seguidores.tscn" type="PackedScene" id=4]
+[ext_resource path="res://recursos/jogo/mobiliza.gd" type="Script" id=5]
 
 [node name="mobiliza" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="zona_toque_rapido" parent="." instance=ExtResource( 3 )]
+position = Vector2( 589, 1046 )
+collision_layer = 5
+collision_mask = 5
+fabrica_seguidores = NodePath("../YSort/fabrica_seguidores")
+jogador = NodePath("../YSort/jogador")
+
+[node name="zona_toque_rapido3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 608, 148 )
+collision_layer = 5
+collision_mask = 5
+fabrica_seguidores = NodePath("../YSort/fabrica_seguidores")
+jogador = NodePath("../YSort/jogador")
+
+[node name="zona_toque_rapido4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 49, 267 )
+collision_layer = 5
+collision_mask = 5
+fabrica_seguidores = NodePath("../YSort/fabrica_seguidores")
+jogador = NodePath("../YSort/jogador")
+
+[node name="zona_toque_rapido5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 727, 640 )
+collision_layer = 5
+collision_mask = 5
+fabrica_seguidores = NodePath("../YSort/fabrica_seguidores")
+jogador = NodePath("../YSort/jogador")
+
+[node name="zona_toque_rapido6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 365, 483 )
+collision_layer = 5
+collision_mask = 5
+fabrica_seguidores = NodePath("../YSort/fabrica_seguidores")
+jogador = NodePath("../YSort/jogador")
+
+[node name="zona_toque_rapido7" parent="." instance=ExtResource( 3 )]
+position = Vector2( -358, 519 )
+collision_layer = 5
+collision_mask = 5
+fabrica_seguidores = NodePath("../YSort/fabrica_seguidores")
+jogador = NodePath("../YSort/jogador")
+
+[node name="zona_toque_rapido8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 280, 1176 )
+collision_layer = 5
+collision_mask = 5
+fabrica_seguidores = NodePath("../YSort/fabrica_seguidores")
+jogador = NodePath("../YSort/jogador")
+
+[node name="zona_toque_rapido2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 26, 924 )
+collision_layer = 5
+collision_mask = 5
+fabrica_seguidores = NodePath("../YSort/fabrica_seguidores")
+jogador = NodePath("../YSort/jogador")
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="jogador" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 185, 674 )
 
-[node name="pessoa" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 251, 363 )
-
 [node name="predio" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 545, 775 )
 
-[node name="pessoa2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 161, 1023 )
-
-[node name="pessoa3" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1025, 1001 )
-
-[node name="pessoa4" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -155, 571 )
-
-[node name="pessoa5" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -437, 851 )
-
-[node name="pessoa6" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -111, 201 )
-
-[node name="pessoa7" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 29, 959 )
-
-[node name="pessoa8" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -199, 1101 )
-
-[node name="pessoa9" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 521, 1137 )
-
-[node name="pessoa10" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 917, 499 )
-
-[node name="pessoa11" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 393, 665 )
-
-[node name="pessoa12" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 697, 253 )
-
-[node name="pessoa13" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -467, 379 )
-
-[node name="pessoa14" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 851, 1281 )
-
-[node name="pessoa15" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 741, 829 )
+[node name="fabrica_seguidores" parent="YSort" instance=ExtResource( 4 )]

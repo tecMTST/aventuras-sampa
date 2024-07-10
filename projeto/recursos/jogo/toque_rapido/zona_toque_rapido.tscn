@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://recursos/jogo/toque_rapido/zona_toque_rapido.gd" type="Script" id=1]
+[ext_resource path="res://recursos/jogo/toque_rapido/registrador_toque.tscn" type="PackedScene" id=2]
+[ext_resource path="res://elementos/fontes/roboto.tres" type="DynamicFont" id=3]
+[ext_resource path="res://elementos/imagem/ambiente/zona_toque.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 140.057
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 3 )
+
+[node name="zona_toque_rapido" type="Area2D"]
+collision_mask = 4
+script = ExtResource( 1 )
+
+[node name="Zona" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="registrador_toque" parent="." instance=ExtResource( 2 )]
+lugar_temporizador = NodePath("../Temporizador")
+
+[node name="ContadorTempo" type="RichTextLabel" parent="."]
+margin_right = 150.0
+margin_bottom = 132.0
+theme = SubResource( 2 )
+
+[node name="Temporizador" type="Timer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1.00001, -9.00001 )
+scale = Vector2( 0.514, 0.514 )
+texture = ExtResource( 4 )
+
+[node name="ProgressoToque" type="ProgressBar" parent="."]
+margin_left = -60.0
+margin_top = -90.0
+margin_right = 62.0
+margin_bottom = -55.0
+
+[connection signal="area_shape_entered" from="." to="." method="_on_zona_toque_rapido_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_zona_toque_rapido_body_entered"]
+[connection signal="finalizado" from="registrador_toque" to="." method="_on_registrador_toque_finalizado"]
+[connection signal="toque" from="registrador_toque" to="." method="_on_registrador_toque_toque"]

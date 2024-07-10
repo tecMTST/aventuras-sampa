@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://recursos/jogo/jogador/jogador.gd" type="Script" id=1]
 [ext_resource path="res://elementos/imagem/jogador/boulos.png" type="Texture" id=2]
 [ext_resource path="res://elementos/fontes/roboto.tres" type="DynamicFont" id=3]
 [ext_resource path="res://elementos/imagem/ambiente/dialog-box.png" type="Texture" id=4]
+[ext_resource path="res://recursos/jogo/jogador/alavanca_de_toque/alavanca_de_toque.tscn" type="PackedScene" id=5]
+[ext_resource path="res://elementos/audio/bob_andando.mp3" type="AudioStream" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -42,6 +44,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("..:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -89,6 +103,23 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 0.8 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=7]
+resource_name = "squash"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.08, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.343 ), Vector2( 0.9, 1.575 ), Vector2( 1, 1 ) ]
+}
+
 [sub_resource type="Theme" id=6]
 default_font = ExtResource( 3 )
 
@@ -110,7 +141,7 @@ scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 
 [node name="Colisao" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 12 )
+position = Vector2( -4, 0 )
 shape = SubResource( 2 )
 
 [node name="Animador" type="AnimationPlayer" parent="."]
@@ -118,6 +149,7 @@ root_node = NodePath("../SpritesJogador")
 anims/RESET = SubResource( 3 )
 anims/andar = SubResource( 4 )
 anims/idle = SubResource( 5 )
+anims/squash = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
@@ -132,3 +164,12 @@ margin_right = 264.0
 margin_bottom = 55.0
 theme = SubResource( 6 )
 text = "sigam-me os bons!"
+
+[node name="alavanca_de_toque" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 800 )
+
+[node name="BobAndando" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+
+[connection signal="alavanca_movida" from="alavanca_de_toque" to="." method="_on_alavanca_de_toque_alavanca_movida"]
+[connection signal="alavanca_solta" from="alavanca_de_toque" to="." method="_on_alavanca_de_toque_alavanca_solta"]

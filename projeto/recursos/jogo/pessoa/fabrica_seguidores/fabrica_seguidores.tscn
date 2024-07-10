@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://recursos/jogo/pessoa/fabrica_seguidores/fabrica_seguidores.gd" type="Script" id=1]
+
+[node name="fabrica_seguidores" type="Node2D"]
+script = ExtResource( 1 )
