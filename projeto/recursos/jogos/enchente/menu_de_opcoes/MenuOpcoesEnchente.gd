@@ -1,4 +1,5 @@
 extends Node
+class_name MenuOpcoes
 
 onready var SingletonGlobal = SingletonOpcoesGlobais
 onready var menu: TextureRect = $MenuDeOpcoes/Menu

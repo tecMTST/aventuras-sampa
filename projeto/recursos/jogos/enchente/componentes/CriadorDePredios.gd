@@ -8,7 +8,7 @@ export var espacamento = 10.0
 export var deslocamento_vertical : float = 0.0
 export var inverter_x : bool = false
 export var z_aleatorio : bool = true
-onready var spawn = $Spawn as Position3D
+onready var spawn = $Spawn
 
 var proximo : Spatial 
 
