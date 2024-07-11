@@ -47,3 +47,12 @@ func _process(delta):
 	var vetor_movimento = distancia.normalized() * (distancia.length_squared() / (distancia_maxima ^ 2))
 
 	move_and_slide(vetor_movimento)
+	
+	var spr = $SpritePessoa/AnimationPlayer
+	var tamanho_movimento = vetor_movimento.length_squared()
+	if tamanho_movimento > 500:
+		spr.play("andar")
+		print(tamanho_movimento)
+		spr.playback_speed = .7
+	else:
+		spr.play("idle")
