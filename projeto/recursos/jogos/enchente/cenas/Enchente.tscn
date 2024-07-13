@@ -141,12 +141,12 @@ wait_time = 300.0
 one_shot = true
 
 [node name="Agua" type="MeshInstance" parent="."]
-transform = Transform( 5.00273, 0, 0, 0, 5.00273, 0, 0, 0, 25.0136, -0.00038147, -0.0634565, 0.0119209 )
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
 [node name="Agua2" type="MeshInstance" parent="."]
-transform = Transform( 5.00273, 0, 0, 0, 5.00273, 0, 0, 0, 25.0136, -0.00038147, -0.0634565, -49.9495 )
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, -0.00038147, -0.0634565, -49.9495 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
@@ -159,6 +159,7 @@ fov = 84.375
 current = true
 
 [node name="Paredes" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="CriadorPredios" parent="Paredes" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -72.887 )
@@ -186,7 +187,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22.727 )
 [node name="ControladorDeObstaculos" parent="." instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -70 )
 faixas = NodePath("../Faixas")
-tempo = NodePath("../TempoDeJogo")
 
 [node name="playerLane3D" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458483, 22.8555 )
@@ -198,8 +198,9 @@ margin_right = 361.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+margin_top = 75.0
 margin_right = 360.0
-margin_bottom = 40.0
+margin_bottom = 115.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
 margin_top = 4.0
@@ -211,10 +212,26 @@ text = "FPS: "
 [node name="FpsLabel" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
 margin_left = 61.0
 margin_top = 4.0
-margin_right = 118.0
+margin_right = 103.0
 margin_bottom = 35.0
 theme = ExtResource( 7 )
-text = "FPS: "
+text = "000"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
+margin_left = 107.0
+margin_top = 4.0
+margin_right = 197.0
+margin_bottom = 35.0
+theme = ExtResource( 7 )
+text = "Tempo: "
+
+[node name="Tempo" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
+margin_left = 201.0
+margin_top = 4.0
+margin_right = 264.0
+margin_bottom = 35.0
+theme = ExtResource( 7 )
+text = "0.000"
 
 [node name="BarraDeProgresso" parent="." instance=ExtResource( 1 )]
 tempo = NodePath("../TempoDeJogo")
