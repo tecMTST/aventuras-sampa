@@ -20,10 +20,12 @@ func _ready():
 	EnchenteEstadoDeJogo.TemporizadorGlobal = $TempoDeJogo
 	EnchenteEstadoDeJogo.definir_tempo_de_jogo(tempo_jogo * 60)
 	EnchenteEstadoDeJogo.iniciar_temporizador()
-
+	EnchenteEstadoDeJogo.set_process(true)
 
 func _process(_delta):
 	fps_label.text = str(Engine.get_frames_per_second())
 	tempo_label.text = String(EnchenteEstadoDeJogo.TempoAtual)
-	agua.get_active_material(0).set_shader_param("Velocidade",EnchenteEstadoDeJogo.VelocidadeGlobal);
+	agua.get_active_material(0).set_shader_param("Velocidade", EnchenteEstadoDeJogo.VelocidadeGlobal);
 
+func _exit_tree() -> void:
+	EnchenteEstadoDeJogo.set_process(false)

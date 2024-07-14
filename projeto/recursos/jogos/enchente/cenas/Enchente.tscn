@@ -141,12 +141,12 @@ wait_time = 300.0
 one_shot = true
 
 [node name="Agua" type="MeshInstance" parent="."]
-transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, 0, 0, 0 )
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, 0, 0, 1 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
 [node name="Agua2" type="MeshInstance" parent="."]
-transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, -0.00038147, -0.0634565, -49.9495 )
+transform = Transform( 10, 0, 0, 0, 5, 0, 0, 0, 25, 0, 0, -49 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
