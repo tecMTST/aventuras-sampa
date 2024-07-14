@@ -2,9 +2,10 @@ extends KinematicBody
 class_name PlayerLane3D
 
 export var tempo_imunidade_dano : float = 3.0
+
 onready var controle_faixa_3d = $ControleFaixa3D
 onready var vida = $Vida as Vida
-onready var sprite = $Sprite3D
+onready var sprite = $Sprite as AnimatedSprite3D
 onready var timer_imunidade = $TimerImunidade
 onready var imunidade_modulate = false
 onready var menuOpcoes = preload("res://recursos/jogos/enchente/menu_de_opcoes/MenuDeOpcoes.tscn")
@@ -28,6 +29,10 @@ func _on_AreaDano_body_entered(body: Node) -> void:
 	if body.is_in_group("obstaculo") and not imune:
 		vida.receber_dano(1.0)
 		imunidade(true, tempo_imunidade_dano)
+	if body.is_in_group("powerup") and not imune:
+		imunidade(false, tempo_imunidade_dano)
+	if body.is_in_group("rampa") and not imune:
+		controle_faixa_3d.pular()
 
 func _on_Vida_vida_acabou() -> void:
 	TrocadorDeCenas.trocar_cena('res://recursos/feed_de_noticias/feed_de_noticia.tscn')
