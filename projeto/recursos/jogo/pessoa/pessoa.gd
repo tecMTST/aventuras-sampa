@@ -6,12 +6,16 @@ class_name Pessoa
 # var a = 2
 # var b = "text"
 
-export var variedade_distancia_maxima: Vector2 = Vector2(50,100)
+export var variedade_distancia_maxima: Vector2 = Vector2(100,200)
 export var variedade_aleatorio: int = 200
+
+onready var maquina_de_estados = $MaquinaDeEstados as MaquinaDeEstados
+onready var sprites = $SpritesPessoa as AnimatedSprite
 
 var aleatorio = RandomNumberGenerator.new()
 var _alvo: KinematicBody2D
 var distancia_maxima: int
+var cor='azul'
 
 onready var vetor_diferente: Vector2
 
@@ -28,15 +32,8 @@ func gerar_vetor_aleatorio():
 
 func definir_alvo(alvo):
 	_alvo = alvo
-	var temporizador = Timer.new()
-	$Pop.play()
-	temporizador.connect("timeout", self, "desligar_pop")
-	temporizador.wait_time = $Pop.stream.get_length()
-	add_child(temporizador)
-	temporizador.autostart = true
+	cor='vermelha'
 
-func desligar_pop():
-	$Pop.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -44,15 +41,26 @@ func _process(delta):
 		return
 
 	var distancia = (_alvo.position - position) + vetor_diferente
-	var vetor_movimento = distancia.normalized() * (distancia.length_squared() / (distancia_maxima ^ 2))
+	var porcento_distancia = (distancia.length_squared() / (distancia_maxima ^ 2))
+	var vetor_movimento = distancia.normalized() * porcento_distancia
 
 	move_and_slide(vetor_movimento)
 	
-	var spr = $SpritePessoa/AnimationPlayer
+	if vetor_movimento.x < 0:
+		sprites.scale.x=-abs(sprites.scale.x)
+	elif vetor_movimento.x > 0:
+		sprites.scale.x=abs(sprites.scale.x)
+	
 	var tamanho_movimento = vetor_movimento.length_squared()
-	if tamanho_movimento > 500:
-		spr.play("andar")
-		print(tamanho_movimento)
-		spr.playback_speed = .7
+	if tamanho_movimento > 400:
+		sprites.play("andando_%s" % cor)
 	else:
-		spr.play("idle")
+		sprites.play("parada_%s" % cor)
+	
+	sprites.speed_scale = porcento_distancia / 200
+
+
+func _on_Area_body_entered(body):
+	if not body.jogador:
+		return
+	definir_alvo(body)

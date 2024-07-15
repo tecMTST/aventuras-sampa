@@ -1,131 +1,74 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://recursos/jogo/jogador/jogador.gd" type="Script" id=1]
-[ext_resource path="res://elementos/imagem/jogador/boulos.png" type="Texture" id=2]
-[ext_resource path="res://elementos/fontes/roboto.tres" type="DynamicFont" id=3]
-[ext_resource path="res://elementos/imagem/ambiente/dialog-box.png" type="Texture" id=4]
+[ext_resource path="res://elementos/imagem/pessoas/branco.png" type="Texture" id=2]
 [ext_resource path="res://recursos/jogo/jogador/alavanca_de_toque/alavanca_de_toque.tscn" type="PackedScene" id=5]
 [ext_resource path="res://elementos/audio/bob_andando.mp3" type="AudioStream" id=6]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 12.0
+height = 0.0
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 24, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 72, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 120, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 144, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 168, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 24, 0, 24, 24 )
+
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "default",
+"name": "andar",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "correr",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "parar",
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 38.0
-height = 0.0
-
-[sub_resource type="Animation" id=3]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("..:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "andar"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.6 ), Vector2( 1, 1 ), Vector2( 1.2, 0.6 ), Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rotation_degrees")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 10.0, -10.0, 10.0 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "idle"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 0.8 ), Vector2( 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "squash"
-length = 0.1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.02, 0.08, 0.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.343 ), Vector2( 0.9, 1.575 ), Vector2( 1, 1 ) ]
-}
-
-[sub_resource type="Theme" id=6]
-default_font = ExtResource( 3 )
-
 [node name="jogador" type="KinematicBody2D"]
 position = Vector2( 360, 640 )
-scale = Vector2( 0.5, 0.5 )
 collision_mask = 4
 script = ExtResource( 1 )
 
@@ -135,41 +78,24 @@ rotation = 0.174533
 scale = Vector2( 1, 0.7 )
 current = true
 
-[node name="SpritesJogador" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -60 )
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 1 )
-
 [node name="Colisao" type="CollisionShape2D" parent="."]
-position = Vector2( -4, 0 )
 shape = SubResource( 2 )
 
-[node name="Animador" type="AnimationPlayer" parent="."]
-root_node = NodePath("../SpritesJogador")
-anims/RESET = SubResource( 3 )
-anims/andar = SubResource( 4 )
-anims/idle = SubResource( 5 )
-anims/squash = SubResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="."]
-visible = false
-position = Vector2( 195, -280.5 )
-scale = Vector2( 0.738281, 0.63086 )
-texture = ExtResource( 4 )
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Sprite"]
-margin_left = -196.0
-margin_top = -164.0
-margin_right = 264.0
-margin_bottom = 55.0
-theme = SubResource( 6 )
-text = "sigam-me os bons!"
-
 [node name="alavanca_de_toque" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, 800 )
+position = Vector2( 0, 342 )
+scale = Vector2( 0.5, 0.5 )
+z_index = 100
+z_as_relative = false
 
 [node name="BobAndando" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="SpritesJogador" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -48 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 13 )
+animation = "parar"
+playing = true
 
 [connection signal="alavanca_movida" from="alavanca_de_toque" to="." method="_on_alavanca_de_toque_alavanca_movida"]
 [connection signal="alavanca_solta" from="alavanca_de_toque" to="." method="_on_alavanca_de_toque_alavanca_solta"]

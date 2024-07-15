@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/controles2d/ControleTopDown2D.gd"
 }, {
+"base": "Node",
+"class": "Estado",
+"language": "GDScript",
+"path": "res://addons/gerenciador_de_estados/estado.gd"
+}, {
 "base": "Node2D",
 "class": "FabricaSeguidores",
 "language": "GDScript",
@@ -48,6 +53,11 @@ _global_script_classes=[ {
 "class": "GeradorObjeto",
 "language": "GDScript",
 "path": "res://addons/gerador_de_objeto/GeradorDeObjeto.gd"
+}, {
+"base": "Reference",
+"class": "MaquinaDeEstados",
+"language": "GDScript",
+"path": "res://addons/gerenciador_de_estados/maquina_de_estados.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Pessoa",
@@ -71,8 +81,10 @@ _global_script_class_icons={
 "ControlePulo2D": "",
 "ControleSideScroling2D": "",
 "ControleTopDown2D": "",
+"Estado": "",
 "FabricaSeguidores": "",
 "GeradorObjeto": "",
+"MaquinaDeEstados": "",
 "Pessoa": "",
 "SaveFile": "",
 "Vida": "res://addons/sistema_vida/vida.svg"
@@ -104,7 +116,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/controle_de_toque/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/controle_de_toque/plugin.cfg", "res://addons/gerenciador_de_estados/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
 
 [global]
 
