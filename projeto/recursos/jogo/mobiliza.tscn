@@ -64,152 +64,201 @@ position = Vector2( 820, 93 )
 
 [node name="jogador" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 185, 674 )
+loc_temporizador = NodePath("../../Temporizador")
 
 [node name="predio" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 536, 718 )
 
 [node name="fabrica_seguidores" parent="YSort" instance=ExtResource( 4 )]
 
-[node name="pessoa3" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 596, 979 )
-
-[node name="pessoa4" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -78, 1018 )
-
-[node name="pessoa5" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 378, 1128 )
-
-[node name="pessoa15" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 995, 1110 )
-
-[node name="pessoa48" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 569, 1170 )
-
-[node name="pessoa16" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 582, 1459 )
-
-[node name="pessoa17" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 119, 1398 )
-
-[node name="pessoa18" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -366, 1337 )
-
-[node name="pessoa19" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -672, 1055 )
-
-[node name="pessoa47" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 107, 1241 )
-
-[node name="pessoa43" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -32, 7 )
-
-[node name="pessoa44" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 28, 239 )
-
-[node name="pessoa20" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -825, 560 )
-
-[node name="pessoa45" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -633, 895 )
-
-[node name="pessoa46" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -159, 1087 )
-
-[node name="pessoa42" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -470, 752 )
-
-[node name="pessoa21" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -579, 243 )
-
-[node name="pessoa22" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -326, -117 )
-
-[node name="pessoa23" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 34, -224 )
-
-[node name="pessoa24" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 462, -288 )
-
-[node name="pessoa25" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 850, -181 )
-
-[node name="pessoa26" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1110, 122 )
-
-[node name="pessoa37" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1191, 631 )
-
-[node name="pessoa38" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 717, 878 )
-
-[node name="pessoa35" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 629, -54 )
-
-[node name="pessoa36" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 679, -336 )
-
-[node name="pessoa34" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 314, 54 )
-
-[node name="pessoa27" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1203, 496 )
-
-[node name="pessoa28" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 1264, 884 )
-
-[node name="pessoa40" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -273, 1083 )
-
-[node name="pessoa41" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -545, 541 )
-
-[node name="pessoa39" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 742, 1159 )
-
-[node name="pessoa6" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 182, 1121 )
-
-[node name="pessoa7" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -199, 889 )
-
-[node name="pessoa29" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -210, 523 )
-
-[node name="pessoa30" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -333, 642 )
-
-[node name="pessoa31" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 232, 225 )
-
-[node name="pessoa32" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 484, 285 )
-
-[node name="pessoa33" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 657, 422 )
-
-[node name="pessoa8" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -453, 870 )
-
-[node name="pessoa9" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -406, 380 )
-
-[node name="pessoa10" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -289, 210 )
-
-[node name="pessoa11" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 740, 289 )
-
-[node name="pessoa12" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 809, 319 )
-
-[node name="pessoa13" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 852, 711 )
-
-[node name="pessoa14" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 231, 303 )
+[node name="pessoa" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 166, 71 )
 
 [node name="pessoa2" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 236, 29 )
+position = Vector2( 500, 174 )
 
-[node name="pessoa" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 631, 674 )
+[node name="pessoa3" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 709, 272 )
+
+[node name="pessoa4" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 843, 617 )
+
+[node name="pessoa5" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 750, 418 )
+
+[node name="pessoa6" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1007, 224 )
+
+[node name="pessoa7" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 863, 61 )
+
+[node name="pessoa8" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 1115, 507 )
+
+[node name="pessoa9" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 979, 754 )
+
+[node name="pessoa10" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 929, 1000 )
+
+[node name="pessoa11" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 795, 869 )
+
+[node name="pessoa12" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 684, 902 )
+
+[node name="pessoa13" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -241, 1099 )
+
+[node name="pessoa14" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -216, 935 )
+
+[node name="pessoa15" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 225, 1131 )
+
+[node name="pessoa16" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -128, 524 )
+
+[node name="pessoa17" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -135, 1012 )
+
+[node name="pessoa18" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 369, 408 )
+
+[node name="pessoa19" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 286, 365 )
+
+[node name="pessoa20" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -523, 1071 )
+
+[node name="pessoa21" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -631, 1061 )
+
+[node name="pessoa22" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -672, 900 )
+
+[node name="pessoa23" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -848, 1026 )
+
+[node name="pessoa24" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -682, 1225 )
+
+[node name="pessoa25" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -815, 814 )
+
+[node name="pessoa26" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -803, 612 )
+
+[node name="pessoa27" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -642, 456 )
+
+[node name="pessoa28" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -190, 204 )
+
+[node name="pessoa29" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -392, 292 )
+
+[node name="pessoa30" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -301, 275 )
+
+[node name="pessoa31" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -294, 116 )
+
+[node name="pessoa32" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -9, 106 )
+
+[node name="pessoa33" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -112, 8 )
+
+[node name="pessoa34" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -70, 1484 )
+
+[node name="pessoa35" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -332, 1567 )
+
+[node name="pessoa36" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -175, 1441 )
+
+[node name="pessoa37" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -306, 1393 )
+
+[node name="pessoa38" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 989, 1174 )
+
+[node name="pessoa39" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -863, 217 )
+
+[node name="pessoa40" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -778, 98 )
+
+[node name="pessoa41" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -561, 2 )
+
+[node name="pessoa42" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -586, 118 )
+
+[node name="pessoa43" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -798, 378 )
+
+[node name="pessoa44" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 570, -3 )
+
+[node name="pessoa45" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 656, 103 )
+
+[node name="pessoa46" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 114, 1217 )
+
+[node name="pessoa47" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 754, 1013 )
+
+[node name="pessoa48" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 210, 1305 )
+
+[node name="pessoa49" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 903, 529 )
+
+[node name="pessoa50" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 573, 302 )
+
+[node name="pessoa51" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 366, 55 )
+
+[node name="pessoa52" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 278, 156 )
+
+[node name="pessoa53" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 240, -30 )
+
+[node name="pessoa54" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 568, 1323 )
+
+[node name="pessoa55" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 495, 1240 )
+
+[node name="pessoa56" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 424, 1361 )
+
+[node name="pessoa57" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 626, 1207 )
+
+[node name="pessoa58" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -327, 713 )
+
+[node name="pessoa59" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -450, 602 )
+
+[node name="pessoa60" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -427, 693 )
+
+[node name="pessoa61" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -584, 942 )
+
+[node name="pessoa62" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( -64, 575 )
+
+[node name="Temporizador" type="Timer" parent="."]
+process_mode = 0
+wait_time = 10.0
+one_shot = true
+autostart = true

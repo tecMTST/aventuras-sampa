@@ -97,5 +97,20 @@ frames = SubResource( 13 )
 animation = "parar"
 playing = true
 
+[node name="BarraSeguidores" type="ProgressBar" parent="."]
+margin_left = -100.0
+margin_top = -150.0
+margin_right = 100.0
+margin_bottom = -118.0
+step = 1.0
+percent_visible = false
+
+[node name="TempoRestante" type="ProgressBar" parent="."]
+margin_left = -250.0
+margin_top = -650.0
+margin_right = 250.0
+margin_bottom = -600.0
+percent_visible = false
+
 [connection signal="alavanca_movida" from="alavanca_de_toque" to="." method="_on_alavanca_de_toque_alavanca_movida"]
 [connection signal="alavanca_solta" from="alavanca_de_toque" to="." method="_on_alavanca_de_toque_alavanca_solta"]
