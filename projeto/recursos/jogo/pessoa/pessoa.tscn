@@ -76,7 +76,7 @@ animations = [ {
 "frames": [ SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "parada_azul",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
