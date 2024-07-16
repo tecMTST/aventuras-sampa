@@ -23,9 +23,9 @@ var jogador = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	aleatorio.randomize()
-	
+
 	barra_seguidores.max_value = maximo_seguidores
-	
+
 	temporizador.wait_time = tempo_segundos
 	temporizador.autostart = false
 	barra_tempo.max_value = tempo_segundos
@@ -35,6 +35,9 @@ func _ready():
 func toque():
 	pass
 
+func retirar_seguidor():
+	return _seguidores.pop_back()
+
 func adicionar_seguidor(seguidor):
 	if _seguidores.size() >= maximo_seguidores:
 		return false
@@ -43,7 +46,8 @@ func adicionar_seguidor(seguidor):
 
 func remover_seguidor(seguidor):
 	if seguidor in _seguidores:
-		_seguidores.remove(_seguidores.find(seguidor))
+		_seguidores.erase(seguidor)
+	return seguidor
 
 func get_input():
 	velocidade = Vector2()
@@ -63,7 +67,6 @@ func get_input():
 		_movendo = true
 	velocidade = velocidade.normalized() * multiplicador_velocidade
 
-
 func _process(delta):
 	if velocidade.x<0:
 		sprite.scale.x=-abs(sprite.scale.x)
@@ -79,14 +82,12 @@ func _process(delta):
 func _physics_process(delta):
 	velocidade = move_and_slide(velocidade)
 
-
 func _on_alavanca_de_toque_alavanca_movida(posicao: Vector2):
 	if not $BobAndando.playing:
 		$BobAndando.play()
 	velocidade = posicao.normalized() * multiplicador_velocidade
 	move_and_slide(velocidade)
 	_movendo = true
-
 
 func _on_alavanca_de_toque_alavanca_solta():
 	$BobAndando.stop()

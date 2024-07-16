@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://recursos/jogo/pessoa/Esperando.gd" type="Script" id=1]
 [ext_resource path="res://recursos/jogo/pessoa/pessoa.gd" type="Script" id=2]
+[ext_resource path="res://elementos/imagem/pessoas/branco.png" type="Texture" id=3]
 [ext_resource path="res://addons/gerenciador_de_estados/maquina_de_estados.gd" type="Script" id=4]
 [ext_resource path="res://elementos/imagem/pessoas/azul.png" type="Texture" id=5]
 [ext_resource path="res://recursos/jogo/pessoa/Seguindo.gd" type="Script" id=6]
@@ -29,6 +30,22 @@ region = Rect2( 48, 24, 24, 24 )
 atlas = ExtResource( 5 )
 region = Rect2( 72, 24, 24, 24 )
 
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 24, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 24, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 3 )
+region = Rect2( 72, 24, 24, 24 )
+
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 24, 24, 24 )
@@ -53,6 +70,14 @@ region = Rect2( 0, 0, 24, 24 )
 atlas = ExtResource( 5 )
 region = Rect2( 24, 0, 24, 24 )
 
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
+region = Rect2( 24, 0, 24, 24 )
+
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 24, 24 )
@@ -68,6 +93,11 @@ animations = [ {
 "name": "andando_azul",
 "speed": 10.0
 }, {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "andando_branca",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "andando_vermelha",
@@ -77,6 +107,11 @@ animations = [ {
 "loop": true,
 "name": "parada_azul",
 "speed": 4.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "parada_branca",
+"speed": 5.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,

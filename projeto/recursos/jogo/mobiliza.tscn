@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://recursos/jogo/jogador/jogador.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/jogo/predio/predio.tscn" type="PackedScene" id=2]
 [ext_resource path="res://recursos/jogo/pessoa/pessoa.tscn" type="PackedScene" id=3]
 [ext_resource path="res://recursos/jogo/pessoa/fabrica_seguidores/fabrica_seguidores.tscn" type="PackedScene" id=4]
 [ext_resource path="res://recursos/jogo/mobiliza.gd" type="Script" id=5]
+[ext_resource path="res://recursos/jogo/mapa/mapa.tscn" type="PackedScene" id=6]
+[ext_resource path="res://recursos/jogo/ponto_de_entrega/ponto_de_entrega.tscn" type="PackedScene" id=7]
 
 [node name="mobiliza" type="Node2D"]
 script = ExtResource( 5 )
+
+[node name="mapa" parent="." instance=ExtResource( 6 )]
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -256,6 +260,15 @@ position = Vector2( -584, 942 )
 
 [node name="pessoa62" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( -64, 575 )
+
+[node name="ponto_de_entrega" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 3, -298 )
+
+[node name="ponto_de_entrega2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 462, 859 )
+
+[node name="ponto_de_entrega3" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( -874, 518 )
 
 [node name="Temporizador" type="Timer" parent="."]
 process_mode = 0
