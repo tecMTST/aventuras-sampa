@@ -36,7 +36,8 @@ func _on_ControleDeToque_toque_realizado(historico):
 	var novo_seguidor = referencia_jogador.retirar_seguidor()
 	if novo_seguidor == null:
 		return
-	print('toque')
-	pessoas.append(novo_seguidor)
-	novo_seguidor.mobilizar(self)
 
+	pessoas.append(novo_seguidor)
+	if pessoas.size() == numero_de_pessoas:
+		referencia_jogador.pontos_de_habilidade += 1
+	novo_seguidor.mobilizar(self)

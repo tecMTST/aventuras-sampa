@@ -1,3 +1,4 @@
+class_name Jogador
 extends KinematicBody2D
 
 
@@ -5,12 +6,13 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 export (int) var multiplicador_velocidade = 200
-export (int) var maximo_seguidores = 20
+export (int) var maximo_seguidores = 5
 export (int) var tempo_segundos = 180
 export var loc_temporizador: NodePath
+export var pontos_de_habilidade := 0
 
 onready var sprite = $SpritesJogador as AnimatedSprite
-onready var barra_seguidores = $BarraSeguidores as ProgressBar
+onready var texto_seguidores = $texto_contador
 onready var barra_tempo = $TempoRestante as ProgressBar
 onready var temporizador = get_node(loc_temporizador) as Timer
 
@@ -24,16 +26,14 @@ var jogador = true
 func _ready():
 	aleatorio.randomize()
 
-	barra_seguidores.max_value = maximo_seguidores
+	texto_seguidores.maximo = maximo_seguidores
 
 	temporizador.wait_time = tempo_segundos
 	temporizador.autostart = false
+	temporizador.start()
+	
 	barra_tempo.max_value = tempo_segundos
 	barra_tempo.value = temporizador.wait_time
-	temporizador.start()
-
-func toque():
-	pass
 
 func retirar_seguidor():
 	return _seguidores.pop_back()
@@ -42,6 +42,7 @@ func adicionar_seguidor(seguidor):
 	if _seguidores.size() >= maximo_seguidores:
 		return false
 	_seguidores.append(seguidor)
+	
 	return true
 
 func remover_seguidor(seguidor):
@@ -76,7 +77,7 @@ func _process(delta):
 		sprite.play("andar")
 	else:
 		sprite.play("parar")
-	barra_seguidores.value = _seguidores.size()
+	texto_seguidores.alterar_valor(_seguidores.size())
 	barra_tempo.value = temporizador.time_left
 
 func _physics_process(delta):
@@ -93,3 +94,19 @@ func _on_alavanca_de_toque_alavanca_solta():
 	$BobAndando.stop()
 	velocidade = Vector2.ZERO
 	_movendo = false
+
+func aumentar_maximo_seguidores(valor: int) -> bool:
+	if pontos_de_habilidade <= 0:
+		return false
+	pontos_de_habilidade -= 1
+	maximo_seguidores += valor
+	texto_seguidores.alterar_maximo(maximo_seguidores)
+	print(texto_seguidores.maximo)
+	return true
+
+func aumentar_area(valor: int) -> bool:
+	if pontos_de_habilidade <= 0:
+		return false
+	pontos_de_habilidade -= 1
+	maximo_seguidores += valor
+	return true

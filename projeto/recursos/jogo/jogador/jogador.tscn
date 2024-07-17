@@ -1,9 +1,13 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://recursos/jogo/jogador/jogador.gd" type="Script" id=1]
 [ext_resource path="res://elementos/imagem/pessoas/branco.png" type="Texture" id=2]
+[ext_resource path="res://recursos/jogo/menu_de_habilidade/menu_de_habilidade.tscn" type="PackedScene" id=3]
+[ext_resource path="res://elementos/fontes/roboto.tres" type="DynamicFont" id=4]
 [ext_resource path="res://recursos/jogo/jogador/alavanca_de_toque/alavanca_de_toque.tscn" type="PackedScene" id=5]
 [ext_resource path="res://elementos/audio/bob_andando.mp3" type="AudioStream" id=6]
+[ext_resource path="res://recursos/jogo/texto_contador/texto_contador.tscn" type="PackedScene" id=7]
+[ext_resource path="res://recursos/jogo/jogador/ContadorFPS.gd" type="Script" id=8]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 12.0
@@ -67,6 +71,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Theme" id=15]
+default_font = ExtResource( 4 )
+
+[sub_resource type="Theme" id=16]
+default_font = ExtResource( 4 )
+
 [node name="jogador" type="KinematicBody2D"]
 position = Vector2( 360, 640 )
 collision_layer = 2049
@@ -84,7 +94,7 @@ shape = SubResource( 2 )
 
 [node name="alavanca_de_toque" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 342 )
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.2, 0.2 )
 z_index = 100
 z_as_relative = false
 
@@ -98,20 +108,30 @@ frames = SubResource( 13 )
 animation = "parar"
 playing = true
 
-[node name="BarraSeguidores" type="ProgressBar" parent="."]
-margin_left = -100.0
-margin_top = -150.0
-margin_right = 100.0
-margin_bottom = -118.0
-step = 1.0
-percent_visible = false
+[node name="texto_contador" parent="." instance=ExtResource( 7 )]
+position = Vector2( 0, -106 )
 
 [node name="TempoRestante" type="ProgressBar" parent="."]
 margin_left = -250.0
 margin_top = -650.0
 margin_right = 250.0
 margin_bottom = -600.0
+theme = SubResource( 15 )
 percent_visible = false
+
+[node name="menu_de_habilidade" parent="." instance=ExtResource( 3 )]
+position = Vector2( -360, -695 )
+loc_jogador = NodePath("..")
+
+[node name="ContadorFPS" type="Label" parent="."]
+margin_left = -337.0
+margin_top = -670.0
+margin_right = -245.0
+margin_bottom = -574.0
+rect_scale = Vector2( 1.5, 1.5 )
+theme = SubResource( 16 )
+text = "0"
+script = ExtResource( 8 )
 
 [connection signal="alavanca_movida" from="alavanca_de_toque" to="." method="_on_alavanca_de_toque_alavanca_movida"]
 [connection signal="alavanca_solta" from="alavanca_de_toque" to="." method="_on_alavanca_de_toque_alavanca_solta"]
