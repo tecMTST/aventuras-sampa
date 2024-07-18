@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/controles2d/Controles2DBase.gd"
 }, {
-"base": "Position3D",
-"class": "ControladorDeObstaculos",
-"language": "GDScript",
-"path": "res://recursos/jogos/enchente/componentes/GerenciadorDeObstaculos/ControladorDeObstaculos.gd"
-}, {
 "base": "Node2D",
 "class": "ControleFaixa2D",
 "language": "GDScript",
@@ -54,11 +49,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gerenciador_de_estados/estado.gd"
 }, {
-"base": "Node",
-"class": "FabricaObstaculos",
-"language": "GDScript",
-"path": "res://recursos/jogos/enchente/componentes/GerenciadorDeObstaculos/FabricaObstaculos.gd"
-}, {
 "base": "EditorPlugin",
 "class": "GeradorObjeto",
 "language": "GDScript",
@@ -75,11 +65,6 @@ _global_script_classes=[ {
 "path": "res://recursos/jogos/enchente/menu_de_opcoes/MenuOpcoesEnchente.gd"
 }, {
 "base": "KinematicBody",
-"class": "Obstaculo",
-"language": "GDScript",
-"path": "res://recursos/jogos/enchente/componentes/Obstaculo.gd"
-}, {
-"base": "KinematicBody",
 "class": "PlayerLane3D",
 "language": "GDScript",
 "path": "res://recursos/jogos/enchente/jogador/playerLane3D.gd"
@@ -90,18 +75,12 @@ _global_script_classes=[ {
 "path": "res://addons/salvamento/Save.gd"
 }, {
 "base": "Node",
-"class": "SorteadorDeEpisodios",
-"language": "GDScript",
-"path": "res://recursos/jogos/enchente/componentes/GerenciadorDeObstaculos/SorteadorDeEpisodios.gd"
-}, {
-"base": "Node",
 "class": "Vida",
 "language": "GDScript",
 "path": "res://addons/sistema_vida/vida.gd"
 } ]
 _global_script_class_icons={
 "BaseControle2D": "",
-"ControladorDeObstaculos": "",
 "ControleFaixa2D": "",
 "ControleFaixa3D": "",
 "ControlePulo2D": "",
@@ -109,14 +88,11 @@ _global_script_class_icons={
 "ControleTopDown2D": "",
 "CriadorDePredios": "",
 "Estado": "",
-"FabricaObstaculos": "",
 "GeradorObjeto": "",
 "MaquinaDeEstados": "",
 "MenuOpcoes": "",
-"Obstaculo": "",
 "PlayerLane3D": "",
 "SaveFile": "",
-"SorteadorDeEpisodios": "",
 "Vida": "res://addons/sistema_vida/vida.svg"
 }
 
