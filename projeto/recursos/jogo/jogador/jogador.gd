@@ -87,7 +87,7 @@ func _on_alavanca_de_toque_alavanca_movida(posicao: Vector2):
 	if not $BobAndando.playing:
 		$BobAndando.play()
 	velocidade = posicao.normalized() * multiplicador_velocidade
-	move_and_slide(velocidade)
+	print(velocidade.length_squared())
 	_movendo = true
 
 func _on_alavanca_de_toque_alavanca_solta():
