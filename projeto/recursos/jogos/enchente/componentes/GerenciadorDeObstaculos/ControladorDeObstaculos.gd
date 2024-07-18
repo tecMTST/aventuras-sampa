@@ -1,25 +1,28 @@
 class_name ControladorDeObstaculos
 extends Position3D
 
-const OBSTACULO = preload ('res://recursos/jogos/enchente/componentes/Obstaculo.tscn')
-
 export var intervalo_modulos := 3.0
 export var distancia_obstaculos := 10.0
+export var altura_objeto_aereo := 1.0
 export(NodePath) var faixas
-export(NodePath) var tempo
 
-onready var _tempo := get_node(tempo) as Timer
 onready var _sorteador = $SorteadorDeEpisodios
 onready var _pontos_de_origem := get_node(faixas).get_children()
-onready var _numero_modulos = 0
 onready var _intervalo_adicionar_modulos := $Timer
+
+onready var _configuracao_de_modulos := _sorteador._ler_arquivo_json('res://elementos/modulos.json') as Dictionary
+onready var _fabrica_obstaculos := FabricaObstaculos.new(
+	_configuracao_de_modulos['tipo_de_obstaculo'],
+	_configuracao_de_modulos['tipo_de_item']
+)
+
+var _numero_modulos_criados := 0
 
 func _ready() -> void:
 	_intervalo_adicionar_modulos.connect('timeout', self, 'adicionar_modulo')
 
-
 func adicionar_modulo() -> void:
-	var modulo = _sorteador.sortear_modulo(_tempo.wait_time - _tempo.time_left)
+	var modulo = _sorteador.sortear_modulo(EnchenteEstadoDeJogo.TempoAtual)
 
 	assert(modulo.size() > 0, 'O modulo deve ter pelo menos uma linha')
 	assert(modulo[0].size() == _pontos_de_origem.size(), 'O tamanho dos pontos de origem deve ser o mesmo de obstaculos por linha')
@@ -28,13 +31,17 @@ func adicionar_modulo() -> void:
 	for linha in modulo:
 		contador_linha += 1
 		for obstaculo_indice in range(linha.size()):
-			var tipo_obstaculo = linha[obstaculo_indice]
-			if tipo_obstaculo != 0:
-				var obstaculo_criado = OBSTACULO.instance() # A instanciação pode ser substituida pela Fábrica de Obstaculos
-				obstaculo_criado.transform.origin = self._posicao_do_obstaculo(obstaculo_indice, contador_linha)
-				add_child(obstaculo_criado)
-	_numero_modulos += 1
+			var id_obstaculo = linha[obstaculo_indice]
+			if id_obstaculo != 0:
+				var obstaculo_criado = _fabrica_obstaculos.criar(
+					String(id_obstaculo),
+					self._posicao_do_obstaculo(obstaculo_indice, contador_linha)
+				)
+				if obstaculo_criado.is_in_group('aereo'):
+					obstaculo_criado.position.y = altura_objeto_aereo
 
+				add_child(obstaculo_criado)
+	_numero_modulos_criados += 1
 
 func _posicao_do_obstaculo(obstaculo_indice: int, contador_linha: int) -> Vector3:
 	var ponto_de_origem: Position3D = _pontos_de_origem[obstaculo_indice]
