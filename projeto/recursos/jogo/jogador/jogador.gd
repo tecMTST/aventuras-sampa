@@ -5,7 +5,7 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-export (int) var multiplicador_velocidade = 200
+export (int) var multiplicador_velocidade = 300
 export (int) var maximo_seguidores = 5
 export (int) var tempo_segundos = 180
 export var loc_temporizador: NodePath
@@ -87,7 +87,6 @@ func _on_alavanca_de_toque_alavanca_movida(posicao: Vector2):
 	if not $BobAndando.playing:
 		$BobAndando.play()
 	velocidade = posicao.normalized() * multiplicador_velocidade
-	print(velocidade.length_squared())
 	_movendo = true
 
 func _on_alavanca_de_toque_alavanca_solta():
