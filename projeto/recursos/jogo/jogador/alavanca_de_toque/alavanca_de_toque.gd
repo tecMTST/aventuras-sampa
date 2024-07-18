@@ -8,19 +8,21 @@ signal alavanca_movida(posicao)
 signal alavanca_solta
 
 onready var _toque = $ControleDeToque
-onready var _sprite_topo = $Topo
+onready var _sprite_topo = $Topo as Sprite
+onready var _sprite_base = $Base as Sprite
 
 var _movendo = false
 
 func _ready():
 	_sprite_topo.visible = false
+	_sprite_base.visible = false
 
 func _mover_alavanca(posicao: Vector2):
 	if not _movendo:
 		return
-	var diferenca = posicao
+	var diferenca = posicao - _sprite_base.position
 	emit_signal("alavanca_movida", diferenca)
-	_sprite_topo.position = diferenca.normalized() * 150
+	_sprite_topo.position = _sprite_base.position + diferenca.normalized() * 150
 
 
 func _on_ControleDeToque_arrastar_realizado(historico):
@@ -31,14 +33,20 @@ func _on_ControleDeToque_toque_desfeito(historico):
 	emit_signal("alavanca_solta")
 	_movendo = false
 	_sprite_topo.visible = false
+	_sprite_base.visible = false
 	_sprite_topo.position = Vector2.ZERO
 
 
 func _on_ControleDeToque_toque_realizado(historico):
 	var posicao = get_local_mouse_position()
-	if posicao.length() < raio_tolerancia:
-		_movendo = true
-		_sprite_topo.visible = true
+	_sprite_topo.position = posicao
+	_sprite_base.position = posicao
+	_movendo = true
+	_sprite_topo.visible = true
+	_sprite_base.visible = true
+	#if posicao.length() < raio_tolerancia:
+	#	_movendo = true
+	#	_sprite_topo.visible = true
 	_mover_alavanca(posicao)
 
 
