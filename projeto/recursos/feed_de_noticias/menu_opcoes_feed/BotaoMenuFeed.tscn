@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/botaomenu.png" type="Texture" id=1]
+[ext_resource path="res://recursos/feed_de_noticias/menu_opcoes_feed/botaoMenufeed.gd" type="Script" id=2]
+
+[node name="BotaoMenufeed" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Menu" type="TextureButton" parent="CanvasLayer"]
+anchor_left = 0.936
+anchor_top = 0.037
+anchor_right = 0.936
+anchor_bottom = 0.037
+margin_left = -28.92
+margin_top = -28.36
+margin_right = 29.08
+margin_bottom = 29.64
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="button_up" from="CanvasLayer/Menu" to="." method="_on_Menu_button_up"]
