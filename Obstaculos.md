@@ -139,12 +139,9 @@ Estamos utilizando o JSON como formato para armazenar a configuração dos níve
     "5": "ataque-terrestre",
     "6": "ataque-aereo",
     "7": "rampa",
-    "8": "item"
-  },
-  "tipo_de_itens": {
-    "0": "coletavel",
-    "1": "vida",
-    "2": "invencibilidade"
+    "80": "item-coletavel",
+    "81": "item-vida",
+    "82": "item-invencibilidade"
   },
   "velocidade": {"30": 1.0, "90": 1.2, "120": 1.5},
   "modulos": [

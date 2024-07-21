@@ -4,13 +4,11 @@ class_name FabricaObstaculos
 const OBSTACULO = preload ('res://recursos/jogos/enchente/componentes/Obstaculo.tscn')
 
 var _tipos_de_obstaculos := {}
-var _tipos_de_itens := {}
 var _grupos := {}
 var _texturas := {}
 
-func _init(tipos_de_obstaculos: Dictionary, tipos_de_itens: Dictionary) -> void:
+func _init(tipos_de_obstaculos: Dictionary) -> void:
 	_tipos_de_obstaculos = tipos_de_obstaculos
-	_tipos_de_itens = tipos_de_itens
 
 func criar(id_obstaculo: String, posicao: Vector3) -> Obstaculo:
 	var obstaculo := OBSTACULO.instance() as Obstaculo
@@ -31,7 +29,6 @@ func _informacoes_obstaculo(id_obstaculo: String) -> Dictionary:
 
 	if int(tipo) == 8:
 		assert(id_obstaculo.length() >= 2, 'Não é possível referenciar um item sem um tipo do item e id do item (8xy)')
-		assert(_tipos_de_itens.has(id_obstaculo[1]), 'Tipo de item inexistente')
 		tipo = id_obstaculo.left(2)
 
 	assert(_tipos_de_obstaculos.has(tipo), 'Tipo de obstaculo inexistente')
