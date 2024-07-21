@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=1]
+[ext_resource path="res://elementos/imagem/imgfeed/Group 8.png" type="Texture" id=2]
+[ext_resource path="res://elementos/imagem/imgfeed/Group 15.png" type="Texture" id=3]
+[ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/UiRedonda2.tres" type="StyleBox" id=4]
+[ext_resource path="res://elementos/imagem/imgfeed/Group 7.png" type="Texture" id=5]
+[ext_resource path="res://elementos/texto/NoticiaText-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/ManuseadorDaDescricaoAvancada.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Subindo"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("PainelDescricao:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="PainelSaibaMais" type="CanvasLayer"]
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.501
+anchor_top = 0.637
+anchor_right = 0.501
+anchor_bottom = 0.637
+margin_left = -415.72
+margin_top = -812.36
+margin_right = 415.28
+margin_bottom = 539.64
+color = Color( 0.247059, 0.717647, 0.239216, 1 )
+
+[node name="PainelDescricao" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.609
+anchor_right = 0.5
+anchor_bottom = 0.609
+margin_left = -337.0
+margin_top = -494.52
+margin_right = 337.0
+margin_bottom = 493.48
+rect_pivot_offset = Vector2( 413, -103 )
+theme = ExtResource( 1 )
+custom_styles/panel = ExtResource( 4 )
+
+[node name="SaibaMenos" type="TextureButton" parent="PainelDescricao"]
+anchor_left = 0.779
+anchor_top = 0.953
+anchor_right = 0.779
+anchor_bottom = 0.953
+margin_left = -112.046
+margin_top = -26.5645
+margin_right = 111.954
+margin_bottom = 26.4359
+mouse_filter = 1
+toggle_mode = true
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Jogar" type="TextureButton" parent="PainelDescricao"]
+anchor_left = 0.47
+anchor_top = 0.954
+anchor_right = 0.47
+anchor_bottom = 0.954
+margin_left = -77.7803
+margin_top = -27.5524
+margin_right = 78.2197
+margin_bottom = 27.4476
+mouse_filter = 1
+toggle_mode = true
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TweenJogar" type="Tween" parent="PainelDescricao/Jogar"]
+
+[node name="Desc" type="Label" parent="PainelDescricao"]
+anchor_left = 0.5
+anchor_top = 0.612
+anchor_right = 0.5
+anchor_bottom = 0.612
+margin_left = -321.0
+margin_top = -237.656
+margin_right = 323.0
+margin_bottom = 286.344
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Coloque Uma Descrição avancada Aqui"
+autowrap = true
+max_lines_visible = 10
+
+[node name="ImgCard" type="TextureRect" parent="PainelDescricao"]
+anchor_left = 0.5
+anchor_top = 0.174
+anchor_right = 0.5
+anchor_bottom = 0.174
+margin_left = -337.0
+margin_top = -179.912
+margin_right = 337.0
+margin_bottom = 180.088
+theme = ExtResource( 1 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Subindo"
+playback_speed = 2.0
+anims/Subindo = SubResource( 2 )
+
+[connection signal="pressed" from="PainelDescricao/SaibaMenos" to="." method="_on_SaibaMenos_pressed"]
+[connection signal="pressed" from="PainelDescricao/Jogar" to="." method="_on_Jogar_pressed"]
+[connection signal="tween_completed" from="PainelDescricao/Jogar/TweenJogar" to="." method="_on_TweenJogar_tween_completed"]
