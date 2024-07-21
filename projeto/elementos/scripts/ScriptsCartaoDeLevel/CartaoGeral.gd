@@ -7,12 +7,12 @@ export var Imagem_card: StreamTexture
 export var E_jogavel: bool
 export var Cena_do_jogo: String
 
-onready var card_img: TextureRect = $ImgCard
+onready var card_img: TextureRect = $PainelPrincipal/ImgCard
 onready var titulo_texto: RichTextLabel = $PainelPrincipal/Titulo
 onready var desc_basica: Label = $PainelPrincipal/Desc
 onready var animacao_coracao: AnimationPlayer = $AnimationCoracao
 onready var botao_saibaMais = $PainelPrincipal/SaibaMais
-onready var painelSaibaMais = load("res://recursos/feed_de_noticias/PainelSaibaMais.tscn")
+onready var painelSaibaMais = preload("res://recursos/feed_de_noticias/PainelSaibaMais.tscn")
 
 var saiba_mais_apertado: bool = false
 var coracao_apertado: bool = false
@@ -64,7 +64,7 @@ func _on_SaibaMais_pressed():
 func _acao_SaibaMais():
 	var instanciaSaibaMais = _atualizador_de_card()
 	if saiba_mais_apertado:
-		get_tree().get_root().add_child(instanciaSaibaMais)
+		add_child(instanciaSaibaMais)
 
 func _on_coracaobotao_pressed():
 	_tocar_animacao_coracao()
