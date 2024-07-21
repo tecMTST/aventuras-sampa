@@ -1,0 +1,60 @@
+{
+  "tipo_de_obstaculo": {
+    "1": "terrestre",
+    "2": "aereo",
+    "3": "terrestre-grande",
+    "4": "aereo-grande",
+    "5": "ataque-terrestre",
+    "6": "ataque-aereo",
+    "7": "rampa",
+    "80": "item-coletavel",
+    "81": "item-vida",
+    "82": "item-invencibilidade"
+  },
+  "tipo_de_item": {
+    "0": "coletavel",
+    "1": "vida",
+    "2": "invencibilidade"
+  },
+  "velocidade": {
+    "0": 1.0,
+    "60": 1.0,
+    "120": 1.0,
+    "180": 1.0,
+    "240": 1.0
+  },
+  "modulos": [
+    {
+      "tempo": 1,
+      "chance": 1,
+      "grupo": 0,
+      "obstaculos": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          70,
+          71,
+          72
+        ],
+        [
+          0,
+          80,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ]
+    }
+  ]
+}
