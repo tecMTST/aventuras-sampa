@@ -164,12 +164,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 [node name="CriadorPredios" parent="Paredes" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -72.887 )
 modelos = [ "res://recursos/jogos/enchente/componentes/predio1.tscn", "res://recursos/jogos/enchente/componentes/predio2.tscn" ]
-deslocamento_vertical = -1.0
+deslocamento_vertical = -2.0
 
 [node name="CriadorPredios2" parent="Paredes" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -72.887 )
 modelos = [ "res://recursos/jogos/enchente/componentes/predio1.tscn", "res://recursos/jogos/enchente/componentes/predio2.tscn" ]
-deslocamento_vertical = -1.0
+deslocamento_vertical = -2.0
 inverter_x = true
 
 [node name="Faixas" type="Spatial" parent="."]
