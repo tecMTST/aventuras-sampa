@@ -15,46 +15,52 @@ func _init(tipos_de_obstaculos: Dictionary, tipos_de_itens: Dictionary) -> void:
 func criar(id_obstaculo: String, posicao: Vector3) -> Obstaculo:
 	var obstaculo := OBSTACULO.instance() as Obstaculo
 
-	var obsctaculo_info = {
-		"id": id_obstaculo,
-		"tipo": id_obstaculo.left(1),
-		"item": false,
-	}
-
-	obsctaculo_info['grupos'] = _identificar_grupos(id_obstaculo)
-	if obsctaculo_info['grupos'].find('item') != - 1:
-		obsctaculo_info['item'] = true
-
-	for grupo in obsctaculo_info['grupos']:
+	var informacoes_obstaculo = _informacoes_obstaculo(id_obstaculo)
+	for grupo in informacoes_obstaculo['grupos']:
 		obstaculo.add_to_group(grupo)
+	if informacoes_obstaculo['item'] or informacoes_obstaculo['grupos'].has('rampa'):
+		obstaculo.remove_from_group('obstaculo')
 
 	obstaculo.position = posicao
-	obstaculo.textura = _buscar_textura(obsctaculo_info)
+	obstaculo.textura = _buscar_textura(informacoes_obstaculo)
 
 	return obstaculo
 
-func _identificar_grupos(id_obstaculo: String) -> PoolStringArray:
-	if _grupos.has(id_obstaculo):
-		return _grupos.get(id_obstaculo)
+func _informacoes_obstaculo(id_obstaculo: String) -> Dictionary:
+	var tipo = id_obstaculo.left(1)
+
+	if int(tipo) == 8:
+		assert(id_obstaculo.length() >= 2, 'Não é possível referenciar um item sem um tipo do item e id do item (8xy)')
+		assert(_tipos_de_itens.has(id_obstaculo[1]), 'Tipo de item inexistente')
+		tipo = id_obstaculo.left(2)
+
+	assert(_tipos_de_obstaculos.has(tipo), 'Tipo de obstaculo inexistente')
+
+	var info = {
+		"id": id_obstaculo,
+		"tipo": tipo,
+		"item": int(tipo) >= 80,
+	}
+
+	info['grupos'] = _identificar_grupos(info)
+
+	return info
+
+func _identificar_grupos(info: Dictionary) -> PoolStringArray:
+	if _grupos.has(info['id']):
+		return _grupos.get(info['id'])
 
 	var grupos := PoolStringArray()
+	var grupo = _tipos_de_obstaculos.get(info['tipo'])
+	# Garante que itens e obstaculos sejam categoriazados pelos seu subtipo
+	if '-' in grupo:
+		for g in grupo.split('-'):
+			grupos.append(g)
+	else:
+		grupos.append(grupo)
 
-	var referencia = id_obstaculo.left(1)
-	if not _tipos_de_obstaculos.has(referencia):
-		grupos.append('generico')
-		_grupos[id_obstaculo] = grupos
-		return grupos
-
-	var grupo = _tipos_de_obstaculos.get(referencia)
-	grupos.append(grupo)
-
-	if grupo == 'item':
-		print(id_obstaculo.length())
-		assert(id_obstaculo.length() >= 2, 'Não é possível referenciar um item sem um tipo')
-		var item = _tipos_de_itens.get(id_obstaculo[1])
-		grupos.append(item)
-
-	_grupos[id_obstaculo] = grupos
+	_grupos[info['id']] = grupos
+	print('Grupos do obstaculo %s: %s' % [info['id'], grupos])
 	return grupos
 
 func _buscar_textura(obsctaculo_info: Dictionary) -> Texture:
@@ -86,6 +92,15 @@ func _carregar_texturas(obsctaculo_info: Dictionary) -> Dictionary:
 	var nome_arquivo: String = diretorio_texturas.get_next()
 	while nome_arquivo != "":
 		var id = nome_arquivo.left(nome_arquivo.find('-'))
+		# Garante que texturas de itens tenham somente imagens que correspondam ao tipo de item
+		if obsctaculo_info['item'] and not id.begins_with(obsctaculo_info['tipo']):
+			nome_arquivo = diretorio_texturas.get_next()
+			continue
+
+		# Workaround para ignorar a extensão .import ao listar o diretorio de texturas
+		if nome_arquivo.ends_with('.import'):
+			nome_arquivo = nome_arquivo.replace('.import', '')
+
 		if nome_arquivo.get_extension() in ['png', 'jpg', 'webp']:
 			# Exemplo: .../obstaculos/1/10-saco-lixo.png
 			texturas_carregadas[id] = load('%s/%s' % [caminho, nome_arquivo])

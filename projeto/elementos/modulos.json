@@ -7,37 +7,53 @@
     "5": "ataque-terrestre",
     "6": "ataque-aereo",
     "7": "rampa",
-    "8": "item"
+    "80": "item-coletavel",
+    "81": "item-vida",
+    "82": "item-invencibilidade"
   },
   "tipo_de_item": {
     "0": "coletavel",
     "1": "vida",
     "2": "invencibilidade"
   },
-  "velocidade": {"30": 100, "120": 200, "300": 250},
+  "velocidade": {
+    "0": 1.0,
+    "60": 1.0,
+    "120": 1.0,
+    "180": 1.0,
+    "240": 1.0
+  },
   "modulos": [
     {
-      "tempo": 10,
-      "chance": 0.3,
+      "tempo": 1,
+      "chance": 1,
       "grupo": 0,
       "obstaculos": [
-        [0, 0, 11],
-        [1, 0, 0],
-        [10, 0, 0],
-        [0, 0, 1],
-        [0, 80, 0]
-      ]
-    },
-    {
-      "tempo": 0,
-      "chance": 0.2,
-      "grupo": 0,
-      "obstaculos": [
-        [0, 0, 1],
-        [0, 2, 0],
-        [0, 2, 0],
-        [0, 0, 0],
-        [1, 1, 0]
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          70,
+          71,
+          72
+        ],
+        [
+          0,
+          80,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ]
       ]
     }
   ]

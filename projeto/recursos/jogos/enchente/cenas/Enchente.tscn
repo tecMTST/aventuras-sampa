@@ -185,7 +185,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.7269 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22.727 )
 
 [node name="ControladorDeObstaculos" parent="." instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -70 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -70 )
 faixas = NodePath("../Faixas")
 
 [node name="playerLane3D" parent="." instance=ExtResource( 2 )]
