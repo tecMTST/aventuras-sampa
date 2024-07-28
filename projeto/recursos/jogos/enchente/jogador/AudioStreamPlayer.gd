@@ -20,12 +20,12 @@ var rng = RandomNumberGenerator.new()
 #Gatilho de troca de faixa:
 func _on_ControleFaixa3D_iniciou_movimento(_direcao, _alvo) -> void:
 	stop()
-	stream = clipesSFX.trocaFaixa[rng.randf_range(0, clipesSFX.trocaFaixa.size())]
+	stream = clipesSFX.trocaFaixa[rng.randi_range(0, clipesSFX.trocaFaixa.size() -1)]
 	play()
 
 #Gatilho de vida alterada:
 func _on_Vida_vida_alterada(alteracao: Vida.VidaAlterada) -> void:
 	if !alteracao.cura:
 		stop()
-		stream = clipesSFX.dano[rng.randf_range(0, clipesSFX.dano.size())]
+		stream = clipesSFX.dano[rng.randi_range(0, clipesSFX.dano.size() -1)]
 		play()

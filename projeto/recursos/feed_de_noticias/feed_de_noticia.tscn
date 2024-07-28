@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/cartao_de_noticia.tscn" type="PackedScene" id=1]
 [ext_resource path="res://elementos/scripts/ScriptsCartaoDeLevel/VBoxResizer.gd" type="Script" id=2]
 [ext_resource path="res://elementos/imagem/imgfeed/Group 14.png" type="Texture" id=3]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=4]
 [ext_resource path="res://elementos/audio/bgm/hub/hub-menu.wav" type="AudioStream" id=5]
+[ext_resource path="res://elementos/audio/sfx/hub/hub-slide.wav" type="AudioStream" id=6]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends AudioStreamPlayer
+
+func _on_ContainerDeScroll_scroll_started() -> void:
+	play()
+
+func _on_ContainerDeScroll_scroll_ended() -> void:
+	stop()
+"
 
 [node name="FeedDeNoticias" type="Control"]
 anchor_left = 0.5
@@ -115,3 +126,11 @@ color = Color( 1, 0.52549, 0.52549, 1 )
 stream = ExtResource( 5 )
 autoplay = true
 bus = "BGM Track"
+
+[node name="AudioStreamInteracao" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX Menu"
+script = SubResource( 1 )
+
+[connection signal="scroll_ended" from="ContainerDeScroll" to="AudioStreamInteracao" method="_on_ContainerDeScroll_scroll_ended"]
+[connection signal="scroll_started" from="ContainerDeScroll" to="AudioStreamInteracao" method="_on_ContainerDeScroll_scroll_started"]
