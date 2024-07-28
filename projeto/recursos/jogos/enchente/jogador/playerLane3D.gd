@@ -13,6 +13,8 @@ onready var menuOpcoes = preload("res://recursos/jogos/enchente/menu_de_opcoes/M
 var imune = false
 var imune_dano = false
 var imunidade_time : float = 0
+var abaixado = false
+var pulando = false
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
@@ -26,7 +28,10 @@ func _on_ControladorArrasta_arrastado(chave):
 		controle_faixa_3d.mover_esquerda()
 
 func _on_AreaDano_body_entered(body: Node) -> void:
-	if body.is_in_group("obstaculo") and not imune:
+	if body.is_in_group("obstaculo") and not imune and not pulando:
+		vida.receber_dano(1.0)
+		imunidade(true, tempo_imunidade_dano)
+	if body.is_in_group("obstaculo_alto") and not imune and not abaixado:
 		vida.receber_dano(1.0)
 		imunidade(true, tempo_imunidade_dano)
 	if body.is_in_group("powerup") and not imune:
@@ -64,3 +69,20 @@ func _on_TimerImunidade_timeout():
 func pause():
 	var instance = menuOpcoes.instance()
 	add_child(instance)
+
+func _on_ControleFaixa3D_pulou():
+	pulando = true
+
+func _on_ControleFaixa3D_caindo():
+	pass
+	
+func _on_ControleFaixa3D_no_chao():
+	pulando = false	
+	
+func _on_ControleFaixa3D_abaixou():
+	sprite.position.y = sprite.position.y - 1
+	abaixado = true
+
+func _on_ControleFaixa3D_levantou():
+	sprite.position.y = sprite.position.y + 1
+	abaixado = false
