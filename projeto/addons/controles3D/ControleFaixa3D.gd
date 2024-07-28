@@ -6,6 +6,8 @@ signal terminou_movimento()
 signal abaixou()
 signal levantou()
 signal pulou()
+signal caindo()
+signal no_chao()
 
 #enums
 enum modos_orientacao { x, y, z, plano_xy, plano_xz, plano_yz, todos }
@@ -29,9 +31,16 @@ export var controle_abaixar = "down"
 
 #velocidade
 export var velocidade_movimento = 10.0
+export var velocidade_pulo = 7.0
+export var velocidade_queda = 10.0
 export var aceleracao = 2.0
 export var desaceleracao = 2.0
-export var forca_pulo = 50
+export var aceleracao_pulo = 2.5
+export var desaceleracao_pulo = 5.0
+export var aceleracao_queda = 1.5
+export var desaceleracao_queda = 2.5
+export var altura_pulo = 3
+export var tempo_abaixado = 1.0
 
 #Faixas
 export(Array, Vector3) var faixas = []
@@ -41,6 +50,7 @@ export(int) var posicao_inicial = 0
 onready var parent = get_parent() as KinematicBody
 
 #Váriaveis internas
+var timerAbaixado : Timer = Timer.new()
 var alvo = Vector3()
 var posicao_atual = 0
 var alvo_definido = false
@@ -49,9 +59,15 @@ var ultima_distancia = DISTANCIA_MAXIMA
 var em_movimento = false
 var abaixado = false
 var pulando = false
+var caindo = false
+var base_y = 0.0;
 
 func _ready():
 	posicao_atual = posicao_inicial
+	base_y = parent.global_position.y
+	timerAbaixado.wait_time = tempo_abaixado
+	timerAbaixado.connect("timeout", self, "levantar")
+	add_child(timerAbaixado)
 	_definir_alvo();
 
 func _input(_event):
@@ -64,10 +80,8 @@ func _input(_event):
 		if Input.is_action_just_pressed("up"):
 			pular()
 	if ativo and controle_abaixar != "":
-		if Input.is_action_pressed("down"):
-			abaixar()
-		if Input.is_action_just_released("down"):
-			levantar()
+		if Input.is_action_just_pressed("down"):
+			abaixar()		
 	
 func _process(delta):
 	if ativo and faixas.size() > 0:
@@ -75,7 +89,7 @@ func _process(delta):
 		parent.move_and_slide(velocidade, Vector3.UP)
 
 func mover_direita():
-	if not em_movimento:
+	if not em_movimento and not pulando and not caindo:
 		_destravar_posicao()
 		ultima_distancia = DISTANCIA_MAXIMA
 		if posicao_atual < faixas.size() - 1:
@@ -85,7 +99,7 @@ func mover_direita():
 		emit_signal('iniciou_movimento', 'direita', alvo)
 
 func mover_esquerda():
-	if not em_movimento:
+	if not em_movimento and not pulando and not caindo:
 		_destravar_posicao()
 		ultima_distancia = DISTANCIA_MAXIMA
 		if posicao_atual > 0:
@@ -95,19 +109,34 @@ func mover_esquerda():
 		emit_signal('iniciou_movimento', 'esquerda', alvo)
 		
 func abaixar():
-	if not em_movimento and not abaixado:
+	if not em_movimento and not abaixado and not pulando and not caindo:
+		abaixado = true
+		timerAbaixado.start()
 		emit_signal('abaixou')
 
 func levantar():
-	if not em_movimento and abaixado:
-		emit_signal('levantou')
+	timerAbaixado.stop()
+	abaixado = false
+	emit_signal('levantou')
 		
 func pular():
-	if not em_movimento and not pulando:
+	if not em_movimento and not pulando and not caindo and not abaixado:
+		_destravar_posicao()
+		alvo = Vector3(faixas[posicao_atual].x, faixas[posicao_atual].y + altura_pulo, parent.global_position.z)		
+		ultima_distancia = DISTANCIA_MAXIMA
 		pulando = true
-		
+		alvo_definido = true
 		emit_signal('pulou')
-
+				
+func _cair():
+	if not em_movimento and pulando:
+		ultima_distancia = DISTANCIA_MAXIMA
+		alvo = Vector3(faixas[posicao_atual].x, faixas[posicao_atual].y, parent.global_position.z)	
+		alvo_definido = true
+		pulando = false
+		caindo = true
+		emit_signal('caindo')
+	
 func _definir_alvo():
 	if faixas.size() > 0:
 		if orientacao == modos_orientacao.x:
@@ -129,20 +158,42 @@ func _definir_alvo():
 func _processar() -> Vector3:
 	if not alvo_definido:		
 		_definir_alvo()
+	
+	var velocidade_atual = velocidade_movimento
+	var aceleracao_atual = aceleracao
+	var desaceleracao_atual = desaceleracao
+	if pulando:
+		velocidade_atual = velocidade_pulo
+		aceleracao_atual = aceleracao_pulo
+		desaceleracao_atual = desaceleracao_pulo
+	elif caindo:
+		velocidade_atual = velocidade_queda
+		aceleracao_atual = aceleracao_queda
+		desaceleracao_atual = desaceleracao_queda
+		
+	
 	var distancia = parent.position.distance_to(alvo)
 	if faixas.size() > 0 and distancia > DISTANCIA_MINIMA and distancia < ultima_distancia:
-		velocidade.y = move_toward(velocidade.y, (parent.position.direction_to(alvo).y * velocidade_movimento), aceleracao)
-		velocidade.x = move_toward(velocidade.x, (parent.position.direction_to(alvo).x * velocidade_movimento), aceleracao)
-		velocidade.z = move_toward(velocidade.z, (parent.position.direction_to(alvo).z * velocidade_movimento), aceleracao)
+		velocidade.y = move_toward(velocidade.y, (parent.position.direction_to(alvo).y * velocidade_atual), aceleracao_atual)
+		velocidade.x = move_toward(velocidade.x, (parent.position.direction_to(alvo).x * velocidade_atual), aceleracao_atual)
+		velocidade.z = move_toward(velocidade.z, (parent.position.direction_to(alvo).z * velocidade_atual), aceleracao_atual)
 	elif faixas.size() > 0 and distancia <= DISTANCIA_MINIMA and distancia > DISTANCIA_PARADA and distancia < ultima_distancia:
-		velocidade.y = move_toward(velocidade.y, 0, desaceleracao)
-		velocidade.x = move_toward(velocidade.x, 0, desaceleracao)
-		velocidade.z = move_toward(velocidade.z, 0, desaceleracao)
+		velocidade.y = move_toward(velocidade.y, 0, desaceleracao_atual)
+		velocidade.x = move_toward(velocidade.x, 0, desaceleracao_atual)
+		velocidade.z = move_toward(velocidade.z, 0, desaceleracao_atual)	
+
 	else:
 		velocidade = Vector3.ZERO
 		em_movimento = false
-		_travar_posicao()
-		emit_signal('terminou_movimento')
+		if pulando and not caindo:
+			_cair();
+			return velocidade
+		else:
+			if caindo:
+				emit_signal('no_chao')
+			caindo = false
+			emit_signal('terminou_movimento')
+			_travar_posicao()		
 	ultima_distancia = distancia
 	return velocidade
 	
