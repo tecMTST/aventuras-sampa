@@ -2,7 +2,7 @@
 name: Componente
 about: Modelo de novo componente
 title: Componente
-labels: componente
+labels: ''
 assignees: ''
 
 ---
