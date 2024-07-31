@@ -1,5 +1,5 @@
 ---
-name: bug
+name: Bug ou defeito
 about: Modelo de issue para bugs
 title: 'BUG: ...'
 labels: bug
