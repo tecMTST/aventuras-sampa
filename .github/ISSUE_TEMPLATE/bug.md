@@ -33,6 +33,7 @@ O teste foi realizado nestas plataformas:
 * [ ] Windows	/ Firefox
 * [ ] Windows	/ Microsoft Edge
 * [ ] Linux	/ Google Chrome ou Chromium
+* [ ] Linux / Firefox
 * [ ] Android	/ Firefox
 * [ ] Android /	Google Chrome
 * [ ] Android	/ apk nativo
