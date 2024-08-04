@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=1]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/noticia.png" type="Texture" id=2]
@@ -15,33 +15,120 @@
 size = 22
 font_data = ExtResource( 6 )
 
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fundo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PainelDescricao:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 23, 1470 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Fundo:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 360, 3 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Subindo"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fundo:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -192, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PainelDescricao:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 25, 1470 ), Vector2( 25, 277 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Fundo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="PainelSaibaMais" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -360.0
+margin_top = -640.0
+margin_right = 360.0
+margin_bottom = 640.0
 script = ExtResource( 7 )
 
 [node name="PainelSaibaMais" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="PainelSaibaMais"]
-anchor_left = 0.501
-anchor_top = 0.637
-anchor_right = 0.501
-anchor_bottom = 0.637
-margin_left = -415.72
-margin_top = -812.36
-margin_right = 415.28
-margin_bottom = 539.64
+[node name="Fundo" type="ColorRect" parent="PainelSaibaMais"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.583
+anchor_right = 0.5
+anchor_bottom = 0.583
+margin_left = 360.0
+margin_top = 3.0
+margin_right = 1504.0
+margin_bottom = 1495.0
 color = Color( 0.247059, 0.717647, 0.239216, 1 )
 
+[node name="TweenFundo" type="Tween" parent="PainelSaibaMais/Fundo"]
+
 [node name="PainelDescricao" type="TextureRect" parent="PainelSaibaMais"]
-anchor_left = 0.5
+anchor_left = 0.503
 anchor_top = 0.606
-anchor_right = 0.5
+anchor_right = 0.503
 anchor_bottom = 0.606
-margin_left = -337.0
-margin_top = -498.68
-margin_right = 337.0
-margin_bottom = 499.32
+margin_left = 23.0
+margin_top = 1470.0
+margin_right = 697.0
+margin_bottom = 2468.0
 theme = ExtResource( 1 )
 texture = ExtResource( 2 )
 expand = true
@@ -132,9 +219,14 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="TweenPainel" type="Tween" parent="PainelSaibaMais/PainelDescricao"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PainelSaibaMais"]
+anims/RESET = SubResource( 3 )
+anims/Subindo = SubResource( 2 )
+
+[connection signal="tween_completed" from="PainelSaibaMais/Fundo/TweenFundo" to="." method="_on_TweenFundo_tween_completed"]
 [connection signal="button_up" from="PainelSaibaMais/PainelDescricao/SaibaMenos" to="." method="_on_SaibaMenos_button_up"]
-[connection signal="toggled" from="PainelSaibaMais/PainelDescricao/SaibaMenos" to="." method="_on_SaibaMenos_toggled"]
-[connection signal="tween_completed" from="PainelSaibaMais/PainelDescricao/SaibaMenos/TweenSaibaMenos" to="." method="_on_TweenSaibaMenos_tween_completed"]
 [connection signal="button_up" from="PainelSaibaMais/PainelDescricao/Jogar" to="." method="_on_Jogar_button_up"]
 [connection signal="toggled" from="PainelSaibaMais/PainelDescricao/Jogar" to="." method="_on_Jogar_toggled"]
 [connection signal="tween_completed" from="PainelSaibaMais/PainelDescricao/Jogar/TweenJogar" to="." method="_on_TweenJogar_tween_completed"]

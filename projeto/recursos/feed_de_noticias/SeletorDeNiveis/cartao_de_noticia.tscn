@@ -249,6 +249,8 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="TweenCoracao" type="Tween" parent="PainelPrincipal/Coracao"]
+
 [node name="Chat" type="Sprite" parent="PainelPrincipal"]
 position = Vector2( 127, 656.999 )
 scale = Vector2( 1.90712, 1.90712 )
@@ -324,4 +326,3 @@ script = ExtResource( 4 )
 [connection signal="pressed" from="PainelPrincipal/Coracao/coracaobotao" to="." method="_on_coracaobotao_pressed"]
 [connection signal="pressed" from="PainelPrincipal/Coracao/coracaobotao" to="AudioStreamCartao" method="_on_coracaobotao_pressed"]
 [connection signal="pressed" from="PainelPrincipal/SaibaMais" to="." method="_on_SaibaMais_pressed"]
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
