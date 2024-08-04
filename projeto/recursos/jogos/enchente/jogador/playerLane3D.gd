@@ -41,29 +41,29 @@ func _on_AreaDano_body_entered(body: Node) -> void:
 
 func _on_Vida_vida_acabou() -> void:
 	TrocadorDeCenas.trocar_cena('res://recursos/feed_de_noticias/feed_de_noticia.tscn')
-	
+
 func imunidade(dano : bool, tempo : float):
 	imunidade_time = tempo
 	imune_dano = dano
 	imune = true
 	timer_imunidade.start()
-	
+
 func _on_TimerImunidade_timeout():
 	if imune_dano:
 		sprite.visible = not sprite.visible
 	else:
 		imunidade_modulate = not imunidade_modulate
-		if imunidade_modulate:			
-			sprite.modulate = Color (1.5, 1.5, 1)	
-		else: 
-			sprite.modulate = Color (1, 1, 1)	
+		if imunidade_modulate:
+			sprite.modulate = Color (1.5, 1.5, 1)
+		else:
+			sprite.modulate = Color (1, 1, 1)
 	imunidade_time = imunidade_time - timer_imunidade.wait_time
 	if imunidade_time <= 0:
 		sprite.visible = true
 		imune = false
 		imune_dano = false
 		imunidade_modulate = false
-		sprite.modulate = Color (1, 1, 1)	
+		sprite.modulate = Color (1, 1, 1)
 		timer_imunidade.stop()
 
 func pause():
@@ -75,10 +75,10 @@ func _on_ControleFaixa3D_pulou():
 
 func _on_ControleFaixa3D_caindo():
 	pass
-	
+
 func _on_ControleFaixa3D_no_chao():
-	pulando = false	
-	
+	pulando = false
+
 func _on_ControleFaixa3D_abaixou():
 	sprite.position.y = sprite.position.y - 1
 	abaixado = true

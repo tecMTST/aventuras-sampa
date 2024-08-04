@@ -55,7 +55,7 @@ func _tocar_animacao_coracao():
 
 func _on_SaibaMais_pressed():
 	var botao_tween = $Tween
-	
+
 	if not saiba_mais_apertado:
 		botao_tween.interpolate_property(botao_saibaMais, "rect_scale", Vector2(1, 1), Vector2(1.1, 1.1), 0.1, Tween.TRANS_ELASTIC)
 		botao_tween.interpolate_property(botao_saibaMais, "rect_scale", Vector2(1.1, 1.1), Vector2(1, 1), 0.1, Tween.TRANS_ELASTIC)

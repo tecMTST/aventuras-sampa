@@ -81,8 +81,8 @@ func _input(_event):
 			pular()
 	if ativo and controle_abaixar != "":
 		if Input.is_action_just_pressed("down"):
-			abaixar()		
-	
+			abaixar()
+
 func _process(delta):
 	if ativo and faixas.size() > 0:
 		_processar()
@@ -107,7 +107,7 @@ func mover_esquerda():
 			_definir_alvo()
 		em_movimento = true
 		emit_signal('iniciou_movimento', 'esquerda', alvo)
-		
+
 func abaixar():
 	if not em_movimento and not abaixado and not pulando and not caindo:
 		abaixado = true
@@ -118,25 +118,25 @@ func levantar():
 	timerAbaixado.stop()
 	abaixado = false
 	emit_signal('levantou')
-		
+
 func pular():
 	if not em_movimento and not pulando and not caindo and not abaixado:
 		_destravar_posicao()
-		alvo = Vector3(faixas[posicao_atual].x, faixas[posicao_atual].y + altura_pulo, parent.global_position.z)		
+		alvo = Vector3(faixas[posicao_atual].x, faixas[posicao_atual].y + altura_pulo, parent.global_position.z)
 		ultima_distancia = DISTANCIA_MAXIMA
 		pulando = true
 		alvo_definido = true
 		emit_signal('pulou')
-				
+
 func _cair():
 	if not em_movimento and pulando:
 		ultima_distancia = DISTANCIA_MAXIMA
-		alvo = Vector3(faixas[posicao_atual].x, faixas[posicao_atual].y, parent.global_position.z)	
+		alvo = Vector3(faixas[posicao_atual].x, faixas[posicao_atual].y, parent.global_position.z)
 		alvo_definido = true
 		pulando = false
 		caindo = true
 		emit_signal('caindo')
-	
+
 func _definir_alvo():
 	if faixas.size() > 0:
 		if orientacao == modos_orientacao.x:
@@ -156,9 +156,9 @@ func _definir_alvo():
 		alvo_definido = true
 
 func _processar() -> Vector3:
-	if not alvo_definido:		
+	if not alvo_definido:
 		_definir_alvo()
-	
+
 	var velocidade_atual = velocidade_movimento
 	var aceleracao_atual = aceleracao
 	var desaceleracao_atual = desaceleracao
@@ -170,8 +170,8 @@ func _processar() -> Vector3:
 		velocidade_atual = velocidade_queda
 		aceleracao_atual = aceleracao_queda
 		desaceleracao_atual = desaceleracao_queda
-		
-	
+
+
 	var distancia = parent.position.distance_to(alvo)
 	if faixas.size() > 0 and distancia > DISTANCIA_MINIMA and distancia < ultima_distancia:
 		velocidade.y = move_toward(velocidade.y, (parent.position.direction_to(alvo).y * velocidade_atual), aceleracao_atual)
@@ -180,7 +180,7 @@ func _processar() -> Vector3:
 	elif faixas.size() > 0 and distancia <= DISTANCIA_MINIMA and distancia > DISTANCIA_PARADA and distancia < ultima_distancia:
 		velocidade.y = move_toward(velocidade.y, 0, desaceleracao_atual)
 		velocidade.x = move_toward(velocidade.x, 0, desaceleracao_atual)
-		velocidade.z = move_toward(velocidade.z, 0, desaceleracao_atual)	
+		velocidade.z = move_toward(velocidade.z, 0, desaceleracao_atual)
 
 	else:
 		velocidade = Vector3.ZERO
@@ -193,35 +193,35 @@ func _processar() -> Vector3:
 				emit_signal('no_chao')
 			caindo = false
 			emit_signal('terminou_movimento')
-			_travar_posicao()		
+			_travar_posicao()
 	ultima_distancia = distancia
 	return velocidade
-	
+
 func _travar_posicao():
 	if orientacao == modos_orientacao.x:
 		parent.global_position.x = alvo.x
-		parent.axis_lock_motion_x = true		
+		parent.axis_lock_motion_x = true
 	elif orientacao == modos_orientacao.y:
 		parent.global_position.y = alvo.y
-		parent.axis_lock_motion_y = true		
+		parent.axis_lock_motion_y = true
 	elif orientacao == modos_orientacao.z:
 		parent.global_position.z = alvo.z
-		parent.axis_lock_motion_z = true		
+		parent.axis_lock_motion_z = true
 	elif orientacao == modos_orientacao.plano_xy:
 		parent.global_position.x = alvo.x
 		parent.global_position.y = alvo.y
 		parent.axis_lock_motion_x = true
-		parent.axis_lock_motion_y = true		
+		parent.axis_lock_motion_y = true
 	elif orientacao == modos_orientacao.plano_xz:
 		parent.global_position.x = alvo.x
 		parent.global_position.z = alvo.z
 		parent.axis_lock_motion_x = true
-		parent.axis_lock_motion_z = true	
+		parent.axis_lock_motion_z = true
 	elif orientacao == modos_orientacao.plano_yz:
 		parent.global_position.y = alvo.y
 		parent.global_position.z = alvo.z
 		parent.axis_lock_motion_y = true
-		parent.axis_lock_motion_z = true		
+		parent.axis_lock_motion_z = true
 	else:
 		parent.global_position.x = alvo.x
 		parent.global_position.y = alvo.y
@@ -229,24 +229,24 @@ func _travar_posicao():
 		parent.axis_lock_motion_x = true
 		parent.axis_lock_motion_y = true
 		parent.axis_lock_motion_z = true
-	
+
 func _destravar_posicao():
-	if orientacao == modos_orientacao.x:		
-		parent.axis_lock_motion_x = false		
-	elif orientacao == modos_orientacao.y:	
-		parent.axis_lock_motion_y = false		
-	elif orientacao == modos_orientacao.z:
-		parent.axis_lock_motion_z = false		
-	elif orientacao == modos_orientacao.plano_xy:		
+	if orientacao == modos_orientacao.x:
 		parent.axis_lock_motion_x = false
-		parent.axis_lock_motion_y = false		
+	elif orientacao == modos_orientacao.y:
+		parent.axis_lock_motion_y = false
+	elif orientacao == modos_orientacao.z:
+		parent.axis_lock_motion_z = false
+	elif orientacao == modos_orientacao.plano_xy:
+		parent.axis_lock_motion_x = false
+		parent.axis_lock_motion_y = false
 	elif orientacao == modos_orientacao.plano_xz:
 		parent.axis_lock_motion_x = false
-		parent.axis_lock_motion_z = false	
+		parent.axis_lock_motion_z = false
 	elif orientacao == modos_orientacao.plano_yz:
 		parent.axis_lock_motion_y = false
-		parent.axis_lock_motion_z = false		
-	else:		
+		parent.axis_lock_motion_z = false
+	else:
 		parent.axis_lock_motion_x = false
 		parent.axis_lock_motion_y = false
 		parent.axis_lock_motion_z = false
