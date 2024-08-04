@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/cartao_de_noticia.tscn" type="PackedScene" id=1]
 [ext_resource path="res://elementos/scripts/ScriptsCartaoDeLevel/VBoxResizer.gd" type="Script" id=2]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/cabecalho/cabeçalho_jornal.png" type="Texture" id=3]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=4]
-[ext_resource path="res://elementos/audio/bgm/hub/hub-menu.wav" type="AudioStream" id=5]
+[ext_resource path="res://elementos/audio/bgm/hub/hub-menu.mp3" type="AudioStream" id=5]
 [ext_resource path="res://elementos/audio/sfx/hub/hub-slide.wav" type="AudioStream" id=6]
 [ext_resource path="res://recursos/feed_de_noticias/menu_opcoes_feed/BotaoMenuFeed.tscn" type="PackedScene" id=7]
 
@@ -86,10 +86,6 @@ margin_top = 730.0
 margin_right = 720.0
 margin_bottom = 1456.0
 E_jogavel = false
-
-[node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-autoplay = true
 
 [node name="Logo" type="CanvasLayer" parent="."]
 layer = 2

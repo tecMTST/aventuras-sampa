@@ -3,14 +3,14 @@ extends AudioStreamPlayer
 #Array de clipes de audio:
 onready var clipesSFX = {
 	"trocaFaixa": [
-		preload ("res://elementos/audio/sfx/minigame-1/player-mov-1.wav"),
-		preload ("res://elementos/audio/sfx/minigame-1/player-mov-2.wav"),
-		preload ("res://elementos/audio/sfx/minigame-1/player-mov-3.wav"),
-		preload ("res://elementos/audio/sfx/minigame-1/player-mov-4.wav"),
+		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-mov1.mp3"),
+		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-mov2.mp3"),
+		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-mov3.mp3"),
+		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-mov4.mp3"),
 	],
 	"dano": [
-		preload ("res://elementos/audio/sfx/minigame-1/player-bolha-1.wav"),
-		preload ("res://elementos/audio/sfx/minigame-1/player-bolha-2.wav"),
+		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-bolha1.mp3"),
+		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-bolha2.mp3"),
 	]
 	}
 
