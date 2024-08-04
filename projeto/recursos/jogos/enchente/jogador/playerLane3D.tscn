@@ -85,6 +85,7 @@ playing = true
 [node name="ControleFaixa3D" type="Spatial" parent="."]
 script = ExtResource( 2 )
 orientacao = 3
+controle_pular = ""
 posicao_inicial = 1
 
 [node name="ControladorArrasta" parent="." instance=ExtResource( 4 )]

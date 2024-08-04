@@ -5,7 +5,7 @@
 [ext_resource path="res://elementos/shaders/enchente/agua_shader.tres" type="Shader" id=3]
 [ext_resource path="res://addons/sistema_vida/interface/vida_icones.tscn" type="PackedScene" id=4]
 [ext_resource path="res://recursos/jogos/enchente/componentes/CriadorDePredios.tscn" type="PackedScene" id=5]
-[ext_resource path="res://elementos/imagem/enchente/rosto-senhora.png" type="Texture" id=6]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/HUD_ingame/vida.png" type="Texture" id=6]
 [ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=7]
 [ext_resource path="res://elementos/scripts/ScriptsBackgroundCidadeSubindo/cidadeSubindo.gd" type="Script" id=8]
 [ext_resource path="res://elementos/modelos/skybox/skyboxNuvens.tscn" type="PackedScene" id=9]
@@ -173,7 +173,7 @@ deslocamento_vertical = -1.0
 inverter_x = true
 
 [node name="Faixas" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.248524 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406976, 0.248524 )
 
 [node name="Faixa1" type="Position3D" parent="Faixas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 22.727 )
