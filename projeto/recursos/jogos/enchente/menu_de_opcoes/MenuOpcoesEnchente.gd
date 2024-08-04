@@ -25,9 +25,9 @@ func _ready():
 
 	efeitosWheel.value = SingletonGlobal.volumeSFX
 	porcentagemEfeitosWheel.text = str(efeitosWheel.value) + '%'
-	
+
 	if SingletonGlobal.ativarBotoes == true:
-		controles.pressed = true 
+		controles.pressed = true
 	if SingletonGlobal.ativarBotoes == false:
 		controles.pressed = false
 
@@ -46,7 +46,7 @@ func _input(event):
 			SingletonGlobal.ativarBotoes = false
 		elif controlesForamApertado == true:
 			SingletonGlobal.ativarBotoes = true
-		
+
 		if facil.pressed and !medio.pressed and !dificil.pressed:
 			botao_dificuldade('facil')
 		elif !facil.pressed and medio.pressed and !dificil.pressed:
@@ -81,19 +81,19 @@ func botao_dificuldade(botaoPressionado):
 			dificuldadeAtual.pop_front()
 			dificuldadeAtual.append('facil')
 			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
-			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = facil.rect_position.x 
+			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = facil.rect_position.x
 			print(dificuldadeAtual)
 		'medio':
 			dificuldadeAtual.pop_front()
 			dificuldadeAtual.append('medio')
 			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
-			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = medio.rect_position.x 
+			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = medio.rect_position.x
 			print(dificuldadeAtual)
 		'dificil':
 			dificuldadeAtual.pop_front()
 			dificuldadeAtual.append('dificil')
 			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
-			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = dificil.rect_position.x 
+			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = dificil.rect_position.x
 			print(dificuldadeAtual)
 
 func _process(delta):

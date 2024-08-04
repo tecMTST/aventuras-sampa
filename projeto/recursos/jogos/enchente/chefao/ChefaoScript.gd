@@ -132,7 +132,7 @@ func loadJson(nomejson):
 	arquivo.close()
 
 func _auto_destruir():
-	bossendtween.interpolate_property(boss_sprite,  "translation", Vector3(0.069, 3.029, -7.625), Vector3(0.069, -6.971, -7.625), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	bossendtween.interpolate_property(boss_sprite,  "translation", Vector3(-0.079, 4.143, 6.825), Vector3(-0.079, -6.971, 6.825), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	yield(get_tree().create_timer(0.7), "timeout")
 	bossendtween.start()
 
