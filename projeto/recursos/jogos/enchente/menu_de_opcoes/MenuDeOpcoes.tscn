@@ -1,21 +1,24 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Hovered-1.png" type="Texture" id=1]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Menu.png" type="Texture" id=2]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_feed/Normal.png" type="Texture" id=1]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Menu.png" type="Texture" id=2]
 [ext_resource path="res://recursos/jogos/enchente/menu_de_opcoes/MenuOpcoesEnchente.gd" type="Script" id=3]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Normal.png" type="Texture" id=4]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Facil/Hovered_facil.png" type="Texture" id=4]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=5]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Hovered.png" type="Texture" id=6]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Pressed-1.png" type="Texture" id=7]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Pressed-2.png" type="Texture" id=8]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Unchecked.png" type="Texture" id=9]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Dificil/Normal_dificil.png" type="Texture" id=6]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Dificil/Hovered_dificil.png" type="Texture" id=7]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Medio/Normal_medio.png" type="Texture" id=8]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_feed/Pressed.png" type="Texture" id=9]
 [ext_resource path="res://elementos/texto/NoticiaText-Regular.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Checked.png" type="Texture" id=11]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Normal-4.png" type="Texture" id=12]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Normal-1.png" type="Texture" id=13]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Normal-2.png" type="Texture" id=14]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Normal-3.png" type="Texture" id=15]
-[ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Pressed.png" type="Texture" id=16]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Hovered.png" type="Texture" id=11]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Check/Checked.png" type="Texture" id=12]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Normal.png" type="Texture" id=13]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Check/Unchecked.png" type="Texture" id=14]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Pressed.png" type="Texture" id=15]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/DificuldadePressed.png" type="Texture" id=16]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_feed/Hovered.png" type="Texture" id=17]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Medio/Hovered_medio.png" type="Texture" id=18]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Facil/Normal_facil.png" type="Texture" id=19]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
@@ -106,9 +109,9 @@ anchor_top = 0.818386
 anchor_right = 0.467308
 anchor_bottom = 0.93722
 toggle_mode = true
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 6 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 11 )
 expand = true
 stretch_mode = 4
 __meta__ = {
@@ -121,9 +124,9 @@ anchor_top = 0.818386
 anchor_right = 0.919231
 anchor_bottom = 0.93722
 toggle_mode = true
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 1 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 17 )
 expand = true
 stretch_mode = 4
 __meta__ = {
@@ -136,8 +139,8 @@ anchor_top = 0.360987
 anchor_right = 0.844231
 anchor_bottom = 0.43722
 toggle_mode = true
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 11 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 12 )
 expand = true
 stretch_mode = 4
 __meta__ = {
@@ -150,7 +153,9 @@ anchor_top = 0.605382
 anchor_right = 0.344231
 anchor_bottom = 0.751122
 toggle_mode = true
-texture_normal = ExtResource( 13 )
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 4 )
 expand = true
 stretch_mode = 4
 __meta__ = {
@@ -163,7 +168,9 @@ anchor_top = 0.605382
 anchor_right = 0.596154
 anchor_bottom = 0.751122
 toggle_mode = true
-texture_normal = ExtResource( 14 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 18 )
 expand = true
 stretch_mode = 4
 __meta__ = {
@@ -176,7 +183,9 @@ anchor_top = 0.605382
 anchor_right = 0.85
 anchor_bottom = 0.751122
 toggle_mode = true
-texture_normal = ExtResource( 15 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
 expand = true
 stretch_mode = 4
 __meta__ = {

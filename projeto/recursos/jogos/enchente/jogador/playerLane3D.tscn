@@ -28,9 +28,7 @@ animations = [ {
 } ]
 
 [node name="playerLane3D" type="KinematicBody"]
-axis_lock_motion_y = true
 axis_lock_motion_z = true
-move_lock_y = true
 move_lock_z = true
 script = ExtResource( 3 )
 
@@ -46,6 +44,7 @@ playing = true
 
 [node name="ControleFaixa3D" type="Spatial" parent="."]
 script = ExtResource( 2 )
+orientacao = 3
 posicao_inicial = 1
 
 [node name="ControladorArrasta" parent="." instance=ExtResource( 4 )]
@@ -68,7 +67,12 @@ shape = SubResource( 1 )
 [node name="TimerImunidade" type="Timer" parent="."]
 wait_time = 0.2
 
+[connection signal="abaixou" from="ControleFaixa3D" to="." method="_on_ControleFaixa3D_abaixou"]
+[connection signal="caindo" from="ControleFaixa3D" to="." method="_on_ControleFaixa3D_caindo"]
 [connection signal="iniciou_movimento" from="ControleFaixa3D" to="AudioStreamPlayer" method="_on_ControleFaixa3D_iniciou_movimento"]
+[connection signal="levantou" from="ControleFaixa3D" to="." method="_on_ControleFaixa3D_levantou"]
+[connection signal="no_chao" from="ControleFaixa3D" to="." method="_on_ControleFaixa3D_no_chao"]
+[connection signal="pulou" from="ControleFaixa3D" to="." method="_on_ControleFaixa3D_pulou"]
 [connection signal="arrastado" from="ControladorArrasta" to="." method="_on_ControladorArrasta_arrastado"]
 [connection signal="vida_acabou" from="Vida" to="." method="_on_Vida_vida_acabou"]
 [connection signal="vida_alterada" from="Vida" to="AudioStreamPlayer" method="_on_Vida_vida_alterada"]

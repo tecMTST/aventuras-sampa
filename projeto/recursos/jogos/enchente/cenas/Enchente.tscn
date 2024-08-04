@@ -151,7 +151,7 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.949972, 0.312335, 0, -0.312335, 0.949972, 0, 4.71784, 27.7357 )
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 7.1, 28 )
 current = true
 fov = 84.375
 
@@ -159,16 +159,16 @@ fov = 84.375
 current = true
 
 [node name="Paredes" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 
 [node name="CriadorPredios" parent="Paredes" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -72.887 )
-modelos = [ "res://recursos/jogos/enchente/componentes/predio1.tscn", "res://recursos/jogos/enchente/componentes/predio2.tscn" ]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -72.887 )
+modelos = [ "res://recursos/jogos/enchente/componentes/predio-1-t.tscn" ]
+espacamento = 12.0
 deslocamento_vertical = -1.0
 
 [node name="CriadorPredios2" parent="Paredes" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -72.887 )
-modelos = [ "res://recursos/jogos/enchente/componentes/predio1.tscn", "res://recursos/jogos/enchente/componentes/predio2.tscn" ]
+modelos = [ "res://recursos/jogos/enchente/componentes/predio-1-t.tscn" ]
 deslocamento_vertical = -1.0
 inverter_x = true
 
