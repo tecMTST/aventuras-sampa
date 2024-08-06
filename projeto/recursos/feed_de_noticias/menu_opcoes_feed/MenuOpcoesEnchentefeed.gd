@@ -27,6 +27,7 @@ func _input(event):
 		#envia para o singleton o valor de som e de musica
 		SingletonGlobal.volumeSom = valorMusicaGlobal
 		SingletonGlobal.volumeSFX = valorSfxGlobal
+		FuncGlobais.salvar_globais()
 
 func _on_VoltarMenuFeed_button_up():
 	get_tree().paused = false
