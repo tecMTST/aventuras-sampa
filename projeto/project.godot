@@ -135,6 +135,8 @@ default_bus_layout="res://elementos/audio/mixer/mixer.tres"
 EnchenteEstadoDeJogo="*res://recursos/jogos/enchente/scripts/EnchenteEstadoDeJogo.gd"
 TrocadorDeCenas="*res://addons/trocador_de_cenas/trocador_de_cenas.tscn"
 SingletonOpcoesGlobais="*res://recursos/jogos/enchente/menu_de_opcoes/SingletonOpcoesGlobais.gd"
+FuncGlobais="*res://elementos/scripts/func_globais.gd"
+Salvamento="*res://addons/Salvamento/Salvamento.gd"
 
 [display]
 
@@ -146,7 +148,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/sistema_vida/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/salvamento/plugin.cfg", "res://addons/sistema_vida/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
 
 [global]
 

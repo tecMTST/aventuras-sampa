@@ -1,5 +1,13 @@
 extends AudioStreamPlayer
 
+var _volume_atual = 999
+
+func _ready():
+	stream_paused = true
+
+func _process(delta):
+	_check_volume()
+
 #Array de clipes de audio:
 onready var clipesSFX = {
 	"trocaFaixa": [
@@ -29,3 +37,13 @@ func _on_Vida_vida_alterada(alteracao: Vida.VidaAlterada) -> void:
 		stop()
 		stream = clipesSFX.dano[rng.randf_range(0, clipesSFX.dano.size())]
 		play()
+		
+func _check_volume():
+	if SingletonOpcoesGlobais.volumeSFX != _volume_atual:
+		_volume_atual = SingletonOpcoesGlobais.volumeSFX
+		if _volume_atual == 0:				
+			stream_paused = true
+			stream_paused = true
+		else:
+			stream_paused = false
+			volume_db = FuncGlobais.map(_volume_atual, 1, 100, -30, 0)
