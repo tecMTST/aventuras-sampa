@@ -146,7 +146,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/sistema_vida/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/label_temporizada/plugin.cfg", "res://addons/sistema_vida/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
 
 [global]
 

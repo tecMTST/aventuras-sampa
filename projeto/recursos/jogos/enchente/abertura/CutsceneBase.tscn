@@ -1,0 +1,234 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco.png" type="Texture" id=1]
+[ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco_senhora.png" type="Texture" id=2]
+[ext_resource path="res://elementos/imagem/enchente/cutscene/tela_predios.png" type="Texture" id=3]
+[ext_resource path="res://elementos/imagem/enchente/cutscene/tela_texto.png" type="Texture" id=4]
+[ext_resource path="res://addons/label_temporizada/LabelTemporizada.gd" type="Script" id=5]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Pressed.png" type="Texture" id=6]
+[ext_resource path="res://recursos/jogos/enchente/abertura/CutsceneBase.gd" type="Script" id=7]
+[ext_resource path="res://elementos/temas/cutscene_enchente/TemaCaixaDeTexto.tres" type="Theme" id=8]
+[ext_resource path="res://elementos/temas/cutscene_enchente/TemaTitulo.tres" type="Theme" id=9]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Normal.png" type="Texture" id=10]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Hovered.png" type="Texture" id=11]
+
+[node name="Cutscene" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Tela4" type="Control" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+
+[node name="TextureRect" type="TextureRect" parent="Tela4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Tela3" type="Control" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+
+[node name="TextureRect" type="TextureRect" parent="Tela3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Tela2" type="Control" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+
+[node name="TextureRect" type="TextureRect" parent="Tela2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Texto4" type="Label" parent="Tela2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -256.0
+margin_top = -210.0
+margin_right = 213.0
+margin_bottom = -114.0
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0.376471, 0.286275, 0.792157, 1 )
+text = "(São Paulo entardeçe mais uma
+ vez com nuvens carregadas)"
+script = ExtResource( 5 )
+atrasar_inicio = 1.0
+intervalo = 0.05
+variacao_intervalo = 0.0
+pitch = 1.5
+
+[node name="Texto5" type="Label" parent="Tela2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -283.0
+margin_top = -223.0
+margin_right = 302.0
+margin_bottom = -100.0
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0.921569, 0.388235, 0.388235, 1 )
+text = "O entardecer vinha trazendo consigo
+enormes nuvens negras que escureciam
+o céu."
+script = ExtResource( 5 )
+atrasar_inicio = 1.0
+intervalo = 0.05
+variacao_intervalo = 0.0
+pitch = 1.5
+
+[node name="Texto6" type="Label" parent="Tela2"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -283.0
+margin_top = -223.0
+margin_right = 302.0
+margin_bottom = -100.0
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0.376471, 0.286275, 0.792157, 1 )
+text = "(Já começa a garoar e grandes
+poças vão se formando nas
+esquinas no centro da cidade)"
+script = ExtResource( 5 )
+atrasar_inicio = 1.0
+intervalo = 0.05
+variacao_intervalo = 0.0
+pitch = 1.5
+
+[node name="Tela1" type="Control" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+
+[node name="TextureRect" type="TextureRect" parent="Tela1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Texto1" type="Label" parent="Tela1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -183.0
+margin_top = -149.0
+margin_right = 152.0
+margin_bottom = -57.0
+theme = ExtResource( 9 )
+text = "São Paulo"
+script = ExtResource( 5 )
+autostart = true
+atrasar_inicio = 1.0
+audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
+pitch = 1.5
+
+[node name="Texto2" type="Label" parent="Tela1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -290.0
+margin_top = -74.0
+margin_right = 266.0
+margin_bottom = 18.0
+theme = ExtResource( 9 )
+text = "9 de julho, 12:12"
+script = ExtResource( 5 )
+audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
+pitch = 1.5
+
+[node name="Texto3" type="Label" parent="Tela1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -183.0
+margin_top = 7.0
+margin_right = 152.0
+margin_bottom = 99.0
+theme = ExtResource( 9 )
+text = "Ocupação"
+script = ExtResource( 5 )
+audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
+pitch = 1.5
+
+[node name="Botoes" type="Control" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+
+[node name="BotaoAvancar" type="TextureButton" parent="Botoes"]
+anchor_left = 0.723611
+anchor_top = 0.934375
+anchor_right = 0.976389
+anchor_bottom = 0.984375
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 11 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Botoes/BotaoAvancar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -29.0
+margin_right = 60.0
+margin_bottom = 10.0
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+text = "Avançar"
+
+[node name="BotaoPular" type="TextureButton" parent="Botoes"]
+anchor_left = 0.720833
+anchor_top = 0.00859375
+anchor_right = 0.973611
+anchor_bottom = 0.0585938
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 11 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Botoes/BotaoPular"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -41.0
+margin_top = -26.0
+margin_right = 79.0
+margin_bottom = 13.0
+theme = ExtResource( 8 )
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+text = "Pular"
+
+[connection signal="Fim" from="Tela2/Texto4" to="." method="proximo_ponto"]
+[connection signal="Fim" from="Tela2/Texto5" to="." method="proximo_ponto"]
+[connection signal="Fim" from="Tela2/Texto6" to="." method="proximo_ponto"]
+[connection signal="Fim" from="Tela1/Texto1" to="." method="proximo_ponto"]
+[connection signal="Fim" from="Tela1/Texto2" to="." method="proximo_ponto"]
+[connection signal="Fim" from="Tela1/Texto3" to="." method="proximo_ponto"]
+[connection signal="button_up" from="Botoes/BotaoAvancar" to="." method="avancar"]
+[connection signal="button_up" from="Botoes/BotaoPular" to="." method="fim"]
