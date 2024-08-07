@@ -25,13 +25,9 @@ func _ready():
 
 	efeitosWheel.value = SingletonGlobal.volumeSFX
 	porcentagemEfeitosWheel.text = str(efeitosWheel.value) + '%'
-
-	if SingletonGlobal.ativarBotoes == true:
-		controles.pressed = true
-	if SingletonGlobal.ativarBotoes == false:
-		controles.pressed = false
-
-	botao_dificuldade(SingletonOpcoesGlobais.dificuldadeAtual.front())
+	
+	_mudar_controles()
+	botao_dificuldade(SingletonOpcoesGlobais.dificuldadeAtual)
 
 func _input(event):
 	var valorMusicaGlobal = musicaWheel.value
@@ -62,6 +58,8 @@ func _input(event):
 			facil.pressed = false
 			medio.pressed = false
 			dificil.pressed = false
+			
+		SingletonOpcoesGlobais.salvar_globais()			
 
 func _on_VoltarJogar_button_up():
 	get_tree().paused = false
@@ -72,30 +70,31 @@ func _on_VoltarMenuFeed_button_up():
 	TrocadorDeCenas.trocar_cena(voltarJogo)
 	self.queue_free()
 
+func _mudar_controles():
+	if SingletonGlobal.ativarBotoes == true:
+		controles.pressed = true
+	if SingletonGlobal.ativarBotoes == false:
+		controles.pressed = false
+	SingletonOpcoesGlobais.salvar_globais()
 
 func botao_dificuldade(botaoPressionado):
-	var dificuldadeAtual = SingletonOpcoesGlobais.dificuldadeAtual
 	var botaoAtual = botaoPressionado
 	match botaoAtual:
 		'facil':
-			dificuldadeAtual.pop_front()
-			dificuldadeAtual.append('facil')
+			SingletonOpcoesGlobais.dificuldadeAtual = 'facil'
 			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
-			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = facil.rect_position.x
-			print(dificuldadeAtual)
+			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = facil.rect_position.x			
 		'medio':
-			dificuldadeAtual.pop_front()
-			dificuldadeAtual.append('medio')
+			SingletonOpcoesGlobais.dificuldadeAtual = 'medio'
 			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
 			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = medio.rect_position.x
-			print(dificuldadeAtual)
 		'dificil':
-			dificuldadeAtual.pop_front()
-			dificuldadeAtual.append('dificil')
+			SingletonOpcoesGlobais.dificuldadeAtual = 'dificil'
 			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
 			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = dificil.rect_position.x
-			print(dificuldadeAtual)
-
+	SingletonOpcoesGlobais.salvar_globais()
+	
 func _process(delta):
 	porcentagemMusicaWheel.text = str(musicaWheel.value) + '%'
 	porcentagemEfeitosWheel.text = str(efeitosWheel.value) + '%'
+	
