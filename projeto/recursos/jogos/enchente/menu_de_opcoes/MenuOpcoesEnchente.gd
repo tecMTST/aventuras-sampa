@@ -59,6 +59,7 @@ func _input(event):
 			medio.pressed = false
 			dificil.pressed = false
 			
+		SingletonOpcoesGlobais.salvar_globais()			
 
 func _on_VoltarJogar_button_up():
 	get_tree().paused = false
@@ -74,7 +75,7 @@ func _mudar_controles():
 		controles.pressed = true
 	if SingletonGlobal.ativarBotoes == false:
 		controles.pressed = false
-	FuncGlobais.salvar_globais()
+	SingletonOpcoesGlobais.salvar_globais()
 
 func botao_dificuldade(botaoPressionado):
 	var botaoAtual = botaoPressionado
@@ -91,7 +92,7 @@ func botao_dificuldade(botaoPressionado):
 			SingletonOpcoesGlobais.dificuldadeAtual = 'dificil'
 			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
 			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = dificil.rect_position.x
-	FuncGlobais.salvar_globais()
+	SingletonOpcoesGlobais.salvar_globais()
 	
 func _process(delta):
 	porcentagemMusicaWheel.text = str(musicaWheel.value) + '%'

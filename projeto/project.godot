@@ -135,7 +135,6 @@ default_bus_layout="res://elementos/audio/mixer/mixer.tres"
 EnchenteEstadoDeJogo="*res://recursos/jogos/enchente/scripts/EnchenteEstadoDeJogo.gd"
 TrocadorDeCenas="*res://addons/trocador_de_cenas/trocador_de_cenas.tscn"
 SingletonOpcoesGlobais="*res://recursos/jogos/enchente/menu_de_opcoes/SingletonOpcoesGlobais.gd"
-FuncGlobais="*res://elementos/scripts/func_globais.gd"
 Salvamento="*res://addons/Salvamento/Salvamento.gd"
 
 [display]
