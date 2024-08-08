@@ -62,6 +62,10 @@ func _process(delta):
 				audio_player.stream_paused = true
 				audio_player.stop()
 			emit_signal("Fim")
+
+func definir_texto(texto : String):
+	sequencia_texto = texto
+	text = ''
 						
 func iniciar():
 	text = ''
