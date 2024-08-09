@@ -3,7 +3,7 @@
 [ext_resource path="res://elementos/imagem/abertura/logo.png" type="Texture" id=1]
 [ext_resource path="res://recursos/abertura/abertura.gd" type="Script" id=2]
 [ext_resource path="res://recursos/feed_de_noticias/feed_de_noticia.tscn" type="PackedScene" id=3]
-[ext_resource path="res://elementos/audio/bgm/splash/splash-vinheta.wav" type="AudioStream" id=4]
+[ext_resource path="res://elementos/audio/bgm/splash/splash-vinheta.mp3" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
