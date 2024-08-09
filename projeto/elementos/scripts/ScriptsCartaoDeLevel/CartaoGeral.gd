@@ -12,23 +12,19 @@ onready var titulo_texto: RichTextLabel = $PainelPrincipal/Titulo
 onready var desc_basica: Label = $PainelPrincipal/Desc
 onready var animacao_coracao: AnimationPlayer = $AnimationCoracao
 onready var botao_saibaMais = $PainelPrincipal/SaibaMais
-onready var painelSaibaMais = preload("res://recursos/feed_de_noticias/PainelSaibaMais.tscn")
 
 var saiba_mais_apertado: bool = false
 var coracao_apertado: bool = false
 var Titulo: String
 var Descricao_basica: String
 var Descricao_avancada: String
+var quantidade_de_paineis = 0
 
-func _atualizador_de_card():
-	var instanciaSaibaMais = painelSaibaMais.instance()
+func _atualizar_card():
 	var valoresNoDict = loadJson(JsonCards)
 	var valoresId = valoresNoDict.get(String(idCard))
 
 	card_img.texture = Imagem_card
-	instanciaSaibaMais.Imagem_card = Imagem_card
-	instanciaSaibaMais.E_jogavel = E_jogavel
-	instanciaSaibaMais.Cena_do_jogo = Cena_do_jogo
 
 	# Extrai valores específicos do cartão
 	Titulo = valoresId.get("Titulo")
@@ -36,12 +32,25 @@ func _atualizador_de_card():
 	Descricao_basica = valoresId.get("DescricaoBasica")
 	desc_basica.text = Descricao_basica
 	Descricao_avancada = valoresId.get("DescricaoAvancada")
-	instanciaSaibaMais.Descricao_avancada = Descricao_avancada
 
-	return instanciaSaibaMais
+func _atualizar_painel():
+	var painelSaibaMais = load("res://recursos/feed_de_noticias/PainelSaibaMais.tscn")
+	var instanciaSaibaMais = painelSaibaMais.instance()
+	var valoresNoDict = loadJson(JsonCards)
+	var valoresId = valoresNoDict.get(String(idCard))
+
+	instanciaSaibaMais.Imagem_card = Imagem_card
+	instanciaSaibaMais.E_jogavel = E_jogavel
+	instanciaSaibaMais.Cena_do_jogo = Cena_do_jogo
+
+	# Extrai valores específicos para o painel
+	Descricao_avancada = valoresId.get("DescricaoAvancada")
+	instanciaSaibaMais.Descricao_avancada = Descricao_avancada
+	
+	add_child(instanciaSaibaMais)
 
 func _ready():
-	_atualizador_de_card()
+	_atualizar_card()
 
 func _tocar_animacao_coracao():
 	if coracao_apertado == false:
@@ -61,12 +70,14 @@ func _on_SaibaMais_pressed():
 		botao_tween.interpolate_property(botao_saibaMais, "rect_scale", Vector2(1.1, 1.1), Vector2(1, 1), 0.1, Tween.TRANS_ELASTIC)
 		botao_tween.start()
 
-func _acao_SaibaMais():
-	var instanciaSaibaMais = _atualizador_de_card()
-	if saiba_mais_apertado:
-		add_child(instanciaSaibaMais)
+	yield(botao_tween, "tween_completed")
+	_atualizar_painel()
 
 func _on_coracaobotao_pressed():
+	var coracao_tween = $PainelPrincipal/Coracao/TweenCoracao
+	coracao_tween.interpolate_property($PainelPrincipal/Coracao, "scale", Vector2(1.907, 1.907), Vector2(2, 2), 0.2, Tween.TRANS_ELASTIC)
+	coracao_tween.interpolate_property($PainelPrincipal/Coracao, "scale", Vector2(2, 2), Vector2(1.907, 1.907), 0.2, Tween.TRANS_ELASTIC)
+	coracao_tween.start()
 	_tocar_animacao_coracao()
 
 func loadJson(nomejson):
@@ -82,9 +93,3 @@ func loadJson(nomejson):
 	else:
 		print("File Open Error: could not open file " + nomejson)
 	arquivo.close()
-
-
-func _on_Tween_tween_completed(object, key):
-	saiba_mais_apertado = true
-	_acao_SaibaMais()
-	saiba_mais_apertado = false
