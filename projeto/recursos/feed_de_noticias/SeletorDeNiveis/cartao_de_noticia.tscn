@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/card_outline.png" type="Texture" id=1]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Comentario.png" type="Texture" id=15]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/UiRedonda2.tres" type="StyleBox" id=16]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_Mais_pressed.png" type="Texture" id=17]
+[ext_resource path="res://elementos/fontes/Lacquer-Regular.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://elementos/texto/NoticiaText-Regular.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://elementos/texto/NoticiaText-Italic.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://elementos/texto/NoticiaText-Bold.ttf" type="DynamicFontData" id=21]
@@ -33,6 +34,10 @@ animations = [ {
 "name": "Play",
 "speed": 15.0
 } ]
+
+[sub_resource type="DynamicFont" id=11]
+size = 24
+font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 22
@@ -249,6 +254,8 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="TweenCoracao" type="Tween" parent="PainelPrincipal/Coracao"]
+
 [node name="Chat" type="Sprite" parent="PainelPrincipal"]
 position = Vector2( 127, 656.999 )
 scale = Vector2( 1.90712, 1.90712 )
@@ -271,6 +278,21 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="Label" type="Label" parent="PainelPrincipal/SaibaMais"]
+anchor_left = 0.491
+anchor_top = 0.5
+anchor_right = 0.491
+anchor_bottom = 0.5
+margin_left = -103.601
+margin_top = -31.0872
+margin_right = 103.399
+margin_bottom = 26.9128
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "saiba mais..."
+align = 1
+valign = 1
+
 [node name="Titulo" type="RichTextLabel" parent="PainelPrincipal"]
 anchor_left = 0.0268987
 anchor_top = 0.522752
@@ -285,9 +307,9 @@ custom_fonts/italics_font = SubResource( 7 )
 custom_fonts/bold_font = SubResource( 8 )
 custom_fonts/normal_font = SubResource( 9 )
 bbcode_enabled = true
-bbcode_text = "titulo aqui"
+bbcode_text = "[rainbow]Noticia 2[/rainbow]"
 tab_size = 1
-text = "titulo aqui"
+text = "Noticia 2"
 fit_content_height = true
 scroll_active = false
 __meta__ = {
@@ -324,4 +346,3 @@ script = ExtResource( 4 )
 [connection signal="pressed" from="PainelPrincipal/Coracao/coracaobotao" to="." method="_on_coracaobotao_pressed"]
 [connection signal="pressed" from="PainelPrincipal/Coracao/coracaobotao" to="AudioStreamCartao" method="_on_coracaobotao_pressed"]
 [connection signal="pressed" from="PainelPrincipal/SaibaMais" to="." method="_on_SaibaMais_pressed"]
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_feed/Normal.png" type="Texture" id=1]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Menu.png" type="Texture" id=2]
 [ext_resource path="res://recursos/jogos/enchente/menu_de_opcoes/MenuOpcoesEnchente.gd" type="Script" id=3]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Facil/Hovered_facil.png" type="Texture" id=4]
@@ -8,21 +7,24 @@
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Dificil/Normal_dificil.png" type="Texture" id=6]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Dificil/Hovered_dificil.png" type="Texture" id=7]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Medio/Normal_medio.png" type="Texture" id=8]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_feed/Pressed.png" type="Texture" id=9]
 [ext_resource path="res://elementos/texto/NoticiaText-Regular.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Hovered.png" type="Texture" id=11]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Hovered.png" type="Texture" id=11]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Check/Checked.png" type="Texture" id=12]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Normal.png" type="Texture" id=13]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Normal.png" type="Texture" id=13]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Check/Unchecked.png" type="Texture" id=14]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Pressed.png" type="Texture" id=15]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Pressed.png" type="Texture" id=15]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/DificuldadePressed.png" type="Texture" id=16]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_feed/Hovered.png" type="Texture" id=17]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Medio/Hovered_medio.png" type="Texture" id=18]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Facil/Normal_facil.png" type="Texture" id=19]
+[ext_resource path="res://elementos/fontes/Lacquer-Regular.ttf" type="DynamicFontData" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 18
 font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 24
+font_data = ExtResource( 20 )
 
 [node name="MenuDeOpcoes" type="CanvasLayer"]
 pause_mode = 2
@@ -113,10 +115,24 @@ texture_normal = ExtResource( 13 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 11 )
 expand = true
-stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="Label" type="Label" parent="MenuDeOpcoes/Menu/VoltarJogar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.5001
+margin_top = -19.5001
+margin_right = 93.4999
+margin_bottom = 14.4999
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "voltar ao jogo"
+align = 1
+valign = 1
 
 [node name="VoltarMenuFeed" type="TextureButton" parent="MenuDeOpcoes/Menu"]
 anchor_left = 0.528846
@@ -124,14 +140,28 @@ anchor_top = 0.818386
 anchor_right = 0.919231
 anchor_bottom = 0.93722
 toggle_mode = true
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 17 )
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 11 )
 expand = true
-stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="Label" type="Label" parent="MenuDeOpcoes/Menu/VoltarMenuFeed"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.5001
+margin_top = -19.5001
+margin_right = 93.4999
+margin_bottom = 14.4999
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "voltar ao feed"
+align = 1
+valign = 1
 
 [node name="Controles" type="TextureButton" parent="MenuDeOpcoes/Menu"]
 anchor_left = 0.778846
