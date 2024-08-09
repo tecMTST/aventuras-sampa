@@ -24,7 +24,7 @@
 		},
 		{
 			"animation": "slide_in_left.gd",
-			"animation_length": 2,
+			"animation_length": 1,
 			"animation_wait": true,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
@@ -73,7 +73,7 @@
 		},
 		{
 			"animation": "slide_out_right.gd",
-			"animation_length": 2,
+			"animation_length": 1,
 			"animation_wait": true,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
@@ -100,7 +100,7 @@
 		},
 		{
 			"animation": "1-fade_in.gd",
-			"animation_length": 2,
+			"animation_length": 1,
 			"animation_wait": true,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
@@ -133,7 +133,7 @@
 		},
 		{
 			"animation": "4-fade_out.gd",
-			"animation_length": 2,
+			"animation_length": 1,
 			"animation_wait": true,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
@@ -170,7 +170,7 @@
 		},
 		{
 			"animation": "slide_in_left.gd",
-			"animation_length": 2,
+			"animation_length": 1,
 			"animation_wait": true,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
@@ -197,7 +197,7 @@
 		},
 		{
 			"animation": "slide_out_right.gd",
-			"animation_length": 2,
+			"animation_length": 1,
 			"animation_wait": true,
 			"change_mirror_portrait": false,
 			"change_z_index": false,

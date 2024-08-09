@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 onready var texto_1 = $Tela1/Texto1
 onready var texto_2 = $Tela1/Texto2
