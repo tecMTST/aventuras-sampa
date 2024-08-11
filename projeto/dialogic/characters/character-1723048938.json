@@ -1,0 +1,21 @@
+{
+	"color": "#fff67900",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1723048938.json",
+	"mirror_portraits": false,
+	"name": "Dona Maria",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 35,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://elementos/imagem/enchente/cutscene/senhora.png"
+		}
+	],
+	"scale": 30,
+	"theme": "theme-1723052560.cfg"
+}
