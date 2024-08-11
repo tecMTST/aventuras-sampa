@@ -1,10 +1,10 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=1]
-[ext_resource path="res://elementos/audio/bgm/minigame-1/minigame-surf.wav" type="AudioStream" id=2]
+[ext_resource path="res://elementos/audio/bgm/minigame-1/minigame1-surf-lv1.mp3" type="AudioStream" id=2]
 [ext_resource path="res://elementos/imagem/enchente/rosto-senhora.png" type="Texture" id=3]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=5]
-[ext_resource path="res://elementos/audio/bgm/minigame-1/amb-agua-corrente.wav" type="AudioStream" id=6]
+[ext_resource path="res://elementos/audio/bgm/minigame-1/minigame1-amb-corrente.mp3" type="AudioStream" id=6]
 [ext_resource path="res://recursos/jogos/enchente/componentes/CriadorDePredios.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/sistema_vida/interface/vida_icones.tscn" type="PackedScene" id=8]
 [ext_resource path="res://elementos/imagem/enchente/background.png" type="Texture" id=9]
