@@ -51,6 +51,7 @@ func _atualizar_painel():
 
 func _ready():
 	_atualizar_card()
+	botao_like_foi_apertado()
 
 func _tocar_animacao_coracao():
 	if coracao_apertado == false:
@@ -79,6 +80,16 @@ func _on_coracaobotao_pressed():
 	coracao_tween.interpolate_property($PainelPrincipal/Coracao, "scale", Vector2(2, 2), Vector2(1.907, 1.907), 0.2, Tween.TRANS_ELASTIC)
 	coracao_tween.start()
 	_tocar_animacao_coracao()
+
+func botao_like_foi_apertado():
+	if Salvamento.existe("botao_like", idCard):
+		var valor = Salvamento.carregar("botao_like", idCard)
+		if valor == true:
+			coracao_apertado = true
+		elif valor == false:
+			coracao_apertado = false
+	else:
+		Salvamento.salvar("botao_like", idCard, coracao_apertado)
 
 func loadJson(nomejson):
 	var arquivo = File.new()

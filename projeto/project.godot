@@ -213,7 +213,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/salvamento/plugin.cfg","res://addons/controle_de_toque/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/label_temporizada/plugin.cfg", "res://addons/sistema_vida/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/salvamento/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/sistema_vida/plugin.cfg", "res://addons/trocador_de_cenas/plugin.cfg" )
 
 [global]
 
@@ -284,4 +284,3 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://recursos/enviroment/enviroment_padrao.tres"
