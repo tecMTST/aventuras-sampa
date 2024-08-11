@@ -25,6 +25,14 @@ func carregar(id , chave):
 		return null
 	return atual.Dados[chave]
 	
+func existe(id , chave):
+	var atual = carregar_tudo(id)
+	if not atual:
+		return false
+	if not atual.Dados.has(chave):
+		return false
+	return true
+	
 func carregar_tudo(id) -> SaveFile:
 	_verificar_pasta()
 	var file_name = pasta + "/" + id + ".sav"

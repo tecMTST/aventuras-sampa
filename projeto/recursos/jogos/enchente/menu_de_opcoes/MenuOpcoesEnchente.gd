@@ -17,51 +17,26 @@ onready var dificil: TextureButton = $MenuDeOpcoes/Menu/dificil
 export var voltarJogo: String = ''
 
 func _ready():
-	print(SingletonGlobal.ativarBotoes)
 	get_tree().paused = true
+	facil.connect('pressed',self,"_botao_dificuldade",[facil])
+	medio.connect('pressed',self,"_botao_dificuldade",[medio])
+	dificil.connect('pressed',self,"_botao_dificuldade",[dificil])
+	controles.connect('toggled',self,"_mudar_controles")
+	_definir_valores()
 
+func _definir_valores():
 	musicaWheel.value = SingletonGlobal.volumeSom
-	porcentagemMusicaWheel.text = str(musicaWheel.value) + '%'
-
 	efeitosWheel.value = SingletonGlobal.volumeSFX
-	porcentagemEfeitosWheel.text = str(efeitosWheel.value) + '%'
-
-	if SingletonGlobal.ativarBotoes == true:
-		controles.pressed = true
-	if SingletonGlobal.ativarBotoes == false:
-		controles.pressed = false
-
-	botao_dificuldade(SingletonOpcoesGlobais.dificuldadeAtual.front())
+	self[SingletonGlobal.dificuldadeAtual].pressed = true
 
 func _input(event):
 	var valorMusicaGlobal = musicaWheel.value
 	var valorSfxGlobal = efeitosWheel.value
-	var controlesForamApertado = controles.pressed
 	if event is InputEventScreenTouch:
 		#envia para o singleton o valor de som e de musica
 		SingletonGlobal.volumeSom = valorMusicaGlobal
 		SingletonGlobal.volumeSFX = valorSfxGlobal
-		#envia para o singleton o se o botao foi apertado ou não
-		if controlesForamApertado == false:
-			SingletonGlobal.ativarBotoes = false
-		elif controlesForamApertado == true:
-			SingletonGlobal.ativarBotoes = true
-
-		if facil.pressed and !medio.pressed and !dificil.pressed:
-			botao_dificuldade('facil')
-		elif !facil.pressed and medio.pressed and !dificil.pressed:
-			botao_dificuldade('medio')
-		elif !facil.pressed and !medio.pressed and dificil.pressed:
-			botao_dificuldade('dificil')
-		elif facil.pressed and medio.pressed and dificil.pressed:
-			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = false
-			facil.pressed = false
-			medio.pressed = false
-			dificil.pressed = false
-		else:
-			facil.pressed = false
-			medio.pressed = false
-			dificil.pressed = false
+		SingletonOpcoesGlobais.salvar_globais()
 
 func _on_VoltarJogar_button_up():
 	get_tree().paused = false
@@ -72,30 +47,22 @@ func _on_VoltarMenuFeed_button_up():
 	TrocadorDeCenas.trocar_cena(voltarJogo)
 	self.queue_free()
 
+func _mudar_controles(alteracao: bool):
+	SingletonGlobal.ativarBotoes = alteracao
+	SingletonOpcoesGlobais.salvar_globais()
 
-func botao_dificuldade(botaoPressionado):
-	var dificuldadeAtual = SingletonOpcoesGlobais.dificuldadeAtual
-	var botaoAtual = botaoPressionado
-	match botaoAtual:
-		'facil':
-			dificuldadeAtual.pop_front()
-			dificuldadeAtual.append('facil')
-			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
-			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = facil.rect_position.x
-			print(dificuldadeAtual)
-		'medio':
-			dificuldadeAtual.pop_front()
-			dificuldadeAtual.append('medio')
-			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
-			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = medio.rect_position.x
-			print(dificuldadeAtual)
-		'dificil':
-			dificuldadeAtual.pop_front()
-			dificuldadeAtual.append('dificil')
-			$MenuDeOpcoes/Menu/DificuldadePressionada.visible = true
-			$MenuDeOpcoes/Menu/DificuldadePressionada.rect_position.x = dificil.rect_position.x
-			print(dificuldadeAtual)
+func _botao_dificuldade(dificuldadeAtual):
+	if not dificuldadeAtual:
+		pass
+	SingletonOpcoesGlobais.dificuldadeAtual = dificuldadeAtual.name
+	SingletonOpcoesGlobais.salvar_globais()
+
+	var botoes := [facil,medio,dificil]
+	botoes.erase(dificuldadeAtual)
+	for botao in botoes:
+		botao.pressed = false
 
 func _process(delta):
 	porcentagemMusicaWheel.text = str(musicaWheel.value) + '%'
 	porcentagemEfeitosWheel.text = str(efeitosWheel.value) + '%'
+	controles.pressed = SingletonGlobal.ativarBotoes

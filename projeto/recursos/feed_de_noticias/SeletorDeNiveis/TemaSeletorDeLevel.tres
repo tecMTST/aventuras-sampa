@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=39 format=2]
 
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/UiRedonda.tres" type="StyleBox" id=1]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Slider/VolumeWheel.png" type="Texture" id=2]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Slider/botao.png" type="Texture" id=2]
 [ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Unchecked.png" type="Texture" id=3]
 [ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Checked.png" type="Texture" id=4]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Slider/VolumeBar.png" type="Texture" id=5]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Slider/slider.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=4]
 

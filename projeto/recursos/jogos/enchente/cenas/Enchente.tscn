@@ -285,9 +285,11 @@ anims/reset = SubResource( 11 )
 [node name="AudioStreamAMB" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 autoplay = true
+stream_paused = true
 bus = "BGM Aux"
 
 [node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 autoplay = true
+stream_paused = true
 bus = "BGM Track"
