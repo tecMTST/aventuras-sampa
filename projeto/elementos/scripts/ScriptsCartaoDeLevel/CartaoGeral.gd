@@ -46,7 +46,7 @@ func _atualizar_painel():
 	# Extrai valores específicos para o painel
 	Descricao_avancada = valoresId.get("DescricaoAvancada")
 	instanciaSaibaMais.Descricao_avancada = Descricao_avancada
-	
+
 	add_child(instanciaSaibaMais)
 
 func _ready():

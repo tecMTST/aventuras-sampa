@@ -21,12 +21,12 @@ var ponto_atual = 1
 
 func _ready():
 	var time = Time.get_datetime_dict_from_system()
-	texto_2.definir_texto(str(time["day"]) + "/" + str(time["month"]) + "/" +  str(time["year"]) 
+	texto_2.definir_texto(str(time["day"]) + "/" + str(time["month"]) + "/" +  str(time["year"])
 							+ " - " + str(time["hour"]) + ":" + str(time["minute"]))
 
 func proximo_ponto():
 	ponto_atual = ponto_atual + 1
-	match ponto_atual:	
+	match ponto_atual:
 		2:
 			texto_2.iniciar()
 		3:
@@ -44,24 +44,24 @@ func avancar():
 	texto_1.finalizar()
 	texto_2.finalizar()
 	texto_3.finalizar()
-	ponto_atual = 3	
+	ponto_atual = 3
 	proximo_ponto()
 
 func fim():
 	TrocadorDeCenas.trocar_cena("res://recursos/jogos/enchente/cenas/Enchente.tscn")
 
 func _on_dialogic_signal(arg):
-	match arg:	
+	match arg:
 		"fim":
 			fim()
 		"saco":
 			garoa.visible = false
 			chuva.visible = false
 			enchurrada.visible = false
-			tela_2.visible = false	
+			tela_2.visible = false
 		"saco_dona_maria":
 			tela_3.visible = false
-		"enchurrada":			
+		"enchurrada":
 			enchurrada.visible = true
 			yield(get_tree().create_timer(tempo_entre_efeitos), "timeout")
 			garoa.visible = false
@@ -72,7 +72,7 @@ func _on_dialogic_signal(arg):
 			garoa.visible = false
 			enchurrada.visible = false
 		"garoa":
-			garoa.visible = true	
+			garoa.visible = true
 			yield(get_tree().create_timer(tempo_entre_efeitos), "timeout")
 			chuva.visible = false
 			enchurrada.visible = false
