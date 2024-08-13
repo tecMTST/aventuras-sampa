@@ -6,6 +6,8 @@ export var idCard = "Teste"
 export var Imagem_card: StreamTexture
 export var E_jogavel: bool
 export var Cena_do_jogo: String
+export var Coracao_Completo: StreamTexture
+export var Coracao_Imcompleto: StreamTexture
 
 onready var card_img: TextureRect = $PainelPrincipal/ImgCard
 onready var titulo_texto: RichTextLabel = $PainelPrincipal/Titulo
@@ -15,6 +17,7 @@ onready var botao_saibaMais = $PainelPrincipal/SaibaMais
 
 var saiba_mais_apertado: bool = false
 var coracao_apertado: bool = false
+var botao_coracao_apertado: bool = false
 var Titulo: String
 var Descricao_basica: String
 var Descricao_avancada: String
@@ -53,14 +56,24 @@ func _ready():
 	_atualizar_card()
 	botao_like_foi_apertado()
 
+func atualizar_coracao():
+	if coracao_apertado:
+		botao_coracao_apertado = true
+		$PainelPrincipal/Coracao.texture = Coracao_Completo
+	else:
+		botao_coracao_apertado = false
+		$PainelPrincipal/Coracao.texture = Coracao_Imcompleto
+
 func _tocar_animacao_coracao():
-	if coracao_apertado == false:
+	if botao_coracao_apertado == false:
 		animacao_coracao.play("Animação")
 		yield(animacao_coracao, "animation_finished")
+		botao_coracao_apertado = true
 		coracao_apertado = true
 	else:
 		animacao_coracao.play_backwards("Animação")
 		yield(animacao_coracao, "animation_finished")
+		botao_coracao_apertado = false
 		coracao_apertado = false
 
 func _on_SaibaMais_pressed():
@@ -80,6 +93,7 @@ func _on_coracaobotao_pressed():
 	coracao_tween.interpolate_property($PainelPrincipal/Coracao, "scale", Vector2(2, 2), Vector2(1.907, 1.907), 0.2, Tween.TRANS_ELASTIC)
 	coracao_tween.start()
 	_tocar_animacao_coracao()
+	botao_like_foi_apertado()
 
 func botao_like_foi_apertado():
 	if Salvamento.existe("botao_like", idCard):
@@ -88,7 +102,9 @@ func botao_like_foi_apertado():
 			coracao_apertado = true
 		elif valor == false:
 			coracao_apertado = false
+		atualizar_coracao()
 	else:
+		atualizar_coracao()
 		Salvamento.salvar("botao_like", idCard, coracao_apertado)
 
 func loadJson(nomejson):

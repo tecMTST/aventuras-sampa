@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/card_outline.png" type="Texture" id=1]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=2]
@@ -22,19 +22,6 @@
 [ext_resource path="res://elementos/texto/NoticiaText-Italic.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://elementos/texto/NoticiaText-Bold.ttf" type="DynamicFontData" id=21]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "Play",
-"speed": 15.0
-} ]
-
 [sub_resource type="DynamicFont" id=11]
 size = 24
 font_data = ExtResource( 18 )
@@ -57,35 +44,24 @@ font_data = ExtResource( 19 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Animação"
+length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("../PainelPrincipal/Coracao:frame")
+tracks/0/path = NodePath("../PainelPrincipal/Coracao:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 6 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../PainelPrincipal/Coracao:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
+"values": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ) ]
 }
 
 [sub_resource type="Animation" id=10]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("../PainelPrincipal/Coracao:frame")
+tracks/0/path = NodePath("../PainelPrincipal/Coracao:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -94,31 +70,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../PainelPrincipal/Coracao:speed_scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.001 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.5 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../PainelPrincipal/Coracao:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.001 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"values": [ ExtResource( 14 ) ]
 }
 
 [node name="CartaoDeNoticia" type="Control"]
@@ -134,6 +86,8 @@ __meta__ = {
 }
 Imagem_card = ExtResource( 6 )
 E_jogavel = true
+Coracao_Completo = ExtResource( 10 )
+Coracao_Imcompleto = ExtResource( 14 )
 
 [node name="PainelHidden" type="Panel" parent="."]
 modulate = Color( 0.776471, 0.776471, 0.776471, 1 )
@@ -232,22 +186,26 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Coracao" type="AnimatedSprite" parent="PainelPrincipal"]
-position = Vector2( 50, 656.999 )
+[node name="Chat" type="Sprite" parent="PainelPrincipal"]
+position = Vector2( -82, 620.999 )
 scale = Vector2( 1.90712, 1.90712 )
-frames = SubResource( 1 )
-animation = "Play"
-speed_scale = 1.5
+texture = ExtResource( 15 )
+offset = Vector2( 109.589, 18.8764 )
+
+[node name="Coracao" type="Sprite" parent="PainelPrincipal"]
+position = Vector2( 52, 658.999 )
+scale = Vector2( 1.90712, 1.90712 )
+texture = ExtResource( 14 )
 
 [node name="coracaobotao" type="Button" parent="PainelPrincipal/Coracao"]
 anchor_left = 0.0805201
 anchor_top = -0.0243497
 anchor_right = 0.953248
 anchor_bottom = 0.93565
-margin_left = -15.0
-margin_top = -12.0
-margin_right = -15.0
-margin_bottom = -12.0
+margin_left = -15.7266
+margin_top = -12.9515
+margin_right = -15.7266
+margin_bottom = -12.9515
 mouse_filter = 1
 theme = ExtResource( 2 )
 __meta__ = {
@@ -255,11 +213,6 @@ __meta__ = {
 }
 
 [node name="TweenCoracao" type="Tween" parent="PainelPrincipal/Coracao"]
-
-[node name="Chat" type="Sprite" parent="PainelPrincipal"]
-position = Vector2( 127, 656.999 )
-scale = Vector2( 1.90712, 1.90712 )
-texture = ExtResource( 15 )
 
 [node name="SaibaMais" type="TextureButton" parent="PainelPrincipal"]
 anchor_left = 0.76
