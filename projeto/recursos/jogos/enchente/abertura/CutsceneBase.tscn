@@ -5,12 +5,13 @@
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_predios.png" type="Texture" id=3]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_texto.png" type="Texture" id=4]
 [ext_resource path="res://addons/label_temporizada/LabelTemporizada.gd" type="Script" id=5]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Pressed.png" type="Texture" id=6]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Pressed.png" type="Texture" id=6]
 [ext_resource path="res://recursos/jogos/enchente/abertura/CutsceneBase.gd" type="Script" id=7]
 [ext_resource path="res://elementos/temas/cutscene_enchente/TemaCaixaDeTexto.tres" type="Theme" id=8]
 [ext_resource path="res://elementos/temas/cutscene_enchente/TemaTitulo.tres" type="Theme" id=9]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Normal.png" type="Texture" id=10]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar_ao_jogo/Hovered.png" type="Texture" id=11]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Normal.png" type="Texture" id=10]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Hovered.png" type="Texture" id=11]
+
 
 [node name="Cutscene" type="Control"]
 anchor_right = 1.0

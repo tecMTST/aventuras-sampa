@@ -11,7 +11,7 @@ func _atualizador_de_container():
 		self.rect_min_size.y = tamanho_total * quantidade_de_criancas
 		print(self.rect_min_size.y)
 		print(quantidade_de_criancas)
-	
+
 	else: # se tiver qualquer numero no ajuste manual ele irá pegar o numero e multiplicar pelo tamanho total
 		self.rect_min_size.y = tamanho_total * ajuste_manual
 		print(self.rect_min_size.y)
