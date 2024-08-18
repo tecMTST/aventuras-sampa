@@ -25,7 +25,7 @@ func _ready():
 
 	card_img.texture = Imagem_card
 	desc_avanc.text = Descricao_avancada
-	
+
 	TweenPainel.interpolate_property(PainelDescricao, "modulate:a", 0, 1, 0.7, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	TweenFundo.interpolate_property(Fundo, "modulate:a", 0, 1, 0.7, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	TweenPainel.start()

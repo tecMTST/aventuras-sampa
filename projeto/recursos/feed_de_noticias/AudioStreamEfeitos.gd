@@ -4,7 +4,7 @@ extends AudioStreamPlayer
 onready var clipesSFX = {
 	"clique": preload ("res://elementos/audio/sfx/hub/hub-clique.wav"),
 	}
-	
+
 var _volume_atual = 999;
 
 func _ready():
@@ -31,12 +31,12 @@ func _on_Jogar_pressed():
 	stop()
 	stream = clipesSFX.clique
 	play()
-	
+
 func _atualizar_volume():
 	if SingletonOpcoesGlobais.volumeSFX != _volume_atual:
 		_volume_atual = SingletonOpcoesGlobais.volumeSFX
-		if _volume_atual == 0:				
-			stream_paused = true			
+		if _volume_atual == 0:
+			stream_paused = true
 		else:
-			stream_paused = false			
-			volume_db = range_lerp (_volume_atual, 1, 100, -30, 0)			
+			stream_paused = false
+			volume_db = range_lerp (_volume_atual, 1, 100, -30, 0)
