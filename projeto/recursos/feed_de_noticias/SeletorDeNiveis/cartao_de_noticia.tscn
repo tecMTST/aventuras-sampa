@@ -9,11 +9,11 @@
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao3.png" type="Texture" id=7]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao5.png" type="Texture" id=8]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao4.png" type="Texture" id=9]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/Like_pressed.png" type="Texture" id=10]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/Like componet (1).png" type="Texture" id=10]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao1.png" type="Texture" id=11]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao2.png" type="Texture" id=12]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_Mais_Normal.png" type="Texture" id=13]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/Like_unpressed.png" type="Texture" id=14]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/Like componet.png" type="Texture" id=14]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Comentario.png" type="Texture" id=15]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/UiRedonda2.tres" type="StyleBox" id=16]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_Mais_pressed.png" type="Texture" id=17]
@@ -153,8 +153,8 @@ __meta__ = {
 }
 
 [node name="ImgCard" type="TextureRect" parent="PainelPrincipal"]
-anchor_left = 0.509329
-anchor_top = 0.318594
+anchor_left = 0.503
+anchor_top = 0.313
 anchor_right = 0.503
 anchor_bottom = 0.313
 margin_left = -317.896
@@ -171,7 +171,7 @@ __meta__ = {
 
 [node name="outline" type="TextureRect" parent="PainelPrincipal"]
 anchor_left = 0.501389
-anchor_top = 0.49433
+anchor_top = 0.491533
 anchor_right = 0.501389
 anchor_bottom = 0.491533
 margin_left = -320.878

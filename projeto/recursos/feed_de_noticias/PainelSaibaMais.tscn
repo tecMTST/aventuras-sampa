@@ -2,9 +2,9 @@
 
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=1]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/noticia.png" type="Texture" id=2]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Voltar/Voltar_pressed.png" type="Texture" id=3]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_Mais_pressed.png" type="Texture" id=3]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/noticia_outline.png" type="Texture" id=4]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Voltar/Voltar_normal.png" type="Texture" id=5]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_Mais_Normal.png" type="Texture" id=5]
 [ext_resource path="res://elementos/fontes/Lacquer-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/ManuseadorDaDescricaoAvancada.gd" type="Script" id=7]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/botao_jogar/jogar_pressed.png" type="Texture" id=9]
@@ -100,7 +100,7 @@ toggle_mode = true
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 9 )
 expand = true
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="TweenJogar" type="Tween" parent="CanvasLayer/PainelDescricao/Jogar"]
 
