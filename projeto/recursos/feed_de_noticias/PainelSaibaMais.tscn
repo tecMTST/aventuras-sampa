@@ -1,0 +1,169 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=1]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/noticia.png" type="Texture" id=2]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Voltar/Voltar_pressed.png" type="Texture" id=3]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/noticia_outline.png" type="Texture" id=4]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Voltar/Voltar_normal.png" type="Texture" id=5]
+[ext_resource path="res://elementos/fontes/Lacquer-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/ManuseadorDaDescricaoAvancada.gd" type="Script" id=7]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/Group 7.png" type="Texture" id=8]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/botao_jogar/jogar_pressed.png" type="Texture" id=9]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/botao_jogar/jogar_normal.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 6 )
+
+[node name="PainelSaibaMais" type="CanvasLayer"]
+script = ExtResource( 7 )
+
+[node name="Fundo" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.503
+anchor_top = 0.5
+anchor_right = 0.503
+anchor_bottom = 0.5
+margin_left = -562.16
+margin_top = -765.0
+margin_right = 581.84
+margin_bottom = 727.0
+color = Color( 0.247059, 0.717647, 0.239216, 1 )
+
+[node name="TweenFundo" type="Tween" parent="Fundo"]
+
+[node name="PainelDescricao" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.606
+anchor_right = 0.5
+anchor_bottom = 0.606
+margin_left = -337.0
+margin_top = -498.68
+margin_right = 337.0
+margin_bottom = 499.321
+theme = ExtResource( 1 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="ImgCard" type="TextureRect" parent="PainelDescricao"]
+anchor_left = 0.5
+anchor_top = 0.174
+anchor_right = 0.5
+anchor_bottom = 0.174
+margin_left = -337.0
+margin_top = -173.652
+margin_right = 337.0
+margin_bottom = 186.348
+theme = ExtResource( 1 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 1
+
+[node name="outline" type="TextureRect" parent="PainelDescricao"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -344.0
+margin_top = -511.0
+margin_right = 344.0
+margin_bottom = 505.0
+theme = ExtResource( 1 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+
+[node name="Desc" type="Label" parent="PainelDescricao"]
+anchor_left = 0.5
+anchor_top = 0.612
+anchor_right = 0.5
+anchor_bottom = 0.612
+margin_left = -321.0
+margin_top = -235.776
+margin_right = 323.0
+margin_bottom = 258.224
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Coloque Uma Descrição avancada Aqui"
+autowrap = true
+max_lines_visible = 10
+
+[node name="SaibaMenos" type="TextureButton" parent="PainelDescricao"]
+anchor_left = 0.498223
+anchor_top = 0.964
+anchor_right = 0.498223
+anchor_bottom = 0.964
+margin_left = -83.802
+margin_top = -24.072
+margin_right = 83.198
+margin_bottom = 20.928
+mouse_filter = 1
+toggle_mode = true
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 3 )
+expand = true
+stretch_mode = 4
+
+[node name="TweenSaibaMenos" type="Tween" parent="PainelDescricao/SaibaMenos"]
+
+[node name="voltar" type="Label" parent="PainelDescricao/SaibaMenos"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -79.5
+margin_top = -20.5
+margin_right = 75.5
+margin_bottom = 15.5
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Voltar"
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 10
+
+[node name="Jogar" type="TextureButton" parent="PainelDescricao"]
+anchor_left = 0.49919
+anchor_top = 0.902879
+anchor_right = 0.49919
+anchor_bottom = 0.902879
+margin_left = -96.4541
+margin_top = -21.0733
+margin_right = 96.5459
+margin_bottom = 27.9267
+mouse_filter = 1
+toggle_mode = true
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 9 )
+expand = true
+stretch_mode = 4
+
+[node name="TweenJogar" type="Tween" parent="PainelDescricao/Jogar"]
+
+[node name="Jogar" type="Label" parent="PainelDescricao/Jogar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.4997
+margin_top = -18.5007
+margin_right = 74.5003
+margin_bottom = 17.4993
+mouse_filter = 1
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Jogar"
+align = 1
+valign = 1
+autowrap = true
+max_lines_visible = 10
+
+[node name="TweenPainel" type="Tween" parent="PainelDescricao"]
+
+[connection signal="button_up" from="PainelDescricao/SaibaMenos" to="." method="_on_SaibaMenos_button_up"]
+[connection signal="button_up" from="PainelDescricao/Jogar" to="." method="_on_Jogar_button_up"]

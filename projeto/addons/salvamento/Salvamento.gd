@@ -16,7 +16,7 @@ func salvar(id, chave, valor):
 	file.open(file_name, File.WRITE)
 	file.store_string(novo_save)
 	file.close()
-	
+
 func carregar(id , chave):
 	var atual = carregar_tudo(id)
 	if not atual:
@@ -24,14 +24,22 @@ func carregar(id , chave):
 	if not atual.Dados.has(chave):
 		return null
 	return atual.Dados[chave]
-	
+
+func existe(id , chave):
+	var atual = carregar_tudo(id)
+	if not atual:
+		return false
+	if not atual.Dados.has(chave):
+		return false
+	return true
+
 func carregar_tudo(id) -> SaveFile:
 	_verificar_pasta()
 	var file_name = pasta + "/" + id + ".sav"
 	var file = File.new()
 	var err = file.open(file_name, File.READ)
-	if err == OK: 
-		var conteudo = file.get_as_text()	
+	if err == OK:
+		var conteudo = file.get_as_text()
 		var json_data = JSON.parse(conteudo)
 		if json_data.error == OK and typeof(json_data.result) == TYPE_DICTIONARY:
 			var save = SaveFile.new()
@@ -40,9 +48,9 @@ func carregar_tudo(id) -> SaveFile:
 			save.Dados = json_data.result["Dados"]
 			return save
 	return null
-	
+
 func listar_saves() -> Array:
-	var dir = _verificar_pasta()	
+	var dir = _verificar_pasta()
 	var arquivos = []
 	dir.open(pasta)
 	dir.list_dir_begin()
@@ -53,7 +61,7 @@ func listar_saves() -> Array:
 			save_file.Id = file_name.replace(".sav", "")
 			save_file.Data = Time.get_datetime_string_from_unix_time(File.new().get_modified_time(pasta + "/" + file_name))
 			arquivos.append(save_file)
-		file_name = dir.get_next()	
+		file_name = dir.get_next()
 	return arquivos
 
 func _verificar_pasta() -> Directory:

@@ -1,0 +1,12 @@
+{
+    "SurfTerminalBandeira" : {
+        "Titulo": "[b]Enchente[/b]", 
+        "DescricaoBasica": "Jogo da enchente", 
+        "DescricaoAvancada": "Jogo da enchente Coloque Uma Descrição avancada Aqui"
+    },
+    "Teste" : {
+        "Titulo": "[rainbow]Noticia 2[/rainbow]", 
+        "DescricaoBasica": "Coloque Uma Descrição Aqui", 
+        "DescricaoAvancada": "Coloque Uma Descrição avancada Aqui"
+    }
+}

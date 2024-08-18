@@ -1,5 +1,5 @@
-class_name Obstaculo
 extends KinematicBody
+class_name Obstaculo
 
 export var velocidade := 1000.0
 export var textura: Texture
