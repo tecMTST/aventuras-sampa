@@ -27,7 +27,6 @@ func _on_ControladorArrasta_arrastado(chave):
 	elif chave == 'esquerda-0' or chave == 'esquerda-1':
 		controle_faixa_3d.mover_esquerda()
 	elif chave == 'baixo':
-		print_debug('baixo')
 		controle_faixa_3d.abaixar()
 
 func _on_AreaDano_body_entered(body: Node) -> void:
