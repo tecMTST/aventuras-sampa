@@ -8,6 +8,7 @@ export var E_jogavel: bool
 export var Cena_do_jogo: String
 
 onready var card_img: TextureRect = $PainelPrincipal/ImgCard
+onready var card_2: TextureRect = $PainelHidden/outline3/ImgCard2
 onready var titulo_texto: RichTextLabel = $PainelPrincipal/Titulo
 onready var desc_basica: Label = $PainelPrincipal/Desc
 onready var animacao_coracao: AnimationPlayer = $AnimationCoracao
@@ -25,6 +26,7 @@ func _atualizar_card():
 	var valoresId = valoresNoDict.get(String(idCard))
 
 	card_img.texture = Imagem_card
+	card_2.texture = Imagem_card
 
 	# Extrai valores específicos do cartão
 	Titulo = valoresId.get("Titulo")
@@ -39,7 +41,6 @@ func _atualizar_painel():
 	var valoresNoDict = loadJson(JsonCards)
 	var valoresId = valoresNoDict.get(String(idCard))
 
-	instanciaSaibaMais.Imagem_card = Imagem_card
 	instanciaSaibaMais.E_jogavel = E_jogavel
 	instanciaSaibaMais.Cena_do_jogo = Cena_do_jogo
 
@@ -47,10 +48,20 @@ func _atualizar_painel():
 	Descricao_avancada = valoresId.get("DescricaoAvancada")
 	instanciaSaibaMais.Descricao_avancada = Descricao_avancada
 
-	add_child(instanciaSaibaMais)
+	get_tree().root.add_child(instanciaSaibaMais)
 
 func _ready():
+	recarregar_like()
 	_atualizar_card()
+
+func recarregar_like():
+	if not Salvamento.existe("like", idCard):
+		print('Não possue like')
+		save_like()
+	else:
+		var save = Salvamento.carregar_tudo("like")
+		var dados = save.Dados
+		print(dados)
 
 func _tocar_animacao_coracao():
 	if coracao_apertado == false:
@@ -79,6 +90,9 @@ func _on_coracaobotao_pressed():
 	coracao_tween.interpolate_property($PainelPrincipal/Coracao, "scale", Vector2(2, 2), Vector2(1.907, 1.907), 0.2, Tween.TRANS_ELASTIC)
 	coracao_tween.start()
 	_tocar_animacao_coracao()
+
+func save_like():
+	Salvamento.salvar("like", idCard, coracao_apertado)
 
 func loadJson(nomejson):
 	var arquivo = File.new()

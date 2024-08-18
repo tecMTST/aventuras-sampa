@@ -1,15 +1,13 @@
-extends CanvasLayer
+extends Control
 
-onready var card_img: TextureRect = $PainelDescricao/ImgCard
-onready var desc_avanc: Label = $PainelDescricao/Desc
-onready var btn_jogar = $PainelDescricao/Jogar
-onready var btn_saiba_menos = $PainelDescricao/SaibaMenos
-onready var botao_jogar_tween = $PainelDescricao/Jogar/TweenJogar
-onready var botao_SaibaMenos_tween = $PainelDescricao/SaibaMenos/TweenSaibaMenos
-onready var TweenFundo = $Fundo/TweenFundo
-onready var TweenPainel = $PainelDescricao/TweenPainel
-onready var Fundo = $Fundo
-onready var PainelDescricao = $PainelDescricao
+onready var desc_avanc: RichTextLabel = $CanvasLayer/PainelDescricao/Desc
+onready var btn_jogar: TextureButton = $CanvasLayer/PainelDescricao/Jogar
+onready var btn_saiba_menos: TextureButton = $CanvasLayer/PainelDescricao/SaibaMenos
+onready var botao_jogar_tween: Tween = $CanvasLayer/PainelDescricao/Jogar/TweenJogar
+onready var botao_SaibaMenos_tween: Tween = $CanvasLayer/PainelDescricao/SaibaMenos/TweenSaibaMenos
+onready var TweenPainel: Tween = $CanvasLayer/PainelDescricao/TweenPainel
+onready var PainelDescricao = $CanvasLayer/PainelDescricao
+onready var lugar_na_tela = $CanvasLayer/PainelDescricao.rect_global_position.x
 
 var Descricao_avancada: String
 var Imagem_card: StreamTexture
@@ -23,13 +21,10 @@ func _ready():
 	else:
 		btn_jogar.visible = false
 
-	card_img.texture = Imagem_card
 	desc_avanc.text = Descricao_avancada
 
-	TweenPainel.interpolate_property(PainelDescricao, "modulate:a", 0, 1, 0.7, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
-	TweenFundo.interpolate_property(Fundo, "modulate:a", 0, 1, 0.7, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	TweenPainel.interpolate_property(PainelDescricao, "rect_position", Vector2(lugar_na_tela, 1350), Vector2(lugar_na_tela, 498), 1.4, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 	TweenPainel.start()
-	TweenFundo.start()
 
 func _auto_deletar():
 	if saiba_menos_apertado:
@@ -37,14 +32,12 @@ func _auto_deletar():
 
 func _on_SaibaMenos_button_up():
 	botao_SaibaMenos_tween.start()
-	botao_SaibaMenos_tween.interpolate_property(btn_saiba_menos, "rect_scale", Vector2(1, 1), Vector2(1.1, 1.1), 0.1, Tween.TRANS_ELASTIC)
-	botao_SaibaMenos_tween.interpolate_property(btn_saiba_menos, "rect_scale", Vector2(1.1, 1.1), Vector2(1, 1), 0.1, Tween.TRANS_ELASTIC)
+	botao_SaibaMenos_tween.interpolate_property(btn_saiba_menos, "rect_scale", Vector2(1.175, 0.695), Vector2(1.25, 0.74), 0.1, Tween.TRANS_ELASTIC)
+	botao_SaibaMenos_tween.interpolate_property(btn_saiba_menos, "rect_scale", Vector2(1.25, 0.74), Vector2(1.175, 0.695), 0.1, Tween.TRANS_ELASTIC)
 	saiba_menos_apertado = true
-	TweenPainel.interpolate_property(PainelDescricao, "modulate:a", 1, 0, 0.7, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
-	TweenFundo.interpolate_property(Fundo, "modulate:a", 1, 0, 0.7, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	TweenPainel.interpolate_property(PainelDescricao, "rect_position", Vector2(lugar_na_tela, 498), Vector2(lugar_na_tela, 1350), 1.4, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 	TweenPainel.start()
-	TweenFundo.start()
-	yield(TweenFundo, "tween_completed")
+	yield(TweenPainel, "tween_completed")
 	_auto_deletar()
 
 func _on_Jogar_button_up():
