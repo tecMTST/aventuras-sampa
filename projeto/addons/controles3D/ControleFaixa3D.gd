@@ -41,6 +41,7 @@ export var aceleracao_queda = 1.5
 export var desaceleracao_queda = 2.5
 export var altura_pulo = 3
 export var tempo_abaixado = 1.0
+export var abaixar_infinito = true
 
 #Faixas
 export(Array, Vector3) var faixas = []
@@ -82,6 +83,8 @@ func _input(_event):
 	if ativo and controle_abaixar != "":
 		if Input.is_action_just_pressed("down"):
 			abaixar()
+		if abaixar_infinito and Input.is_action_just_released("down"):
+			levantar()
 
 func _process(delta):
 	if ativo and faixas.size() > 0:
@@ -111,11 +114,13 @@ func mover_esquerda():
 func abaixar():
 	if not em_movimento and not abaixado and not pulando and not caindo:
 		abaixado = true
-		timerAbaixado.start()
+		if not abaixar_infinito:
+			timerAbaixado.start()
 		emit_signal('abaixou')
 
 func levantar():
-	timerAbaixado.stop()
+	if not abaixar_infinito:
+		timerAbaixado.stop()
 	abaixado = false
 	emit_signal('levantou')
 

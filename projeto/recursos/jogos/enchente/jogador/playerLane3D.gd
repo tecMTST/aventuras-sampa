@@ -7,19 +7,25 @@ export var tempo_imunidade_item: float = 5.0
 onready var controle_faixa_3d = $ControleFaixa3D
 onready var vida = $Vida as Vida
 onready var sprite = $Sprite as AnimatedSprite3D
+onready var sprite_agua = $SpriteAgua as AnimatedSprite3D
 onready var timer_imunidade = $TimerImunidade
 onready var imunidade_modulate = false
 onready var menuOpcoes = preload("res://recursos/jogos/enchente/menu_de_opcoes/MenuDeOpcoes.tscn")
+onready var posicao_sprite_agua_original = sprite_agua.global_position
 
 var imune = false
 var imune_dano = false
 var imunidade_time: float = 0
 var abaixado = false
 var pulando = false
+var anim_cair = false
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
 		pause()
+		
+func _process(delta):
+	sprite_agua.global_position.y = posicao_sprite_agua_original.y
 
 func _on_ControladorArrasta_arrastado(chave):
 	if chave == 'direita':
@@ -58,6 +64,7 @@ func imunidade(dano: bool, tempo: float):
 func _on_TimerImunidade_timeout():
 	if imune_dano:
 		sprite.visible = not sprite.visible
+		sprite_agua.visible = not sprite_agua.visible
 	else:
 		imunidade_modulate = not imunidade_modulate
 		if imunidade_modulate:
@@ -70,6 +77,7 @@ func _on_TimerImunidade_timeout():
 
 func finaliza_imunidade():
 	sprite.visible = true
+	sprite_agua.visible = true
 	imune = false
 	imune_dano = false
 	imunidade_modulate = false
@@ -82,19 +90,35 @@ func pause():
 
 func _on_ControleFaixa3D_pulou():
 	sprite.play("pulo")	
+	sprite_agua.play("Pular")
 	pulando = true
 
 func _on_ControleFaixa3D_caindo():
-	pass
+	sprite_agua.visible = false
 
 func _on_ControleFaixa3D_no_chao():
+	sprite_agua.visible = true
 	sprite.play("idle")
+	sprite_agua.play("Cair")
+	anim_cair = true
 	pulando = false
 
 func _on_ControleFaixa3D_abaixou():
-	sprite.play("agachamento")
+	sprite.play("agachamento")	
+	sprite_agua.play("Agachamento")
 	abaixado = true
 
 func _on_ControleFaixa3D_levantou():
 	sprite.play("idle")
+	sprite_agua.play("Idle")
 	abaixado = false
+
+func _on_Sprite_animation_finished():
+	if(abaixado):
+		sprite.frame = 6
+		sprite.stop()
+
+func _on_SpriteAgua_animation_finished():
+	if anim_cair:
+		anim_cair = false
+		sprite_agua.play("Idle")
