@@ -19,7 +19,7 @@ func salvar_globais():
 	Salvamento.salvar("globais", "ativarBotoes", ativarBotoes)
 	Salvamento.salvar("globais", "dificuldadeAtual", dificuldadeAtual)
 	emit_signal("Atualizou")
-	
+
 func carregar_globais():
 	if Salvamento.existe("globais", "volumeSom"):
 		volumeSom = int(Salvamento.carregar("globais", "volumeSom"))

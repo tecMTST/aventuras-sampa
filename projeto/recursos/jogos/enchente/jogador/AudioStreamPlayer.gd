@@ -7,6 +7,12 @@ func _ready():
 	SingletonOpcoesGlobais.connect("Atualizou", self, "_atualizar_volume")
 	_atualizar_volume()
 
+	# garante que o loop do audio permaneça inativo no caso de faixas mp3
+	for grupoSFX in clipesSFX:
+		for audio in clipesSFX[grupoSFX]:
+			if audio is AudioStreamMP3:
+				audio.loop = false
+
 #Array de clipes de audio:
 onready var clipesSFX = {
 	"trocaFaixa": [
@@ -36,11 +42,11 @@ func _on_Vida_vida_alterada(alteracao: Vida.VidaAlterada) -> void:
 		stop()
 		stream = clipesSFX.dano[rng.randi_range(0, clipesSFX.dano.size() -1)]
 		play()
-		
+
 func _atualizar_volume():
 	if SingletonOpcoesGlobais.volumeSFX != _volume_atual:
 		_volume_atual = SingletonOpcoesGlobais.volumeSFX
-		if _volume_atual == 0:				
+		if _volume_atual == 0:
 			stream_paused = true
 		else:
 			stream_paused = false

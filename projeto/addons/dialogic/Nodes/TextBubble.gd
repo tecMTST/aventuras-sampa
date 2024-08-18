@@ -33,23 +33,23 @@ func update_name(name: String, color: Color = Color.white, autocolor: bool=false
 	if name_is_hidden:
 		name_label.visible = false
 		return
-	
+
 	if not name.empty():
-		
+
 		# Hack to reset the size
 		name_label.rect_min_size = Vector2(0, 0)
 		name_label.rect_size = Vector2(-1, 40)
-		
+
 		# Setting the color and text
 		name_label.text = name
-		
+
 		name_label.rect_size = name_label.get_font("font").get_string_size(name_label.text)
 		name_label.rect_min_size = name_label.get_font("font").get_string_size(name_label.text)
 		# Alignment
 		call_deferred('align_name_label')
 		if autocolor:
 			name_label.set('custom_colors/font_color', color)
-		
+
 		name_label.visible = true
 	else:
 		name_label.visible = false
@@ -60,11 +60,11 @@ func clear():
 	$WritingTimer.stop()
 
 func update_text(text:String):
-	
+
 	var orig_text = text
 	text_label.bbcode_text = text
 	var text_bbcodefree = text_label.text
-	
+
 	#regex moved from func scope to class scope
 	#regex compilation moved to _ready
 	#  - KvaGram
@@ -72,7 +72,7 @@ func update_text(text:String):
 	var result:RegExMatch = null
 	text_speed = theme_text_speed # Resetting the speed to the default
 	commands = []
-	
+
 	### remove commands from text, and store where and what they are
 	#current regex: \[\s*(nw|(nw|speed|signal|play|pause)\s*=\s*(.+?)\s*)\](.*?)
 	#Note: The version defined in _ready will have aditional escape characers.
@@ -85,7 +85,7 @@ func update_text(text:String):
 	# 3 the argument, again assuming a variable command ex "5"
 	# 4 nothing (ignore it)
 	#keep this up to date whenever the regex string is updated! - KvaGram
-	
+
 	result = regex.search(text_bbcodefree)
 	#loops until all commands are cleared from the text
 	while result:
@@ -97,25 +97,25 @@ func update_text(text:String):
 			commands.append([result.get_start()-1, result.get_string(2).strip_edges(), result.get_string(3).strip_edges()])
 		text_bbcodefree = text_bbcodefree.substr(0, result.get_start()) + text_bbcodefree.substr(result.get_end())
 		text = text.replace(result.get_string(), "")
-		
+
 		result = regex.search(text_bbcodefree)
 
 	text_label.bbcode_text = text
 	text_label.visible_characters = 0
 
 	## SIZING THE RICHTEXTLABEL
-	# The sizing is done in a very terrible way because the RichtTextLabel has 
+	# The sizing is done in a very terrible way because the RichtTextLabel has
 	# a hard time knowing what size it will be and how to display this.
 	# for this reason the RichTextLabel ist first set to just go for the size it needs,
 	# even if this might be more than available.
 	text_label.size_flags_vertical = 0
 	text_label.rect_clip_content = 0
 	text_label.fit_content_height = true
-	# a frame later, when the sizes have been updated, it will check if there 
+	# a frame later, when the sizes have been updated, it will check if there
 	# is enough space or the scrollbar should be activated.
 	call_deferred("update_sizing")
-	
-	
+
+
 	# updating the size alignment stuff
 	text_label.grab_focus()
 	start_text_timer()
@@ -153,9 +153,9 @@ func handle_command(command:Array):
 		get_parent().get_node("DialogicTimer").start(float(command[2]))
 		yield(get_parent().get_node("DialogicTimer"), "timeout")
 		# only continue, if no skip was performed
-		if text_label.visible_characters == x: 
+		if text_label.visible_characters == x:
 			start_text_timer()
-		
+
 
 func skip():
 	text_label.visible_characters = -1
@@ -174,7 +174,7 @@ func load_theme(theme: ConfigFile):
 	text_label.set('custom_fonts/bold_font', DialogicUtil.path_fixer_load(theme.get_value('text', 'bold_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultBoldFont.tres')))
 	text_label.set('custom_fonts/italics_font', DialogicUtil.path_fixer_load(theme.get_value('text', 'italic_font', 'res://addons/dialogic/Example Assets/Fonts/DefaultItalicFont.tres')))
 	name_label.set('custom_fonts/font', DialogicUtil.path_fixer_load(theme.get_value('name', 'font', 'res://addons/dialogic/Example Assets/Fonts/NameFont.tres')))
-	
+
 	# setting the vertical alignment
 	var alignment = theme.get_value('text', 'alignment',0)
 	if alignment <= 2: # top
@@ -183,7 +183,7 @@ func load_theme(theme: ConfigFile):
 		text_container.alignment = BoxContainer.ALIGN_CENTER
 	elif alignment <= 8: # bottom
 		text_container.alignment = BoxContainer.ALIGN_END
-	
+
 	var text_color = Color(theme.get_value('text', 'color', '#ffffffff'))
 	text_label.set('custom_colors/default_color', text_color)
 	name_label.set('custom_colors/font_color', text_color)
@@ -198,7 +198,7 @@ func load_theme(theme: ConfigFile):
 	var shadow_offset = theme.get_value('text', 'shadow_offset', Vector2(2,2))
 	text_label.set('custom_constants/shadow_offset_x', shadow_offset.x)
 	text_label.set('custom_constants/shadow_offset_y', shadow_offset.y)
-	
+
 
 	# Text speed
 	text_speed = theme.get_value('text','speed', 2) * 0.01
@@ -231,10 +231,10 @@ func load_theme(theme: ConfigFile):
 	$NextIndicatorContainer.rect_position = Vector2(0,0)
 	next_indicator.texture = DialogicUtil.path_fixer_load(theme.get_value('next_indicator', 'image', 'res://addons/dialogic/Example Assets/next-indicator/next-indicator.png'))
 	# Reset for up and down animation
-	next_indicator.margin_top = 0 
-	next_indicator.margin_bottom = 0 
-	next_indicator.margin_left = 0 
-	next_indicator.margin_right = 0 
+	next_indicator.margin_top = 0
+	next_indicator.margin_bottom = 0
+	next_indicator.margin_left = 0
+	next_indicator.margin_right = 0
 	# Scale
 	var indicator_scale = theme.get_value('next_indicator', 'scale', 0.4)
 	next_indicator.rect_scale = Vector2(indicator_scale, indicator_scale)
@@ -242,20 +242,20 @@ func load_theme(theme: ConfigFile):
 	var offset = theme.get_value('next_indicator', 'offset', Vector2(13, 10))
 	next_indicator.rect_position = theme.get_value('box', 'size', Vector2(910, 167)) - (next_indicator.texture.get_size() * indicator_scale)
 	next_indicator.rect_position -= offset
-	
+
 	# Character Name
 	$NameLabel/ColorRect.visible = theme.get_value('name', 'background_visible', false)
 	$NameLabel/ColorRect.color = Color(theme.get_value('name', 'background', '#282828'))
 	$NameLabel/TextureRect.visible = theme.get_value('name', 'image_visible', false)
 	$NameLabel/TextureRect.texture = DialogicUtil.path_fixer_load(theme.get_value('name','image', "res://addons/dialogic/Example Assets/backgrounds/background-2.png"))
-	
+
 	var name_padding = theme.get_value('name', 'name_padding', Vector2( 10, 0 ))
 	var name_style = name_label.get('custom_styles/normal')
 	name_style.set('content_margin_left', name_padding.x)
 	name_style.set('content_margin_right', name_padding.x)
 	name_style.set('content_margin_bottom', name_padding.y)
 	name_style.set('content_margin_top', name_padding.y)
-	
+
 	var name_shadow_offset = theme.get_value('name', 'shadow_offset', Vector2(2,2))
 	if theme.get_value('name', 'shadow_visible', true):
 		name_label.set('custom_colors/font_color_shadow', Color(theme.get_value('name', 'shadow', '#9e000000')))
@@ -266,13 +266,13 @@ func load_theme(theme: ConfigFile):
 		$NameLabel/TextureRect.modulate = Color(theme.get_value('name', 'modulation_color', '#ffffffff'))
 	else:
 		$NameLabel/TextureRect.modulate = Color('#ffffffff')
-	
-	
+
+
 	# Setting next indicator animation
 	next_indicator.self_modulate = Color('#ffffff')
 	var animation = theme.get_value('next_indicator', 'animation', 'Up and down')
 	next_indicator.get_node('AnimationPlayer').play(animation)
-	
+
 	# Saving reference to the current theme
 	_theme = theme
 
@@ -289,8 +289,8 @@ func _on_writing_timer_timeout():
 		if text_label.visible_characters > text_label.get_total_character_count():
 			_handle_text_completed()
 		elif (
-			text_label.visible_characters > 0 #and 
-			#text_label.text.length() > text_label.visible_characters-1 and 
+			text_label.visible_characters > 0 #and
+			#text_label.text.length() > text_label.visible_characters-1 and
 			#text_label.text[text_label.visible_characters-1] != " "
 		):
 			emit_signal('letter_written', text_label.text[text_label.visible_characters-1] )
@@ -324,7 +324,7 @@ func align_name_label():
 		name_label.rect_global_position.x = rect_global_position.x + (rect_size.x / 2) - (label_size / 2) + horizontal_offset
 	elif name_label_position == 2: # Right
 		name_label.rect_global_position.x = rect_global_position.x + rect_size.x - label_size + horizontal_offset
-	
+
 ## *****************************************************************************
 ##								OVERRIDES
 ## *****************************************************************************
@@ -335,4 +335,4 @@ func _ready():
 	$WritingTimer.connect("timeout", self, "_on_writing_timer_timeout")
 	text_label.meta_underlined = false
 	regex.compile("\\[\\s*(nw|(nw|speed|signal|play|pause)\\s*=\\s*(.+?)\\s*)\\](.*?)")
-	
+
