@@ -81,18 +81,20 @@ func pause():
 	add_child(instance)
 
 func _on_ControleFaixa3D_pulou():
+	sprite.play("pulo")	
 	pulando = true
 
 func _on_ControleFaixa3D_caindo():
 	pass
 
 func _on_ControleFaixa3D_no_chao():
+	sprite.play("idle")
 	pulando = false
 
 func _on_ControleFaixa3D_abaixou():
-	sprite.position.y = sprite.position.y - 1
+	sprite.play("agachamento")
 	abaixado = true
 
 func _on_ControleFaixa3D_levantou():
-	sprite.position.y = sprite.position.y + 1
+	sprite.play("idle")
 	abaixado = false
