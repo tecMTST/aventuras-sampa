@@ -71,6 +71,8 @@ __meta__ = {
 }
 Imagem_card = ExtResource( 6 )
 E_jogavel = true
+img_coracao_nao_apertado = ExtResource( 14 )
+img_coracao_apertado = ExtResource( 10 )
 
 [node name="PainelHidden" type="Panel" parent="."]
 modulate = Color( 0.776471, 0.776471, 0.776471, 1 )
@@ -138,13 +140,13 @@ __meta__ = {
 
 [node name="PainelPrincipal" type="TextureRect" parent="."]
 anchor_left = 0.503
-anchor_top = 0.535
+anchor_top = 0.500658
 anchor_right = 0.503
-anchor_bottom = 0.535
+anchor_bottom = 0.500659
 margin_left = -307.16
-margin_top = -357.48
+margin_top = -363.479
 margin_right = 324.84
-margin_bottom = 357.52
+margin_bottom = 351.521
 theme = ExtResource( 2 )
 texture = ExtResource( 5 )
 expand = true
@@ -153,8 +155,8 @@ __meta__ = {
 }
 
 [node name="ImgCard" type="TextureRect" parent="PainelPrincipal"]
-anchor_left = 0.509329
-anchor_top = 0.318594
+anchor_left = 0.503
+anchor_top = 0.313
 anchor_right = 0.503
 anchor_bottom = 0.313
 margin_left = -317.896
@@ -171,7 +173,7 @@ __meta__ = {
 
 [node name="outline" type="TextureRect" parent="PainelPrincipal"]
 anchor_left = 0.501389
-anchor_top = 0.49433
+anchor_top = 0.491533
 anchor_right = 0.501389
 anchor_bottom = 0.491533
 margin_left = -320.878
@@ -294,6 +296,11 @@ script = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 358.5, 369.999 )
+scale = Vector2( 31.95, 25.2 )
+
 [connection signal="pressed" from="PainelPrincipal/Coracao/coracaobotao" to="." method="_on_coracaobotao_pressed"]
 [connection signal="pressed" from="PainelPrincipal/Coracao/coracaobotao" to="AudioStreamCartao" method="_on_coracaobotao_pressed"]
 [connection signal="pressed" from="PainelPrincipal/SaibaMais" to="." method="_on_SaibaMais_pressed"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
