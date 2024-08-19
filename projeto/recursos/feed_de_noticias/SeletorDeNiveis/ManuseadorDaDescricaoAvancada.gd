@@ -23,7 +23,7 @@ func _ready():
 
 	desc_avanc.text = Descricao_avancada
 
-	TweenPainel.interpolate_property(PainelDescricao, "rect_position", Vector2(lugar_na_tela, 1350), Vector2(lugar_na_tela, 498), 1.4, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+	TweenPainel.interpolate_property(PainelDescricao, "rect_position", Vector2(lugar_na_tela, 1350), Vector2(lugar_na_tela, 498), 0.65, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 	TweenPainel.start()
 
 func _auto_deletar():
