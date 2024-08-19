@@ -189,8 +189,8 @@ __meta__ = {
 }
 
 [node name="Coracao" type="Sprite" parent="PainelPrincipal"]
-position = Vector2( 50, 656.999 )
-scale = Vector2( 1.90712, 1.90712 )
+position = Vector2( 62, 649.999 )
+scale = Vector2( 1.24522, 1.24522 )
 texture = ExtResource( 14 )
 
 [node name="coracaobotao" type="Button" parent="PainelPrincipal/Coracao"]
@@ -211,8 +211,8 @@ __meta__ = {
 [node name="TweenCoracao" type="Tween" parent="PainelPrincipal/Coracao"]
 
 [node name="Chat" type="Sprite" parent="PainelPrincipal"]
-position = Vector2( 127, 656.999 )
-scale = Vector2( 1.90712, 1.90712 )
+position = Vector2( 147, 647.999 )
+scale = Vector2( 1.20356, 1.20356 )
 texture = ExtResource( 15 )
 
 [node name="SaibaMais" type="TextureButton" parent="PainelPrincipal"]

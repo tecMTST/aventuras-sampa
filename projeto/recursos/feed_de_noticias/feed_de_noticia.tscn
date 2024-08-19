@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/cartao_de_noticia.tscn" type="PackedScene" id=1]
 [ext_resource path="res://elementos/scripts/ScriptsCartaoDeLevel/VBoxResizer.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://recursos/feed_de_noticias/menu_opcoes_feed/BotaoMenuFeed.tscn" type="PackedScene" id=7]
 [ext_resource path="res://recursos/feed_de_noticias/feed_de_noticia.gd" type="Script" id=8]
 [ext_resource path="res://recursos/feed_de_noticias/logo.gd" type="Script" id=9]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/cabecalho/logo.png" type="Texture" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends AudioStreamPlayer
@@ -121,14 +122,26 @@ mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="Logo/Logo"]
 anchor_left = 0.5
-anchor_top = 0.403
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.403
+anchor_bottom = 0.5
 margin_left = -360.0
-margin_top = -503.117
+margin_top = -511.12
 margin_right = 360.0
-margin_bottom = 136.883
+margin_bottom = 128.88
 texture = ExtResource( 3 )
+expand = true
+
+[node name="SPnews" type="TextureRect" parent="Logo/Logo/TextureRect"]
+anchor_left = 0.493
+anchor_top = 0.758
+anchor_right = 0.493
+anchor_bottom = 0.758
+margin_left = -136.96
+margin_top = -122.12
+margin_right = 137.04
+margin_bottom = 121.88
+texture = ExtResource( 10 )
 expand = true
 
 [node name="BotaoMenufeed" parent="Logo/Logo" instance=ExtResource( 7 )]

@@ -56,10 +56,10 @@ func _atualizar_painel():
 func _ready():
 	recarregar_like()
 	_atualizar_card()
-	var save = Salvamento.carregar_tudo("like")
-	var dados = save.Dados
-	print(dados[idCard])
-	print(dados)
+#	var save = Salvamento.carregar_tudo("like")
+#	var dados = save.Dados
+#	print(dados[idCard])
+#	print(dados)
 
 func recarregar_like():
 	if not Salvamento.existe("like", idCard):
@@ -100,8 +100,8 @@ func _on_SaibaMais_pressed():
 
 func _on_coracaobotao_pressed():
 	var coracao_tween = $PainelPrincipal/Coracao/TweenCoracao
-	coracao_tween.interpolate_property($PainelPrincipal/Coracao, "scale", Vector2(1.907, 1.907), Vector2(2, 2), 0.2, Tween.TRANS_ELASTIC)
-	coracao_tween.interpolate_property($PainelPrincipal/Coracao, "scale", Vector2(2, 2), Vector2(1.907, 1.907), 0.2, Tween.TRANS_ELASTIC)
+	coracao_tween.interpolate_property($PainelPrincipal/Coracao, "scale", Vector2(1.245, 1.245), Vector2(1.7, 1.7), 0.2, Tween.TRANS_ELASTIC)
+	coracao_tween.interpolate_property($PainelPrincipal/Coracao, "scale", Vector2(1.7, 1.7), Vector2(1.245, 1.245), 0.2, Tween.TRANS_ELASTIC)
 	coracao_tween.start()
 	_tocar_animacao_coracao()
 
