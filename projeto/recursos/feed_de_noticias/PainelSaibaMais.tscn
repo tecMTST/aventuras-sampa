@@ -1,17 +1,21 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=1]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/noticia.png" type="Texture" id=2]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_Mais_pressed.png" type="Texture" id=3]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/noticia_outline.png" type="Texture" id=4]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_Mais_Normal.png" type="Texture" id=5]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/outline_noticia.png" type="Texture" id=4]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_mais.png" type="Texture" id=5]
 [ext_resource path="res://elementos/fontes/Lacquer-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/ManuseadorDaDescricaoAvancada.gd" type="Script" id=7]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/botao_jogar/jogar_pressed.png" type="Texture" id=9]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/botao_jogar/jogar_normal.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
-size = 24
+size = 27
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
 font_data = ExtResource( 6 )
 
 [node name="PainelSaibaMais" type="Control"]
@@ -38,13 +42,13 @@ stretch_mode = 1
 
 [node name="outline" type="TextureRect" parent="CanvasLayer/PainelDescricao"]
 anchor_left = 0.5
-anchor_top = 0.631
+anchor_top = 0.501
 anchor_right = 0.5
-anchor_bottom = 0.631
-margin_left = -344.0
-margin_top = -498.287
-margin_right = 344.0
-margin_bottom = 289.713
+anchor_bottom = 0.501
+margin_left = -345.0
+margin_top = -400.277
+margin_right = 348.0
+margin_bottom = 400.723
 theme = ExtResource( 1 )
 texture = ExtResource( 4 )
 expand = true
@@ -52,13 +56,13 @@ stretch_mode = 1
 
 [node name="Desc" type="RichTextLabel" parent="CanvasLayer/PainelDescricao"]
 anchor_left = 0.5
-anchor_top = 0.444
+anchor_top = 0.44
 anchor_right = 0.5
-anchor_bottom = 0.444
-margin_left = -325.0
-margin_top = -320.988
-margin_right = 327.0
-margin_bottom = 306.012
+anchor_bottom = 0.44
+margin_left = -313.0
+margin_top = -317.88
+margin_right = 309.0
+margin_bottom = 317.12
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/italics_font = SubResource( 1 )
 custom_fonts/bold_font = SubResource( 1 )
@@ -68,13 +72,13 @@ bbcode_text = "Coloque Uma Descrição avancada Aqui"
 text = "Coloque Uma Descrição avancada Aqui"
 
 [node name="SaibaMenos" type="TextureButton" parent="CanvasLayer/PainelDescricao"]
-anchor_left = 0.492
+anchor_left = 0.502
 anchor_top = -0.026
-anchor_right = 0.492
+anchor_right = 0.502
 anchor_bottom = -0.026
-margin_left = -94.608
+margin_left = -94.348
 margin_top = -15.798
-margin_right = 66.392
+margin_right = 66.652
 margin_bottom = 29.202
 rect_scale = Vector2( 1.17494, 0.69494 )
 mouse_filter = 1
@@ -105,17 +109,17 @@ stretch_mode = 5
 [node name="TweenJogar" type="Tween" parent="CanvasLayer/PainelDescricao/Jogar"]
 
 [node name="Jogar" type="Label" parent="CanvasLayer/PainelDescricao/Jogar"]
-anchor_left = 0.5
+anchor_left = 0.489
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.489
 anchor_bottom = 0.5
-margin_left = -80.4997
-margin_top = -18.5007
-margin_right = 74.5003
-margin_bottom = 17.4993
+margin_left = -77.47
+margin_top = -21.0
+margin_right = 77.53
+margin_bottom = 18.0
 mouse_filter = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "jogar"
 align = 1
 valign = 1
