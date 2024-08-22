@@ -1,13 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/cartao_de_noticia.tscn" type="PackedScene" id=1]
 [ext_resource path="res://elementos/scripts/ScriptsCartaoDeLevel/VBoxResizer.gd" type="Script" id=2]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/cabecalho/cabeçalho_jornal.png" type="Texture" id=3]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/cabecalho/CabecalhoJornal.png" type="Texture" id=3]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=4]
 [ext_resource path="res://elementos/audio/bgm/hub/hub-menu.mp3" type="AudioStream" id=5]
 [ext_resource path="res://elementos/audio/sfx/hub/hub-slide.wav" type="AudioStream" id=6]
 [ext_resource path="res://recursos/feed_de_noticias/menu_opcoes_feed/BotaoMenuFeed.tscn" type="PackedScene" id=7]
 [ext_resource path="res://recursos/feed_de_noticias/feed_de_noticia.gd" type="Script" id=8]
+[ext_resource path="res://recursos/feed_de_noticias/logo.gd" type="Script" id=9]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/cabecalho/logo.png" type="Texture" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends AudioStreamPlayer
@@ -65,8 +67,8 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContainerDeScroll"]
 margin_right = 720.0
-margin_bottom = 1456.0
-rect_min_size = Vector2( 720, 1456 )
+margin_bottom = 2912.0
+rect_min_size = Vector2( 720, 2912 )
 alignment = 1
 script = ExtResource( 2 )
 tamanho_total = 728
@@ -76,7 +78,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 720.0
-margin_bottom = 726.0
+margin_bottom = 725.0
 idCard = "SurfTerminalBandeira"
 Cena_do_jogo = "res://recursos/jogos/enchente/abertura/CutsceneBase.tscn"
 
@@ -84,42 +86,69 @@ Cena_do_jogo = "res://recursos/jogos/enchente/abertura/CutsceneBase.tscn"
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 730.0
+margin_top = 729.0
 margin_right = 720.0
-margin_bottom = 1456.0
+margin_bottom = 1454.0
+E_jogavel = false
+
+[node name="CartaoDeNoticia3" parent="ContainerDeScroll/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 1458.0
+margin_right = 720.0
+margin_bottom = 2183.0
+E_jogavel = false
+
+[node name="CartaoDeNoticia4" parent="ContainerDeScroll/VBoxContainer" instance=ExtResource( 1 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 2187.0
+margin_right = 720.0
+margin_bottom = 2912.0
 E_jogavel = false
 
 [node name="Logo" type="CanvasLayer" parent="."]
 layer = 2
+script = ExtResource( 9 )
 
 [node name="Logo" type="Control" parent="Logo"]
 anchor_right = 1.0
 anchor_bottom = 0.266
-margin_bottom = -0.23999
+margin_top = -50.0
+margin_bottom = -50.24
 mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="Logo/Logo"]
 anchor_left = 0.5
-anchor_top = 0.403
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.403
+anchor_bottom = 0.5
 margin_left = -360.0
-margin_top = -503.117
+margin_top = -511.12
 margin_right = 360.0
-margin_bottom = 136.883
+margin_bottom = 128.88
 texture = ExtResource( 3 )
 expand = true
 
-[node name="ColorRect" type="ColorRect" parent="Logo"]
-anchor_left = 0.5
-anchor_top = -0.458
-anchor_right = 0.5
-anchor_bottom = -0.458
-margin_left = -360.0
-margin_top = -164.17
-margin_right = 360.0
-margin_bottom = 163.83
-color = Color( 1, 0.52549, 0.52549, 1 )
+[node name="SPnews" type="TextureRect" parent="Logo/Logo/TextureRect"]
+anchor_left = 0.493
+anchor_top = 0.758
+anchor_right = 0.493
+anchor_bottom = 0.758
+margin_left = -136.96
+margin_top = -122.12
+margin_right = 137.04
+margin_bottom = 121.88
+texture = ExtResource( 10 )
+expand = true
+
+[node name="BotaoMenufeed" parent="Logo/Logo" instance=ExtResource( 7 )]
+offset = Vector2( 0, -50 )
+transform = Transform2D( 1, 0, 0, 1, 0, -50 )
+
+[node name="TweenLogo" type="Tween" parent="Logo"]
 
 [node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -130,8 +159,6 @@ bus = "BGM Track"
 stream = ExtResource( 6 )
 bus = "SFX Menu"
 script = SubResource( 1 )
-
-[node name="BotaoMenufeed" parent="." instance=ExtResource( 7 )]
 
 [connection signal="scroll_ended" from="ContainerDeScroll" to="AudioStreamInteracao" method="_on_ContainerDeScroll_scroll_ended"]
 [connection signal="scroll_started" from="ContainerDeScroll" to="AudioStreamInteracao" method="_on_ContainerDeScroll_scroll_started"]

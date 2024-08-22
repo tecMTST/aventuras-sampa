@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/card_outline.png" type="Texture" id=1]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_mais.png" type="Texture" id=1]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=2]
 [ext_resource path="res://elementos/scripts/ScriptsCartaoDeLevel/CartaoGeral.gd" type="Script" id=3]
 [ext_resource path="res://recursos/feed_de_noticias/AudioStreamEfeitos.gd" type="Script" id=4]
@@ -9,116 +9,50 @@
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao3.png" type="Texture" id=7]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao5.png" type="Texture" id=8]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao4.png" type="Texture" id=9]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/Like_pressed.png" type="Texture" id=10]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/Like componet (1).png" type="Texture" id=10]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao1.png" type="Texture" id=11]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/coracao2.png" type="Texture" id=12]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_Mais_Normal.png" type="Texture" id=13]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/Like_unpressed.png" type="Texture" id=14]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Like/Like componet.png" type="Texture" id=14]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Comentario.png" type="Texture" id=15]
 [ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/UiRedonda2.tres" type="StyleBox" id=16]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Feed_noticias/Leia_mais/Leia_Mais_pressed.png" type="Texture" id=17]
 [ext_resource path="res://elementos/fontes/Lacquer-Regular.ttf" type="DynamicFontData" id=18]
-[ext_resource path="res://elementos/texto/NoticiaText-Regular.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://elementos/texto/NoticiaText-Italic.ttf" type="DynamicFontData" id=20]
-[ext_resource path="res://elementos/texto/NoticiaText-Bold.ttf" type="DynamicFontData" id=21]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ) ],
-"loop": false,
-"name": "Play",
-"speed": 15.0
-} ]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/Noticia_aberta/outline_noticia.png" type="Texture" id=19]
 
 [sub_resource type="DynamicFont" id=11]
 size = 24
 font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 22
-font_data = ExtResource( 20 )
+size = 26
+font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=8]
-size = 22
-font_data = ExtResource( 21 )
+size = 26
+font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 22
-font_data = ExtResource( 19 )
+size = 26
+font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=6]
-size = 21
-font_data = ExtResource( 19 )
+size = 26
+font_data = ExtResource( 18 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Animação"
+length = 0.65
 tracks/0/type = "value"
-tracks/0/path = NodePath("../PainelPrincipal/Coracao:frame")
+tracks/0/path = NodePath("../PainelPrincipal/Coracao:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 6 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../PainelPrincipal/Coracao:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
-[sub_resource type="Animation" id=10]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("../PainelPrincipal/Coracao:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../PainelPrincipal/Coracao:speed_scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.001 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.5 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../PainelPrincipal/Coracao:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.001 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"values": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ) ]
 }
 
 [node name="CartaoDeNoticia" type="Control"]
@@ -134,6 +68,8 @@ __meta__ = {
 }
 Imagem_card = ExtResource( 6 )
 E_jogavel = true
+img_coracao_nao_apertado = ExtResource( 14 )
+img_coracao_apertado = ExtResource( 10 )
 
 [node name="PainelHidden" type="Panel" parent="."]
 modulate = Color( 0.776471, 0.776471, 0.776471, 1 )
@@ -166,6 +102,23 @@ theme = ExtResource( 2 )
 texture = ExtResource( 5 )
 expand = true
 
+[node name="ImgCard2" type="TextureRect" parent="PainelHidden/outline3"]
+anchor_left = 0.412101
+anchor_top = 0.363915
+anchor_right = 0.412101
+anchor_bottom = 0.363915
+margin_left = -250.361
+margin_top = -234.647
+margin_right = 363.639
+margin_bottom = 128.353
+mouse_filter = 2
+theme = ExtResource( 2 )
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="outline2" type="TextureRect" parent="PainelHidden"]
 anchor_left = 0.790653
 anchor_top = 0.53255
@@ -176,7 +129,7 @@ margin_top = -346.027
 margin_right = 313.441
 margin_bottom = 312.038
 theme = ExtResource( 2 )
-texture = ExtResource( 1 )
+texture = ExtResource( 19 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": true
@@ -184,13 +137,13 @@ __meta__ = {
 
 [node name="PainelPrincipal" type="TextureRect" parent="."]
 anchor_left = 0.503
-anchor_top = 0.535
+anchor_top = 0.500658
 anchor_right = 0.503
-anchor_bottom = 0.535
+anchor_bottom = 0.500659
 margin_left = -307.16
-margin_top = -357.48
+margin_top = -363.479
 margin_right = 324.84
-margin_bottom = 357.52
+margin_bottom = 351.521
 theme = ExtResource( 2 )
 texture = ExtResource( 5 )
 expand = true
@@ -216,28 +169,26 @@ __meta__ = {
 }
 
 [node name="outline" type="TextureRect" parent="PainelPrincipal"]
-anchor_left = 0.501389
-anchor_top = 0.491533
-anchor_right = 0.501389
-anchor_bottom = 0.491533
+anchor_left = 0.498225
+anchor_top = 0.487337
+anchor_right = 0.498225
+anchor_bottom = 0.497127
 margin_left = -320.878
 margin_top = -359.446
 margin_right = 308.122
 margin_bottom = 350.554
 mouse_filter = 2
 theme = ExtResource( 2 )
-texture = ExtResource( 1 )
+texture = ExtResource( 19 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Coracao" type="AnimatedSprite" parent="PainelPrincipal"]
-position = Vector2( 50, 656.999 )
-scale = Vector2( 1.90712, 1.90712 )
-frames = SubResource( 1 )
-animation = "Play"
-speed_scale = 1.5
+[node name="Coracao" type="Sprite" parent="PainelPrincipal"]
+position = Vector2( 62, 649.999 )
+scale = Vector2( 1.24522, 1.24522 )
+texture = ExtResource( 14 )
 
 [node name="coracaobotao" type="Button" parent="PainelPrincipal/Coracao"]
 anchor_left = 0.0805201
@@ -257,8 +208,8 @@ __meta__ = {
 [node name="TweenCoracao" type="Tween" parent="PainelPrincipal/Coracao"]
 
 [node name="Chat" type="Sprite" parent="PainelPrincipal"]
-position = Vector2( 127, 656.999 )
-scale = Vector2( 1.90712, 1.90712 )
+position = Vector2( 147, 647.999 )
+scale = Vector2( 1.20356, 1.20356 )
 texture = ExtResource( 15 )
 
 [node name="SaibaMais" type="TextureButton" parent="PainelPrincipal"]
@@ -271,7 +222,7 @@ margin_top = -31.0707
 margin_right = 105.68
 margin_bottom = 31.1038
 mouse_filter = 1
-texture_normal = ExtResource( 13 )
+texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 17 )
 expand = true
 __meta__ = {
@@ -297,7 +248,7 @@ valign = 1
 anchor_left = 0.0268987
 anchor_top = 0.522752
 anchor_right = 0.951265
-anchor_bottom = 0.641047
+anchor_bottom = 0.615872
 margin_top = 0.23175
 margin_right = -0.199768
 margin_bottom = -0.349213
@@ -317,10 +268,10 @@ __meta__ = {
 }
 
 [node name="Desc" type="Label" parent="PainelPrincipal"]
-anchor_left = 0.0221519
-anchor_top = 0.633566
-anchor_right = 0.94462
-anchor_bottom = 0.848951
+anchor_left = 0.028481
+anchor_top = 0.612586
+anchor_right = 0.950949
+anchor_bottom = 0.827971
 mouse_filter = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 6 )
@@ -335,7 +286,6 @@ __meta__ = {
 root_node = NodePath(".")
 playback_speed = 1.4
 "anims/Animação" = SubResource( 2 )
-anims/RESET = SubResource( 10 )
 
 [node name="AudioStreamCartao" type="AudioStreamPlayer" parent="."]
 bus = "SFX Menu"
@@ -343,6 +293,11 @@ script = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 358.5, 389.999 )
+scale = Vector2( 31.95, 20.6 )
+
 [connection signal="pressed" from="PainelPrincipal/Coracao/coracaobotao" to="." method="_on_coracaobotao_pressed"]
 [connection signal="pressed" from="PainelPrincipal/Coracao/coracaobotao" to="AudioStreamCartao" method="_on_coracaobotao_pressed"]
 [connection signal="pressed" from="PainelPrincipal/SaibaMais" to="." method="_on_SaibaMais_pressed"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
