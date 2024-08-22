@@ -9,7 +9,8 @@ export var distancia_do_centro: int = 10
 export var angulos_arraste = {
 	'esquerda-0': {'minimo': 150, 'maximo': 190},
 	'esquerda-1': {'minimo': -190, 'maximo': -150},
-	'direita': {'minimo': -30, 'maximo': 30}
+	'direita': {'minimo': -30, 'maximo': 30},
+	'baixo': {'minimo': 50, 'maximo': 140}
 }
 
 

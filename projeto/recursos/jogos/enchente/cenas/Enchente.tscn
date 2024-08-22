@@ -156,7 +156,6 @@ current = true
 fov = 84.375
 
 [node name="Listener" type="Listener" parent="Camera"]
-current = true
 
 [node name="Paredes" type="Spatial" parent="."]
 
