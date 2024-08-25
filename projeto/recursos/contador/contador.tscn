@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://elementos/audio/sfx/minigame-1/game-countdown.wav" type="AudioStream" id=1]
+[ext_resource path="res://elementos/audio/sfx/minigame-1/minigame1-countdown.mp3" type="AudioStream" id=1]
 [ext_resource path="res://elementos/UI/grafitti_numbers.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -100,10 +100,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6, 1.6, 2.6, 3.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6, 1, 1.6, 2, 2.6, 3, 3.6, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, true, true, true ]
+"values": [ false, true, false, true, false, true, false, true, false ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Numero:modulate")

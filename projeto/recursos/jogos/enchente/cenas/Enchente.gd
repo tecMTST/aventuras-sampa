@@ -21,6 +21,11 @@ func _ready():
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_3.global_position)
 	player_lane_3d.controle_faixa_3d.posicao_inicial = 1
 
+
+	$Contador.visible = true
+	$Contador/Animador.play("aproximar")
+	yield($Contador/Animador, 'animation_finished')
+
 	EnchenteEstadoDeJogo.TemporizadorGlobal = $TempoDeJogo
 	EnchenteEstadoDeJogo.definir_tempo_de_jogo(tempo_jogo * 60)
 	EnchenteEstadoDeJogo.iniciar_temporizador()
@@ -28,7 +33,6 @@ func _ready():
 
 	SingletonOpcoesGlobais.connect("Atualizou", self, "_atualizar_volume")
 	_atualizar_volume()
-
 
 func _process(_delta):
 	fps_label.text = str(Engine.get_frames_per_second())
