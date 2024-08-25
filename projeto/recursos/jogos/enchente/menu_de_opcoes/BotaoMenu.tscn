@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/cabecalho/menu_pressed.png" type="Texture" id=1]
+[ext_resource path="res://elementos/UI/minigame_senhorinha/Feed/cabecalho/menu_pressed (1).png" type="Texture" id=1]
 [ext_resource path="res://recursos/jogos/enchente/menu_de_opcoes/botaoMenu.gd" type="Script" id=2]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/HUD_ingame/Menu_normal.png" type="Texture" id=3]
 

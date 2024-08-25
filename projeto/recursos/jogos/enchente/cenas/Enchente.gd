@@ -30,7 +30,6 @@ func _ready():
 	_atualizar_volume()
 
 
-
 func _process(_delta):
 	fps_label.text = str(Engine.get_frames_per_second())
 	tempo_label.text = String(EnchenteEstadoDeJogo.TempoAtual)
