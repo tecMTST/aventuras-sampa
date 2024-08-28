@@ -1,12 +1,14 @@
 [gd_resource type="Environment" load_steps=3 format=2]
 
-[ext_resource path="res://elementos/imagem/Skybox/saopaulobackground.jpg" type="Texture" id=1]
+[ext_resource path="res://elementos/modelos/skybox/background_skybox_texture_v1.png" type="Texture" id=1]
 
 [sub_resource type="PanoramaSky" id=1]
+radiance_size = 3
 panorama = ExtResource( 1 )
 
 [resource]
 background_mode = 2
 background_sky = SubResource( 1 )
 fog_enabled = true
+fog_color = Color( 0.352941, 0.239216, 0.278431, 1 )
 dof_blur_far_distance = 256.43
