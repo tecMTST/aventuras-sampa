@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://recursos/jogos/enchente/barra_de_progresso/BarraDeProgresso.tscn" type="PackedScene" id=1]
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://recursos/jogos/enchente/componentes/GerenciadorDeObstaculos/ControladorDeObstaculos.tscn" type="PackedScene" id=13]
 [ext_resource path="res://recursos/jogos/enchente/cenas/Enchente.gd" type="Script" id=14]
 [ext_resource path="res://elementos/imagem/enchente/background_skyline.png" type="Texture" id=15]
+[ext_resource path="res://recursos/jogos/enchente/chefao/ChamadaDoBoss.tscn" type="PackedScene" id=16]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -180,5 +181,7 @@ stream = ExtResource( 12 )
 autoplay = true
 stream_paused = true
 bus = "BGM Track"
+
+[node name="ChamadaDoBoss" parent="." instance=ExtResource( 16 )]
 
 [connection signal="timeout" from="cidadesubindo/TimerDoTempoDeEspera" to="cidadesubindo" method="_mover_cidade"]
