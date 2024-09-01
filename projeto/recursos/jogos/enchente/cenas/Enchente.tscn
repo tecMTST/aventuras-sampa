@@ -147,7 +147,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.8976 )
 script = ExtResource( 8 )
 
 [node name="SpriteCidade" type="Sprite3D" parent="cidadesubindo"]
-transform = Transform( 8.46765, 0, 0.0831564, 0, 6.79913, 0, -0.741566, 0, 0.949525, 0, -2.55176, 0 )
+transform = Transform( 8.46765, 0, 0.0831564, 0, 6.79913, 0, -0.741566, 0, 0.949525, 0, -2.5, 0 )
 use_in_baked_light = true
 lightmap_scale = 1
 pixel_size = 0.005
@@ -165,6 +165,7 @@ alpha_cut = 2
 texture = ExtResource( 10 )
 
 [node name="TimerDoTempoDeEspera" type="Timer" parent="cidadesubindo"]
+one_shot = true
 
 [node name="Tween" type="Tween" parent="cidadesubindo"]
 
@@ -179,3 +180,5 @@ stream = ExtResource( 12 )
 autoplay = true
 stream_paused = true
 bus = "BGM Track"
+
+[connection signal="timeout" from="cidadesubindo/TimerDoTempoDeEspera" to="cidadesubindo" method="_mover_cidade"]
