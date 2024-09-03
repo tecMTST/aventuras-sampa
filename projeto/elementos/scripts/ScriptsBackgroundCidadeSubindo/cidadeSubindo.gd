@@ -12,6 +12,9 @@ var faseAtual: int = 0
 var ativadoPorSinal: bool = false
 
 func _ready() -> void:
+	EnchenteEstadoDeJogo.connect('iniciou', self, '_iniciar')
+
+func _iniciar() -> void:
 	timerDoTempoDeEspera.start()
 
 func _mover_cidade() -> void:

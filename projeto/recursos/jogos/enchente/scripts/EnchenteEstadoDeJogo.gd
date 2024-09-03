@@ -1,5 +1,6 @@
 extends Node
 
+signal iniciou()
 signal trocou_fase(fase)
 
 var VelocidadeGlobal = 1.0
@@ -20,3 +21,4 @@ func definir_tempo_de_jogo(tempo: float) -> void:
 
 func iniciar_temporizador() -> void:
 	TemporizadorGlobal.start()
+	emit_signal('iniciou')
