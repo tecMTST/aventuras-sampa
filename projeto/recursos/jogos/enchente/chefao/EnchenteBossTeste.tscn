@@ -262,7 +262,7 @@ textura_icone = ExtResource( 3 )
 tamanho_icone = 64.0
 
 [node name="skybox_nuvens" parent="." instance=ExtResource( 11 )]
-transform = Transform( 5.64013, 0, 0, 0, 7.65124, -1.10398, 0, 1.89858, 7.25025, -0.231674, 1.46607, -17.8614 )
+transform = Transform( 5.64013, 0, 0, 0, 7.88328, 0, 0, 0, 7.33382, -0.231674, 15.9409, -17.8614 )
 
 [node name="cidadesubindo" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.8976 )

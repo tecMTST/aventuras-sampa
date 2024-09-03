@@ -17,8 +17,12 @@ onready var _fabrica_obstaculos := FabricaObstaculos.new(
 
 var _numero_modulos_criados := 0
 
-func _ready() -> void:
+func iniciar() -> void:
 	_intervalo_adicionar_modulos.connect('timeout', self, 'adicionar_modulo')
+	_intervalo_adicionar_modulos.start()
+
+func parar() -> void:
+	_intervalo_adicionar_modulos.stop()
 
 func adicionar_modulo() -> void:
 	var modulo = _sorteador.sortear_modulo(EnchenteEstadoDeJogo.TempoAtual)
