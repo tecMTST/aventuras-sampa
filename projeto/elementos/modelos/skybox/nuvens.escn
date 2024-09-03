@@ -1,75 +1,19 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=1 format=2]
 
-[ext_resource path="res://elementos/modelos/skybox/Nuvem1.tres" type="Material" id=1]
-[ext_resource path="res://elementos/modelos/skybox/nuvem_2.png" type="Texture" id=2]
-[ext_resource path="res://elementos/modelos/skybox/nuvem_3.png" type="Texture" id=3]
-[ext_resource path="res://elementos/modelos/skybox/nuvem_5.png" type="Texture" id=4]
-[ext_resource path="res://elementos/modelos/skybox/nuvem_4.png" type="Texture" id=5]
-[ext_resource path="res://elementos/modelos/skybox/nuvem_1.png" type="Texture" id=6]
-[ext_resource path="res://elementos/modelos/skybox/nuvem_6.png" type="Texture" id=7]
-[ext_resource path="res://elementos/modelos/skybox/Nuvem4.tres" type="Material" id=8]
-[ext_resource path="res://elementos/modelos/skybox/Nuvem2.tres" type="Material" id=9]
-[ext_resource path="res://elementos/modelos/skybox/Nuvem3.tres" type="Material" id=10]
-[ext_resource path="res://elementos/modelos/skybox/Nuvem5.tres" type="Material" id=11]
-[ext_resource path="res://elementos/modelos/skybox/Nuvem.tres" type="Material" id=12]
+[ext_resource id=1 path="nuvem_6.png" type="Texture"]
 
-[sub_resource type="Animation" id=20]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Plane:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 180, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Plane2:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 120, 0 ) ]
-}
+[ext_resource id=2 path="nuvem_1.png" type="Texture"]
 
-[sub_resource type="Animation" id=6]
-resource_name = "RotacaoNuvens"
-length = 6.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Plane:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 360, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Plane2:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 120, 0 ), Vector3( 0, 300, 0 ), Vector3( 0, 480, 0 ) ]
-}
+[ext_resource id=3 path="nuvem_4.png" type="Texture"]
 
-[sub_resource type="Shader" id=1]
+[ext_resource id=4 path="nuvem_2.png" type="Texture"]
+
+[ext_resource id=5 path="nuvem_3.png" type="Texture"]
+
+[ext_resource id=6 path="nuvem_5.png" type="Texture"]
+
+[sub_resource id=1 type="Shader"]
+
 resource_name = "Shader Nodetree"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
@@ -192,11 +136,14 @@ void fragment () {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=14]
-shader = SubResource( 1 )
-shader_param/texture_0 = ExtResource( 7 )
+[sub_resource id=2 type="ShaderMaterial"]
 
-[sub_resource type="Shader" id=3]
+resource_name = ""
+shader = SubResource(1)
+shader_param/texture_0 = ExtResource(1)
+
+[sub_resource id=3 type="Shader"]
+
 resource_name = "Shader Nodetree"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
@@ -319,11 +266,14 @@ void fragment () {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=15]
-shader = SubResource( 3 )
-shader_param/texture_0 = ExtResource( 6 )
+[sub_resource id=4 type="ShaderMaterial"]
 
-[sub_resource type="Shader" id=16]
+resource_name = ""
+shader = SubResource(3)
+shader_param/texture_0 = ExtResource(2)
+
+[sub_resource id=5 type="Shader"]
+
 resource_name = "Shader Nodetree"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
@@ -446,11 +396,14 @@ void fragment () {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=17]
-shader = SubResource( 16 )
-shader_param/texture_0 = ExtResource( 5 )
+[sub_resource id=6 type="ShaderMaterial"]
 
-[sub_resource type="Shader" id=7]
+resource_name = ""
+shader = SubResource(5)
+shader_param/texture_0 = ExtResource(3)
+
+[sub_resource id=7 type="Shader"]
+
 resource_name = "Shader Nodetree"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
@@ -573,11 +526,14 @@ void fragment () {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=18]
-shader = SubResource( 7 )
-shader_param/texture_0 = ExtResource( 2 )
+[sub_resource id=8 type="ShaderMaterial"]
 
-[sub_resource type="Shader" id=9]
+resource_name = ""
+shader = SubResource(7)
+shader_param/texture_0 = ExtResource(4)
+
+[sub_resource id=9 type="Shader"]
+
 resource_name = "Shader Nodetree"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
@@ -700,11 +656,14 @@ void fragment () {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 9 )
-shader_param/texture_0 = ExtResource( 3 )
+[sub_resource id=10 type="ShaderMaterial"]
 
-[sub_resource type="Shader" id=11]
+resource_name = ""
+shader = SubResource(9)
+shader_param/texture_0 = ExtResource(5)
+
+[sub_resource id=11 type="Shader"]
+
 resource_name = "Shader Nodetree"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
@@ -827,110 +786,116 @@ void fragment () {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 11 )
-shader_param/texture_0 = ExtResource( 4 )
+[sub_resource id=12 type="ShaderMaterial"]
 
-[sub_resource type="ArrayMesh" id=19]
+resource_name = ""
+shader = SubResource(11)
+shader_param/texture_0 = ExtResource(6)
+
+[sub_resource id=13 type="ArrayMesh"]
+
 resource_name = "Plane014"
 surfaces/0 = {
-"aabb": AABB( -5.20339, -0.939969, 4.06248, 3.59788, 1.87994, 2.78804 ),
-"array_data": PoolByteArray( 234, 236, 232, 191, 207, 161, 112, 191, 97, 55, 219, 64, 101, 171, 130, 37, 0, 0, 0, 60, 44, 130, 166, 192, 207, 161, 112, 191, 192, 149, 143, 64, 101, 171, 130, 37, 0, 60, 0, 60, 73, 104, 149, 192, 207, 161, 112, 63, 214, 255, 129, 64, 101, 171, 130, 89, 0, 60, 0, 0, 90, 129, 205, 191, 207, 161, 112, 63, 183, 122, 198, 64, 101, 171, 130, 37, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 6,
-"material": SubResource( 14 ),
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 4
+	"material":SubResource(2),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(-1.81973, -0.939969, 6.85051, -5.20339, -0.939969, 4.48703, -4.66898, 0.939969, 4.06248, -1.60551, 0.939969, 6.20248),
+		Vector3Array(0.540849, -0.328562, -0.774255, 0.540849, -0.328562, -0.774255, 0.540849, -0.328562, -0.774255, 0.540849, -0.328562, -0.774255),
+		FloatArray(-0.819795, -8.74418e-06, -0.572657, 1.0, -0.819793, -1.05827e-06, -0.572659, 1.0, -0.819793, 2.52723e-06, -0.57266, 1.0, -0.819794, -5.57879e-06, -0.572658, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2)
+	],
+	"morph_arrays":[]
 }
 surfaces/1 = {
-"aabb": AABB( -7.21265, -0.895155, -7.1878, 14.4204, 3.74913, 12.1838 ),
-"array_data": PoolByteArray( 7, 206, 230, 192, 225, 40, 101, 191, 20, 9, 182, 190, 73, 229, 126, 16, 0, 0, 0, 60, 114, 225, 186, 192, 225, 40, 101, 191, 76, 26, 136, 192, 73, 229, 126, 110, 0, 60, 0, 60, 63, 58, 169, 192, 189, 26, 124, 63, 91, 124, 118, 192, 73, 229, 126, 110, 0, 60, 0, 0, 160, 253, 208, 192, 189, 26, 124, 63, 146, 202, 164, 190, 73, 229, 126, 16, 0, 0, 0, 0, 143, 165, 230, 64, 131, 170, 44, 61, 95, 96, 78, 63, 156, 199, 216, 63, 0, 0, 0, 60, 207, 247, 168, 64, 131, 170, 44, 61, 38, 223, 159, 64, 156, 199, 216, 63, 0, 60, 0, 60, 94, 75, 151, 64, 212, 183, 8, 64, 40, 39, 143, 64, 156, 199, 216, 63, 0, 60, 0, 0, 24, 120, 206, 64, 254, 183, 8, 64, 39, 192, 56, 63, 156, 199, 217, 63, 0, 0, 0, 0, 175, 153, 28, 63, 247, 89, 121, 63, 117, 2, 230, 192, 228, 230, 91, 63, 0, 0, 0, 60, 162, 122, 142, 64, 247, 89, 121, 63, 248, 170, 181, 192, 228, 230, 91, 63, 0, 60, 0, 60, 235, 255, 128, 64, 114, 167, 54, 64, 179, 123, 164, 192, 228, 230, 91, 63, 0, 60, 0, 0, 243, 198, 13, 63, 114, 167, 54, 64, 104, 63, 208, 192, 228, 230, 91, 63, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 8, 0, 11, 0, 10, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 18,
-"material": SubResource( 15 ),
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 12
+	"material":SubResource(4),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(-7.21265, -0.895155, -0.355538, -5.84002, -0.895155, -4.25321, -5.28836, 0.984783, -3.85134, -6.53096, 0.984783, -0.321858, 7.20771, 0.0421548, 0.806158, 5.28025, 0.0421548, 4.99599, 4.72795, 2.13622, 4.47353, 6.45216, 2.13623, 0.721682, 0.61172, 0.974029, -7.1878, 4.45247, 0.974029, -5.67712, 4.03124, 2.85397, -5.1401, 0.553817, 2.85397, -6.50774),
+		Vector3Array(0.890835, -0.328562, 0.313669, 0.890835, -0.328562, 0.313669, 0.890835, -0.328562, 0.313669, 0.890835, -0.328562, 0.313669, -0.859066, -0.32551, -0.395001, -0.859066, -0.32551, -0.395001, -0.859066, -0.32551, -0.395001, -0.859066, -0.32551, -0.395001, -0.345683, -0.328562, 0.878933, -0.345683, -0.328562, 0.878933, -0.345683, -0.328562, 0.878933, -0.345683, -0.328562, 0.878933),
+		FloatArray(0.332119, -3.04254e-06, -0.943237, 1.0, 0.332126, 1.5995e-05, -0.943235, 1.0, 0.332123, 8.16719e-06, -0.943236, 1.0, 0.332116, -1.19089e-05, -0.943238, 1.0, -0.417751, -2.30874e-05, 0.908562, 1.0, -0.417776, 5.83416e-05, 0.90855, 1.0, -0.417766, 2.48689e-05, 0.908555, 1.0, -0.417739, -6.15201e-05, 0.908567, 1.0, 0.930611, 1.58036e-06, 0.366009, 1.0, 0.930611, 8.21181e-06, 0.366011, 1.0, 0.930611, 5.4805e-06, 0.36601, 1.0, 0.930612, -1.51346e-06, 0.366008, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6, 8, 10, 9, 8, 11, 10)
+	],
+	"morph_arrays":[]
 }
 surfaces/2 = {
-"aabb": AABB( -8.84701, -0.895155, -5.81621, 11.8005, 2.79749, 12.9507 ),
-"array_data": PoolByteArray( 90, 141, 13, 193, 163, 206, 44, 62, 166, 237, 195, 191, 68, 230, 126, 20, 0, 0, 0, 60, 145, 39, 218, 192, 163, 206, 44, 62, 100, 30, 186, 192, 68, 230, 126, 106, 0, 60, 0, 60, 19, 213, 202, 192, 141, 127, 243, 63, 53, 12, 173, 192, 68, 230, 126, 106, 0, 60, 0, 0, 24, 161, 3, 193, 141, 127, 243, 63, 72, 51, 182, 191, 68, 230, 126, 20, 0, 0, 0, 0, 125, 5, 61, 64, 225, 40, 101, 191, 182, 45, 211, 64, 160, 141, 144, 63, 0, 0, 0, 60, 137, 210, 146, 191, 225, 40, 101, 191, 127, 77, 228, 64, 160, 141, 144, 63, 0, 60, 0, 60, 190, 246, 132, 191, 189, 26, 124, 63, 18, 189, 206, 64, 160, 141, 144, 63, 0, 60, 0, 0, 124, 44, 43, 64, 189, 26, 124, 63, 129, 62, 191, 64, 160, 141, 144, 63, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 12,
-"material": SubResource( 17 ),
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 8
+	"material":SubResource(6),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(-8.84701, 0.168757, -1.53069, -6.81733, 0.168757, -5.81621, -6.33851, 1.90233, -5.40774, -8.22683, 1.90233, -1.42344, 2.95346, -0.895155, 6.59933, -1.14705, -0.895155, 7.13446, -1.03878, 0.984783, 6.46058, 2.67459, 0.984783, 5.97638),
+		Vector3Array(0.852931, -0.330454, 0.404096, 0.852931, -0.330454, 0.404096, 0.852931, -0.330454, 0.404096, 0.852931, -0.330454, 0.404096, -0.122166, -0.328562, -0.936521, -0.122166, -0.328562, -0.936521, -0.122166, -0.328562, -0.936521, -0.122166, -0.328562, -0.936521),
+		FloatArray(0.428139, -4.07496e-05, -0.903713, 1.0, 0.428158, 2.13986e-05, -0.903704, 1.0, 0.428165, 4.2978e-05, -0.9037, 1.0, 0.428145, -2.1512e-05, -0.90371, 1.0, -0.991598, -1.73904e-05, 0.129356, 1.0, -0.991599, 5.43249e-06, 0.129348, 1.0, -0.9916, 1.60514e-05, 0.129345, 1.0, -0.991599, -8.01526e-06, 0.129353, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6)
+	],
+	"morph_arrays":[]
 }
 surfaces/3 = {
-"aabb": AABB( -6.1734, -0.895155, -6.6012, 13.2399, 3.14914, 15.4753 ),
-"array_data": PoolByteArray( 228, 44, 216, 64, 225, 40, 101, 191, 93, 220, 36, 192, 167, 225, 8, 63, 0, 0, 0, 60, 92, 32, 226, 64, 225, 40, 101, 191, 182, 103, 198, 63, 167, 225, 8, 63, 0, 60, 0, 60, 20, 203, 204, 64, 189, 26, 124, 63, 20, 174, 179, 63, 167, 225, 8, 63, 0, 60, 0, 0, 93, 196, 195, 64, 189, 26, 124, 63, 106, 77, 21, 192, 167, 225, 8, 63, 0, 0, 0, 0, 126, 140, 197, 192, 79, 172, 243, 61, 89, 139, 113, 192, 47, 231, 126, 33, 0, 0, 0, 60, 182, 74, 62, 192, 79, 172, 243, 61, 8, 61, 211, 192, 47, 231, 126, 93, 0, 60, 0, 60, 130, 197, 43, 192, 54, 205, 3, 64, 100, 175, 190, 192, 47, 231, 126, 93, 0, 60, 0, 0, 72, 80, 178, 192, 54, 205, 3, 64, 49, 8, 90, 192, 47, 231, 126, 33, 0, 0, 0, 0, 83, 63, 223, 63, 127, 76, 59, 190, 112, 252, 13, 65, 100, 141, 130, 56, 0, 0, 0, 60, 111, 13, 116, 192, 127, 76, 59, 190, 165, 230, 2, 65, 100, 141, 130, 70, 0, 60, 0, 60, 84, 0, 96, 192, 95, 65, 16, 64, 27, 76, 240, 64, 100, 141, 130, 70, 0, 60, 0, 0, 40, 242, 204, 63, 95, 65, 16, 64, 111, 88, 2, 65, 100, 141, 130, 56, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 8, 0, 11, 0, 10, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 18,
-"material": SubResource( 18 ),
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 12
+	"material":SubResource(8),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(6.75548, -0.895155, -2.57595, 7.06645, -0.895155, 1.55004, 6.39979, 0.984783, 1.40375, 6.11772, 0.984783, -2.33285, -6.1734, 0.118981, -3.77413, -2.97331, 0.118981, -6.6012, -2.68393, 2.0594, -5.95891, -5.5723, 2.0594, -3.40675, 1.74412, -0.182909, 8.87413, -3.81332, -0.182909, 8.18131, -3.50002, 2.25399, 7.50929, 1.60114, 2.25399, 8.14659),
+		Vector3Array(-0.941801, -0.328562, 0.0710166, -0.941801, -0.328562, 0.0710166, -0.941801, -0.328562, 0.0710166, -0.941801, -0.328562, 0.0710166, 0.625538, -0.327738, 0.707999, 0.625538, -0.327738, 0.707999, 0.625538, -0.327738, 0.707999, 0.625538, -0.327738, 0.707999, 0.118931, -0.277871, -0.953215, 0.118931, -0.277871, -0.953215, 0.118931, -0.277871, -0.953215, 0.118931, -0.277871, -0.953215),
+		FloatArray(0.0751965, -1.41038e-05, 0.997169, 1.0, 0.0751878, 1.09792e-05, 0.997169, 1.0, 0.0751914, 6.83681e-07, 0.997169, 1.0, 0.0752005, -2.5765e-05, 0.997168, 1.0, 0.7494, -2.85778e-06, -0.662118, 1.0, 0.749404, 1.63283e-05, -0.662113, 1.0, 0.749402, 8.44551e-06, -0.662115, 1.0, 0.749398, -1.18215e-05, -0.66212, 1.0, -0.992307, -2.69884e-05, -0.1238, 1.0, -0.992305, 2.20909e-05, -0.123814, 1.0, -0.992305, 4.29243e-05, -0.12382, 1.0, -0.992306, -8.41794e-06, -0.123806, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6, 8, 10, 9, 8, 11, 10)
+	],
+	"morph_arrays":[]
 }
 surfaces/4 = {
-"aabb": AABB( -7.1496, -0.927235, -6.91567, 14.3703, 3.78121, 11.8626 ),
-"array_data": PoolByteArray( 255, 149, 188, 64, 247, 89, 121, 63, 71, 3, 134, 192, 182, 229, 32, 63, 0, 0, 0, 60, 249, 15, 231, 64, 247, 89, 121, 63, 1, 20, 139, 190, 182, 229, 32, 63, 0, 60, 0, 60, 180, 60, 209, 64, 114, 167, 54, 64, 121, 205, 123, 190, 182, 229, 32, 63, 0, 60, 0, 0, 159, 200, 170, 64, 114, 167, 54, 64, 254, 183, 114, 192, 182, 229, 32, 63, 0, 0, 0, 0, 46, 57, 2, 192, 70, 95, 109, 191, 43, 77, 221, 192, 0, 224, 127, 63, 0, 0, 0, 60, 88, 57, 2, 64, 70, 95, 109, 191, 43, 77, 221, 192, 0, 224, 127, 63, 0, 60, 0, 60, 33, 31, 236, 63, 70, 95, 109, 63, 10, 162, 200, 192, 0, 224, 127, 63, 0, 60, 0, 0, 205, 30, 236, 191, 70, 95, 109, 63, 10, 162, 200, 192, 0, 224, 127, 63, 0, 0, 0, 0, 25, 28, 169, 192, 79, 172, 243, 61, 43, 77, 158, 64, 100, 197, 130, 20, 0, 0, 0, 60, 134, 201, 228, 192, 79, 172, 243, 61, 136, 157, 141, 63, 100, 197, 130, 106, 0, 60, 0, 60, 44, 130, 206, 192, 54, 205, 3, 64, 12, 172, 127, 63, 100, 197, 130, 106, 0, 60, 0, 0, 139, 166, 152, 192, 54, 205, 3, 64, 180, 229, 142, 64, 100, 197, 130, 20, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0, 8, 0, 10, 0, 9, 0, 8, 0, 11, 0, 10, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 18,
-"material": SubResource( 10 ),
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 12
+	"material":SubResource(10),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(5.89331, 0.974029, -4.1879, 7.2207, 0.974029, -0.271637, 6.53866, 2.85397, -0.245901, 5.33699, 2.85397, -3.79248, -2.03474, -0.927235, -6.91567, 2.03475, -0.927235, -6.91567, 1.8447, 0.927235, -6.26978, -1.84469, 0.927235, -6.26978, -5.28468, 0.118981, 4.94692, -7.1496, 0.118981, 1.10637, -6.45339, 2.0594, 0.998719, -4.77033, 2.0594, 4.46554),
+		Vector3Array(-0.894498, -0.328562, 0.30311, -0.894498, -0.328562, 0.30311, -0.894498, -0.328562, 0.30311, -0.894498, -0.328562, 0.30311, 0.0, -0.328898, 0.944334, 0.0, -0.328898, 0.944334, 0.0, -0.328898, 0.944334, 0.0, -0.328898, 0.944334, 0.849879, -0.327738, -0.412641, 0.849879, -0.327738, -0.412641, 0.849879, -0.327738, -0.412641, 0.849879, -0.327738, -0.412641),
+		FloatArray(0.320943, -2.3295e-05, 0.947099, 1.0, 0.320935, -7.16038e-07, 0.947101, 1.0, 0.320932, 9.78996e-06, 0.947102, 1.0, 0.32094, -1.40195e-05, 0.9471, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, -0.436773, -1.4255e-05, -0.899572, 1.0, -0.436768, 3.97853e-06, -0.899574, 1.0, -0.436765, 1.24988e-05, -0.899576, 1.0, -0.436771, -6.76209e-06, -0.899573, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6, 8, 10, 9, 8, 11, 10)
+	],
+	"morph_arrays":[]
 }
 surfaces/5 = {
-"aabb": AABB( 1.91738, -1.29872, -6.82748, 7.24487, 4.56407, 11.364 ),
-"array_data": PoolByteArray( 84, 116, 4, 64, 117, 60, 166, 191, 183, 122, 218, 192, 220, 230, 81, 63, 0, 0, 0, 60, 16, 59, 154, 64, 117, 60, 166, 191, 203, 190, 168, 192, 220, 230, 81, 63, 0, 60, 0, 60, 150, 231, 142, 64, 32, 10, 22, 62, 159, 89, 156, 192, 220, 230, 81, 63, 0, 60, 0, 0, 181, 108, 245, 63, 32, 10, 22, 62, 47, 105, 202, 192, 220, 230, 81, 63, 0, 0, 0, 0, 147, 152, 18, 65, 223, 254, 28, 63, 30, 220, 185, 191, 155, 216, 237, 63, 0, 0, 0, 60, 88, 74, 1, 65, 223, 254, 28, 63, 107, 43, 145, 64, 155, 216, 237, 63, 0, 60, 0, 60, 124, 213, 235, 64, 127, 251, 80, 64, 14, 243, 132, 64, 155, 216, 237, 63, 0, 60, 0, 0, 123, 206, 5, 65, 127, 251, 80, 64, 233, 183, 171, 191, 155, 216, 237, 63, 0, 0, 0, 0 ),
-"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 4, 0, 6, 0, 5, 0, 4, 0, 7, 0, 6, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 12,
-"material": SubResource( 12 ),
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 8
+	"material":SubResource(12),
+	"primitive":4,
+	"arrays":[
+		Vector3Array(2.0696, -1.29872, -6.82748, 4.81971, -1.29872, -5.27329, 4.46577, 0.146523, -4.88594, 1.91738, 0.146523, -6.32534, 9.16225, 0.613264, -1.45203, 8.08065, 0.613264, 4.53655, 7.36981, 3.26535, 4.15467, 8.36291, 3.26535, -1.34155),
+		Vector3Array(-0.463698, -0.33375, 0.820704, -0.463698, -0.33375, 0.820704, -0.463698, -0.33375, 0.820704, -0.463698, -0.33375, 0.820704, -0.945311, -0.277871, -0.170751, -0.945311, -0.277871, -0.170751, -0.945311, -0.277871, -0.170751, -0.945311, -0.277871, -0.170751),
+		FloatArray(0.870647, -1.78539e-05, 0.491909, 1.0, 0.870638, 3.29105e-05, 0.491924, 1.0, 0.870642, 1.19938e-05, 0.491918, 1.0, 0.870651, -4.08803e-05, 0.491902, 1.0, -0.177752, -5.2627e-06, 0.984075, 1.0, -0.177756, 9.05472e-06, 0.984075, 1.0, -0.177757, 1.51463e-05, 0.984074, 1.0, -0.177753, 1.66535e-07, 0.984075, 1.0),
+		null, ; no Vertex Colors,
+		Vector2Array(0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0),
+		null, ; No UV2,
+		null, ; No Bones,
+		null, ; No Weights,
+		IntArray(0, 2, 1, 0, 3, 2, 4, 6, 5, 4, 7, 6)
+	],
+	"morph_arrays":[]
 }
 
-[node name="skybox_nuvens" type="Spatial"]
-transform = Transform( 1.72715, 0, 0, 0, 1.5628, 0, 0, 0, 1.20962, 0, 1.46607, 0 )
+[node type="Spatial" name="Scene"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "RotacaoNuvens"
-playback_speed = 0.02
-anims/RESET = SubResource( 20 )
-anims/RotacaoNuvens = SubResource( 6 )
+[node name="Plane001" type="MeshInstance" parent="."]
 
-[node name="Plane" type="MeshInstance" parent="."]
-transform = Transform( -1.2382, 0, -1.08247e-07, 0, 1.2382, 0, 1.08247e-07, 0, -1.2382, -5.96046e-08, 0, 0 )
-mesh = SubResource( 19 )
-material/0 = ExtResource( 12 )
-material/1 = ExtResource( 1 )
-material/2 = ExtResource( 9 )
-material/3 = ExtResource( 10 )
-material/4 = ExtResource( 8 )
-material/5 = ExtResource( 11 )
-
-[node name="Plane2" type="MeshInstance" parent="."]
-transform = Transform( -0.809656, 0, 0.86558, 0, 1.2382, 0, -1.40237, 0, -0.499743, -5.96046e-08, 0, 0 )
-mesh = SubResource( 19 )
-material/0 = ExtResource( 12 )
-material/1 = ExtResource( 1 )
-material/2 = ExtResource( 9 )
-material/3 = ExtResource( 10 )
-material/4 = ExtResource( 8 )
-material/5 = ExtResource( 11 )
+mesh = SubResource(13)
+visible = true
+transform = Transform(1.01373, 0.0, 0.0, 0.0, 1.01373, 0.0, 0.0, 0.0, 1.01373, -5.96046e-08, 0.0, 0.0)
