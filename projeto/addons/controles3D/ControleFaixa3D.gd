@@ -41,7 +41,7 @@ export var aceleracao_queda = 1.5
 export var desaceleracao_queda = 2.5
 export var altura_pulo = 3
 export var tempo_abaixado = 1.0
-export var abaixar_infinito = true
+export var abaixar_infinito = false
 
 #Faixas
 export(Array, Vector3) var faixas = []
@@ -125,7 +125,9 @@ func levantar():
 	emit_signal('levantou')
 
 func pular():
-	if not em_movimento and not pulando and not caindo and not abaixado:
+	if abaixado:
+		levantar()
+	if not em_movimento and not pulando and not caindo:
 		_destravar_posicao()
 		alvo = Vector3(faixas[posicao_atual].x, faixas[posicao_atual].y + altura_pulo, parent.global_position.z)
 		ultima_distancia = DISTANCIA_MAXIMA
