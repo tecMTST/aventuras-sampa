@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://recursos/feed_de_noticias/SeletorDeNiveis/TemaSeletorDeLevel.tres" type="Theme" id=2]
-[ext_resource path="res://recursos/feed_de_noticias/menu_opcoes_feed/MenuOpcoesEnchentefeed.gd" type="Script" id=3]
+[ext_resource path="res://recursos/feed_de_noticias/TelasExtras/TemaSeletorDeLevel.tres" type="Theme" id=2]
+[ext_resource path="res://recursos/feed_de_noticias/menu_opcoes_menu/MenuOpcoes.gd" type="Script" id=3]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Normal.png" type="Texture" id=4]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/moldura.png" type="Texture" id=6]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Pressed.png" type="Texture" id=7]
