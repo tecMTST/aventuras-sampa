@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/moldura.png" type="Texture" id=1]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Botoes_sem_tipografia/Normal.png" type="Texture" id=2]
 [ext_resource path="res://recursos/jogos/enchente/menu_de_opcoes/MenuOpcoesEnchente.gd" type="Script" id=3]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Botoes_sem_tipografia/Pressed.png" type="Texture" id=4]
-[ext_resource path="res://recursos/feed_de_noticias/TelasExtras/TemaSeletorDeLevel.tres" type="Theme" id=5]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botoes_dificuldade/Botoes_sem_tipografia/Hovered.png" type="Texture" id=6]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Hovered.png" type="Texture" id=11]
 [ext_resource path="res://elementos/imagem/imgs_menu_opcoes_enchente/Checked.png" type="Texture" id=12]
@@ -59,7 +58,6 @@ anchor_left = 0.488462
 anchor_top = 0.11435
 anchor_right = 0.851923
 anchor_bottom = 0.206278
-theme = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -96,7 +94,6 @@ anchor_left = 0.488462
 anchor_top = 0.237668
 anchor_right = 0.851923
 anchor_bottom = 0.329596
-theme = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
