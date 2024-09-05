@@ -1,27 +1,18 @@
 extends KinematicBody
 
-onready var tweendescida: Tween = $Sprite3D/Descida
-onready var tweensubida: Tween = $Sprite3D/Subida
+onready var tentaculo_anim = $Sprite3D/AnimationPlayer
 
 func _ready():
 	$CollisionShape.disabled = true
-	tweensubida.interpolate_property($Sprite3D, "translation",
-		Vector3(0.202, -1.828, 0.041), Vector3(0.202, 1.671, 0.041), 0.9,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	tweensubida.start()
-
-func _on_Timer_timeout():
-	tweendescida.interpolate_property($Sprite3D, "translation",
-		Vector3(0.202, 1.671, 0.041), Vector3(0.202, -1.828, 0.041), 0.9,
-		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$CollisionShape.disabled = true
-	tweendescida.start()
-
-func _on_Descida_tween_completed(object, key):
-	self.queue_free()
-
-func _on_Subida_tween_completed(object, key):
+	tentaculo_anim.play("In_OUt")
+	yield(tentaculo_anim, "animation_finished")
 	$CollisionShape.disabled = false
+	tentaculo_anim.play("Idle")
+	$Timer.start(5)
+	yield($Timer, "timeout")
+	tentaculo_anim.play_backwards("In_OUt")
+	yield(tentaculo_anim, "animation_finished")
+	self.queue_free()
 
 func _on_AreaColetoraObstaculos_body_entered(body):
 	if body.is_in_group("minasAquaticas"):

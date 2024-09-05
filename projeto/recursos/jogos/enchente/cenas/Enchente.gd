@@ -34,6 +34,9 @@ func _ready():
 	SingletonOpcoesGlobais.connect("Atualizou", self, "_atualizar_volume")
 	_atualizar_volume()
 
+	EnchenteEstadoDeJogo.connect('trocou_fase', self, "_trocou_fase")
+	$ControladorDeObstaculos.iniciar()
+
 func _process(_delta):
 	fps_label.text = str(Engine.get_frames_per_second())
 	tempo_label.text = String(EnchenteEstadoDeJogo.TempoAtual)
@@ -54,3 +57,7 @@ func _atualizar_volume():
 			audio_stream_amb.volume_db = range_lerp(_volume_atual, 1, 100, -30, 0)
 			audio_stream_bgm.volume_db = range_lerp(_volume_atual, 1, 100, -30, 0)
 
+func _trocou_fase(fase):
+	if fase == 3:
+		$ControladorDeObstaculos.parar()
+		$ChamadaDoBoss.iniciar()

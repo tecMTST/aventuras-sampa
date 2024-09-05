@@ -144,6 +144,7 @@ shape = SubResource( 1 )
 
 [node name="SpriteAgua" type="AnimatedSprite3D" parent="."]
 transform = Transform( 0.474704, 0, 0, 0, 0.474704, 0, 0, 0, 0.533191, 0, 0.6521, 0 )
+shaded = true
 frames = SubResource( 3 )
 animation = "Idle"
 playing = true
@@ -151,6 +152,7 @@ playing = true
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform( 0.487328, 0, 0, 0, 0.487328, 0, 0, 0, 0.487328, 0, 0.840273, 0 )
 billboard = 1
+shaded = true
 frames = SubResource( 2 )
 animation = "idle"
 playing = true
