@@ -16,9 +16,15 @@ onready var posicao_sprite_agua_original = sprite_agua.global_position
 var imune = false
 var imune_dano = false
 var imunidade_time: float = 0
+var range_baloes: int = 4
 var abaixado = false
 var pulando = false
 var anim_cair = false
+var path_lista_baloes: Array = [
+	"res://elementos/imagem/baloes/bobeira.png",
+	"res://elementos/imagem/baloes/moca.png",
+	"res://elementos/imagem/baloes/onibus.png",
+	"res://elementos/imagem/baloes/raiva.png"]
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):

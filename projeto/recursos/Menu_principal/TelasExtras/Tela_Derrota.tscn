@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://recursos/Menu_principal/menu_opcoes_menu/Som_menu.gd" type="Script" id=1]
+[ext_resource path="res://recursos/Menu_principal/menu_opcoes_menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://elementos/audio/bgm/hub/hub-menu.mp3" type="AudioStream" id=2]
 [ext_resource path="res://recursos/Menu_principal/menu_opcoes_menu/BotaoMenu.tscn" type="PackedScene" id=3]
 
