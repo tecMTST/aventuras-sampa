@@ -185,10 +185,14 @@ shape = SubResource( 1 )
 wait_time = 0.2
 
 [node name="BalaoDeFala" type="Sprite3D" parent="."]
-transform = Transform( -3.44468e-08, 0, -0.78805, 0, 0.78805, 0, 0.78805, 0, -3.44468e-08, -0.13651, 2.35412, 1.30532 )
-visible = false
+transform = Transform( -0.54, 0, 8.15377e-08, 0, 0.54, 0, -8.15377e-08, 0, -0.54, -0.0177393, 3.00375, 0.12553 )
 billboard = 1
 texture = ExtResource( 80 )
+
+[node name="TweenBalao" type="Tween" parent="BalaoDeFala"]
+
+[node name="DeixarInvisivel" type="Timer" parent="BalaoDeFala"]
+wait_time = 3.0
 
 [connection signal="animation_finished" from="SpriteAgua" to="." method="_on_SpriteAgua_animation_finished"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
