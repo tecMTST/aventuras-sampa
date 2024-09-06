@@ -52,14 +52,15 @@ fov = 84.375
 
 [node name="CriadorPredios" parent="Paredes" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -72.887 )
-modelos = [ "res://recursos/jogos/enchente/componentes/predio-1-t.tscn" ]
+modelos = [ "res://recursos/jogos/enchente/componentes/predio-1-t.tscn", "res://recursos/jogos/enchente/componentes/predio-2-t.tscn", "res://recursos/jogos/enchente/componentes/predio-3-t.tscn", "res://recursos/jogos/enchente/componentes/predio-4-t.tscn", "res://recursos/jogos/enchente/componentes/predio-5-t.tscn" ]
 espacamento = 12.0
-deslocamento_vertical = -1.0
+deslocamento_vertical = -0.5
 
 [node name="CriadorPredios2" parent="Paredes" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -72.887 )
-modelos = [ "res://recursos/jogos/enchente/componentes/predio-1-t.tscn" ]
-deslocamento_vertical = -1.0
+modelos = [ "res://recursos/jogos/enchente/componentes/predio-1-t.tscn", "res://recursos/jogos/enchente/componentes/predio-2-t.tscn", "res://recursos/jogos/enchente/componentes/predio-3-t.tscn", "res://recursos/jogos/enchente/componentes/predio-4-t.tscn", "res://recursos/jogos/enchente/componentes/predio-5-t.tscn" ]
+espacamento = 12.0
+deslocamento_vertical = -0.5
 inverter_x = true
 
 [node name="Faixas" type="Spatial" parent="."]
