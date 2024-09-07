@@ -3,6 +3,7 @@ class_name PlayerLane3D
 
 export var tempo_imunidade_dano: float = 3.0
 export var tempo_imunidade_item: float = 5.0
+export(Array, StreamTexture) var texturas
 
 onready var controle_faixa_3d = $ControleFaixa3D
 onready var vida = $Vida as Vida
@@ -22,31 +23,12 @@ var range_baloes: int = 4
 var abaixado = false
 var pulando = false
 var anim_cair = false
-var path_lista_baloes: Array = [
-	"res://elementos/imagem/baloes/bobeira.png",
-	"res://elementos/imagem/baloes/moca.png",
-	"res://elementos/imagem/baloes/onibus.png",
-	"res://elementos/imagem/baloes/raiva.png"]
-var lista_de_streamtexture: Array = []
-
-func _ready():
-	for n in range(4):
-		var texturas = StreamTexture.new()
-		var image = Image.new()
-		var image_loader = Image.new()
-
-		if image_loader.load(String(path_lista_baloes[n])):
-			texturas.create_from_image(image)
-			lista_de_streamtexture.append(texturas)
-		else:
-			print("Erro ao carregar a textura: %s" % path_lista_baloes[n])
-	print(lista_de_streamtexture)
-#	_gerar_fala_de_dano()
+var lastrnd
 
 func _input(event):
 	if Input.is_action_just_pressed("pause"):
 		pause()
-		
+
 func _process(delta):
 	sprite_agua.global_position.y = posicao_sprite_agua_original.y
 
@@ -150,14 +132,16 @@ func _on_SpriteAgua_animation_finished():
 		sprite_agua.play("Idle")
 
 func _gerar_fala_de_dano():
-	var random = RandomNumberGenerator.new()
-	var rndbalao = random.randi_range(0, 3)
 	randomize()
+	var rndbalao = randi() % 4 + 1
+	if rndbalao == lastrnd:
+		randomize()
+		rndbalao = randi() % 4 + 1
 	print(rndbalao)
-	print(lista_de_streamtexture[rndbalao])
-	BaloesDeFalha.texture = lista_de_streamtexture[rndbalao]
+	lastrnd = rndbalao
+	BaloesDeFalha.texture = texturas[rndbalao - 1]
 	_animar_tween_balao("Aparecer")
-	$BalaoDeFala/DeixarInvisivel.start(3)
+	$BalaoDeFala/DeixarInvisivel.start(1.2)
 	yield($BalaoDeFala/DeixarInvisivel, 'timeout')
 	_animar_tween_balao("Desaparecer")
 
