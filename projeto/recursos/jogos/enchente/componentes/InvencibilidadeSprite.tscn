@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://elementos/imagem/enchente/Efeitos/InvencibilidadeSpriteMat.tres" type="Material" id=1]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[node name="InvencibilidadeSprite" type="MeshInstance"]
+transform = Transform( 0.0952037, 0, 0, 0, -2.05291e-08, -0.0952037, 0, 0.469652, -4.16148e-09, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
