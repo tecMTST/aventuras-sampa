@@ -12,6 +12,8 @@ onready var timer_imunidade = $TimerImunidade
 onready var imunidade_modulate = false
 onready var menuOpcoes = preload("res://recursos/jogos/enchente/menu_de_opcoes/MenuDeOpcoes.tscn")
 onready var posicao_sprite_agua_original = sprite_agua.global_position
+onready var imunidade_particulas = $ImunidadeParticulas
+
 
 var imune = false
 var imune_dano = false
@@ -61,6 +63,8 @@ func imunidade(dano: bool, tempo: float):
 	imune_dano = dano
 	imune = true
 	timer_imunidade.start()
+	if not dano:
+		imunidade_particulas.visible = true
 
 func _on_TimerImunidade_timeout():
 	if imune_dano:
@@ -77,6 +81,7 @@ func _on_TimerImunidade_timeout():
 		finaliza_imunidade()
 
 func finaliza_imunidade():
+	imunidade_particulas.visible = false
 	sprite.visible = true
 	sprite_agua.visible = true
 	imune = false
