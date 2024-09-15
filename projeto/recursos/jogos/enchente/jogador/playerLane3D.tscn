@@ -5,7 +5,7 @@
 [ext_resource path="res://recursos/jogos/enchente/jogador/playerLane3D.gd" type="Script" id=3]
 [ext_resource path="res://recursos/jogos/enchente/controlador_arrasta/ControladorArrasta.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/sistema_vida/vida.gd" type="Script" id=5]
-[ext_resource path="res://recursos/jogos/enchente/menu_de_opcoes/BotaoMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0002.png" type="Texture" id=7]
 [ext_resource path="res://recursos/jogos/enchente/jogador/AudioStreamPlayer.gd" type="Script" id=8]
 [ext_resource path="res://elementos/imagem/enchente/senhorinha/idle/Timeline 1_0001.png" type="Texture" id=9]
@@ -178,8 +178,6 @@ vida_maxima = 3.0
 bus = "SFX Player"
 script = ExtResource( 8 )
 
-[node name="BotaoMenu" parent="." instance=ExtResource( 6 )]
-
 [node name="AreaDano" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="AreaDano"]
@@ -198,6 +196,8 @@ texture = ExtResource( 80 )
 
 [node name="DeixarInvisivel" type="Timer" parent="BalaoDeFala"]
 wait_time = 3.0
+
+[node name="BotaoMenu" parent="." instance=ExtResource( 6 )]
 
 [connection signal="animation_finished" from="SpriteAgua" to="." method="_on_SpriteAgua_animation_finished"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]

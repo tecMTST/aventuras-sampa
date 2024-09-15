@@ -1,6 +1,6 @@
 extends Control
 
-onready var opcoesMenu = preload("res://recursos/Menu_principal/menu_opcoes_menu/MenuDeOpcoes.tscn")
+onready var opcoesMenu = preload("res://recursos/Menu_principal/menu_opcoes/MenuDeOpcoes.tscn")
 onready var audio_stream_bgm = $AudioStreamBGM
 onready var tween_jogar = $Buttons/Btn_Jogar/tween_jogar
 onready var tween_opcoes = $Buttons/Btn_Opcoes/tween_opcoes
@@ -35,6 +35,7 @@ func _on_opcoes_button_up():
 	if opcoes_apertado and jogar_apertado == false:
 		get_tree().get_root().add_child(instanciaMenu)
 		$Buttons/Btn_Opcoes.disabled = false
+		opcoes_apertado = false
 
 func _on_Jogar_button_up():
 	jogar_apertado = true
@@ -46,3 +47,4 @@ func _on_Jogar_button_up():
 	if jogar_apertado and opcoes_apertado == false:
 		TrocadorDeCenas.trocar_cena(proxima_cena.resource_path)
 		$Buttons/Btn_Jogar.disabled = false
+		jogar_apertado = false

@@ -156,3 +156,5 @@ func _auto_destruir():
 	emit_signal("Chefao_Derrotado")
 	yield(get_tree().create_timer(2), "timeout")
 	self.queue_free()
+	yield(get_tree().create_timer(1.2), "timeout")
+	TrocadorDeCenas.trocar_cena('res://recursos/Menu_principal/TelasExtras/Tela_Vitoria.tscn')

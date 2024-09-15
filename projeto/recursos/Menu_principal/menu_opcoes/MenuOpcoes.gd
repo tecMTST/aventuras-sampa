@@ -6,9 +6,10 @@ onready var musicaWheel: HSlider = $MenuDeOpcoes/Menu/VolumeMusica
 onready var efeitosWheel: HSlider = $MenuDeOpcoes/Menu/VolumeEfeitos
 onready var porcentagemMusicaWheel: Label = $MenuDeOpcoes/Menu/Porcentagem
 onready var porcentagemEfeitosWheel: Label = $MenuDeOpcoes/Menu/Porcentagem
-onready var menuFeed: TextureButton = $MenuDeOpcoes/Menu/VoltarMenuFeed
+onready var voltarmenu: TextureButton = $MenuDeOpcoes/Menu/VoltarMenu
+onready var voltarjogo: TextureButton = $MenuDeOpcoes/Menu/VoltarJogo
 
-export var voltarJogo: String = ''
+export var menupath: String = 'res://recursos/Menu_principal/Menu_Principal.tscn'
 
 func _ready():
 	print(SingletonGlobal.ativarBotoes)
@@ -20,6 +21,14 @@ func _ready():
 	efeitosWheel.value = SingletonGlobal.volumeSFX
 	porcentagemEfeitosWheel.text = str(efeitosWheel.value) + '%'
 
+	if get_tree().get_current_scene().get_name() == "Enchente":
+		#print(get_tree().get_current_scene().get_name())
+		pass
+	else:
+		voltarmenu.visible = false
+		$MenuDeOpcoes/Menu/VoltarJogo/Label.text = "voltar ao menu"
+		#print(get_tree().get_current_scene().get_name())
+
 func _input(event):
 	var valorMusicaGlobal = musicaWheel.value
 	var valorSfxGlobal = efeitosWheel.value
@@ -29,8 +38,13 @@ func _input(event):
 		SingletonGlobal.volumeSFX = valorSfxGlobal
 		SingletonOpcoesGlobais.salvar_globais()
 
-func _on_VoltarMenuFeed_button_up():
+func _on_VoltarJogo_button_up():
 	get_tree().paused = false
+	self.queue_free()
+
+func _on_VoltarMenu_button_up():
+	get_tree().paused = false
+	TrocadorDeCenas.trocar_cena(menupath)
 	self.queue_free()
 
 func _process(delta):

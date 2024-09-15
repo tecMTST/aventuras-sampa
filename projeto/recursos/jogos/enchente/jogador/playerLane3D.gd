@@ -11,7 +11,7 @@ onready var sprite = $Sprite as AnimatedSprite3D
 onready var sprite_agua = $SpriteAgua as AnimatedSprite3D
 onready var timer_imunidade = $TimerImunidade
 onready var imunidade_modulate = false
-onready var menuOpcoes = preload("res://recursos/jogos/enchente/menu_de_opcoes/MenuDeOpcoes.tscn")
+onready var menuOpcoes = preload("res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn")
 onready var posicao_sprite_agua_original = sprite_agua.global_position
 onready var BaloesDeFalha: Sprite3D = $BalaoDeFala
 onready var TweenBalao: Tween = $BalaoDeFala/TweenBalao
@@ -59,7 +59,7 @@ func _on_AreaDano_body_entered(body: Node) -> void:
 		controle_faixa_3d.pular()
 
 func _on_Vida_vida_acabou() -> void:
-	TrocadorDeCenas.trocar_cena('res://recursos/Menu_principal/Menu_Principal.tscn')
+	TrocadorDeCenas.trocar_cena('res://recursos/Menu_principal/TelasExtras/Tela_Derrota.tscn')
 
 func imunidade(dano: bool, tempo: float):
 	if imune:
