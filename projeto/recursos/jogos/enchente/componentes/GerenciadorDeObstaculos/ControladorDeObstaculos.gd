@@ -12,7 +12,8 @@ onready var _intervalo_adicionar_modulos := $Timer
 
 onready var _configuracao_de_modulos := _sorteador._ler_arquivo_json('res://elementos/modulos.json') as Dictionary
 onready var _fabrica_obstaculos := FabricaObstaculos.new(
-	_configuracao_de_modulos['tipo_de_obstaculo']
+	_configuracao_de_modulos['tipo_de_obstaculo'],
+	_configuracao_de_modulos['sfx']
 )
 
 var _numero_modulos_criados := 0
