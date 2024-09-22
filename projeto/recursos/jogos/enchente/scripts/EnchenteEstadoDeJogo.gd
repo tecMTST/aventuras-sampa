@@ -4,12 +4,16 @@ signal iniciou()
 signal trocou_fase(fase)
 
 var VelocidadeGlobal = 1.0
+var DictVelocidades: Dictionary = {}
 var TemporizadorGlobal := Timer.new()
 var TempoAtual := 0.0
 var fase := 1
 
 func _process(_delta: float) -> void:
 	TempoAtual = TemporizadorGlobal.wait_time - TemporizadorGlobal.time_left
+	var floor_tempo = floor(TempoAtual)
+	if floor_tempo in DictVelocidades:
+		VelocidadeGlobal = DictVelocidades[floor_tempo]
 	var checar_fase = int(TempoAtual / 60) + 1  # verificar outra forma de fazer isso
 	if checar_fase > fase:
 		fase = checar_fase
