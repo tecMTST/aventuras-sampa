@@ -19,6 +19,7 @@ onready var _fabrica_obstaculos := FabricaObstaculos.new(
 var _numero_modulos_criados := 0
 
 func iniciar() -> void:
+	EnchenteEstadoDeJogo.DictVelocidades = _configuracao_de_modulos['velocidade']
 	_intervalo_adicionar_modulos.connect('timeout', self, 'adicionar_modulo')
 	_intervalo_adicionar_modulos.start()
 

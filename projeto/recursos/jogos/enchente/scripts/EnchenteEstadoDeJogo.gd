@@ -11,9 +11,10 @@ var fase := 1
 
 func _process(_delta: float) -> void:
 	TempoAtual = TemporizadorGlobal.wait_time - TemporizadorGlobal.time_left
-	var floor_tempo = floor(TempoAtual)
+	var floor_tempo = str(floor(TempoAtual))
 	if floor_tempo in DictVelocidades:
 		VelocidadeGlobal = DictVelocidades[floor_tempo]
+		print_debug('nova velocidade' )
 	var checar_fase = int(TempoAtual / 60) + 1  # verificar outra forma de fazer isso
 	if checar_fase > fase:
 		fase = checar_fase
