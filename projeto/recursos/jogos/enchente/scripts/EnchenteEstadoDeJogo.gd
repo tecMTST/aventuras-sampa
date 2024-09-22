@@ -2,6 +2,7 @@ extends Node
 
 signal iniciou()
 signal trocou_fase(fase)
+signal nova_velocidade()
 
 var VelocidadeGlobal = 1.0
 var DictVelocidades: Dictionary = {}
@@ -14,7 +15,7 @@ func _process(_delta: float) -> void:
 	var floor_tempo = str(floor(TempoAtual))
 	if floor_tempo in DictVelocidades:
 		VelocidadeGlobal = DictVelocidades[floor_tempo]
-		print_debug('nova velocidade' )
+		emit_signal("nova_velocidade")
 	var checar_fase = int(TempoAtual / 60) + 1  # verificar outra forma de fazer isso
 	if checar_fase > fase:
 		fase = checar_fase

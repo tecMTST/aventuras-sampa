@@ -20,8 +20,15 @@ var _numero_modulos_criados := 0
 
 func iniciar() -> void:
 	EnchenteEstadoDeJogo.DictVelocidades = _configuracao_de_modulos['velocidade']
+	EnchenteEstadoDeJogo.connect("nova_velocidade", self, 'alterar_tempo')
 	_intervalo_adicionar_modulos.connect('timeout', self, 'adicionar_modulo')
+	intervalo_modulos = _configuracao_de_modulos['distancia_entre_obstaculos']
+	_intervalo_adicionar_modulos.wait_time = intervalo_modulos / EnchenteEstadoDeJogo.VelocidadeGlobal
 	_intervalo_adicionar_modulos.start()
+
+func alterar_tempo() -> void:
+	_intervalo_adicionar_modulos.wait_time = intervalo_modulos / EnchenteEstadoDeJogo.VelocidadeGlobal
+	
 
 func parar() -> void:
 	_intervalo_adicionar_modulos.stop()
