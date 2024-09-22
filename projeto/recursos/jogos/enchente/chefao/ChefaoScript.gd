@@ -9,7 +9,7 @@ onready var timer_modulo = $Timers/TimerModos
 onready var boss_sprite = $Sprites/SpriteChefao
 onready var Tentaculos = preload("res://recursos/jogos/enchente/chefao/Tentaculos.tscn")
 onready var BombasChefe = preload("res://recursos/jogos/enchente/chefao/BombasChefe.tscn")
-onready var bossendtween = $Sprites/SpriteChefao/Tween
+onready var Animplayer = $Sprites/SpriteChefao/AnimationPlayer
 
 signal Chefao_Derrotado
 
@@ -31,8 +31,11 @@ var CAMINHO_MODULO = 'res://recursos/jogos/enchente/chefao/modulos.json'
 var conteudo_total_modulo = loadJson(CAMINHO_MODULO)
 
 func _ready():
-	print(conteudo_total_modulo)
-	print(timer_atual)
+	#print(conteudo_total_modulo)
+	#print(timer_atual)
+	Animplayer.play("in_out")
+	yield(Animplayer, "animation_finished")
+	Animplayer.play("Idle")
 	_mudaModulo()
 	adicionar_lista('20_sec', 1)
 	timer_modulo.start(28)
@@ -82,6 +85,9 @@ func _realizar_acao():
 
 func _on_TimerAtaque_timeout():
 	_realizar_acao()
+	
+func animacao(animacao):
+	Animplayer.play(animacao)
 
 func _realizar_ataque():
 	var lane_atual = 1
@@ -92,29 +98,38 @@ func _realizar_ataque():
 		print(obj_pos)
 		if lane_atual == 4:
 			yield(get_tree().create_timer(0.3), "timeout")
+			animacao("Idle")
 			lane_atual = 1
 
 		if obj_pos == 0:
 			instanciaMinaAquatica.queue_free()
 			instanciaTentaculo.queue_free()
+
 		elif obj_pos == 1:
 			add_child(instanciaMinaAquatica)
+			animacao("Ataque_bombas")
 			if lane_atual == 1:
 				instanciaMinaAquatica.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 			elif lane_atual == 2:
 				instanciaMinaAquatica.global_position = Vector3(faixa_2.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 			elif lane_atual == 3:
 				instanciaMinaAquatica.global_position = Vector3(faixa_3.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
+			yield(Animplayer, "animation_finished")
+			animacao("Idle")
 
 		elif obj_pos == 2:
 			add_child(instanciaTentaculo)
 			if lane_atual == 1:
+				animacao("Ataque_tentaculo")
 				instanciaTentaculo.global_position = faixa_1.global_position
 			elif lane_atual == 2:
+				animacao("Ataque_tentaculo")
 				instanciaTentaculo.global_position = faixa_2.global_position
 			elif lane_atual == 3:
+				animacao("Ataque_tentaculo")
 				instanciaTentaculo.global_position = faixa_3.global_position
-
+			yield(Animplayer, "animation_finished")
+			animacao("Idle")
 		lane_atual += 1
 
 func loadJson(nomejson):
@@ -132,11 +147,8 @@ func loadJson(nomejson):
 	arquivo.close()
 
 func _auto_destruir():
-	bossendtween.interpolate_property(boss_sprite,  "translation", Vector3(-0.079, 4.143, 6.825), Vector3(-0.079, -6.971, 6.825), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	Animplayer.play_backwards("in_out")
 	yield(get_tree().create_timer(0.7), "timeout")
-	bossendtween.start()
-
-func _on_Tween_tween_completed(object, key):
 	emit_signal("Chefao_Derrotado")
 	yield(get_tree().create_timer(2), "timeout")
 	self.queue_free()

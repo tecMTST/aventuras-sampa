@@ -2,8 +2,8 @@ extends Spatial
 
 signal animacaoTerminou
 
-onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 onready var timerDoTempoDeEspera: Timer = $TimerDoTempoDeEspera
+onready var tween := $Tween
 
 export var tempoDeEsperaPrimeiraFase: int = 25 #em segundos
 export var tempoDeEsperaSegundaFase: int = 25 #em segundos
@@ -11,36 +11,15 @@ export var tempoDeEsperaSegundaFase: int = 25 #em segundos
 var faseAtual: int = 0
 var ativadoPorSinal: bool = false
 
-func _ready():
-	# se for ativado por um sinal não precisa criar um timer
-	if ativadoPorSinal:
-		_rodar_animacao()
-		faseAtual += 1
-		
-	else:
-		timerDoTempoDeEspera.start(tempoDeEsperaPrimeiraFase)
-		yield(timerDoTempoDeEspera, "timeout")
-		_rodar_animacao()
-		yield(animationPlayer, "animation_finished")
-		faseAtual += 1
-		
-		timerDoTempoDeEspera.start(tempoDeEsperaSegundaFase)
-		yield(timerDoTempoDeEspera, "timeout")
-		_rodar_animacao()
-		yield(animationPlayer, "animation_finished")
-		faseAtual += 1
-		
-	if faseAtual >= 2:
-		timerDoTempoDeEspera.stop()
+func _ready() -> void:
+	EnchenteEstadoDeJogo.connect('iniciou', self, '_iniciar')
 
-func _rodar_animacao():
-	if faseAtual == 0:
-		animationPlayer.play("cidadesubindofase1")
-		self.emit_signal("animacaoTerminou", true)
+func _iniciar() -> void:
+	timerDoTempoDeEspera.start()
 
-	elif faseAtual == 1:
-		animationPlayer.play("cidadesubindofase2")
-		self.emit_signal("animacaoTerminou", true)
-
-	else:
-		animationPlayer.play("cidadesubindofim")
+func _mover_cidade() -> void:
+	var posicao_inicial := Vector3(0,-2.5, 0)
+	var posicao_final := Vector3(0, 11.5, 0)
+	var tempo_transicao := EnchenteEstadoDeJogo.TemporizadorGlobal.wait_time - 60
+	tween.interpolate_property($SpriteCidade, "position", posicao_inicial, posicao_final, tempo_transicao, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	tween.start()

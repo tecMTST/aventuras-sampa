@@ -21,6 +21,11 @@ func _ready():
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_3.global_position)
 	player_lane_3d.controle_faixa_3d.posicao_inicial = 1
 
+
+	$Contador.visible = true
+	$Contador/Animador.play("aproximar")
+	yield($Contador/Animador, 'animation_finished')
+
 	EnchenteEstadoDeJogo.TemporizadorGlobal = $TempoDeJogo
 	EnchenteEstadoDeJogo.definir_tempo_de_jogo(tempo_jogo * 60)
 	EnchenteEstadoDeJogo.iniciar_temporizador()
@@ -29,7 +34,8 @@ func _ready():
 	SingletonOpcoesGlobais.connect("Atualizou", self, "_atualizar_volume")
 	_atualizar_volume()
 
-
+	EnchenteEstadoDeJogo.connect('trocou_fase', self, "_trocou_fase")
+	$ControladorDeObstaculos.iniciar()
 
 func _process(_delta):
 	fps_label.text = str(Engine.get_frames_per_second())
@@ -51,3 +57,7 @@ func _atualizar_volume():
 			audio_stream_amb.volume_db = range_lerp(_volume_atual, 1, 100, -30, 0)
 			audio_stream_bgm.volume_db = range_lerp(_volume_atual, 1, 100, -30, 0)
 
+func _trocou_fase(fase):
+	if fase == 3:
+		$ControladorDeObstaculos.parar()
+		$ChamadaDoBoss.iniciar()
