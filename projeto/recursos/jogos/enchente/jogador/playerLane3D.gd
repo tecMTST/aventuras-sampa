@@ -13,6 +13,7 @@ onready var timer_imunidade = $TimerImunidade
 onready var imunidade_modulate = false
 onready var menuOpcoes = preload("res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn")
 onready var posicao_sprite_agua_original = sprite_agua.global_position
+onready var imunidade_particulas = $ImunidadeParticulas
 onready var BaloesDeFalha: Sprite3D = $BalaoDeFala
 onready var TweenBalao: Tween = $BalaoDeFala/TweenBalao
 
@@ -68,6 +69,8 @@ func imunidade(dano: bool, tempo: float):
 	imune_dano = dano
 	imune = true
 	timer_imunidade.start()
+	if not dano:
+		imunidade_particulas.visible = true
 
 func _on_TimerImunidade_timeout():
 	if imune_dano:
@@ -84,6 +87,7 @@ func _on_TimerImunidade_timeout():
 		finaliza_imunidade()
 
 func finaliza_imunidade():
+	imunidade_particulas.visible = false
 	sprite.visible = true
 	sprite_agua.visible = true
 	imune = false

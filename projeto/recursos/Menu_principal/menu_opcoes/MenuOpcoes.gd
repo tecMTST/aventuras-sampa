@@ -5,7 +5,7 @@ onready var menu: TextureRect = $MenuDeOpcoes/Menu
 onready var musicaWheel: HSlider = $MenuDeOpcoes/Menu/VolumeMusica
 onready var efeitosWheel: HSlider = $MenuDeOpcoes/Menu/VolumeEfeitos
 onready var porcentagemMusicaWheel: Label = $MenuDeOpcoes/Menu/Porcentagem
-onready var porcentagemEfeitosWheel: Label = $MenuDeOpcoes/Menu/Porcentagem
+onready var porcentagemEfeitosWheel: Label = $MenuDeOpcoes/Menu/Porcentagem2
 onready var voltarmenu: TextureButton = $MenuDeOpcoes/Menu/VoltarMenu
 onready var voltarjogo: TextureButton = $MenuDeOpcoes/Menu/VoltarJogo
 
