@@ -147,13 +147,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.251, 8.09071 )
 [node name="Faixas" type="Node" parent="."]
 
 [node name="Faixa1" type="Position3D" parent="Faixas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 22.727 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00036, 0, 22.727 )
 
 [node name="Faixa2" type="Position3D" parent="Faixas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.7269 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00173688, 0, 22.7269 )
 
 [node name="Faixa3" type="Position3D" parent="Faixas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 22.727 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03278, 0, 22.727 )
 
 [node name="Timers" type="Node" parent="."]
 
