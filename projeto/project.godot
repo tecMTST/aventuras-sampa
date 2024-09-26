@@ -124,11 +124,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gerenciador_de_estados/maquina_de_estados.gd"
 }, {
-"base": "Node",
-"class": "MenuOpcoes",
-"language": "GDScript",
-"path": "res://recursos/jogos/enchente/menu_de_opcoes/MenuOpcoesEnchente.gd"
-}, {
 "base": "KinematicBody",
 "class": "Obstaculo",
 "language": "GDScript",
@@ -178,7 +173,6 @@ _global_script_class_icons={
 "GeradorObjeto": "",
 "HistoryRow": "",
 "MaquinaDeEstados": "",
-"MenuOpcoes": "",
 "Obstaculo": "",
 "PlayerLane3D": "",
 "SaveFile": "",
@@ -200,13 +194,15 @@ default_bus_layout="res://elementos/audio/mixer/mixer.tres"
 
 EnchenteEstadoDeJogo="*res://recursos/jogos/enchente/scripts/EnchenteEstadoDeJogo.gd"
 TrocadorDeCenas="*res://addons/trocador_de_cenas/trocador_de_cenas.tscn"
-SingletonOpcoesGlobais="*res://recursos/jogos/enchente/menu_de_opcoes/SingletonOpcoesGlobais.gd"
+SingletonOpcoesGlobais="*res://recursos/Menu_principal/SingletonOpcoesGlobais.gd"
 Salvamento="*res://addons/salvamento/Salvamento.gd"
 
 [display]
 
 window/size/width=720
 window/size/height=1280
+window/size/test_width=360
+window/size/test_height=640
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
