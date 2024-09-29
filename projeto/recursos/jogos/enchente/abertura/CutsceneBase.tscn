@@ -2,7 +2,7 @@
 
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco.png" type="Texture" id=1]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco_senhora.png" type="Texture" id=2]
-[ext_resource path="res://elementos/imagem/enchente/cutscene/tela_predios.png" type="Texture" id=3]
+[ext_resource path="res://elementos/imagem/enchente/cutscene/bg.png" type="Texture" id=3]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/gota_chuva.png" type="Texture" id=4]
 [ext_resource path="res://addons/label_temporizada/LabelTemporizada.gd" type="Script" id=5]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Pressed.png" type="Texture" id=6]
