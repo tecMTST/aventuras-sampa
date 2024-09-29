@@ -91,6 +91,7 @@ func animacao(animacao):
 
 func _realizar_ataque():
 	var lane_atual = 1
+	var animacao_ataque_feita = false
 
 	for obj_pos in lista_posicoes:
 		var instanciaMinaAquatica = BombasChefe.instance() as KinematicBody
@@ -107,7 +108,9 @@ func _realizar_ataque():
 
 		elif obj_pos == 1:
 			add_child(instanciaMinaAquatica)
-			animacao("Ataque_bombas")
+			if animacao_ataque_feita == false:
+				animacao("Ataque_bombas")
+				animacao_ataque_feita = true
 			if lane_atual == 1:
 				instanciaMinaAquatica.global_position = Vector3(faixa_1.global_position.x, origem_obstaculos.global_position.y, origem_obstaculos.global_position.z)
 			elif lane_atual == 2:
@@ -119,18 +122,19 @@ func _realizar_ataque():
 
 		elif obj_pos == 2:
 			add_child(instanciaTentaculo)
-			if lane_atual == 1:
+			if animacao_ataque_feita == false:
 				animacao("Ataque_tentaculo")
+				animacao_ataque_feita = true
+			if lane_atual == 1:
 				instanciaTentaculo.global_position = faixa_1.global_position
 			elif lane_atual == 2:
-				animacao("Ataque_tentaculo")
 				instanciaTentaculo.global_position = faixa_2.global_position
 			elif lane_atual == 3:
-				animacao("Ataque_tentaculo")
 				instanciaTentaculo.global_position = faixa_3.global_position
 			yield(Animplayer, "animation_finished")
 			animacao("Idle")
 		lane_atual += 1
+		animacao_ataque_feita = false
 
 func loadJson(nomejson):
 	var arquivo = File.new()
@@ -152,3 +156,5 @@ func _auto_destruir():
 	emit_signal("Chefao_Derrotado")
 	yield(get_tree().create_timer(2), "timeout")
 	self.queue_free()
+	yield(get_tree().create_timer(1.2), "timeout")
+	TrocadorDeCenas.trocar_cena('res://recursos/Menu_principal/TelasExtras/Tela_Vitoria.tscn')
