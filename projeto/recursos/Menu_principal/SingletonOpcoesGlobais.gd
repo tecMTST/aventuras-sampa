@@ -30,7 +30,13 @@ func carregar_globais():
 		volumeSFX = int(Salvamento.carregar("globais", "volumeSFX"))
 		ativarBotoes = bool(Salvamento.carregar("globais", "ativarBotoes"))
 		dificuldadeAtual = str(Salvamento.carregar("globais", "dificuldadeAtual"))
-		pularCutScene = bool(Salvamento.carregar("globais", "pularCutScene"))
-		pularTutorial = bool(Salvamento.carregar("globais", "pularTutorial"))
+		if Salvamento.carregar("globais", "pularCutScene"):			
+			pularCutScene = bool(Salvamento.carregar("globais", "pularCutScene"))
+		else:
+			pularCutScene = false
+		if Salvamento.carregar("globais", "pularTutorial"):			
+			pularTutorial = bool(Salvamento.carregar("globais", "pularTutorial"))
+		else:
+			pularTutorial = false
 	else:
 		salvar_globais()

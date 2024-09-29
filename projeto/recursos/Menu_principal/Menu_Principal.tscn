@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/Clouds_BG.png" type="Texture" id=1]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/btn_jogar_normal.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://elementos/UI/minigame_senhorinha/bandeira/Timeline 1_0006.png" type="Texture" id=19]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/bandeira/Timeline 1_0008.png" type="Texture" id=20]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/Sky_BG.png" type="Texture" id=21]
+[ext_resource path="res://recursos/jogos/enchente/abertura/CutsceneBase.tscn" type="PackedScene" id=22]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -58,7 +59,8 @@ rect_pivot_offset = Vector2( -1026, 372 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 8 )
-proxima_cena = ExtResource( 9 )
+proxima_cena = ExtResource( 22 )
+cena_jogo = ExtResource( 9 )
 
 [node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
