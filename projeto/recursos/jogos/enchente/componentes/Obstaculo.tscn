@@ -8,7 +8,7 @@
 [node name="Obstaculo" type="KinematicBody" groups=["obstaculo"]]
 collision/safe_margin = 0.01
 script = ExtResource( 2 )
-cores = PoolColorArray( 0.937255, 0.14902, 0.14902, 0.784314, 0.133333, 0.368627, 0.862745, 0.784314, 0.74902, 0.729412, 0.180392, 0.784314, 0.0313726, 0.482353, 0.141176, 0.784314 )
+cores = PoolColorArray( 1, 0.635294, 0.635294, 1, 0.635294, 0.729412, 1, 1, 1, 0.988235, 0.635294, 1, 0.580392, 0.796078, 0.635294, 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0 )
