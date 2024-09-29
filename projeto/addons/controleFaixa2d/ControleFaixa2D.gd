@@ -54,7 +54,7 @@ func _input(_event):
 			ultima_distancia = DISTANCIA_MAXIMA
 			mover_esquerda()	
 			
-func _process(delta):	
+func _physics_process(delta: float) -> void:
 	if ativo and modo == modo_controle.autonomo and faixas.size() > 0:
 		processar()
 		parent.move_and_slide(velocidade, Vector2.UP)

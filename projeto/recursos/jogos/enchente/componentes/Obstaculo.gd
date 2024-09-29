@@ -30,7 +30,7 @@ func _ready() -> void:
 	tween.interpolate_property(sprite, 'modulate', cor_adicional, cor_padrao, 2.0, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	move_and_slide(Vector3(0, 0, velocidade * EnchenteEstadoDeJogo.VelocidadeGlobal * delta), Vector3.UP)
 
 func tocar_som_impacto():
