@@ -8,17 +8,26 @@
 [node name="Obstaculo" type="KinematicBody" groups=["obstaculo"]]
 collision/safe_margin = 0.01
 script = ExtResource( 2 )
+cores = PoolColorArray( 1, 0.635294, 0.635294, 1, 0.635294, 0.729412, 1, 1, 1, 0.988235, 0.635294, 1, 0.580392, 0.796078, 0.635294, 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0 )
+pixel_size = 0.018
 billboard = 1
 shaded = true
 texture = ExtResource( 1 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+
+[node name="SfxImpacto" type="AudioStreamPlayer" parent="."]
+bus = "SFX Game"
+
+[node name="Tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
 
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

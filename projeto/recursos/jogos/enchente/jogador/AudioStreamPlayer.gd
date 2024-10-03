@@ -24,6 +24,16 @@ onready var clipesSFX = {
 	"dano": [
 		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-bolha1.mp3"),
 		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-bolha2.mp3"),
+	],
+	"pulo": [
+		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-pulo.mp3')
+	],
+	"agachar": [
+		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-agachar.mp3')
+	],
+	"risada": [
+		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-risada1.mp3'),
+		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-risada2.mp3')
 	]
 	}
 
@@ -51,3 +61,14 @@ func _atualizar_volume():
 		else:
 			stream_paused = false
 			volume_db = range_lerp(_volume_atual, 1, 100, -30, 0)
+
+func som_jogador(acao: String) -> void:
+	stop()
+	stream = clipesSFX[acao][rng.randi_range(0, clipesSFX[acao].size() -1)]
+	play()
+
+func _on_ControleFaixa3D_abaixou() -> void:
+	som_jogador('agachar')
+
+func _on_ControleFaixa3D_pulou() -> void:
+	som_jogador('pulo')

@@ -86,7 +86,7 @@ func _input(_event):
 		if abaixar_infinito and Input.is_action_just_released("down"):
 			levantar()
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	if ativo and faixas.size() > 0:
 		_processar()
 		parent.move_and_slide(velocidade, Vector3.UP)

@@ -59,7 +59,7 @@ func _input(_event):
 		if controle_pulo_variavel and Input.is_action_just_released(controle_pulo) and pulando and velocidade.y < 0:
 			cancelar_pulo  = true
 
-func _process(delta):	
+func _physics_process(delta: float) -> void:
 	if ativo and modo == modo_controle.autonomo:
 		processar(delta)
 		move()

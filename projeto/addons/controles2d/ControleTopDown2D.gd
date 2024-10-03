@@ -24,7 +24,7 @@ func _input(_event):
 		emit_signal("corrida_finalizada")
 		correndo = false
 			
-func _process(delta):	
+func _physics_process(delta: float) -> void:
 	if ativo:
 		tratar_direcao(delta)
 		move()	

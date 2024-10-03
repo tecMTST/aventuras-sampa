@@ -29,7 +29,7 @@ func _input(_event):
 			emit_signal("corrida_finalizada")
 			correndo = false
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	if ativo and modo == modo_controle.autonomo:
 		var direction = Input.get_axis(controle_left, controle_right)	
 		processar(direction, delta)
