@@ -42,13 +42,17 @@ func _on_ControladorArrasta_arrastado(chave):
 		controle_faixa_3d.abaixar()
 
 func _on_AreaDano_body_entered(body: Node) -> void:
+	if body is Obstaculo and body.is_in_group("item"):
+		body.tocar_som_impacto()
 	if body.is_in_group("terrestre") and not imune and not pulando:
 		vida.receber_dano(1.0)
 		_gerar_fala_de_dano()
+		body.tocar_som_impacto()
 		imunidade(true, tempo_imunidade_dano)
 	if body.is_in_group("aereo") and not imune and not abaixado:
 		vida.receber_dano(1.0)
 		_gerar_fala_de_dano()
+		body.tocar_som_impacto()
 		imunidade(true, tempo_imunidade_dano)
 	if body.is_in_group("invencibilidade"):
 		body.queue_free()
@@ -101,7 +105,7 @@ func pause():
 	add_child(instance)
 
 func _on_ControleFaixa3D_pulou():
-	sprite.play("pulo")	
+	sprite.play("pulo")
 	sprite_agua.play("Pular")
 	pulando = true
 
@@ -116,7 +120,7 @@ func _on_ControleFaixa3D_no_chao():
 	pulando = false
 
 func _on_ControleFaixa3D_abaixou():
-	sprite.play("agachamento")	
+	sprite.play("agachamento")
 	sprite_agua.play("Agachamento")
 	abaixado = true
 
