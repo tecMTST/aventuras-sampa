@@ -16,6 +16,9 @@ func _ready():
 	SingletonOpcoesGlobais.connect("Atualizou", self, "_atualizar_volume")
 	_atualizar_volume()
 
+func _process(delta: float) -> void:
+	$Background/Bandeira.position.x = get_global_rect().get_center().x
+
 func _atualizar_volume():
 	if SingletonOpcoesGlobais.volumeSom != _volume_atual:
 		_volume_atual = SingletonOpcoesGlobais.volumeSom
