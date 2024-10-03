@@ -20,7 +20,9 @@ func _ready():
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_2.global_position)
 	player_lane_3d.controle_faixa_3d.faixas.append(faixa_3.global_position)
 	player_lane_3d.controle_faixa_3d.posicao_inicial = 1
-
+	SingletonOpcoesGlobais.pularCutScene = true
+	SingletonOpcoesGlobais.pularTutorial = true
+	SingletonOpcoesGlobais.salvar_globais()
 
 	$Contador.visible = true
 	$Contador/Animador.play("aproximar")

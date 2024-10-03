@@ -19,7 +19,7 @@ var tempo_entre_pontos : float = 1
 var tempo_entre_efeitos : float = 3
 var ponto_atual = 1
 
-func _ready():
+func _ready():	
 	var time = Time.get_datetime_dict_from_system()
 	texto_2.definir_texto(str(time["day"]) + "/" + str(time["month"]) + "/" +  str(time["year"])
 							+ " - " + str(time["hour"]) + ":" + str(time["minute"]))
@@ -47,7 +47,7 @@ func avancar():
 	ponto_atual = 3
 	proximo_ponto()
 
-func fim():
+func fim():	
 	TrocadorDeCenas.trocar_cena("res://recursos/jogos/enchente/cenas/Enchente.tscn")
 
 func _on_dialogic_signal(arg):

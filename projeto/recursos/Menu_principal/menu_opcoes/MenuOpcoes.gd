@@ -10,6 +10,7 @@ onready var voltarmenu: TextureButton = $MenuDeOpcoes/Menu/VoltarMenu
 onready var voltarjogo: TextureButton = $MenuDeOpcoes/Menu/VoltarJogo
 
 export var menupath: String = 'res://recursos/Menu_principal/Menu_Principal.tscn'
+onready var reiniciar_cutscene = $MenuDeOpcoes/Menu/ReiniciarCutscene
 
 func _ready():
 	print(SingletonGlobal.ativarBotoes)
@@ -22,10 +23,11 @@ func _ready():
 	porcentagemEfeitosWheel.text = str(efeitosWheel.value) + '%'
 
 	if get_tree().get_current_scene().get_name() == "Enchente":
+		reiniciar_cutscene.visible = false
 		#print(get_tree().get_current_scene().get_name())
-		pass
 	else:
 		voltarmenu.visible = false
+		reiniciar_cutscene.visible = SingletonOpcoesGlobais.pularCutScene or SingletonOpcoesGlobais.pularTutorial
 		$MenuDeOpcoes/Menu/VoltarJogo/Label.text = "voltar ao menu"
 		#print(get_tree().get_current_scene().get_name())
 
@@ -50,3 +52,9 @@ func _on_VoltarMenu_button_up():
 func _process(delta):
 	porcentagemMusicaWheel.text = str(musicaWheel.value) + '%'
 	porcentagemEfeitosWheel.text = str(efeitosWheel.value) + '%'
+
+
+func _on_ReiniciarCutscene_button_up():
+	SingletonOpcoesGlobais.pularCutScene = false
+	SingletonOpcoesGlobais.pularTutorial = false
+	SingletonOpcoesGlobais.salvar_globais()

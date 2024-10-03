@@ -6,6 +6,7 @@ onready var tween_jogar = $Buttons/Btn_Jogar/tween_jogar
 onready var tween_opcoes = $Buttons/Btn_Opcoes/tween_opcoes
 
 export(PackedScene) var proxima_cena: PackedScene
+export(PackedScene) var cena_jogo: PackedScene
 
 var _volume_atual: float = 999
 var opcoes_apertado: bool = false
@@ -14,6 +15,9 @@ var jogar_apertado: bool = false
 func _ready():
 	SingletonOpcoesGlobais.connect("Atualizou", self, "_atualizar_volume")
 	_atualizar_volume()
+
+func _process(delta: float) -> void:
+	$Background/Bandeira.position.x = get_global_rect().get_center().x
 
 func _atualizar_volume():
 	if SingletonOpcoesGlobais.volumeSom != _volume_atual:
@@ -45,6 +49,9 @@ func _on_Jogar_button_up():
 	$Buttons/Btn_Jogar.disabled = true
 	yield(tween_jogar, "tween_completed")
 	if jogar_apertado and opcoes_apertado == false:
-		TrocadorDeCenas.trocar_cena(proxima_cena.resource_path)
+		if not SingletonOpcoesGlobais.pularCutScene:
+			TrocadorDeCenas.trocar_cena(proxima_cena.resource_path)
+		else:
+			TrocadorDeCenas.trocar_cena(cena_jogo.resource_path)
 		$Buttons/Btn_Jogar.disabled = false
 		jogar_apertado = false
