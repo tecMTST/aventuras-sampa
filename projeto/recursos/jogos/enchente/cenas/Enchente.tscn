@@ -42,9 +42,10 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 7.1, 28 )
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 7, 27 )
+doppler_tracking = 2
 current = true
-fov = 84.375
+fov = 103.0
 
 [node name="Listener" type="Listener" parent="Camera"]
 
@@ -67,16 +68,17 @@ inverter_x = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406976, 0.248524 )
 
 [node name="Faixa1" type="Position3D" parent="Faixas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 22.727 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 22.727 )
 
 [node name="Faixa2" type="Position3D" parent="Faixas"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.7269 )
 
 [node name="Faixa3" type="Position3D" parent="Faixas"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22.727 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 22.727 )
 
 [node name="ControladorDeObstaculos" parent="." instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -70 )
+distancia_obstaculos = 12.0
 faixas = NodePath("../Faixas")
 
 [node name="playerLane3D" parent="." instance=ExtResource( 2 )]

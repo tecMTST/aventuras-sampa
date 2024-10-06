@@ -12,14 +12,23 @@ onready var _intervalo_adicionar_modulos := $Timer
 
 onready var _configuracao_de_modulos := _sorteador._ler_arquivo_json('res://elementos/modulos.json') as Dictionary
 onready var _fabrica_obstaculos := FabricaObstaculos.new(
-	_configuracao_de_modulos['tipo_de_obstaculo']
+	_configuracao_de_modulos['tipo_de_obstaculo'],
+	_configuracao_de_modulos['sfx']
 )
 
 var _numero_modulos_criados := 0
 
 func iniciar() -> void:
+	EnchenteEstadoDeJogo.DictVelocidades = _configuracao_de_modulos['velocidade']
+	EnchenteEstadoDeJogo.connect("nova_velocidade", self, 'alterar_tempo')
 	_intervalo_adicionar_modulos.connect('timeout', self, 'adicionar_modulo')
+	intervalo_modulos = _configuracao_de_modulos['distancia_entre_modulos']
+	_intervalo_adicionar_modulos.wait_time = intervalo_modulos / EnchenteEstadoDeJogo.VelocidadeGlobal
 	_intervalo_adicionar_modulos.start()
+
+func alterar_tempo() -> void:
+	_intervalo_adicionar_modulos.wait_time = intervalo_modulos / EnchenteEstadoDeJogo.VelocidadeGlobal
+
 
 func parar() -> void:
 	_intervalo_adicionar_modulos.stop()

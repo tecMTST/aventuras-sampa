@@ -34,7 +34,7 @@ func _ready():
 			deslocamento = deslocamento + espacamento
 			instancias.push_back(instancia)
 
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	movimento(delta)
 	verificar_criacao()
 

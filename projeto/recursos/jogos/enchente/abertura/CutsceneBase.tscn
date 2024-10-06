@@ -174,26 +174,19 @@ texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 11 )
 expand = true
-stretch_mode = 4
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="Botoes/BotaoAvancar"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -60.0
-margin_top = -29.0
-margin_right = 60.0
-margin_bottom = 10.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 text = "Avançar"
-__meta__ = {
-"_edit_use_anchors_": true
-}
+align = 1
+valign = 1
 
 [node name="BotaoPular" type="TextureButton" parent="Botoes"]
 anchor_left = 0.720833
@@ -204,23 +197,19 @@ texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 11 )
 expand = true
-stretch_mode = 4
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="Botoes/BotaoPular"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -41.0
-margin_top = -26.0
-margin_right = 79.0
-margin_bottom = 13.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 text = "Pular"
+align = 1
+valign = 1
 
 [connection signal="Fim" from="Tela1/Texto1" to="." method="proximo_ponto"]
 [connection signal="Fim" from="Tela1/Texto2" to="." method="proximo_ponto"]
