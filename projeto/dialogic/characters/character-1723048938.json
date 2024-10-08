@@ -9,13 +9,13 @@
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 35,
+	"offset_y": -280,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://elementos/imagem/enchente/cutscene/senhora.png"
+			"path": "res://elementos/imagem/enchente/cutscene/maria.png"
 		}
 	],
-	"scale": 30,
-	"theme": "theme-1723052560.cfg"
+	"scale": 50,
+	"theme": "theme-1728240257.cfg"
 }
