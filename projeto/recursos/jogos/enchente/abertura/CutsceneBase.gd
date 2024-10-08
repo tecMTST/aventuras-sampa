@@ -12,6 +12,7 @@ onready var tela_1 = $Tela1
 onready var tela_2 = $Tela2
 onready var tela_3 = $Tela3
 onready var tela_4 = $Tela4
+onready var tela_5 = $Tela5
 onready var botao_avancar = $Botoes/BotaoAvancar
 onready var botao_pular = $Botoes/BotaoPular
 
@@ -58,10 +59,11 @@ func _on_dialogic_signal(arg):
 			garoa.visible = false
 			chuva.visible = false
 			enchurrada.visible = false
-			tela_2.visible = false
-		"saco_dona_maria":
 			tela_3.visible = false
+		"saco_dona_maria":
+			tela_4.visible = false
 		"enchurrada":
+			tela_2.visible = false
 			enchurrada.visible = true
 			yield(get_tree().create_timer(tempo_entre_efeitos), "timeout")
 			garoa.visible = false

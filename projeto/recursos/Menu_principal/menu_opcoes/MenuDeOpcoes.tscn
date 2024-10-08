@@ -72,10 +72,10 @@ anchor_left = 0.303846
 anchor_top = 0.818386
 anchor_right = 0.786538
 anchor_bottom = 0.93722
-margin_left = -16.0
-margin_top = 1.0
-margin_right = -16.0
-margin_bottom = 1.0
+margin_left = -17.9999
+margin_top = -40.9999
+margin_right = -17.9999
+margin_bottom = -40.9999
 toggle_mode = true
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 2 )
@@ -102,10 +102,10 @@ anchor_left = 0.303846
 anchor_top = 0.70852
 anchor_right = 0.784615
 anchor_bottom = 0.827354
-margin_left = -16.0
-margin_top = 1.0
-margin_right = -16.0
-margin_bottom = 1.0
+margin_left = -17.9999
+margin_top = -40.9999
+margin_right = -17.9999
+margin_bottom = -40.9999
 toggle_mode = true
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 2 )
@@ -127,36 +127,6 @@ margin_bottom = 14.4999
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "voltar ao jogo"
-align = 1
-valign = 1
-
-[node name="ReiniciarCutscene" type="TextureButton" parent="MenuDeOpcoes/Menu"]
-anchor_left = 0.303846
-anchor_top = 0.598655
-anchor_right = 0.786538
-anchor_bottom = 0.717489
-margin_left = -16.0
-margin_top = 0.999969
-margin_right = -16.0
-margin_bottom = 0.999969
-toggle_mode = true
-texture_normal = ExtResource( 1 )
-texture_pressed = ExtResource( 2 )
-texture_hover = ExtResource( 3 )
-expand = true
-
-[node name="Label" type="Label" parent="MenuDeOpcoes/Menu/ReiniciarCutscene"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -96.5001
-margin_top = -19.5001
-margin_right = 93.4999
-margin_bottom = 14.4999
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
-text = "Reiniciar abertura"
 align = 1
 valign = 1
 
@@ -216,4 +186,3 @@ __meta__ = {
 
 [connection signal="button_up" from="MenuDeOpcoes/Menu/VoltarMenu" to="." method="_on_VoltarMenu_button_up"]
 [connection signal="button_up" from="MenuDeOpcoes/Menu/VoltarJogo" to="." method="_on_VoltarJogo_button_up"]
-[connection signal="button_up" from="MenuDeOpcoes/Menu/ReiniciarCutscene" to="." method="_on_ReiniciarCutscene_button_up"]
