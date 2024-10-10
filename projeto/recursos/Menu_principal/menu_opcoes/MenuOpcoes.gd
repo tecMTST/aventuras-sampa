@@ -22,13 +22,13 @@ func _ready():
 	efeitosWheel.value = SingletonGlobal.volumeSFX
 	porcentagemEfeitosWheel.text = str(efeitosWheel.value) + '%'
 
-	if get_tree().get_current_scene().get_name() == "Enchente":
-		reiniciar_cutscene.visible = false
+#	if get_tree().get_current_scene().get_name() == "Enchente":
+#		reiniciar_cutscene.visible = false
 		#print(get_tree().get_current_scene().get_name())
-	else:
-		voltarmenu.visible = false
-		reiniciar_cutscene.visible = SingletonOpcoesGlobais.pularCutScene or SingletonOpcoesGlobais.pularTutorial
-		$MenuDeOpcoes/Menu/VoltarJogo/Label.text = "voltar ao menu"
+#	else:
+#		voltarmenu.visible = false
+#		reiniciar_cutscene.visible = SingletonOpcoesGlobais.pularCutScene or SingletonOpcoesGlobais.pularTutorial
+#		$MenuDeOpcoes/Menu/VoltarJogo/Label.text = "voltar ao menu"
 		#print(get_tree().get_current_scene().get_name())
 
 func _input(event):
