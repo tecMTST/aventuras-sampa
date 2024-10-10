@@ -32,9 +32,6 @@ func _on_Jogar_button_up():
 	$Buttons/Btn_Jogar.disabled = true
 	yield(tween_jogar, "tween_completed")
 	if jogar_apertado and opcoes_apertado == false:
-		if not SingletonOpcoesGlobais.pularCutScene:
-			TrocadorDeCenas.trocar_cena(proxima_cena.resource_path)
-		else:
-			TrocadorDeCenas.trocar_cena(cena_jogo.resource_path)
+		TrocadorDeCenas.trocar_cena(proxima_cena.resource_path)		
 		$Buttons/Btn_Jogar.disabled = false
 		jogar_apertado = false
