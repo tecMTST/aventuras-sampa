@@ -1,16 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://elementos/fontes/Lacquer-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/moldura.png" type="Texture" id=2]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Normal.png" type="Texture" id=3]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Pressed.png" type="Texture" id=4]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Hovered.png" type="Texture" id=5]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Vitoria/vitoria.png" type="Texture" id=6]
-[ext_resource path="res://recursos/Menu_principal/TelasExtras/vitoria_derrota.gd" type="Script" id=7]
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 1 )
+[ext_resource path="res://elementos/UI/card_vitoria.png" type="Texture" id=1]
+[ext_resource path="res://elementos/UI/botao_voltar_a_tela_inicial_pressed.png" type="Texture" id=2]
+[ext_resource path="res://elementos/UI/botao_voltar_a_tela_inicial_hover.png" type="Texture" id=3]
+[ext_resource path="res://elementos/UI/botao_voltar_a_tela_inicial_default.png" type="Texture" id=4]
+[ext_resource path="res://recursos/Menu_principal/TelasExtras/Tela_vitoria.gd" type="Script" id=7]
 
 [node name="Tela_Vitoria" type="Control"]
 anchor_left = 0.5
@@ -33,76 +27,34 @@ color = Color( 0.0862745, 0.0862745, 0.0862745, 0.301961 )
 
 [node name="Menu" type="TextureRect" parent="."]
 pause_mode = 2
-anchor_left = 0.5
+anchor_left = 0.507
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.507
 anchor_bottom = 0.5
-margin_left = -303.0
-margin_top = -313.5
-margin_right = 303.0
-margin_bottom = 313.5
+margin_left = -297.04
+margin_top = -425.0
+margin_right = 296.96
+margin_bottom = 403.0
 mouse_filter = 0
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 expand = true
-stretch_mode = 1
-
-[node name="Label" type="Label" parent="Menu"]
-anchor_left = 0.5
-anchor_top = 0.569
-anchor_right = 0.5
-anchor_bottom = 0.569
-margin_left = -118.0
-margin_top = -17.263
-margin_right = 135.0
-margin_bottom = 16.737
-rect_pivot_offset = Vector2( -705.917, -239.382 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "parabéns você venceu!"
-align = 1
-valign = 1
-
-[node name="icon" type="TextureRect" parent="Menu"]
-pause_mode = 2
-anchor_left = 0.505
-anchor_top = 0.36
-anchor_right = 0.505
-anchor_bottom = 0.36
-margin_left = -135.03
-margin_top = -110.72
-margin_right = 134.97
-margin_bottom = 110.28
-mouse_filter = 0
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="VoltarMenu" type="TextureButton" parent="Menu"]
-anchor_left = 0.303846
-anchor_top = 0.818386
-anchor_right = 0.694231
-anchor_bottom = 0.93722
+anchor_left = 0.513
+anchor_top = 0.906
+anchor_right = 0.513
+anchor_bottom = 0.906
+margin_left = -176.722
+margin_top = -33.168
+margin_right = 177.278
+margin_bottom = 32.832
 toggle_mode = true
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 5 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
 expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": true
 }
-
-[node name="Label" type="Label" parent="Menu/VoltarMenu"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -96.5001
-margin_top = -19.5001
-margin_right = 93.4999
-margin_bottom = 14.4999
-rect_pivot_offset = Vector2( -705.917, -239.382 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "voltar ao menu"
-align = 1
-valign = 1
