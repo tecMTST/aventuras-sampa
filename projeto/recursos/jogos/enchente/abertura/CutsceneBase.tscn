@@ -1,16 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco.png" type="Texture" id=1]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco_senhora.png" type="Texture" id=2]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/bg.png" type="Texture" id=3]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/gota_chuva.png" type="Texture" id=4]
 [ext_resource path="res://addons/label_temporizada/LabelTemporizada.gd" type="Script" id=5]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Pressed.png" type="Texture" id=6]
+[ext_resource path="res://elementos/UI/botao_pular_default.png" type="Texture" id=6]
 [ext_resource path="res://recursos/jogos/enchente/abertura/CutsceneBase.gd" type="Script" id=7]
-[ext_resource path="res://elementos/temas/cutscene_enchente/TemaCaixaDeTexto.tres" type="Theme" id=8]
+[ext_resource path="res://elementos/UI/botao_pular_hover.png" type="Texture" id=8]
 [ext_resource path="res://elementos/temas/cutscene_enchente/TemaTitulo.tres" type="Theme" id=9]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Normal.png" type="Texture" id=10]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/Menu/Botao_voltar/voltar_feed/Hovered.png" type="Texture" id=11]
+[ext_resource path="res://elementos/UI/botao_pular_pressed.png" type="Texture" id=10]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/seta_pressed_def.png" type="Texture" id=12]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/seta_def.png" type="Texture" id=13]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/enchente.png" type="Texture" id=14]
@@ -193,27 +192,22 @@ __meta__ = {
 }
 
 [node name="BotaoPular" type="TextureButton" parent="Botoes"]
-anchor_left = 0.720833
-anchor_top = 0.00859375
-anchor_right = 0.973611
-anchor_bottom = 0.0585938
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 11 )
+anchor_left = 0.826
+anchor_top = 0.054
+anchor_right = 0.826
+anchor_bottom = 0.054
+margin_left = -112.72
+margin_top = -39.12
+margin_right = 112.28
+margin_bottom = 39.88
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 10 )
 expand = true
 stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": true
 }
-
-[node name="Label" type="Label" parent="Botoes/BotaoPular"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 8 )
-custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-text = "Pular"
-align = 1
-valign = 1
 
 [connection signal="Fim" from="Tela1/Texto1" to="." method="proximo_ponto"]
 [connection signal="Fim" from="Tela1/Texto2" to="." method="proximo_ponto"]
