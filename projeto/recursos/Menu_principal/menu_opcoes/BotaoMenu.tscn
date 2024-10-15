@@ -14,12 +14,14 @@ script = ExtResource( 2 )
 layer = 5
 
 [node name="Menu" type="TextureButton" parent="CanvasLayer"]
-anchor_left = 0.830556
-anchor_top = 0.0828125
-anchor_right = 0.952778
-anchor_bottom = 0.151562
-margin_right = 0.000183105
-margin_bottom = 0.000640869
+anchor_left = 0.89
+anchor_top = 0.124
+anchor_right = 0.89
+anchor_bottom = 0.124
+margin_left = -43.8001
+margin_top = -43.72
+margin_right = 44.1999
+margin_bottom = 44.28
 rect_pivot_offset = Vector2( 44, 44 )
 texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 4 )
