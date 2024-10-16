@@ -15,6 +15,7 @@ onready var tela_4 = $Tela4
 onready var tela_5 = $Tela5
 onready var botao_avancar = $Botoes/BotaoAvancar
 onready var botao_pular = $Botoes/BotaoPular
+onready var audio_stream_sfx = $AudioStreamSFX
 
 var tempo_entre_pontos : float = 1
 var tempo_entre_efeitos : float = 3
@@ -24,6 +25,8 @@ func _ready():
 	var time = Time.get_datetime_dict_from_system()
 	texto_2.definir_texto(str(time["day"]) + "/" + str(time["month"]) + "/" +  str(time["year"])
 							+ " - " + str(time["hour"]) + ":" + str(time["minute"]))
+	botao_avancar.connect("button_down", self, "_on_button_down_sound")
+	botao_pular.connect("button_down", self, "_on_button_down_sound")
 
 func proximo_ponto():
 	ponto_atual = ponto_atual + 1
@@ -78,3 +81,7 @@ func _on_dialogic_signal(arg):
 			yield(get_tree().create_timer(tempo_entre_efeitos), "timeout")
 			chuva.visible = false
 			enchurrada.visible = false
+
+func _on_button_down_sound():
+	audio_stream_sfx.stream.loop = false
+	audio_stream_sfx.play()

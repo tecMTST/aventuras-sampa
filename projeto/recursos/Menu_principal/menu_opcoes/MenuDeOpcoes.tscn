@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://elementos/audio/sfx/hud-clique.mp3" type="AudioStream" id=1]
 [ext_resource path="res://elementos/fontes/Lacquer-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://elementos/UI/botao_voltar_a_tela_inicial_pressed.png" type="Texture" id=5]
 [ext_resource path="res://recursos/Menu_principal/menu_opcoes/MenuOpcoes.gd" type="Script" id=6]
@@ -208,6 +209,10 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="AudioStreamSFX" type="AudioStreamPlayer" parent="MenuDeOpcoes"]
+stream = ExtResource( 1 )
+bus = "SFX Menu"
 
 [connection signal="button_up" from="MenuDeOpcoes/Menu/VoltarMenu" to="." method="_on_VoltarMenu_button_up"]
 [connection signal="button_up" from="MenuDeOpcoes/Menu/VoltarJogo" to="." method="_on_VoltarJogo_button_up"]

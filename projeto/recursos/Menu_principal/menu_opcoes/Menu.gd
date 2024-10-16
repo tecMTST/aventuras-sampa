@@ -2,6 +2,7 @@ extends Control
 
 onready var opcoesMenu = preload("res://recursos/Menu_principal/menu_opcoes/MenuDeOpcoes.tscn")
 onready var audio_stream_bgm = $AudioStreamBGM
+onready var audio_stream_sfx = $AudioStreamSFX
 onready var tween_jogar = $Buttons/Btn_Jogar/tween_jogar
 
 export(PackedScene) var proxima_cena: PackedScene
@@ -35,3 +36,7 @@ func _on_Jogar_button_up():
 		TrocadorDeCenas.trocar_cena(proxima_cena.resource_path)		
 		$Buttons/Btn_Jogar.disabled = false
 		jogar_apertado = false
+
+func _on_Btn_Jogar_button_down():
+	audio_stream_sfx.stream.loop = false
+	audio_stream_sfx.play()

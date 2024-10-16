@@ -8,6 +8,7 @@ onready var porcentagemMusicaWheel: Label = $MenuDeOpcoes/Menu/Porcentagem
 onready var porcentagemEfeitosWheel: Label = $MenuDeOpcoes/Menu/Porcentagem2
 onready var voltarmenu: TextureButton = $MenuDeOpcoes/Menu/VoltarMenu
 onready var voltarjogo: TextureButton = $MenuDeOpcoes/Menu/VoltarJogo
+onready var audio_stream_sfx = $MenuDeOpcoes/AudioStreamSFX
 
 export var menupath: String = 'res://recursos/Menu_principal/Menu_Principal.tscn'
 
@@ -25,6 +26,9 @@ func _ready():
 		voltarmenu.visible = false		
 		$MenuDeOpcoes/Menu/VoltarJogo/Label.text = "voltar ao menu"
 		#print(get_tree().get_current_scene().get_name())
+	
+	voltarjogo.connect("button_down", self, "_on_button_down_sound")
+	voltarmenu.connect("button_down", self, "_on_button_down_sound")
 
 func _input(event):
 	var valorMusicaGlobal = musicaWheel.value
@@ -53,3 +57,7 @@ func _on_ReiniciarCutscene_button_up():
 	SingletonOpcoesGlobais.pularCutScene = false
 	SingletonOpcoesGlobais.pularTutorial = false
 	SingletonOpcoesGlobais.salvar_globais()
+
+func _on_button_down_sound():
+	audio_stream_sfx.stream.loop = false
+	audio_stream_sfx.play()
