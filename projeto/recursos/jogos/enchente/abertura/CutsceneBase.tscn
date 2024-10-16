@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco.png" type="Texture" id=1]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco_senhora.png" type="Texture" id=2]
@@ -10,9 +10,14 @@
 [ext_resource path="res://elementos/UI/botao_pular_hover.png" type="Texture" id=8]
 [ext_resource path="res://elementos/temas/cutscene_enchente/TemaTitulo.tres" type="Theme" id=9]
 [ext_resource path="res://elementos/UI/botao_pular_pressed.png" type="Texture" id=10]
+[ext_resource path="res://elementos/fontes/Courier_Prime/CourierPrime-Bold.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/seta_pressed_def.png" type="Texture" id=12]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/seta_def.png" type="Texture" id=13]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/enchente.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 11 )
 
 [node name="Cutscene" type="Control"]
 anchor_right = 1.0
@@ -89,11 +94,14 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Texto1" type="Label" parent="Tela1"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -145.5
-margin_bottom = -58.5
+anchor_left = 0.5
+anchor_top = 0.42
+anchor_right = 0.5
+anchor_bottom = 0.42
+margin_left = -360.0
+margin_top = -43.1
+margin_right = 360.0
+margin_bottom = 43.9
 theme = ExtResource( 9 )
 text = "São Paulo"
 align = 1
@@ -104,27 +112,37 @@ audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
 pitch = 1.5
 
 [node name="Texto2" type="Label" parent="Tela1"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -73.5
-margin_bottom = 13.5
+anchor_left = 0.5
+anchor_top = 0.477
+anchor_right = 0.5
+anchor_bottom = 0.477
+margin_left = -360.0
+margin_top = -44.0601
+margin_right = 360.0
+margin_bottom = 42.9399
 theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 1 )
 text = "12:12"
 align = 1
+valign = 1
 script = ExtResource( 5 )
 audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
 pitch = 1.5
 
 [node name="Texto3" type="Label" parent="Tela1"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = 9.5
-margin_bottom = 96.5
+anchor_left = 0.499
+anchor_top = 0.54
+anchor_right = 0.499
+anchor_bottom = 0.54
+margin_left = -359.28
+margin_top = -41.2
+margin_right = 359.72
+margin_bottom = 40.8
 theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 1 )
 text = "Ocupação 9 de Julho"
 align = 1
+valign = 1
 script = ExtResource( 5 )
 audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
 pitch = 1.5
