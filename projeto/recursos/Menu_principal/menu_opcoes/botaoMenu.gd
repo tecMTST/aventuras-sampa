@@ -4,6 +4,7 @@ onready var opcoesMenu = preload("res://recursos/Menu_principal/menu_opcoes/Menu
 onready var tween = $CanvasLayer/Menu/Tween
 
 var menuApertado: bool = false
+onready var audio_stream_sfx = $AudioStreamSFX
 
 func _on_Menu_button_up():
 	menuApertado = true
@@ -14,3 +15,7 @@ func _on_Menu_button_up():
 		tween.start()
 		yield(tween, "tween_completed")
 		get_tree().get_root().add_child(instanciaMenu)
+
+func _on_Menu_button_down():
+	audio_stream_sfx.stream.loop = false
+	audio_stream_sfx.play()

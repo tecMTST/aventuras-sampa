@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco.png" type="Texture" id=1]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco_senhora.png" type="Texture" id=2]
@@ -19,6 +19,24 @@
 [sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 11 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends AudioStreamPlayer
+
+onready var bgm := {
+	'cidade': preload(\"res://elementos/audio/bgm/minigame-1/minigame1-amb-cidade.mp3\"),
+	'garoa': preload(\"res://elementos/audio/bgm/cutscene/dialogo-amb-chuva-leve.mp3\"),
+	'chuva': preload(\"res://elementos/audio/bgm/cutscene/dialogo-amb-chuva-forte.mp3\"),
+}
+
+func tocar_som(evento: String) -> void:
+	if not bgm.has(evento):
+		return
+
+	stop()
+	stream = bgm[evento]
+	play()
+"
 
 [node name="Cutscene" type="Control"]
 anchor_right = 1.0
@@ -231,6 +249,11 @@ __meta__ = {
 [node name="AudioStreamSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 bus = "SFX Menu"
+
+[node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+bus = "BGM"
+script = SubResource( 2 )
 
 [connection signal="Fim" from="Tela1/Texto1" to="." method="proximo_ponto"]
 [connection signal="Fim" from="Tela1/Texto2" to="." method="proximo_ponto"]
