@@ -26,7 +26,10 @@ onready var clipesSFX = {
 		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-bolha2.mp3"),
 	],
 	"pulo": [
-		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-pulo.mp3')
+		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-pulo.mp3'),
+	],
+	"queda": [
+		preload("res://elementos/audio/sfx/minigame-1/minigame1-player-queda.mp3")
 	],
 	"agachar": [
 		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-agachar.mp3')
@@ -72,3 +75,6 @@ func _on_ControleFaixa3D_abaixou() -> void:
 
 func _on_ControleFaixa3D_pulou() -> void:
 	som_jogador('pulo')
+
+func _on_ControleFaixa3D_no_chao() -> void:
+	som_jogador('queda')
