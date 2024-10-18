@@ -9,6 +9,7 @@ onready var barra = $ProgressoDeTextura
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	barra.value = 0
 	_tempo.connect("timeout", self, "_ao_tempo_acabar")
 
 
