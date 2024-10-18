@@ -7,7 +7,7 @@ var ativarBotoes: bool
 #var tempoRecord = []
 var dificuldadeAtual = "facil"
 var pularCutScene : bool = false
-var pularTutorial : bool = false
+var Tutorial_finalizado : bool = false
 
 signal Atualizou
 
@@ -21,7 +21,7 @@ func salvar_globais():
 	Salvamento.salvar("globais", "ativarBotoes", ativarBotoes)
 	Salvamento.salvar("globais", "dificuldadeAtual", dificuldadeAtual)
 	Salvamento.salvar("globais", "pularCutScene", pularCutScene)
-	Salvamento.salvar("globais", "pularTutorial", pularTutorial)
+	Salvamento.salvar("globais", "Tutorial_finalizado", Tutorial_finalizado)
 	emit_signal("Atualizou")
 
 func carregar_globais():
@@ -34,9 +34,9 @@ func carregar_globais():
 			pularCutScene = bool(Salvamento.carregar("globais", "pularCutScene"))
 		else:
 			pularCutScene = false
-		if Salvamento.carregar("globais", "pularTutorial"):			
-			pularTutorial = bool(Salvamento.carregar("globais", "pularTutorial"))
+		if Salvamento.carregar("globais", "Tutorial_finalizado"):			
+			Tutorial_finalizado = bool(Salvamento.carregar("globais", "Tutorial_finalizado"))
 		else:
-			pularTutorial = false
+			Tutorial_finalizado = false
 	else:
 		salvar_globais()

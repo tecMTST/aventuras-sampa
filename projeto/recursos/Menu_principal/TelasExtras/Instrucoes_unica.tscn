@@ -1,0 +1,943 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://elementos/UI/seta_1.png" type="Texture" id=1]
+[ext_resource path="res://elementos/imagem/enchente/obstaculos/semáforo_cont.png" type="Texture" id=2]
+[ext_resource path="res://elementos/UI/ilustracao_teclas_frame_3.png" type="Texture" id=3]
+[ext_resource path="res://elementos/UI/ilustracao_tecla_frame_1.png" type="Texture" id=4]
+[ext_resource path="res://elementos/UI/ilustracao_teclas_frame_2.png" type="Texture" id=5]
+[ext_resource path="res://elementos/UI/icone_toalha_default.png" type="Texture" id=6]
+[ext_resource path="res://elementos/UI/seta_5.png" type="Texture" id=7]
+[ext_resource path="res://elementos/UI/ilustracao_tecla_frame_2.png" type="Texture" id=8]
+[ext_resource path="res://elementos/imagem/enchente/obstaculos/tronco_cont.png" type="Texture" id=9]
+[ext_resource path="res://elementos/UI/botao_avancar_hover.png" type="Texture" id=10]
+[ext_resource path="res://elementos/UI/icone_buzao.png" type="Texture" id=11]
+[ext_resource path="res://elementos/UI/ilustracao_mao.png" type="Texture" id=12]
+[ext_resource path="res://elementos/UI/seta_6.png" type="Texture" id=13]
+[ext_resource path="res://elementos/UI/botao_avancar_pressed.png" type="Texture" id=14]
+[ext_resource path="res://elementos/fontes/LondrinaSolid-Light.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://elementos/UI/botao_avancar_default.png" type="Texture" id=16]
+[ext_resource path="res://elementos/UI/slider_default.png" type="Texture" id=17]
+[ext_resource path="res://elementos/UI/ilustracao_teclas_frame_1.png" type="Texture" id=18]
+[ext_resource path="res://elementos/UI/icone_vovo.png" type="Texture" id=19]
+[ext_resource path="res://elementos/UI/icone_rampa.png" type="Texture" id=20]
+[ext_resource path="res://elementos/UI/seta_2.png" type="Texture" id=21]
+[ext_resource path="res://elementos/UI/seta_3.png" type="Texture" id=22]
+[ext_resource path="res://elementos/UI/icone_capa_default.png" type="Texture" id=23]
+[ext_resource path="res://elementos/UI/seta_4.png" type="Texture" id=24]
+[ext_resource path="res://recursos/Menu_principal/TelasExtras/Instrucoes_unica.gd" type="Script" id=25]
+
+[sub_resource type="AnimatedTexture" id=13]
+frames = 4
+fps = 1.0
+frame_0/texture = ExtResource( 18 )
+frame_1/texture = ExtResource( 5 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 18 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 3 )
+frame_3/delay_sec = 0.0
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 15 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "HandLeftRight"
+length = 2.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Seta:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1, 1.2, 1.4, 2, 2.3, 2.5, 2.8 ),
+"transitions": PoolRealArray( 1, 0.554785, 0.04096, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.3, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 12.527, 410 ), Vector2( 251, 366 ), Vector2( 251, 366 ), Vector2( 12.527, 410 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1.3, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -13.5553, 0.0, 0.0, -13.5553 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Seta:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 1, 2.1, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Seta:flip_v")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7, 1, 2.1, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Seta:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1, 1.2, 2.3, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48.527, 329 ), Vector2( 48.527, 329 ), Vector2( 48.527, 350 ), Vector2( 48.527, 350 ), Vector2( 48.527, 329 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "SubirDescerPular"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 548, 576 ), Vector2( 548, 558 ), Vector2( 548, 587 ), Vector2( 548, 576 ) ]
+}
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 2
+fps = 1.0
+frame_0/texture = ExtResource( 4 )
+frame_1/texture = ExtResource( 8 )
+frame_1/delay_sec = 0.0
+
+[sub_resource type="Animation" id=9]
+resource_name = "HandDown"
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Seta:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.2, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 0.554785, 0.04096, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.2, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -5.0, -5.0, -15.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1.2, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 176, 300.082 ), Vector2( 176, 443 ), Vector2( 176, 443 ), Vector2( 176, 300.082 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.7, 1.2, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Seta:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 133, 329 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -5.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 176, 443 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "SubirDescerPular"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 548, 576 ), Vector2( 548, 558 ), Vector2( 548, 587 ), Vector2( 548, 576 ) ]
+}
+
+[sub_resource type="DynamicFont" id=14]
+size = 39
+font_data = ExtResource( 15 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "SubirDescerPular"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 548, 576 ), Vector2( 548, 558 ), Vector2( 548, 587 ), Vector2( 548, 576 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "SubirDescerPular"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 548, 576 ), Vector2( 548, 558 ), Vector2( 548, 587 ), Vector2( 548, 576 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 44
+font_data = ExtResource( 15 )
+
+[node name="Instrucoes" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 25 )
+
+[node name="canvasinstrucoes" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="canvasinstrucoes"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2019.0
+margin_top = -1014.0
+margin_right = 2027.0
+margin_bottom = 1356.0
+color = Color( 0.109804, 0.109804, 0.109804, 0.607843 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Primeiro" type="Control" parent="canvasinstrucoes"]
+anchor_left = 0.502
+anchor_top = 0.709
+anchor_right = 0.502
+anchor_bottom = 0.709
+margin_left = -359.44
+margin_top = -376.52
+margin_right = 359.56
+margin_bottom = 375.48
+
+[node name="Seta2" type="TextureRect" parent="canvasinstrucoes/Primeiro"]
+anchor_left = 0.504
+anchor_top = 0.289
+anchor_right = 0.504
+anchor_bottom = 0.289
+margin_left = -119.824
+margin_top = -111.328
+margin_right = 120.176
+margin_bottom = 110.672
+rect_pivot_offset = Vector2( 120, 111 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="Botoes" type="TextureRect" parent="canvasinstrucoes/Primeiro"]
+anchor_left = 0.782
+anchor_top = 0.554
+anchor_right = 0.782
+anchor_bottom = 0.554
+margin_left = -136.092
+margin_top = -84.608
+margin_right = 135.908
+margin_bottom = 84.392
+rect_pivot_offset = Vector2( 136, 85 )
+texture = SubResource( 13 )
+expand = true
+
+[node name="Label" type="Label" parent="canvasinstrucoes/Primeiro"]
+anchor_left = 0.5
+anchor_top = 0.131
+anchor_right = 0.5
+anchor_bottom = 0.131
+margin_left = -189.5
+margin_top = -82.512
+margin_right = 189.5
+margin_bottom = 82.488
+custom_fonts/font = SubResource( 4 )
+text = "Desvie dos obstáculos
+deslizando para a esquerda ou direita"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Seta" type="TextureRect" parent="canvasinstrucoes/Primeiro"]
+anchor_left = 0.273
+anchor_top = 0.519
+anchor_right = 0.273
+anchor_bottom = 0.519
+margin_left = -147.76
+margin_top = -40.288
+margin_right = 141.24
+margin_bottom = 76.712
+rect_pivot_offset = Vector2( 145, 59 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+flip_h = true
+flip_v = true
+
+[node name="Mao" type="TextureRect" parent="canvasinstrucoes/Primeiro"]
+anchor_left = 0.137
+anchor_top = 0.658
+anchor_right = 0.137
+anchor_bottom = 0.658
+margin_left = 48.9597
+margin_top = -109.713
+margin_right = 217.912
+margin_bottom = 59.2841
+rect_rotation = -5.88527
+rect_pivot_offset = Vector2( 86, 85 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="canvasinstrucoes/Primeiro"]
+physics_interpolation_mode = 1
+root_node = NodePath("../Mao")
+autoplay = "HandLeftRight"
+anims/HandLeftRight = SubResource( 5 )
+
+[node name="PularPrimeiro" type="TextureButton" parent="canvasinstrucoes/Primeiro"]
+anchor_left = 0.843
+anchor_top = 0.844
+anchor_right = 0.844
+anchor_bottom = 0.844
+margin_left = -58.117
+margin_top = -58.688
+margin_right = 59.164
+margin_bottom = 59.312
+rect_pivot_offset = Vector2( 59, 60 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="canvasinstrucoes/Primeiro/PularPrimeiro"]
+physics_interpolation_mode = 1
+autoplay = "SubirDescerPular"
+anims/SubirDescerPular = SubResource( 8 )
+
+[node name="Segundo" type="Control" parent="canvasinstrucoes"]
+visible = false
+anchor_left = 0.502
+anchor_top = 0.709
+anchor_right = 0.502
+anchor_bottom = 0.709
+margin_left = -359.44
+margin_top = -376.52
+margin_right = 359.56
+margin_bottom = 375.48
+
+[node name="Seta2" type="TextureRect" parent="canvasinstrucoes/Segundo"]
+anchor_left = 0.51
+anchor_top = 0.318
+anchor_right = 0.51
+anchor_bottom = 0.318
+margin_left = -123.69
+margin_top = -114.136
+margin_right = 123.31
+margin_bottom = 114.864
+rect_pivot_offset = Vector2( 124, 115 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="Botoes" type="TextureRect" parent="canvasinstrucoes/Segundo"]
+anchor_left = 0.711
+anchor_top = 0.6
+anchor_right = 0.711
+anchor_bottom = 0.6
+margin_left = -81.209
+margin_top = -82.2
+margin_right = 81.791
+margin_bottom = 82.8
+rect_pivot_offset = Vector2( 82, 82 )
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="canvasinstrucoes/Segundo"]
+anchor_left = 0.513
+anchor_top = 0.084
+anchor_right = 0.513
+anchor_bottom = 0.084
+margin_left = -189.847
+margin_top = -47.168
+margin_right = 189.153
+margin_bottom = 47.832
+custom_fonts/font = SubResource( 4 )
+text = "Agache para desviar dos obstáculos mais altos"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Seta" type="TextureRect" parent="canvasinstrucoes/Segundo"]
+anchor_left = 0.242
+anchor_top = 0.598
+anchor_right = 0.242
+anchor_bottom = 0.598
+margin_left = 133.0
+margin_top = 329.0
+margin_right = 219.0
+margin_bottom = 598.0
+rect_pivot_offset = Vector2( 43, 133 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 6
+
+[node name="Mao" type="TextureRect" parent="canvasinstrucoes/Segundo"]
+anchor_left = 0.362
+anchor_top = 0.512
+anchor_right = 0.362
+anchor_bottom = 0.512
+margin_left = 176.0
+margin_top = 443.0
+margin_right = 344.982
+margin_bottom = 612.005
+rect_rotation = -5.0
+rect_pivot_offset = Vector2( 86, 85 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="canvasinstrucoes/Segundo"]
+physics_interpolation_mode = 1
+root_node = NodePath("../Mao")
+autoplay = "HandDown"
+anims/HandDown = SubResource( 9 )
+anims/RESET = SubResource( 12 )
+
+[node name="PularSegundo" type="TextureButton" parent="canvasinstrucoes/Segundo"]
+anchor_left = 0.843
+anchor_top = 0.844
+anchor_right = 0.844
+anchor_bottom = 0.844
+margin_left = -58.1171
+margin_top = -64.4614
+margin_right = 59.1639
+margin_bottom = 53.5386
+rect_pivot_offset = Vector2( 59, 60 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="canvasinstrucoes/Segundo/PularSegundo"]
+physics_interpolation_mode = 1
+autoplay = "SubirDescerPular"
+anims/SubirDescerPular = SubResource( 11 )
+
+[node name="Terceiro" type="Control" parent="canvasinstrucoes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.502
+anchor_top = 0.709
+anchor_right = 0.502
+anchor_bottom = 0.709
+margin_left = -359.44
+margin_top = -376.52
+margin_right = 359.56
+margin_bottom = 375.48
+
+[node name="Seta2" type="TextureRect" parent="canvasinstrucoes/Terceiro"]
+anchor_left = 0.5
+anchor_top = 0.491
+anchor_right = 0.5
+anchor_bottom = 0.491
+margin_left = -208.5
+margin_top = -187.232
+margin_right = 195.5
+margin_bottom = 187.768
+rect_pivot_offset = Vector2( 208, 187 )
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="canvasinstrucoes/Terceiro"]
+anchor_left = 0.499
+anchor_top = 0.197
+anchor_right = 0.499
+anchor_bottom = 0.197
+margin_left = -235.781
+margin_top = -73.144
+margin_right = 235.219
+margin_bottom = 73.856
+custom_fonts/font = SubResource( 14 )
+text = "Use as rampas para 
+saltar sobre obstáculos com estilo!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="PularTerceiro" type="TextureButton" parent="canvasinstrucoes/Terceiro"]
+anchor_left = 0.843
+anchor_top = 0.844
+anchor_right = 0.844
+anchor_bottom = 0.844
+margin_left = -58.117
+margin_top = -75.229
+margin_right = 59.164
+margin_bottom = 42.771
+rect_pivot_offset = Vector2( 59, 60 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="canvasinstrucoes/Terceiro/PularTerceiro"]
+autoplay = "SubirDescerPular"
+anims/SubirDescerPular = SubResource( 15 )
+
+[node name="Quarto" type="Control" parent="canvasinstrucoes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.502
+anchor_top = 0.709
+anchor_right = 0.502
+anchor_bottom = 0.709
+margin_left = -359.44
+margin_top = -376.52
+margin_right = 359.56
+margin_bottom = 375.48
+
+[node name="Toalha" type="TextureRect" parent="canvasinstrucoes/Quarto"]
+anchor_left = 0.816
+anchor_top = 0.185
+anchor_right = 0.816
+anchor_bottom = 0.185
+margin_left = -88.704
+margin_top = -82.12
+margin_right = 88.296
+margin_bottom = 81.88
+rect_pivot_offset = Vector2( 89, 82 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Seta" type="TextureRect" parent="canvasinstrucoes/Quarto"]
+anchor_left = 0.622
+anchor_top = 0.096
+anchor_right = 0.622
+anchor_bottom = 0.096
+margin_left = -39.218
+margin_top = -36.192
+margin_right = 38.782
+margin_bottom = 36.808
+rect_rotation = -17.1411
+rect_pivot_offset = Vector2( 39, 36.6482 )
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="canvasinstrucoes/Quarto"]
+anchor_left = 0.33
+anchor_top = 0.178
+anchor_right = 0.33
+anchor_bottom = 0.178
+margin_left = -180.27
+margin_top = -40.856
+margin_right = 203.73
+margin_bottom = 79.144
+rect_rotation = -3.88943
+custom_fonts/font = SubResource( 14 )
+text = "Colete toalha para recuperar ponto de vida."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Capa" type="TextureRect" parent="canvasinstrucoes/Quarto"]
+anchor_left = 0.247
+anchor_top = 0.543
+anchor_right = 0.247
+anchor_bottom = 0.543
+margin_left = -104.593
+margin_top = -97.336
+margin_right = 104.407
+margin_bottom = 96.664
+rect_pivot_offset = Vector2( 106, 97 )
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="Seta2" type="TextureRect" parent="canvasinstrucoes/Quarto"]
+anchor_left = 0.423
+anchor_top = 0.703
+anchor_right = 0.423
+anchor_bottom = 0.705
+margin_left = -53.137
+margin_top = -43.656
+margin_right = 40.863
+margin_bottom = 41.84
+rect_rotation = -3.9027
+rect_pivot_offset = Vector2( 47.0161, 43.6902 )
+texture = ExtResource( 24 )
+expand = true
+stretch_mode = 6
+
+[node name="Label2" type="Label" parent="canvasinstrucoes/Quarto"]
+anchor_left = 0.67
+anchor_top = 0.574
+anchor_right = 0.67
+anchor_bottom = 0.574
+margin_left = -183.73
+margin_top = -89.648
+margin_right = 197.27
+margin_bottom = 57.352
+rect_rotation = 4.8811
+custom_fonts/font = SubResource( 14 )
+text = "A capa de chuva te dá invencibilidade por um curto período de tempo."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="PularQuarto" type="TextureButton" parent="canvasinstrucoes/Quarto"]
+anchor_left = 0.843
+anchor_top = 0.844
+anchor_right = 0.844
+anchor_bottom = 0.844
+margin_left = -58.117
+margin_top = -59.8454
+margin_right = 59.164
+margin_bottom = 58.1546
+rect_pivot_offset = Vector2( 59, 60 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="canvasinstrucoes/Quarto/PularQuarto"]
+physics_interpolation_mode = 1
+autoplay = "SubirDescerPular"
+anims/SubirDescerPular = SubResource( 16 )
+
+[node name="HUD" type="Control" parent="canvasinstrucoes"]
+anchor_left = 0.311
+anchor_top = 0.069
+anchor_right = 0.311
+anchor_bottom = 0.069
+margin_left = -203.92
+margin_top = -65.32
+margin_right = 204.08
+margin_bottom = 64.68
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bar" type="TextureRect" parent="canvasinstrucoes/HUD"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -219.0
+margin_top = -42.0
+margin_right = 219.0
+margin_bottom = 42.0
+rect_pivot_offset = Vector2( 59, 59 )
+texture = ExtResource( 17 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Head" type="TextureRect" parent="canvasinstrucoes/HUD"]
+anchor_left = 0.081
+anchor_top = 0.5
+anchor_right = 0.081
+anchor_bottom = 0.5
+margin_left = -50.048
+margin_top = -43.5
+margin_right = 49.952
+margin_bottom = 43.5
+rect_pivot_offset = Vector2( 59, 59 )
+texture = ExtResource( 19 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Goal" type="TextureRect" parent="canvasinstrucoes/HUD"]
+anchor_left = 0.89
+anchor_top = 0.5
+anchor_right = 0.89
+anchor_bottom = 0.5
+margin_left = -45.12
+margin_top = -39.0
+margin_right = 44.88
+margin_bottom = 39.0
+rect_pivot_offset = Vector2( 59, 59 )
+texture = ExtResource( 11 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Life" type="TextureRect" parent="canvasinstrucoes/HUD"]
+anchor_left = 0.074
+anchor_top = 1.004
+anchor_right = 0.074
+anchor_bottom = 1.004
+margin_left = -33.192
+margin_top = -28.52
+margin_right = 32.808
+margin_bottom = 28.48
+rect_pivot_offset = Vector2( 33, 29 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Life2" type="TextureRect" parent="canvasinstrucoes/HUD"]
+anchor_left = 0.245
+anchor_top = 1.0
+anchor_right = 0.245
+anchor_bottom = 1.0
+margin_left = -32.96
+margin_top = -28.0
+margin_right = 33.04
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 33, 29 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Life3" type="TextureRect" parent="canvasinstrucoes/HUD"]
+anchor_left = 0.419
+anchor_top = 1.004
+anchor_right = 0.419
+anchor_bottom = 1.004
+margin_left = -32.952
+margin_top = -28.52
+margin_right = 33.048
+margin_bottom = 28.48
+rect_pivot_offset = Vector2( 33, 29 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AjudeDonaMaria" type="Control" parent="canvasinstrucoes"]
+anchor_left = 0.314
+anchor_top = 0.069
+anchor_right = 0.314
+anchor_bottom = 0.069
+margin_left = -77.08
+margin_top = 131.68
+margin_right = 299.92
+margin_bottom = 259.68
+
+[node name="Seta" type="TextureRect" parent="canvasinstrucoes/AjudeDonaMaria"]
+anchor_left = 0.882
+anchor_top = -0.285
+anchor_right = 0.882
+anchor_bottom = -0.285
+margin_left = -66.514
+margin_top = -66.52
+margin_right = 66.486
+margin_bottom = 66.48
+rect_rotation = -2.63231
+rect_pivot_offset = Vector2( 66.5, 66.5 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="Ajude" type="Label" parent="canvasinstrucoes/AjudeDonaMaria"]
+anchor_left = 0.444
+anchor_top = 0.629
+anchor_right = 0.444
+anchor_bottom = 0.629
+margin_left = -198.388
+margin_top = -59.512
+margin_right = 198.612
+margin_bottom = 59.488
+rect_rotation = -3.3
+rect_pivot_offset = Vector2( 198.5, 59.5 )
+custom_fonts/font = SubResource( 3 )
+text = "Ajude a Dona Maria a pegar o ônibus!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="TomarDano" type="Control" parent="canvasinstrucoes"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.314
+anchor_top = 0.069
+anchor_right = 0.314
+anchor_bottom = 0.069
+margin_left = -77.08
+margin_top = 131.68
+margin_right = 299.92
+margin_bottom = 259.68
+
+[node name="Seta" type="TextureRect" parent="canvasinstrucoes/TomarDano"]
+anchor_left = 0.452
+anchor_top = -0.01
+anchor_right = 0.452
+anchor_bottom = -0.01
+margin_left = -65.404
+margin_top = -64.72
+margin_right = 64.596
+margin_bottom = 65.28
+rect_rotation = 11.4107
+rect_pivot_offset = Vector2( 66.5, 66.5 )
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="Ajude" type="Label" parent="canvasinstrucoes/TomarDano"]
+anchor_left = 0.444
+anchor_top = 0.629
+anchor_right = 0.444
+anchor_bottom = 0.629
+margin_left = -224.388
+margin_top = -41.512
+margin_right = 172.612
+margin_bottom = 77.488
+rect_rotation = 6.34952
+rect_pivot_offset = Vector2( 198.5, 59.5 )
+custom_fonts/font = SubResource( 3 )
+text = "Mas cuidado para não se molhar!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Tweentransicaoobjeto2" type="Tween" parent="canvasinstrucoes"]
+
+[node name="Tweentransicao" type="Tween" parent="canvasinstrucoes"]
+
+[connection signal="button_up" from="canvasinstrucoes/Primeiro/PularPrimeiro" to="." method="_on_PularPrimeiro_button_up"]
+[connection signal="button_up" from="canvasinstrucoes/Segundo/PularSegundo" to="." method="_on_PularSegundo_button_up"]
+[connection signal="button_up" from="canvasinstrucoes/Terceiro/PularTerceiro" to="." method="_on_PularTerceiro_button_up"]
+[connection signal="button_up" from="canvasinstrucoes/Quarto/PularQuarto" to="." method="_on_PularQuarto_button_up"]
