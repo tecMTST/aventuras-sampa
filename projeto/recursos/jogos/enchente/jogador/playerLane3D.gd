@@ -42,18 +42,24 @@ func _on_ControladorArrasta_arrastado(chave):
 		controle_faixa_3d.abaixar()
 
 func _on_AreaDano_body_entered(body: Node) -> void:
-	if body is Obstaculo and body.is_in_group("item"):
-		body.tocar_som_impacto()
+	if body.has_method('tocar_som_impacto'):
+		if not body.is_in_group('obstaculo'):
+			body.tocar_som_impacto(false)
+		if imune and body.is_in_group('obstaculo'):
+			body.tocar_som_impacto(imune)
+	
 	if body.is_in_group("terrestre") and not imune and not pulando:
 		vida.receber_dano(1.0)
 		_gerar_fala_de_dano()
-		body.tocar_som_impacto()
 		imunidade(true, tempo_imunidade_dano)
+		if body.has_method('tocar_som_impacto'):
+			body.tocar_som_impacto(false)
 	if body.is_in_group("aereo") and not imune and not abaixado:
 		vida.receber_dano(1.0)
 		_gerar_fala_de_dano()
-		body.tocar_som_impacto()
 		imunidade(true, tempo_imunidade_dano)
+		if body.has_method('tocar_som_impacto'):
+			body.tocar_som_impacto(false)
 	if body.is_in_group("invencibilidade"):
 		body.queue_free()
 		imunidade(false, tempo_imunidade_item)

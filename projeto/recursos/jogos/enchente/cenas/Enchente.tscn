@@ -186,6 +186,10 @@ autoplay = true
 stream_paused = true
 bus = "BGM Track"
 
+[node name="AudioStreamSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = "SFX Game"
+
 [node name="ChamadaDoBoss" parent="." instance=ExtResource( 16 )]
 
 [node name="Contador" parent="." instance=ExtResource( 17 )]
