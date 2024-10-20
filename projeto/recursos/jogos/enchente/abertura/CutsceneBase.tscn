@@ -27,6 +27,7 @@ onready var bgm := {
 	'cidade': preload(\"res://elementos/audio/bgm/cutscene/amb-cidade.mp3\"),
 	'garoa': preload(\"res://elementos/audio/bgm/cutscene/amb-chuva-leve.mp3\"),
 	'chuva': preload(\"res://elementos/audio/bgm/cutscene/amb-chuva-forte.mp3\"),
+	'saco_dona_maria': preload(\"res://elementos/audio/bgm/cutscene/amb-saco-de-lixo.mp3\"),
 }
 
 func tocar_som(evento: String) -> void:
