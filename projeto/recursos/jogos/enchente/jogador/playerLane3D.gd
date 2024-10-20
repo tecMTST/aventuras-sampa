@@ -81,6 +81,8 @@ func imunidade(dano: bool, tempo: float):
 	timer_imunidade.start()
 	if not dano:
 		imunidade_particulas.visible = true
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM Track"), true)
+		$ImunidadeBGM.play()
 
 func _on_TimerImunidade_timeout():
 	if imune_dano:
@@ -97,6 +99,8 @@ func _on_TimerImunidade_timeout():
 		finaliza_imunidade()
 
 func finaliza_imunidade():
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM Track"), false)
+	$ImunidadeBGM.stop()
 	imunidade_particulas.visible = false
 	sprite.visible = true
 	sprite_agua.visible = true
@@ -105,6 +109,7 @@ func finaliza_imunidade():
 	imunidade_modulate = false
 	sprite.modulate = Color(1, 1, 1)
 	timer_imunidade.stop()
+	
 
 func pause():
 	var instance = menuOpcoes.instance()

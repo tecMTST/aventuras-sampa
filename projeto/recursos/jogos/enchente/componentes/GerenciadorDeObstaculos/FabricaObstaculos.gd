@@ -131,9 +131,8 @@ func _precarregar_sfx() -> void:
 		'pomba':preload('res://elementos/audio/sfx/minigame-1/minigame1-dano-pomba.mp3'),
 		'poste':preload('res://elementos/audio/sfx/minigame-1/minigame1-dano-poste.mp3'),
 		'semaforo':preload('res://elementos/audio/sfx/minigame-1/minigame1-dano-semaforo.mp3'),
-		'coletavel':preload('res://elementos/audio/sfx/minigame-1/minigame1-coletavel-bandeira.mp3'),
-		'especial':preload('res://elementos/audio/sfx/minigame-1/minigame1-coletavel-capa.mp3'),
-		'vida':preload('res://elementos/audio/sfx/minigame-1/minigame1-coletavel-toalha.mp3'),
+		'coletavel':preload('res://elementos/audio/sfx/itens/coletavel-bandeira.mp3'),
+		'vida':preload('res://elementos/audio/sfx/itens/coletavel-toalha.mp3'),
 	}
 
 func _listar_objetos():

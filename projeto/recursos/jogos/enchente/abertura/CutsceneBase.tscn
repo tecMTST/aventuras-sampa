@@ -127,7 +127,7 @@ align = 1
 script = ExtResource( 5 )
 autostart = true
 atrasar_inicio = 1.0
-audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
+audio = "res://elementos/audio/sfx/cutscene/hud-tecla.mp3"
 pitch = 1.5
 
 [node name="Texto2" type="Label" parent="Tela1"]
@@ -145,7 +145,7 @@ text = "12:12"
 align = 1
 valign = 1
 script = ExtResource( 5 )
-audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
+audio = "res://elementos/audio/sfx/cutscene/hud-tecla.mp3"
 pitch = 1.5
 
 [node name="Texto3" type="Label" parent="Tela1"]
@@ -163,7 +163,7 @@ text = "Ocupação 9 de Julho"
 align = 1
 valign = 1
 script = ExtResource( 5 )
-audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
+audio = "res://elementos/audio/sfx/cutscene/hud-tecla.mp3"
 pitch = 1.5
 
 [node name="Garoa" type="CPUParticles2D" parent="."]
@@ -252,6 +252,7 @@ bus = "SFX Menu"
 
 [node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+volume_db = -3.496
 bus = "BGM"
 script = SubResource( 2 )
 
