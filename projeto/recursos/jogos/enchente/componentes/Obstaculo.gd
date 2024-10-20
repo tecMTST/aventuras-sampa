@@ -3,7 +3,7 @@ class_name Obstaculo
 
 enum TIPO {TERRESTRE, AEREO, RAMPA, ITEM}
 
-const sfx_impacto = preload("res://elementos/audio/sfx/minigame-1/minigame1-dano-poste.mp3")
+const sfx_impacto = preload("res://elementos/audio/sfx/obstaculos/dano-poste.mp3")
 
 export var cores : PoolColorArray = []
 export var velocidade := 1000.0

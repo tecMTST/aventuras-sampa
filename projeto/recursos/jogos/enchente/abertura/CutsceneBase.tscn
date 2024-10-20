@@ -24,9 +24,9 @@ font_data = ExtResource( 11 )
 script/source = "extends AudioStreamPlayer
 
 onready var bgm := {
-	'cidade': preload(\"res://elementos/audio/bgm/minigame-1/minigame1-amb-cidade.mp3\"),
-	'garoa': preload(\"res://elementos/audio/bgm/cutscene/dialogo-amb-chuva-leve.mp3\"),
-	'chuva': preload(\"res://elementos/audio/bgm/cutscene/dialogo-amb-chuva-forte.mp3\"),
+	'cidade': preload(\"res://elementos/audio/bgm/cutscene/amb-cidade.mp3\"),
+	'garoa': preload(\"res://elementos/audio/bgm/cutscene/amb-chuva-leve.mp3\"),
+	'chuva': preload(\"res://elementos/audio/bgm/cutscene/amb-chuva-forte.mp3\"),
 }
 
 func tocar_som(evento: String) -> void:

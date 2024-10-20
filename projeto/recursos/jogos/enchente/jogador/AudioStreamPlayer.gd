@@ -12,27 +12,23 @@ func _ready():
 #Array de clipes de audio:
 onready var clipesSFX = {
 	"trocaFaixa": [
-		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-mov1.mp3"),
-		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-mov2.mp3"),
-		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-mov3.mp3"),
-		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-mov4.mp3"),
-	],
-	"dano": [
-		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-bolha1.mp3"),
-		preload ("res://elementos/audio/sfx/minigame-1/minigame1-player-bolha2.mp3"),
+		preload ("res://elementos/audio/sfx/personagem/personagem-mov1.mp3"),
+		preload ("res://elementos/audio/sfx/personagem/personagem-mov2.mp3"),
+		preload ("res://elementos/audio/sfx/personagem/personagem-mov3.mp3"),
+		preload ("res://elementos/audio/sfx/personagem/personagem-mov4.mp3"),
 	],
 	"pulo": [
-		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-pulo.mp3'),
+		preload('res://elementos/audio/sfx/personagem/personagem-pulo.mp3'),
 	],
 	"queda": [
-		preload("res://elementos/audio/sfx/minigame-1/minigame1-player-queda.mp3")
+		preload("res://elementos/audio/sfx/personagem/personagem-queda.mp3")
 	],
 	"agachar": [
-		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-agachar.mp3')
+		preload('res://elementos/audio/sfx/personagem/personagem-agachar.mp3')
 	],
 	"risada": [
-		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-risada1.mp3'),
-		preload('res://elementos/audio/sfx/minigame-1/minigame1-player-risada2.mp3')
+		preload('res://elementos/audio/sfx/personagem/personagem-risada1.mp3'),
+		preload('res://elementos/audio/sfx/personagem/personagem-risada2.mp3')
 	]
 	}
 
