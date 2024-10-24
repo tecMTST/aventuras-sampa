@@ -21,6 +21,9 @@ func _process(_delta: float) -> void:
 		fase = checar_fase
 		emit_signal('trocou_fase',fase)
 
+func reset() -> void:
+	TempoAtual = 0
+	fase = 1
 
 func definir_tempo_de_jogo(tempo: float) -> void:
 	TemporizadorGlobal.wait_time = tempo

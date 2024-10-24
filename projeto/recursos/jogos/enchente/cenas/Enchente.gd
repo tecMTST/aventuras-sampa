@@ -28,6 +28,7 @@ func _ready():
 	$Contador/Animador.play("aproximar")
 	yield($Contador/Animador, 'animation_finished')
 
+	EnchenteEstadoDeJogo.reset()
 	EnchenteEstadoDeJogo.TemporizadorGlobal = $TempoDeJogo
 	EnchenteEstadoDeJogo.definir_tempo_de_jogo(tempo_jogo * 60)
 	EnchenteEstadoDeJogo.iniciar_temporizador()
