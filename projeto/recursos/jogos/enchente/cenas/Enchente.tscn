@@ -5,7 +5,7 @@
 [ext_resource path="res://elementos/shaders/enchente/agua_shader.tres" type="Shader" id=3]
 [ext_resource path="res://addons/sistema_vida/interface/vida_icones.tscn" type="PackedScene" id=4]
 [ext_resource path="res://recursos/jogos/enchente/componentes/CriadorDePredios.tscn" type="PackedScene" id=5]
-[ext_resource path="res://elementos/UI/minigame_senhorinha/HUD_ingame/vida.png" type="Texture" id=6]
+[ext_resource path="res://elementos/UI/icone_toalha_default.png" type="Texture" id=6]
 [ext_resource path="res://elementos/temas/debug-labels.tres" type="Theme" id=7]
 [ext_resource path="res://elementos/scripts/ScriptsBackgroundCidadeSubindo/cidadeSubindo.gd" type="Script" id=8]
 [ext_resource path="res://elementos/modelos/skybox/skyboxNuvens.tscn" type="PackedScene" id=9]
@@ -87,8 +87,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.458483, 22.8555 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-margin_right = 361.0
-margin_bottom = 40.0
+margin_left = 15.0
+margin_top = 54.0
+margin_right = 376.0
+margin_bottom = 94.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
 margin_top = 75.0
@@ -137,12 +139,14 @@ theme = ExtResource( 7 )
 [node name="VidaIcones" parent="SeguraVida" instance=ExtResource( 4 )]
 anchor_left = 0.5
 anchor_right = 0.5
+margin_left = -172.0
 margin_top = 100.0
+margin_right = -172.0
 margin_bottom = 180.0
 rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")
 textura_icone = ExtResource( 6 )
-tamanho_icone = 64.0
+tamanho_icone = 45.0
 
 [node name="skybox_nuvens" parent="." instance=ExtResource( 9 )]
 transform = Transform( 5.02657, 0, 0, 0, 4.90057, 0, 0, 0, 4.4455, -0.231674, 23.119, -10.9947 )
