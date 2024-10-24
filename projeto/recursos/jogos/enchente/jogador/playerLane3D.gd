@@ -42,18 +42,24 @@ func _on_ControladorArrasta_arrastado(chave):
 		controle_faixa_3d.abaixar()
 
 func _on_AreaDano_body_entered(body: Node) -> void:
-	if body is Obstaculo and body.is_in_group("item"):
-		body.tocar_som_impacto()
+	if body.has_method('tocar_som_impacto'):
+		if not body.is_in_group('obstaculo'):
+			body.tocar_som_impacto(false)
+		if imune and body.is_in_group('obstaculo'):
+			body.tocar_som_impacto(imune)
+	
 	if body.is_in_group("terrestre") and not imune and not pulando:
 		vida.receber_dano(1.0)
 		_gerar_fala_de_dano()
-		body.tocar_som_impacto()
 		imunidade(true, tempo_imunidade_dano)
+		if body.has_method('tocar_som_impacto'):
+			body.tocar_som_impacto(false)
 	if body.is_in_group("aereo") and not imune and not abaixado:
 		vida.receber_dano(1.0)
 		_gerar_fala_de_dano()
-		body.tocar_som_impacto()
 		imunidade(true, tempo_imunidade_dano)
+		if body.has_method('tocar_som_impacto'):
+			body.tocar_som_impacto(false)
 	if body.is_in_group("invencibilidade"):
 		body.queue_free()
 		imunidade(false, tempo_imunidade_item)
@@ -75,6 +81,8 @@ func imunidade(dano: bool, tempo: float):
 	timer_imunidade.start()
 	if not dano:
 		imunidade_particulas.visible = true
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM Track"), true)
+		$ImunidadeBGM.play()
 
 func _on_TimerImunidade_timeout():
 	if imune_dano:
@@ -91,6 +99,8 @@ func _on_TimerImunidade_timeout():
 		finaliza_imunidade()
 
 func finaliza_imunidade():
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM Track"), false)
+	$ImunidadeBGM.stop()
 	imunidade_particulas.visible = false
 	sprite.visible = true
 	sprite_agua.visible = true
@@ -99,6 +109,7 @@ func finaliza_imunidade():
 	imunidade_modulate = false
 	sprite.modulate = Color(1, 1, 1)
 	timer_imunidade.stop()
+	
 
 func pause():
 	var instance = menuOpcoes.instance()

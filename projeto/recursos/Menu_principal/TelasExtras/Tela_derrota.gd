@@ -9,3 +9,7 @@ func _ready():
 func _on_Voltarjogo_button_up():
 	get_tree().paused = false
 	TrocadorDeCenas.trocar_cena(jogarnovamente)
+
+func _on_Voltarjogo_button_down():
+	$AudioStreamSFX.stream.loop = false
+	$AudioStreamSFX.play()

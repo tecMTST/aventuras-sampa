@@ -22,6 +22,7 @@ var ativo : bool = false
 func _ready():
 	if audio != '':
 		audio_player = AudioStreamPlayer.new()
+		audio_player.bus = "SFX Menu"
 		add_child(audio_player)	
 		audio_player.pitch_scale = pitch
 		audio_player.volume_db = volume_db
