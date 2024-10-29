@@ -46,3 +46,4 @@ func _trocou_fase(fase):
 	if fase == 3:
 		$ControladorDeObstaculos.parar()
 		$ChamadaDoBoss.iniciar()
+	audio_stream_bgm.mudar_musica(str(fase))
