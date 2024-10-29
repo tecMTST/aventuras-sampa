@@ -237,6 +237,7 @@ bus = "BGM Aux"
 [connection signal="caindo" from="ControleFaixa3D" to="." method="_on_ControleFaixa3D_caindo"]
 [connection signal="iniciou_movimento" from="ControleFaixa3D" to="AudioStreamPlayer" method="_on_ControleFaixa3D_iniciou_movimento"]
 [connection signal="levantou" from="ControleFaixa3D" to="." method="_on_ControleFaixa3D_levantou"]
+[connection signal="levantou" from="ControleFaixa3D" to="AudioStreamPlayer" method="_on_ControleFaixa3D_levantou"]
 [connection signal="no_chao" from="ControleFaixa3D" to="." method="_on_ControleFaixa3D_no_chao"]
 [connection signal="no_chao" from="ControleFaixa3D" to="AudioStreamPlayer" method="_on_ControleFaixa3D_no_chao"]
 [connection signal="pulou" from="ControleFaixa3D" to="." method="_on_ControleFaixa3D_pulou"]

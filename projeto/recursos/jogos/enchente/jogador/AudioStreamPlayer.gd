@@ -26,6 +26,9 @@ onready var clipesSFX = {
 	"agachar": [
 		preload('res://elementos/audio/sfx/personagem/personagem-agachar.mp3')
 	],
+	"levantar": [
+		preload("res://elementos/audio/sfx/personagem/personagem-levantar.mp3")
+	],
 	"risada": [
 		preload('res://elementos/audio/sfx/personagem/personagem-risada1.mp3'),
 		preload('res://elementos/audio/sfx/personagem/personagem-risada2.mp3')
@@ -48,6 +51,9 @@ func som_jogador(acao: String) -> void:
 
 func _on_ControleFaixa3D_abaixou() -> void:
 	som_jogador('agachar')
+
+func _on_ControleFaixa3D_levantou():
+	som_jogador('levantar')
 
 func _on_ControleFaixa3D_pulou() -> void:
 	som_jogador('pulo')
