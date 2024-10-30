@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco.png" type="Texture" id=1]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/tela_saco_senhora.png" type="Texture" id=2]
@@ -14,10 +14,30 @@
 [ext_resource path="res://elementos/imagem/enchente/cutscene/seta_pressed_def.png" type="Texture" id=12]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/seta_def.png" type="Texture" id=13]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/enchente.png" type="Texture" id=14]
+[ext_resource path="res://elementos/audio/sfx/hud-clique.mp3" type="AudioStream" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 11 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends AudioStreamPlayer
+
+onready var bgm := {
+	'cidade': preload(\"res://elementos/audio/bgm/cutscene/amb-cidade.mp3\"),
+	'garoa': preload(\"res://elementos/audio/bgm/cutscene/amb-chuva-leve.mp3\"),
+	'chuva': preload(\"res://elementos/audio/bgm/cutscene/amb-chuva-forte.mp3\"),
+	'saco_dona_maria': preload(\"res://elementos/audio/bgm/cutscene/amb-saco-de-lixo.mp3\"),
+}
+
+func tocar_som(evento: String) -> void:
+	if not bgm.has(evento):
+		return
+
+	stop()
+	stream = bgm[evento]
+	play()
+"
 
 [node name="Cutscene" type="Control"]
 anchor_right = 1.0
@@ -108,7 +128,7 @@ align = 1
 script = ExtResource( 5 )
 autostart = true
 atrasar_inicio = 1.0
-audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
+audio = "res://elementos/audio/sfx/cutscene/hud-tecla.mp3"
 pitch = 1.5
 
 [node name="Texto2" type="Label" parent="Tela1"]
@@ -126,7 +146,7 @@ text = "12:12"
 align = 1
 valign = 1
 script = ExtResource( 5 )
-audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
+audio = "res://elementos/audio/sfx/cutscene/hud-tecla.mp3"
 pitch = 1.5
 
 [node name="Texto3" type="Label" parent="Tela1"]
@@ -144,7 +164,7 @@ text = "Ocupação 9 de Julho"
 align = 1
 valign = 1
 script = ExtResource( 5 )
-audio = "res://elementos/audio/sfx/cutscene/keyboard.wav"
+audio = "res://elementos/audio/sfx/cutscene/hud-tecla.mp3"
 pitch = 1.5
 
 [node name="Garoa" type="CPUParticles2D" parent="."]
@@ -226,6 +246,16 @@ stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="AudioStreamSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+bus = "SFX Menu"
+
+[node name="AudioStreamBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -3.496
+bus = "BGM"
+script = SubResource( 2 )
 
 [connection signal="Fim" from="Tela1/Texto1" to="." method="proximo_ponto"]
 [connection signal="Fim" from="Tela1/Texto2" to="." method="proximo_ponto"]

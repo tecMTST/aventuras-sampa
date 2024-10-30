@@ -3,6 +3,8 @@ class_name Obstaculo
 
 enum TIPO {TERRESTRE, AEREO, RAMPA, ITEM}
 
+const sfx_impacto = preload("res://elementos/audio/sfx/obstaculos/dano-poste.mp3")
+
 export var cores : PoolColorArray = []
 export var velocidade := 1000.0
 export var textura: Texture
@@ -11,12 +13,16 @@ var info: Dictionary
 
 onready var sprite := $Sprite3D as Sprite3D
 onready var tween = $Tween as Tween
+onready var sfx_player := get_node("/root/Enchente/AudioStreamSFX") as AudioStreamPlayer
 var cor_padrao := Color.white
 var cor_adicional : Color
 
 func _ready() -> void:
+	sfx_impacto.loop = false
+	if sfx is AudioStreamMP3:
+		sfx.loop = false
+
 	$Sprite3D.texture = textura
-	$SfxImpacto.stream = sfx
 	var tipo = TIPO.TERRESTRE
 	if "aereo" in info["grupos"]:
 		tipo = TIPO.AEREO
@@ -33,9 +39,18 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	move_and_slide(Vector3(0, 0, velocidade * EnchenteEstadoDeJogo.VelocidadeGlobal * delta), Vector3.UP)
 
-func tocar_som_impacto():
-	$SfxImpacto.stop()
-	$SfxImpacto.play()
+func tocar_som_impacto(imune: bool):
+	if not sfx:
+		return
+	if imune:
+		sfx_player.pitch_scale = 3.0
+		sfx_player.volume_db = -10.0
+		sfx_player.stream = sfx_impacto
+	else:
+		sfx_player.pitch_scale = 1.0
+		sfx_player.volume_db = 0.0
+		sfx_player.stream = sfx
+	sfx_player.play()
 
 func _on_VisibilityNotifier_screen_exited() -> void:
 	queue_free()
