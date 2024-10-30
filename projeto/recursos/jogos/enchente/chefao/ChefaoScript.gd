@@ -10,6 +10,8 @@ onready var boss_sprite = $Sprites/SpriteChefao
 onready var Tentaculos = preload("res://recursos/jogos/enchente/chefao/Tentaculos.tscn")
 onready var BombasChefe = preload("res://recursos/jogos/enchente/chefao/BombasChefe.tscn")
 onready var Animplayer = $Sprites/SpriteChefao/AnimationPlayer
+onready var audio_stream_player_sfx = $AudioStreamPlayerSFX
+
 
 signal Chefao_Derrotado
 
@@ -152,9 +154,8 @@ func loadJson(nomejson):
 
 func _auto_destruir():
 	Animplayer.play_backwards("in_out")
+	audio_stream_player_sfx.tocar_sfx("chefe-morte")
 	yield(get_tree().create_timer(0.7), "timeout")
 	emit_signal("Chefao_Derrotado")
 	yield(get_tree().create_timer(2), "timeout")
-	self.queue_free()
-	yield(get_tree().create_timer(1.2), "timeout")
 	TrocadorDeCenas.trocar_cena('res://recursos/Menu_principal/TelasExtras/Tela_Vitoria.tscn')
