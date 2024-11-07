@@ -14,6 +14,7 @@ onready var audio_stream_sfx = $MenuDeOpcoes/AudioStreamSFX
 export var menupath: String = 'res://recursos/Menu_principal/Menu_Principal.tscn'
 
 func _ready():
+	VisualServer.set_shader_time_scale(0.0)
 	print(SingletonGlobal.ativarBotoes)
 	get_tree().paused = true
 
@@ -41,10 +42,12 @@ func _input(event):
 		SingletonOpcoesGlobais.salvar_globais()
 
 func _on_VoltarJogo_button_up():
+	VisualServer.set_shader_time_scale(1)
 	get_tree().paused = false
 	self.queue_free()
 
 func _on_VoltarMenu_button_up():
+	VisualServer.set_shader_time_scale(1)
 	get_tree().paused = false
 	TrocadorDeCenas.trocar_cena(menupath)
 	self.queue_free()
