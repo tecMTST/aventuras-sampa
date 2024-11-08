@@ -25,7 +25,7 @@ var ponto_atual = 1
 func _ready():	
 	var time = Time.get_datetime_dict_from_system()
 	texto_2.definir_texto(str(time["day"]) + "/" + str(time["month"]) + "/" +  str(time["year"])
-							+ " - " + str(time["hour"]) + ":" + str(time["minute"]))
+							+ " - 17:45")
 	botao_avancar.connect("button_down", self, "_on_button_down_sound")
 	botao_pular.connect("button_down", self, "_on_button_down_sound")
 
