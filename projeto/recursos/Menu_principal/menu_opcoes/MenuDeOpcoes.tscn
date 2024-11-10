@@ -21,6 +21,7 @@ font_data = ExtResource( 4 )
 
 [node name="MenuDeOpcoes" type="CanvasLayer"]
 pause_mode = 2
+layer = 7
 script = ExtResource( 6 )
 
 [node name="MenuDeOpcoes" type="Control" parent="."]
