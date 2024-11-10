@@ -62,7 +62,7 @@ func _on_ReiniciarCutscene_button_up():
 func _on_Instrucoes_button_up():
 	var loadinstrucoes = menu_instrucoes.instance()
 	get_tree().get_root().add_child(loadinstrucoes)
-#	self.queue_free()
+	self.queue_free()
 
 func _on_button_down_sound():
 	audio_stream_sfx.stream.loop = false

@@ -138,12 +138,14 @@ anchor_bottom = 1.0
 theme = ExtResource( 7 )
 
 [node name="VidaIcones" parent="SeguraVida" instance=ExtResource( 4 )]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -172.0
-margin_top = 100.0
-margin_right = -172.0
-margin_bottom = 180.0
+anchor_left = 0.383
+anchor_top = 0.5
+anchor_right = 0.383
+anchor_bottom = 0.5
+margin_left = -64.76
+margin_top = -540.0
+margin_right = -64.76
+margin_bottom = -460.0
 rect_scale = Vector2( 2, 2 )
 componente_com_vida = NodePath("../../playerLane3D")
 textura_icone = ExtResource( 6 )
@@ -196,6 +198,5 @@ bus = "SFX Game"
 [node name="ChamadaDoBoss" parent="." instance=ExtResource( 16 )]
 
 [node name="Contador" parent="." instance=ExtResource( 17 )]
-visible = false
 
 [connection signal="timeout" from="cidadesubindo/TimerDoTempoDeEspera" to="cidadesubindo" method="_mover_cidade"]
