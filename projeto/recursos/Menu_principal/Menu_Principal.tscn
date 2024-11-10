@@ -1,10 +1,10 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/Clouds_BG.png" type="Texture" id=1]
 [ext_resource path="res://elementos/UI/botao_jogar_pressed.png" type="Texture" id=2]
 [ext_resource path="res://elementos/UI/botao_jogar_default.png" type="Texture" id=3]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/transparency_BG.png" type="Texture" id=4]
-[ext_resource path="res://elementos/audio/bgm/hub/hub-menu.mp3" type="AudioStream" id=5]
+[ext_resource path="res://elementos/audio/bgm/hub/menu-principal.mp3" type="AudioStream" id=5]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/logo.png" type="Texture" id=6]
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/Titulo.png" type="Texture" id=7]
 [ext_resource path="res://recursos/Menu_principal/menu_opcoes/Menu.gd" type="Script" id=8]
@@ -23,6 +23,7 @@
 [ext_resource path="res://elementos/UI/minigame_senhorinha/MenuPrincipal/Sky_BG.png" type="Texture" id=21]
 [ext_resource path="res://recursos/jogos/enchente/abertura/CutsceneBase.tscn" type="PackedScene" id=22]
 [ext_resource path="res://elementos/UI/botao_jogar_hover.png" type="Texture" id=23]
+[ext_resource path="res://elementos/audio/sfx/hud-clique.mp3" type="AudioStream" id=24]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -90,6 +91,10 @@ cena_jogo = ExtResource( 9 )
 stream = ExtResource( 5 )
 autoplay = true
 bus = "BGM Track"
+
+[node name="AudioStreamSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+bus = "SFX Menu"
 
 [node name="Background" type="CanvasLayer" parent="."]
 
@@ -199,4 +204,5 @@ stretch_mode = 5
 
 [node name="tween_jogar" type="Tween" parent="Buttons/Btn_Jogar"]
 
+[connection signal="button_down" from="Buttons/Btn_Jogar" to="." method="_on_Btn_Jogar_button_down"]
 [connection signal="button_up" from="Buttons/Btn_Jogar" to="." method="_on_Jogar_button_up"]

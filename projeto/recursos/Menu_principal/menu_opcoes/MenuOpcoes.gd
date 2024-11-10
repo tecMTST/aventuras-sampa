@@ -9,10 +9,12 @@ onready var porcentagemEfeitosWheel: Label = $MenuDeOpcoes/Menu/Porcentagem2
 onready var voltarmenu: TextureButton = $MenuDeOpcoes/Menu/VoltarMenu
 onready var voltarjogo: TextureButton = $MenuDeOpcoes/Menu/VoltarJogo
 onready var menu_instrucoes = preload("res://recursos/Menu_principal/TelasExtras/Instrucoes.tscn")
+onready var audio_stream_sfx = $MenuDeOpcoes/AudioStreamSFX
 
 export var menupath: String = 'res://recursos/Menu_principal/Menu_Principal.tscn'
 
 func _ready():
+	VisualServer.set_shader_time_scale(0.0)
 	print(SingletonGlobal.ativarBotoes)
 	get_tree().paused = true
 
@@ -26,6 +28,9 @@ func _ready():
 	#	voltarmenu.visible = false		
 	#	$MenuDeOpcoes/Menu/VoltarJogo/Label.text = "voltar ao menu"
 		#print(get_tree().get_current_scene().get_name())
+	
+	voltarjogo.connect("button_down", self, "_on_button_down_sound")
+	voltarmenu.connect("button_down", self, "_on_button_down_sound")
 
 func _input(event):
 	var valorMusicaGlobal = musicaWheel.value
@@ -37,10 +42,12 @@ func _input(event):
 		SingletonOpcoesGlobais.salvar_globais()
 
 func _on_VoltarJogo_button_up():
+	VisualServer.set_shader_time_scale(1)
 	get_tree().paused = false
 	self.queue_free()
 
 func _on_VoltarMenu_button_up():
+	VisualServer.set_shader_time_scale(1)
 	get_tree().paused = false
 	TrocadorDeCenas.trocar_cena(menupath)
 	self.queue_free()
@@ -55,8 +62,11 @@ func _on_ReiniciarCutscene_button_up():
 	SingletonOpcoesGlobais.pularTutorial = false
 	SingletonOpcoesGlobais.salvar_globais()
 
-
 func _on_Instrucoes_button_up():
 	var loadinstrucoes = menu_instrucoes.instance()
 	get_tree().get_root().add_child(loadinstrucoes)
-#	self.queue_free()
+	self.queue_free()
+
+func _on_button_down_sound():
+	audio_stream_sfx.stream.loop = false
+	audio_stream_sfx.play()

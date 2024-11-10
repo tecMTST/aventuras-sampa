@@ -23,9 +23,6 @@ texture = ExtResource( 1 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 
-[node name="SfxImpacto" type="AudioStreamPlayer" parent="."]
-bus = "SFX Game"
-
 [node name="Tween" type="Tween" parent="."]
 repeat = true
 playback/repeat = true
