@@ -154,6 +154,7 @@ tamanho_icone = 45.0
 
 [node name="skybox_nuvens" parent="." instance=ExtResource( 9 )]
 transform = Transform( 5.02657, 0, 0, 0, 4.90057, 0, 0, 0, 4.4455, -0.231674, 23.119, -10.9947 )
+visible = false
 
 [node name="cidadesubindo" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70.8976 )
