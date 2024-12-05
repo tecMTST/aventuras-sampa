@@ -86,15 +86,19 @@ func imunidade(dano: bool, tempo: float):
 		$ImunidadeBGM.play()
 
 func _on_TimerImunidade_timeout():
+	
 	if imune_dano:
 		sprite.visible = not sprite.visible
-		sprite_agua.visible = not sprite_agua.visible
+		sprite_agua.visible = not sprite_agua.visible					
 	else:
 		imunidade_modulate = not imunidade_modulate
 		if imunidade_modulate:
 			sprite.modulate = Color(1.5, 1.5, 1)
 		else:
 			sprite.modulate = Color(1, 1, 1)
+		if imunidade_time <= (tempo_imunidade_item * 0.50):
+			imunidade_particulas.visible = not imunidade_particulas.visible
+			
 	imunidade_time = imunidade_time - timer_imunidade.wait_time
 	if imunidade_time <= 0:
 		finaliza_imunidade()
