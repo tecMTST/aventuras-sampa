@@ -20,6 +20,7 @@
 [ext_resource path="res://recursos/jogos/enchente/cenas/AudioStreamBGM.gd" type="Script" id=18]
 [ext_resource path="res://recursos/Menu_principal/menu_opcoes/BotaoMenu.tscn" type="PackedScene" id=19]
 [ext_resource path="res://elementos/imagem/enchente/cutscene/gota_chuva.png" type="Texture" id=20]
+[ext_resource path="res://recursos/jogos/enchente/cenas/CameraEnchente.gd" type="Script" id=21]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -49,12 +50,15 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 7, 27 )
+transform = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.00097084, 7.05001, 26.9958 )
 doppler_tracking = 2
 current = true
 fov = 103.0
+script = ExtResource( 21 )
 
 [node name="Listener" type="Listener" parent="Camera"]
+
+[node name="Tween" type="Tween" parent="Camera"]
 
 [node name="Paredes" type="Spatial" parent="."]
 
